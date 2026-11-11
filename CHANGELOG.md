@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- brainlint: Korean is now measured as korean.md specifies, with an average of ≤12 어절 and a long-sentence flag above 20. Headings no longer count as sentences, and 2-word labels no longer dilute the average. The Korean "before" example now scores 41 (was 45), because its 22-어절 sentence is flagged. Scores are updated in the READMEs, examples and launch draft. 3 new tests bring the total to 18.
+- Backlog tidy: B17 and B18 are marked superseded by the coverage work, and B06 is re-scoped to the scorer.
+
 - `tests/test_brainlint.py`: 15 stdlib tests. Golden scores for the shipped examples (50 / 100 / 45 / 100), every check's trigger and non-trigger, code-block exclusion, and the JSON schema. They run from `validate.sh`. A mutation check (list threshold 5 → 6) confirmed the tests catch regressions.
 
 - Portable builds in `dist/` from one source (`scripts/build_dist.py`, deterministic): `system-prompt.md` for any LLM (fits ChatGPT custom instructions), `AGENTS.md`, Cursor rule `cursor/brainres.mdc`, and `brainres-skill.zip` for claude.ai. `validate.sh` fails if `dist/` is stale.

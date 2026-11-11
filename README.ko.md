@@ -16,7 +16,7 @@
 > *"Redis랑 그냥 메모리 캐시 중에 뭐 써야 해? 서버는 한 대야."*
 
 <table>
-<tr><th>흔한 AI 답변 · Brain Score <b>45</b></th><th>brainres 적용 · Brain Score <b>100</b></th></tr>
+<tr><th>흔한 AI 답변 · Brain Score <b>41</b></th><th>brainres 적용 · Brain Score <b>100</b></th></tr>
 <tr valign="top"><td>
 
 좋은 질문입니다! 캐시 선택에 대한 고민은 많은 개발자들이 겪는 문제입니다. 자세히 설명해 드리겠습니다.
@@ -129,11 +129,12 @@ hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로
 python3 skills/brainres/scripts/brainlint.py answer.md
 ```
 ```
-Brain Score: 45/100 (D)  ·  lang=ko
+Brain Score: 41/100 (D)  ·  lang=ko
   -15  preamble         opens with filler: '좋은 질문입니다! ...'      [Primacy effect + BLUF]
   - 8  outro            ends with generic sign-off                   [Recency effect]
   - 6  translationese   3 translationese patterns (~에 대한, ~을 통해)  [Processing fluency]
   - 5  list_overload    list of 6 items; chunks of <=4               [Chunking (Cowan 4±1)]
+  - 4  long_sentences   1 sentence(s) over 20 eojeol                 [Working-memory load]
 ```
 
 검사 항목마다 연구 결과 하나에 대응합니다. 다만 휴리스틱일 뿐, 이해도 시험은 아닙니다.

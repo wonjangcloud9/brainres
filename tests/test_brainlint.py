@@ -27,7 +27,7 @@ class GoldenExamples(unittest.TestCase):
     GOLDEN = {
         "examples/01-react-rerender/before.md": 50,
         "examples/01-react-rerender/after.md": 100,
-        "examples/02-ko-cache/before.md": 45,
+        "examples/02-ko-cache/before.md": 41,
         "examples/02-ko-cache/after.md": 100,
     }
 
@@ -88,6 +88,19 @@ class Checks(unittest.TestCase):
 
     def test_double_negation(self):
         self.assertIn("double_negation", checks("It is not uncommon for builds to fail."))
+
+    def test_korean_long_sentence_in_eojeol(self):
+        long_ko = " ".join(["캐시를"] * 21) + " 씁니다."
+        self.assertIn("long_sentences", checks(long_ko))
+        self.assertNotIn("long_sentences", checks(" ".join(["캐시를"] * 15) + " 씁니다."))
+
+    def test_korean_average_limit(self):
+        para = " ".join([" ".join(["데이터를"] * 13) + " 저장합니다."] * 3)
+        self.assertIn("sentence_length", checks(para))
+
+    def test_headings_are_not_sentences(self):
+        r = brainlint.lint("## Cause: stale cache after deploy\n\nThe cache is stale. Clear it now.")
+        self.assertEqual(r.sentences, 2)
 
     def test_code_blocks_are_ignored(self):
         text = "Run this:\n\n```\n# Overview\nGreat question! hope this helps\n```\n\nIt prints 42."

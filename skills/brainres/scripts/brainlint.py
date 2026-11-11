@@ -85,10 +85,12 @@ def strip_code(text: str) -> str:
 
 
 def sentences_of(prose: str) -> list[str]:
-    parts = [p.strip() for p in SENT_SPLIT.split(prose)]
+    # Headings are labels, not sentences: counting them would dilute the average.
+    body = "\n".join(l for l in prose.splitlines() if not HEADING.match(l))
+    parts = [p.strip() for p in SENT_SPLIT.split(body)]
     out = []
     for p in parts:
-        p = LIST_ITEM.sub("", HEADING.sub("", p)).strip()
+        p = LIST_ITEM.sub("", p).strip()
         if len(p.split()) >= 2:
             out.append(p)
     return out
@@ -103,7 +105,8 @@ def lint(text: str) -> Report:
     lang = "ko" if ko else "en"
     sents = sentences_of(prose)
     n_sents = max(len(sents), 1)
-    avg = sum(len(s.split()) for s in sents) / n_sents
+    full = [s for s in sents if len(s.split()) >= 3] or sents  # 2-word labels don't count toward the average
+    avg = sum(len(s.split()) for s in full) / max(len(full), 1)
     findings: list[Finding] = []
 
     def add(check, principle, detail, penalty):
@@ -123,14 +126,15 @@ def lint(text: str) -> Report:
         add("outro", "Recency effect / coherence principle", "ends with generic sign-off instead of the key takeaway or next step", 8)
 
     # 3. Sentence length (processing fluency, working memory)
-    limit = 16 if ko else 25  # Korean eojeol vs English words
-    long_s = [s for s in sents if len(s.split()) > limit + 10]
+    # Korean is measured in eojeol (space-separated units): avg <=12 per korean.md; English in words.
+    limit, long_at = (12, 20) if ko else (25, 35)
+    long_s = [s for s in sents if len(s.split()) > long_at]
     if avg > limit:
         add("sentence_length", "Working-memory load / processing fluency",
             f"average sentence {avg:.1f} {'eojeol' if ko else 'words'} (target <= {limit})", 10)
     if long_s:
         add("long_sentences", "Working-memory load",
-            f"{len(long_s)} sentence(s) over {limit + 10} {'eojeol' if ko else 'words'}", min(4 * len(long_s), 12))
+            f"{len(long_s)} sentence(s) over {long_at} {'eojeol' if ko else 'words'}", min(4 * len(long_s), 12))
 
     # 4. Wall of text (segmenting principle)
     paras = [p for p in re.split(r"\n\s*\n", prose) if p.strip()]

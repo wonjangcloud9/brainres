@@ -30,7 +30,7 @@ What changed and why:
 
 ## 2. Decision question in Korean: "Redis랑 메모리 캐시 중 뭐 써야 해? 서버는 한 대야."
 
-**Before (45/100):**
+**Before (41/100):**
 
 - It opens with "좋은 질문입니다!".
 - Translationese like "~에 대한 이해를 통해" makes it hard to read.
