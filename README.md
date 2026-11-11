@@ -5,9 +5,9 @@
 English · [한국어](README.ko.md)
 
 `caveman` makes Claude shorter. `humanizer` makes it sound human.
-**brainres makes it understandable**: 90 findings from cognitive science, compressed into 10 rules that shape every answer.
+**brainres makes it understandable.** It reviews **725 findings** from cognitive science, psycholinguistics, decision science and human–AI trust research. Each finding is either applied as a writing rule or excluded with a stated reason.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![evidence](https://img.shields.io/badge/rules-evidence--linked-2ea44f)](research/cognitive-principles.md) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-596%2F596-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-725-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md)
 
 ---
 
@@ -78,7 +78,7 @@ cp -R brainres/skills/brainres ~/.claude/skills/brainres
 A manual install gives you the skill only. Invoke it with `/brainres`, or paste [`hooks/core-card.md`](hooks/core-card.md) into your `CLAUDE.md` or any LLM's system prompt to get the always-on behavior.
 </details>
 
-Once installed, it's always on. A session-start hook adds a ~350-token rule card once per session. A ~60-token reminder rides along with each message, because instructions fade over long sessions. To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
+Once installed, it's always on. A session-start hook adds a ~450-token rule card once per session. A ~60-token reminder rides along with each message, because instructions fade over long sessions. To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
 ## The 10 rules
 
@@ -94,6 +94,8 @@ Once installed, it's always on. A session-start hook adds a ~350-token rule card
 | 8 | **Your words, one term per thing.** Define new terms before using them. | Lexical entrainment; curse of knowledge |
 | 9 | **Calibrate instead of hedging.** "I'm ~70% sure", plus a way to check. | Numeric uncertainty keeps trust (van der Bles 2020); first-person hedges cut overreliance (Kim 2024) |
 | 10 | **Plain syntax.** One idea per sentence, active voice, no nested clauses. | Center-embedding cost (Gibson 2022); negation cost |
+
+It is also **honest, not agreeable**. It checks the premise of your question, agrees only when the evidence supports it, and never flatters. Sycophantic AI raises trust while it harms judgment ([Cheng 2026](research/catalog-judgment-trust.md)).
 
 It also **adapts to you**. Experts get terse answers, and novices get definitions first plus one analogy. This follows the [expertise reversal effect](skills/brainres/references/evidence.md), which none of the terse or humanizer skills model.
 
@@ -133,14 +135,29 @@ Each check maps to a named finding. It's a heuristic, not a comprehension test. 
 |---|---|---|
 | terse / caveman-style skills | fewer output tokens | token counts |
 | humanizer / anti-slop skills | not sounding like AI | Wikipedia's *Signs of AI writing* |
-| **brainres** | **understanding per second of reading** | **90 cognitive-science findings, each rated for evidence strength** |
+| **brainres** | **understanding per second of reading** | **725 findings reviewed, each rated for evidence strength** |
 
-brainres keeps what those projects got right: no preamble, protect code and numbers, full sentences for safety warnings. It adds what they don't cover: chunking, define-before-use, reader expertise, calibrated uncertainty, and causal explanations. The survey is in [`research/trending-skills.md`](research/trending-skills.md).
+brainres keeps what those projects got right: no preamble, protect code and numbers, full sentences for safety warnings. It adds what they don't cover: chunking, define-before-use, reader expertise, calibrated uncertainty, causal explanations, anti-sycophancy, stress-aware procedures, and Korean and L2 reading research. The survey is in [`research/trending-skills.md`](research/trending-skills.md).
 
 ## Science, not vibes
 
-- [`research/cognitive-principles.md`](research/cognitive-principles.md) catalogs 90 concepts across working memory, Mayer's principles, eye-tracking, comprehension, fluency, memory and trust. Each has a source, an evidence grade (strong / moderate / contested) and a concrete writing rule.
-- **Neuromyths we refuse:** learning styles, left/right brain, the "8-second attention span", Dale's cone, Bionic Reading, and "dopamine-hit" formatting.
+Every finding in [`research/`](research/) has a source, an evidence grade (strong / moderate / weak / contested) and either a concrete writing rule or a stated reason for exclusion:
+
+| Catalog | Findings |
+|---|---|
+| [Core cognitive principles](research/cognitive-principles.md) | 90 |
+| [Psycholinguistics & reading (incl. L2 and Korean)](research/catalog-psycholinguistics.md) | 95 |
+| [Learning science & learning with LLMs](research/catalog-learning-science.md) | 99 |
+| [Attention, neuroscience & neurodiversity](research/catalog-attention-neuro.md) | 96 |
+| [Judgment, decision & human–AI trust](research/catalog-judgment-trust.md) | 118 |
+| [HCI, information design & program comprehension](research/catalog-hci-infodesign.md) | 115 |
+| [Emotion, motivation & conversational pragmatics](research/catalog-emotion-pragmatics.md) | 112 |
+
+The **[coverage ledger](research/coverage.md)** shows 596 applicable findings, all 596 cited by a rule in the skill, and 129 excluded. Exclusions fall into four groups: not applicable to text, failed replication, neuromyth, or manipulative. Cross-domain duplicates are counted once. `validate.sh` blocks any commit that lowers the applied count.
+
+The always-on card stays small (~450 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
+
+- **Neuromyths we refuse:** learning styles; left/right brain; the "8-second attention span"; Dale's cone; Bionic Reading; "dopamine-hit" formatting; "23 minutes to refocus"; "willpower is glucose"; "we read words by their shape". Thirty in total are listed in the catalogs.
 - **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](BACKLOG.md).
 
 ## Built overnight by a loop

@@ -5,9 +5,9 @@
 [English](README.md) · 한국어
 
 `caveman`은 Claude를 짧게 만들고, `humanizer`는 사람처럼 들리게 만듭니다.
-**brainres는 이해되게 만듭니다.** 인지과학 연구를 근거 등급과 함께 정리하고, 모든 답변에 적용되는 규칙으로 바꿨습니다.
+**brainres는 이해되게 만듭니다.** 인지과학, 심리언어학, 의사결정 과학, 인간–AI 신뢰 연구에서 **725개 연구 결과**를 검토했습니다. 각 결과는 글쓰기 규칙으로 적용하거나, 이유를 적고 제외했습니다.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![evidence](https://img.shields.io/badge/rules-evidence--linked-2ea44f)](research/coverage.md) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-596%2F596-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-725-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md)
 
 ---
 
@@ -73,7 +73,7 @@ Claude Code 안에서 설치하려면 `/plugin marketplace add wonjangcloud9/bra
 
 설치하면 바로 모든 답변에 적용됩니다.
 
-- 세션 시작 때 규칙 카드(약 350토큰)가 한 번 들어갑니다.
+- 세션 시작 때 규칙 카드(약 450토큰)가 한 번 들어갑니다.
 - 매 메시지마다 리마인더(약 60토큰)가 붙습니다. 긴 대화에서는 지시가 점점 흐려지기 때문입니다.
 - 끄려면 `export BRAINRES=off` 또는 `touch ~/.claude/brainres.off`를 실행하세요.
 
@@ -101,6 +101,8 @@ cp -R brainres/skills/brainres ~/.claude/skills/brainres
 | 8 | **질문자의 단어 그대로, 개념 하나에 용어 하나.** 새 용어는 쓰기 전에 정의. | 어휘 동조, 지식의 저주 |
 | 9 | **얼버무리지 말고 보정.** "70% 정도 확신합니다"라고 말하고, 확인 방법을 함께. | 수치 불확실성은 신뢰를 유지(van der Bles 2020), 1인칭 단서가 과신을 줄임(Kim 2024) |
 | 10 | **쉬운 문장.** 한 문장에 생각 하나, 능동태, 중첩절 없이. 한국어는 번역투(~에 대한, ~을 통해, ~하는 것이다)를 뺍니다. | 중심 내포 비용(Gibson 2022), 부정문 처리 비용 |
+
+**동조 대신 정직합니다.** 질문의 전제를 확인하고, 근거가 있을 때만 동의하며, 아첨하지 않습니다. 아첨하는 AI는 신뢰를 높이지만 판단력을 해칩니다(Cheng 2026, *Science*).
 
 **상대 수준에 맞춥니다.** 전문가에게는 짧게, 초보자에게는 용어 정의, 비유 하나, 예제 하나를 먼저 줍니다(전문성 역전 효과). 설명, 결정, 숫자, 코드, 절차, 학습, 오류 교정 같은 상황별 원리는 [참고 파일](skills/brainres/references/)로 나눠 두고, 필요할 때만 꺼내 씁니다.
 
@@ -134,7 +136,8 @@ Brain Score: 45/100 (D)  ·  lang=ko
 
 ## 감이 아니라 근거
 
-- **커버리지 장부.** 리서치한 모든 개념은 둘 중 하나로 기록됩니다. 스킬의 어느 규칙에 적용됐는지, 아니면 왜 제외했는지(텍스트와 무관, 재현 실패, 뉴로미스)입니다. 현황은 [`research/coverage.md`](research/coverage.md)에 있고, 적용 개수가 줄어드는 커밋은 검증에서 막힙니다.
+- **커버리지 장부.** 7개 카탈로그에서 연구 결과 725개를 검토했습니다. 적용 대상 596개는 모두 스킬 규칙이 인용하고 있습니다(100%). 129개는 이유를 적고 제외했습니다(텍스트와 무관, 재현 실패, 뉴로미스, 조작적 기법). 분야끼리 겹치는 결과는 한 번만 셉니다. 현황은 [`research/coverage.md`](research/coverage.md)에 있고, 적용 개수가 줄어드는 커밋은 검증에서 막힙니다.
+- **프롬프트는 가볍게.** 상시 카드는 약 450토큰입니다. 상황별 원리는 13개 참고 파일에 나눠 두고, 그 상황일 때만 읽습니다.
 - **쓰지 않는 뉴로미스.** 학습 스타일, 좌뇌/우뇌, "8초 집중력", 데일의 원뿔, Bionic Reading, "도파민 자극" 포맷팅.
 - **솔직한 한계.** LLM 채팅 답변의 포맷 규칙을 통제 실험으로 검증한 연구는 아직 없습니다. 저희도 아직 안 했습니다. 기준값은 튜닝할 출발점이고, 사람 대상 이해도 벤치마크는 [로드맵](BACKLOG.md)에 있습니다.
 

@@ -1,7 +1,7 @@
 {
   "name": "brainres",
   "version": "0.1.0",
-  "description": "Brain-friendly answers: Claude formats every reply for how human working memory, attention and reading actually work. Evidence-based, token-lean.",
+  "description": "Brain-friendly answers: 725 cognitive-science findings reviewed, 596 applied as rules for how Claude writes — answer-first, chunked, calibrated, honest. Token-lean.",
   "author": {
     "name": "wonjangcloud9",
     "url": "https://github.com/wonjangcloud9"

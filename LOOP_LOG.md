@@ -8,3 +8,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 01:21 · C02+C03 · situation router + 9 reference files; coverage 50→87/87 (100%) for the original catalog
 - 2026-11-12 01:22 · B07 · Korean README (README.ko.md) with Korean before/after hero
 - 2026-11-12 01:38 · C01 · 6 domain catalogs ingested: 725 findings (596 applicable, 129 excluded with reason); applied 87/596
+- 2026-11-12 01:43 · C01–C06 · full coverage: 596/596 applicable findings applied (725 reviewed); +4 reference files; honesty rules in core card

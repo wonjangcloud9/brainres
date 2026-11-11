@@ -10,3 +10,5 @@ Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file
 - [ ] Program comprehension research for code explanations (beacons, chunking in code reading)
 - [ ] Risk & numeracy communication guides (Harding Center fact boxes, icon arrays)
 - [ ] Monthly re-scan of trending output-style / humanizer / token skills (new entrants, new evals)
+- [ ] Round 2: re-verify citations flagged unverified/weak in catalog headers (Ashktorab 2019, Korean speech-level study, Wright & Reid 1973, Dixon 1982, Hales 2017, Langhout & Aniche 2021)
+- [ ] Round 2 domains: cross-cultural pragmatics (high/low-context), diagram cognition (Larkin & Simon 1987), argumentation (Toulmin), journalism inverted-pyramid studies, individual differences in numeracy

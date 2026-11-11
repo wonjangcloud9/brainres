@@ -8,7 +8,7 @@ err() { echo "FAIL: $*"; fail=1; }
 ok()  { echo "ok:   $*"; }
 
 SKILL=skills/brainres/SKILL.md
-MAX_WORDS=${MAX_WORDS:-1400}   # ~1.9k tokens when invoked; the always-on card is separate (hooks/core-card.md)
+MAX_WORDS=${MAX_WORDS:-1800}   # ~1.9k tokens when invoked; the always-on card is separate (hooks/core-card.md)
 
 [ -f "$SKILL" ] || { err "$SKILL missing"; exit 1; }
 

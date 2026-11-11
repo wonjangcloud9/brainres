@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Full-coverage program:** 6 new domain catalogs bring the total to 725 reviewed findings. All 596 applicable findings are cited by a rule (100%); 129 are excluded with a reason (not text-applicable, failed replication, neuromyth, manipulative, or duplicate).
+- New rule set "Honest, not agreeable" (anti-sycophancy, premise checks, no flattery, "I'd do X because Y") in SKILL.md and the always-on card.
+- 4 new reference files: `support.md` (distress, worry, emergencies), `accessibility.md` (dyslexia, ADHD, autism, aphasia, older readers, screen readers), `korean.md` (Korean output and L2 readers), `craft.md` (line-level psycholinguistics). All 9 existing references expanded.
+- 19 new neuromyths documented (e.g. "23 minutes to refocus", glucose willpower, word-shape reading).
+
 - `README.ko.md`: Korean README with a Korean before/after hero (45 → 100), linked from the English README.
 
 - Coverage ledger (`scripts/coverage.py`, `research/coverage.md`): every catalogued finding is applied in a skill file or excluded with a reason; validate.sh ratchets the count.

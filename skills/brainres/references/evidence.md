@@ -1,6 +1,6 @@
 # Evidence behind each rule
 
-Numbers match the full 90-concept catalog in the brainres repo (`research/cognitive-principles.md`).
+This index covers the original catalog (`#n` IDs, `research/cognitive-principles.md`). Domain IDs (`PL-`, `LS-`, `AN-`, `JD-`, `HC-`, `EM-`) live in `research/catalog-*.md` in the brainres repo, with source, evidence grade and the exact rule for each.
 Ev: S = strong (meta-analyses / many replications), M = moderate, C = contested, † = lab finding extrapolated to chat.
 
 | # | Concept | Key source | Ev | Used in rule |
