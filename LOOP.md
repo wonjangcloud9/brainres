@@ -21,6 +21,13 @@ Keep each iteration small enough to finish, verify, commit and push in ~15 minut
    ending with the `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` line) then `git push origin main`.
    If push is rejected: `git pull --rebase` and push once more. Never force-push.
 
+## Coverage rule
+
+The goal is that **every applicable finding in `research/` is applied** in a skill file.
+`python3 scripts/coverage.py --write` shows the gaps. The ratchet in `validate.sh` forbids lowering coverage.
+New findings go into `research/catalog-*.md` tables with `ID | Concept | Mechanism | Source | Ev | Applies | Rule | Situation`.
+A finding marked `No` must state why (not text-applicable, contested, neuromyth, unethical).
+
 ## When the backlog has no `todo` items
 
 Run a **research round** instead of an implementation round:

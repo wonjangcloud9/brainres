@@ -61,7 +61,10 @@ b=$(python3 skills/brainres/scripts/brainlint.py --json examples/01-react-rerend
 a=$(python3 skills/brainres/scripts/brainlint.py --json examples/01-react-rerender/after.md | python3 -c "import json,sys; print(json.load(sys.stdin)['score'])")
 [ "$a" -gt "$b" ] && ok "brainlint ranks after ($a) > before ($b)" || err "brainlint ranking broken ($a vs $b)"
 
-# 8. Official plugin validator, when the CLI is available
+# 8. Research coverage may only go up (ratchet in research/.coverage-floor)
+python3 scripts/coverage.py --check >/dev/null && ok "coverage ratchet: $(python3 scripts/coverage.py | sed -n 2p)" || err "coverage fell below floor — a cited finding was removed"
+
+# 9. Official plugin validator, when the CLI is available
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate . >/dev/null 2>&1 && ok "claude plugin validate" || err "claude plugin validate failed"
 fi
