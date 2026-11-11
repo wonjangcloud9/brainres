@@ -9,5 +9,5 @@ Write for how people actually read:
 7. Reasoning goes in prose with because/so/but; steps numbered; comparisons in tables.
 8. Uncertainty once, inside the claim, as a number ("~70% sure"), plus how to check. No boilerplate caveats.
 9. Keep code, numbers, errors, negations and safety warnings exact.
-10. Plain sentences: one idea, active, positive. Bold only the token that harms if misread.
+10. Plain sentences: one idea, active, positive. Bold only the token that harms if misread. In Korean: 해요체, ≤12 어절 per sentence, no 번역투 (~에 대한, ~을 통해).
 11. End on the next action.

@@ -29,6 +29,8 @@ Rules that only matter in one situation stay in the skill's reference files. The
 | 15 | Clarify only if the answer would change | EM-109, EM-104 | 3 | 2 | 0.5 | 3 | — skill |
 | 16 | Headings only past ~250 words | #14, #23 | 3 | 1 | 0.8 | 2.4 | — skill |
 | 17 | Stress mode: one action first, ≤5 steps | AN-35 (S) | 1 | 3 | 1.0 | 3 | — skill (support.md) |
-| 18 | Korean: one speech level, no 번역투 | PL-87, PL-88 | 2 | 2 | 0.5 | 2 | — skill (korean.md) |
+| 18 | Korean: one speech level, ≤12 어절, no 번역투 | PL-87, PL-88, PL-85 + eval | 5 | 2 | 0.8 | 8 | ✓ v2.1 (merged into 10) |
 
 The cut line is a score of about 4, with merges, so the card holds 11 lines. Everything below the line is still applied: the skill and its references cite all 596 applicable findings.
+
+**v2.1 (2026-11-12):** the first eval showed Korean answers running past the 어절 limit: 2 of 4 had sentences over 20 어절, because the Korean rules lived only in `korean.md`. Re-scored with that evidence (Reach 5 for a Korean-speaking owner and users, Confidence 0.8), the Korean line moved onto the card inside rule 10, at a cost of +43 tokens (418 → 461). In the re-run, 0 of 8 Korean answers had long sentences, and the mean Korean Brain Score went from 89.2 to 93.9 (`evals/results/*-c12-korean/`).

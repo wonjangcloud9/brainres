@@ -1,0 +1,114 @@
+{
+  "model": "sonnet",
+  "samples": 2,
+  "rows": [
+    {
+      "id": "09-ko-concept",
+      "type": "concept",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 111,
+      "output_tokens": 721,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "09-ko-concept",
+      "type": "concept",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 104,
+      "output_tokens": 655,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "10-ko-debug",
+      "type": "debug",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 92,
+      "words": 183,
+      "output_tokens": 861,
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "10-ko-debug",
+      "type": "debug",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 94,
+      "words": 149,
+      "output_tokens": 865,
+      "answer_first": true,
+      "checks": [
+        "heading_short"
+      ]
+    },
+    {
+      "id": "11-ko-stress",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 88,
+      "words": 147,
+      "output_tokens": 1341,
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "11-ko-stress",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 77,
+      "words": 161,
+      "output_tokens": 1345,
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "fragmented_reasoning",
+        "list_overload",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "12-ko-decision",
+      "type": "decision",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 114,
+      "output_tokens": 475,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "12-ko-decision",
+      "type": "decision",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 74,
+      "output_tokens": 537,
+      "answer_first": true,
+      "checks": []
+    }
+  ]
+}

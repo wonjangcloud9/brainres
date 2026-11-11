@@ -88,7 +88,7 @@ Once installed, it's always on. A session-start hook adds the rule card once per
 
 | Part | Tokens | When |
 |---|---:|---|
-| Rule card | 418 | once per session |
+| Rule card | 461 | once per session |
 | Reminder | 79 | each message |
 | Full skill body | 3,309 | only when the skill is invoked |
 
@@ -196,7 +196,7 @@ Every finding in [`research/`](research/) has a source, an evidence grade (stron
 
 The **[coverage ledger](research/coverage.md)** shows 596 applicable findings, all 596 cited by a rule in the skill, and 129 excluded. Exclusions fall into four groups: not applicable to text, failed replication, neuromyth, or manipulative. Cross-domain duplicates are counted once. `validate.sh` blocks any commit that lowers the applied count.
 
-The always-on card stays small (418 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
+The always-on card stays small (461 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
 
 - **Neuromyths we refuse:** learning styles; left/right brain; the "8-second attention span"; Dale's cone; Bionic Reading; "dopamine-hit" formatting; "23 minutes to refocus"; "willpower is glucose"; "we read words by their shape". Thirty in total are listed in the catalogs.
 - **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](BACKLOG.md).

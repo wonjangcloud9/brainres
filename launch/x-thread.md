@@ -46,7 +46,7 @@ learning styles, "8-second attention span", Bionic Reading (null, Snell 2024), "
 30 are listed, with debunking sources.
 
 7/
-The always-on card costs 418 tokens, measured. Situation rules (debugging, risk numbers, emotional support, accessibility, Korean) load only when needed.
+The always-on card costs 461 tokens, measured. Situation rules (debugging, risk numbers, emotional support, accessibility, Korean) load only when needed.
 
 8/
 Honest limit: "applied" = cited by a rule. A human comprehension benchmark comes next.
