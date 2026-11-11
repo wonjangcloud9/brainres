@@ -16,7 +16,7 @@ Keep each iteration small enough to finish, verify, commit and push in ~15 minut
 5. **Record.**
    - Mark the backlog item `done` with the date.
    - Add a line to `CHANGELOG.md` under `## Unreleased`.
-   - Append one line to `LOOP_LOG.md`: `- YYYY-MM-DD HH:MM · <item id> · <what changed> · <commit sha>`.
+   - Append one line to `LOOP_LOG.md`: `- YYYY-MM-DD HH:MM · <item id> · <what changed>` (same commit as the change; one commit per iteration).
 6. **Ship.** `git add -A && git commit` (conventional message, e.g. `feat(skill): add given-new ordering rule`,
    ending with the `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` line) then `git push origin main`.
    If push is rejected: `git pull --rebase` and push once more. Never force-push.
