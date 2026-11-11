@@ -16,7 +16,6 @@ The loop always takes the highest-scoring `todo` item.
 | C04 | Close **explain / long-form / learn** coverage gaps | Q | 5 | 3 | 0.8 | 1 | **12** | done 2026-11-12 (596/596) |
 | C05 | Close **decide / numbers / correction / procedure / code / voice** coverage gaps | Q | 5 | 3 | 0.8 | 1 | **12** | done 2026-11-12 (596/596) |
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
-| B12 | brainlint golden tests (`tests/`), run from validate.sh | T | 5 | 1 | 1.0 | 0.5 | **10** | todo |
 | B08 | Opt-in output style `output-styles/brainres.md` for people who want it as their style | Q | 5 | 1 | 0.8 | 0.5 | **8** | todo |
 | B17 | `references/learn.md`: prequestion → worked example with fading → 1–2 retrieval checks (#68–70, #10) | Q | 2 | 2 | 1.0 | 0.5 | **8** | todo |
 | B18 | `references/uncertainty.md`: verbal ↔ numeric probability table (EN/KO), local first-person hedges (#65, #82, #84) | Q | 5 | 1 | 0.8 | 0.5 | **8** | todo |
@@ -36,6 +35,7 @@ The loop always takes the highest-scoring `todo` item.
 | B25 | Measure and publish the token cost of the core card and reminder in the README (honest numbers) | G | 8 | 1 | 1.0 | 0.5 | 16 | done 2026-11-12 (card 631, reminder 79, skill 3,893 tokens) |
 | C10 | Condensed core card v2: re-rank always-on rules by RICE across all 725 findings (currently 631 tokens measured; target ≤500) | Q | 10 | 2 | 0.8 | 1 | 16 | done 2026-11-12 (631 → 418 tokens) |
 | B19 | Portable builds: `dist/system-prompt.md` (any LLM), AGENTS.md / Cursor rule, claude.ai skill zip | G | 8 | 2 | 0.8 | 1 | 12.8 | done 2026-11-12 |
+| B12 | brainlint golden tests (`tests/`), run from validate.sh | T | 5 | 1 | 1.0 | 0.5 | 10 | done 2026-11-12 (15 tests) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

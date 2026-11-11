@@ -13,3 +13,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 02:00 · B25 · measured token cost (card 631, reminder 79, skill 3,893; Sonnet, MCP off, median of 3); README/launch numbers corrected; ~31 headless calls used (1 over budget while debugging the method)
 - 2026-11-12 02:18 · C10 · core card v2 by RICE ranking: 631 → 418 tokens (measured, 6 headless calls)
 - 2026-11-12 02:37 · B19 · portable builds (system prompt, AGENTS.md, Cursor rule, claude.ai zip) + stale-dist check
+- 2026-11-12 04:13 · B12 · brainlint golden/unit tests (15), wired into validate.sh; mutation check passed; fixed stale-.pyc masking

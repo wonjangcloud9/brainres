@@ -65,6 +65,9 @@ b=$(python3 skills/brainres/scripts/brainlint.py --json examples/01-react-rerend
 a=$(python3 skills/brainres/scripts/brainlint.py --json examples/01-react-rerender/after.md | python3 -c "import json,sys; print(json.load(sys.stdin)['score'])")
 [ "$a" -gt "$b" ] && ok "brainlint ranks after ($a) > before ($b)" || err "brainlint ranking broken ($a vs $b)"
 
+# 7b. brainlint golden + unit tests (tests/)
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q >/dev/null 2>&1 && ok "brainlint tests ($(grep -c 'def test_' tests/test_brainlint.py) tests)" || err "brainlint tests failed — run python3 -m unittest discover -s tests -v"
+
 # 8. Research coverage may only go up (ratchet in research/.coverage-floor)
 python3 scripts/coverage.py --check >/dev/null && ok "coverage ratchet: $(python3 scripts/coverage.py | sed -n 2p)" || err "coverage fell below floor — a cited finding was removed"
 
