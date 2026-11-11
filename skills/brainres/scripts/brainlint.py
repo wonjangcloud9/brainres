@@ -63,6 +63,18 @@ BURIED_EN = re.compile(
 )
 BURIED_KO = re.compile(r"^\s*(여러 가지|다양한 (요인|방법|측면)|경우에 따라|상황에 따라|~?에 대해 (알아|설명)|이 질문은|많은 (분들|개발자)들?이)")
 CAUSAL = re.compile(r"\b(because|so|therefore|since|thus|hence|which means|as a result|that's why)\b|때문|그래서|따라서|그러므로|이유는|왜냐하면|그 결과", re.I)
+SCOPE_NEG = re.compile(r"\b(all|every|each)\b[^.!?\n]{0,40}\b(didn't|don't|doesn't|aren't|weren't|isn't|won't|not)\b", re.I)
+BARE_THIS = re.compile(r"(?:^|[.!?]\s+)(This|That|These) (is|was|are|means|will|can|could|should|makes|happens|causes|helps|works|gives)\b")
+FORMER_LATTER = re.compile(r"\bthe (former|latter)\b", re.I)
+MINIMIZER = re.compile(
+    r"\b(simply|obviously|trivially|it'?s (easy|trivial)|just (run|add|use|do|set|change|install|call|type|click|copy))\b|"
+    r"간단히|당연히|그냥 [가-힣]+(하면|하세요)", re.I)
+UNDERSTAND_CHECK = re.compile(r"(does (that|this|it) make sense\??|is (that|this) clear\??|이해(가 )?되셨(나요|죠|을까요))", re.I)
+EMOJI = re.compile("[\U0001F300-\U0001FAFF\u2600-\u27BF\u2B50\u2B55]")
+BOILERPLATE = re.compile(
+    r"(this is not (financial|legal|medical|professional) advice|use (it )?at your own risk|"
+    r"(it is|it's) always (best|a good idea|recommended) to consult|please (be careful|exercise caution)|"
+    r"전문가와 상담하시기 바랍니다)", re.I)
 TERM_SWAPS = [("folder", "directory"), ("routine", "function"), ("app", "application"),
               ("폴더", "디렉터리"), ("폴더", "디렉토리"), ("앱", "애플리케이션")]
 BOLD_LEAD = re.compile(r"^\s*([-*+]|\d+[.)])\s+(\*\*|__)")
@@ -190,6 +202,24 @@ def lint(text: str) -> Report:
              if re.search(rf"(?<![\w가-힣]){a}(?![a-z])", low) and re.search(rf"(?<![\w가-힣]){b}(?![a-z])", low)]
     if swaps:
         add("term_swap", "Argument overlap: one term per concept (PL-33, HC-34)", f"same thing named two ways: {', '.join(swaps)}", 3)
+
+    # 5d. Line-level rules from craft.md / SKILL.md
+    if SCOPE_NEG.search(prose):
+        add("scope_ambiguity", "Scope ambiguity (PL-25)", "'all … not' has two readings; write 'none' or 'not all'", 3)
+    this_hits = len(BARE_THIS.findall(prose))
+    if this_hits >= 2:
+        add("bare_this", "Unattended 'this' (PL-43, PL-40)", f"{this_hits} sentences open with a bare This/That; name the noun", min(2 * this_hits, 6))
+    if FORMER_LATTER.search(prose):
+        add("former_latter", "Similarity interference (PL-20)", "'the former/latter' forces a look-back; repeat the name", 3)
+    if MINIMIZER.search(prose):
+        add("minimizer", "Psychological safety (EM-34)", f"'{MINIMIZER.search(prose).group(0)}' makes a failing reader feel slow", 3)
+    if UNDERSTAND_CHECK.search(prose):
+        add("understanding_check", "'Do you understand?' checks mislead (LS-74)", "ask one diagnostic question instead of 'does that make sense?'", 4)
+    emojis = len([e for e in EMOJI.findall(prose) if e not in "✓✔✗✘"])  # check marks are meaningful (AN-25)
+    if emojis >= 2:
+        add("emoji", "Emoji competence penalty (EM-95) / screen readers (HC-110)", f"{emojis} emoji; use words", 4)
+    if BOILERPLATE.search(prose):
+        add("boilerplate_warning", "Warning habituation (JD-91)", "generic disclaimer; make the caveat specific or cut it", 3)
 
     # 6. Signal dilution: too much bold (von Restorff only works if rare)
     bolds = len(BOLD.findall(prose))

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- brainlint adds 7 line-level checks from craft.md and SKILL.md: `scope_ambiguity` ("all … not"), `bare_this`, `former_latter`, `minimizer` ("simply", "just run", 간단히), `understanding_check` ("does that make sense?"), `emoji` (✓/✗ excluded because they carry meaning), and `boilerplate_warning`. There are now 25 checks in total. No example or README score changed. Trigger and non-trigger tests bring the total to 25.
+
 - 4 new before/after pairs, for 6 in total: concept (DB index), comparison table (SQLite/Postgres/MongoDB), risk numbers (flaky-test cumulative probability, computed), and misconception (incognito). `examples/README.md` indexes them with scores, and all 12 files are pinned as golden cases (23 tests in total).
 - brainlint gaps found by the new examples are fixed. "That's an interesting question" now counts as a preamble, and "…is a crucial decision that depends on many factors" now counts as a buried answer. The blind spot that remains is answers with no recommendation, which needs the question; it is documented.
 

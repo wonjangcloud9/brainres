@@ -6,7 +6,6 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| C07 | brainlint v0.2: deterministic checks for new line-level rules — "all…not", bare "This", "former/latter", "simply/just/obviously", "great question", "Does that make sense?", emoji in technical answers, warning boilerplate | T | 10 | 1 | 0.8 | 1 | **8** | todo |
 | C08 | Research round 2: re-verify every W/C citation flagged "unverified" in the catalogs; up/downgrade grades | Q | 10 | 1 | 0.8 | 1 | **8** | todo |
 | C09 | Research round 2: new domains (cross-cultural pragmatics, diagram cognition — Larkin & Simon, argumentation/Toulmin, journalism inverted-pyramid studies, numeracy individual differences) | Q | 5 | 1 | 0.5 | 1 | **2.5** | todo |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -36,6 +35,7 @@ The loop always takes the highest-scoring `todo` item.
 | B26 | Trim SKILL.md token cost (3,893 measured): compact ID citations (e.g. one trailing cite line per rule) without losing coverage | Q | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 (3,893 → 3,309 tokens) |
 | B11 | brainlint v0.2: answer-first detection beyond preamble regex, causal-connective loss in bullets, term-swap detection | T | 10 | 1 | 0.8 | 1 | 8 | done 2026-11-12 |
 | B13 | 4 more before/after examples: concept explanation, comparison table, risk numbers, misconception refutation | G | 10 | 1 | 0.8 | 1 | 8 | done 2026-11-12 (6 pairs) |
+| C07 | brainlint v0.2: deterministic checks for new line-level rules — "all…not", bare "This", "former/latter", "simply/just/obviously", "great question", "Does that make sense?", emoji in technical answers, warning boilerplate | T | 10 | 1 | 0.8 | 1 | 8 | done 2026-11-12 |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

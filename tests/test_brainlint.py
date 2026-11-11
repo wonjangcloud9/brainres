@@ -139,6 +139,24 @@ class Checks(unittest.TestCase):
         self.assertIn("term_swap", checks("폴더를 여세요. 그 디렉터리 안에 파일이 있습니다."))
         self.assertNotIn("term_swap", checks("Open the application. This approach is fast."))
 
+    def test_line_level_rules(self):
+        cases = {
+            "scope_ambiguity": ("All tests didn't pass on main.", "None of the tests passed on main."),
+            "bare_this": ("This is slow. This means the cache is cold.", "This query is slow. The cache is cold."),
+            "former_latter": ("Use Redis or Memcached; the former persists data.", "Use Redis; Redis persists data."),
+            "minimizer": ("Simply run the migration.", "Run the migration."),
+            "understanding_check": ("Run it twice. Does that make sense?", "Run it twice. Expect the second run to print OK."),
+            "emoji": ("Done 🎉 Ship it 🚀", "Done. Ship it."),
+            "boilerplate_warning": ("Use the flag. This is not financial advice.", "Use the flag. It deletes the cache, so back it up first."),
+        }
+        for check, (bad, good) in cases.items():
+            with self.subTest(check=check):
+                self.assertIn(check, checks(bad))
+                self.assertNotIn(check, checks(good))
+
+    def test_check_marks_are_not_emoji(self):
+        self.assertNotIn("emoji", checks("✓ Do this. ✗ Not that. ✓ Then this."))
+
     def test_code_blocks_are_ignored(self):
         text = "Run this:\n\n```\n# Overview\nGreat question! hope this helps\n```\n\nIt prints 42."
         self.assertEqual(checks(text), set())
