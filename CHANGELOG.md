@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Per-turn reminder hook (UserPromptSubmit, 238 chars ≈ 60 tokens) so the rules hold across long sessions. Same opt-out as the session hook.
+
 ## 0.1.0 — 2026-11-12
 
 - Core skill `brainres`: 10 evidence-linked rules, reader-expertise adaptation, explanation patterns, payload protection, modes (scan, learn, rewrite, score, off).

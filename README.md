@@ -76,7 +76,7 @@ cp -R brainres/skills/brainres ~/.claude/skills/brainres
 A manual install gives you the skill only. Invoke it with `/brainres`, or paste [`hooks/core-card.md`](hooks/core-card.md) into your `CLAUDE.md` or any LLM's system prompt to get the always-on behavior.
 </details>
 
-Once installed, it's always on: a session-start hook adds a ~350-token rule card once per session. To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
+Once installed, it's always on. A session-start hook adds a ~350-token rule card once per session. A ~60-token reminder rides along with each message, because instructions fade over long sessions. To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
 ## The 10 rules
 

@@ -52,6 +52,8 @@ fi
 # 6. Hook emits valid JSON
 out=$(CLAUDE_PLUGIN_ROOT="$PWD" bash hooks/brainres-context.sh)
 printf '%s' "$out" | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['hookSpecificOutput']['additionalContext']" && ok "session hook emits context" || err "session hook output invalid"
+bash hooks/brainres-reminder.sh | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert 0 < len(c) <= 300" && ok "per-turn reminder valid (<=300 chars)" || err "per-turn reminder invalid or too long"
+[ -z "$(BRAINRES=off bash hooks/brainres-reminder.sh)" ] && ok "BRAINRES=off silences reminder" || err "BRAINRES=off did not silence reminder"
 [ -z "$(BRAINRES=off bash hooks/brainres-context.sh)" ] && ok "BRAINRES=off silences hook" || err "BRAINRES=off did not silence hook"
 
 # 7. brainlint sanity: bad example scores lower than good example
