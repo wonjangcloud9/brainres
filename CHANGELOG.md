@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Core card v2: 11 lines chosen by RICE across all 725 findings (`research/core-card-ranking.md`); 631 → 418 tokens (−34%, measured). Situation-only rules (clarifying questions, headings, stress mode, Korean) stay in the skill. `validate.sh` caps the card at 1,350 chars.
+
 - Measured prompt cost with Claude's tokenizer (`scripts/token_cost.sh`): rule card 631 tokens per session, reminder 79 per message, full skill 3,893 when invoked. Earlier README estimates (~450 / ~60) are corrected.
 
 - `launch/`: drafts for Show HN, an X thread, GeekNews (Korean) and r/ClaudeAI, plus a pre-posting checklist. These are for the owner to post; the loop never posts.

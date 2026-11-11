@@ -49,6 +49,10 @@ else
   ok "no neuromyths used as support"
 fi
 
+# 5b. Always-on card budget: 418 tokens measured at 1,140 chars (~2.7 chars/token); cap ≈500 tokens
+card_chars=$(wc -c < hooks/core-card.md | tr -d ' ')
+[ "$card_chars" -le 1350 ] && ok "core card $card_chars chars (<=1350, ~500 tokens)" || err "core card $card_chars chars > 1350 — re-rank (research/core-card-ranking.md)"
+
 # 6. Hook emits valid JSON
 out=$(CLAUDE_PLUGIN_ROOT="$PWD" bash hooks/brainres-context.sh)
 printf '%s' "$out" | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['hookSpecificOutput']['additionalContext']" && ok "session hook emits context" || err "session hook output invalid"
