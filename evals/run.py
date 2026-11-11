@@ -33,6 +33,14 @@ sys.modules["brainlint"] = brainlint
 spec.loader.exec_module(brainlint)
 
 FRONT = {"preamble", "meta_talk", "buried_answer"}
+# Rule 3 length budgets: facts ≤100 words, explanations ≤300 (SKILL.md).
+BUDGET = {"yes/no": 100, "misconception": 100}
+DEFAULT_BUDGET = 300
+
+
+def card_sha() -> str:
+    import hashlib
+    return hashlib.sha256((ROOT / "hooks/core-card.md").read_bytes()).hexdigest()[:12]
 
 
 def brainres_prompt() -> str:
@@ -80,12 +88,13 @@ def main() -> int:
             checks = sorted({x.check for x in rep.findings})
             suffix = f".{k + 1}" if a.samples > 1 else ""
             (out_dir / f"{p['id']}.{c}{suffix}.md").write_text(f"<!-- Q: {p['q']} -->\n\n{r['text']}\n", encoding="utf-8")
+            budget = BUDGET.get(p["type"], DEFAULT_BUDGET)
             rows.append({"id": p["id"], "type": p["type"], "lang": p["lang"], "condition": c, "sample": k + 1, "score": rep.score,
-                         "words": rep.words, "output_tokens": r["output_tokens"],
+                         "words": rep.words, "output_tokens": r["output_tokens"], "within_budget": rep.words <= budget,
                          "answer_first": not (FRONT & set(checks)), "checks": checks})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)
     rows.sort(key=lambda r: (r["id"], r["condition"], r["sample"]))
-    (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "rows": rows},
+    (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "rows": rows},
                                                      ensure_ascii=False, indent=2))
 
     def agg(cond, key, fn=statistics.mean, rs=None):

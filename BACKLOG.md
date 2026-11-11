@@ -7,7 +7,8 @@ The loop always takes the highest-scoring `todo` item.
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
 | C13 | Stress prompt (eval 11) still bullet-heavy (82): check support.md stress mode reaches answers; consider a 1-line stress rule in the card | Q | 2 | 2 | 0.5 | 0.5 | **4** | todo |
-| B09b | Re-run evals with 3 samples per prompt (variance) and a length-aware score; publish deltas with ranges | T | 8 | 1 | 0.8 | 1 | **6.4** | todo |
+| B09b-2 | Evals: 2 more baseline samples (24 calls) | T | 8 | 1 | 0.8 | 1 | **6.4** | todo |
+| B09b-3 | Evals: 1 more brainres sample (12 calls) + final combined report in READMEs | T | 8 | 1 | 0.8 | 1 | **6.4** | todo |
 | C09 | Research round 2: new domains (cross-cultural pragmatics, diagram cognition — Larkin & Simon, argumentation/Toulmin, journalism inverted-pyramid studies, numeracy individual differences) | Q | 5 | 1 | 0.5 | 1 | **2.5** | todo |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -39,6 +40,7 @@ The loop always takes the highest-scoring `todo` item.
 | C08 | Research round 2: re-verify every W/C citation flagged "unverified" in the catalogs; up/downgrade grades | Q | 10 | 1 | 0.8 | 1 | 8 | done 2026-11-12 (11 checked: 9 verified, 1 upgraded, 1 downgraded) |
 | B09 | Eval harness: 12 prompts × {baseline, brainres} via `claude -p`; report brainlint score, words, answer-in-sentence-1 rate | T | 10 | 2 | 0.8 | 2 | 8 | done 2026-11-12 (first run: −33% words, −24% tokens, score 91.6→93.5) |
 | C12 | Korean line in the core card (eval 09: Korean answers exceed 어절 limits; card has no Korean rule) — keep card ≤1,350 chars | Q | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 (KO long-sentence answers 2/4 → 0/8; card 418 → 461 tokens) |
+| B09b | Re-run evals with 3 samples per prompt (variance) and a length-aware score; publish deltas with ranges | T | 8 | 1 | 0.8 | 1 | 6.4 | B09b-1 done 2026-11-12 (harness: card_sha, length budget, combine.py; brainres ×2) — split into B09b-2/3 |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

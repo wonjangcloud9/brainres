@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Evals, part 1 of 3 (B09b): runs now record the card hash so card versions never mix, plus a length-budget metric. `evals/combine.py` merges runs and reports SD and a paired 95% CI. Interim result per prompt: Brain Score +4.2 (CI +0.2 to +8.2), words −63 (CI −99 to −27), output tokens −165 (CI −263 to −67).
+
 - Core card v2.1 adds a Korean line to rule 10: 해요체, ≤12 어절, no 번역투. In the eval re-run (4 Korean prompts × 2), answers with long sentences went from 2 of 4 to 0 of 8, and the mean Korean Brain Score went from 89.2 to 93.9. The card cost rose from 418 to 461 tokens (measured), and the READMEs, launch drafts and social image are updated. `evals/run.py` gains `--ids`, `--conditions`, `--samples` and `--tag`.
 
 - First eval harness (`evals/run.py`, 12 prompts × baseline and brainres on Sonnet, tools and MCP off). Median answer length fell from 210 to 140 words (−33%), output tokens fell 24%, and the mean Brain Score rose from 91.6 to 93.5. Claude Code's baseline already had no preambles. Two regressions are documented: Korean sentence length, and brainlint's blind spot on raw length. Results are in `evals/results/`, a summary is in both READMEs, and the launch drafts now carry the measured numbers.

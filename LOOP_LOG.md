@@ -24,3 +24,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 06:39 · C08 · verification round 1: 11 citations checked (9 verified, EM-110 W→M, PL-14 W–M→W 'n=98' removed); no rules removed
 - 2026-11-12 06:59 · B09 · first eval (24 calls): words −33%, output tokens −24%, score 91.6→93.5; 2 regressions documented; brainlint ignores HTML comments; +C12, +B09b
 - 2026-11-12 07:19 · C12 · Korean line in core card: KO long-sentence answers 2/4→0/8, KO score 89.2→93.9; card 418→461 tokens; harness --ids/--samples; 14 calls
+- 2026-11-12 07:38 · B09b-1 · evals: card_sha + length budget + combine.py (95% CI); brainres ×2 (24 calls); interim: score +4.2 [+0.2,+8.2], words −63 [−99,−27]

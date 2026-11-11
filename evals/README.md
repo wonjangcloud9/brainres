@@ -7,6 +7,18 @@
 
 Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go to `results/<date>/`.
 
+## Repeated samples (B09b, in progress)
+
+[`combine.py`](combine.py) merges runs made with the same core card. Answers from older cards are excluded because each run records `card_sha`. It reports means with SD and the per-prompt paired difference with a 95% t-interval. The interim result, with brainres at 2 samples and baseline at 1, is in [`results/combined-interim.md`](results/combined-interim.md):
+
+| | brainres − baseline per prompt | 95% CI |
+|---|---:|---|
+| Brain Score | +4.2 | +0.2 to +8.2 |
+| Words | −63 | −99 to −27 |
+| Output tokens | −165 | −263 to −67 |
+
+Answers within the length budget (≤100 words for yes/no and myth questions, ≤300 for everything else): 10/12 for baseline and 21/24 for brainres. The final numbers wait on 2 more baseline samples and 1 more brainres sample.
+
 ## First run (2026-11-12)
 
 | Metric | baseline | brainres |
