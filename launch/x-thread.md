@@ -23,7 +23,7 @@ Default: "Great question! … ## Understanding the Problem … 7 bold bullets �
 brainres: answer in sentence 1 → a 3-step causal chain → one fix → how to verify → next step
 → Brain Score 100
 
-[screenshot: README hero table]
+[image: assets/social-preview.png, or a screenshot of the README hero table]
 
 4/
 The rule that surprised me most:

@@ -102,12 +102,23 @@ class Checks(unittest.TestCase):
         r = brainlint.lint("## Cause: stale cache after deploy\n\nThe cache is stale. Clear it now.")
         self.assertEqual(r.sentences, 2)
 
+    def test_tables_are_not_paragraphs(self):
+        rows = "\n".join(f"| {i} | " + "word " * 20 + "|" for i in range(8))
+        text = "Comparison:\n\n| # | Notes |\n|---|---|\n" + rows
+        self.assertNotIn("wall_of_text", checks(text))
+        self.assertNotIn("long_sentences", checks(text))
+
     def test_code_blocks_are_ignored(self):
         text = "Run this:\n\n```\n# Overview\nGreat question! hope this helps\n```\n\nIt prints 42."
         self.assertEqual(checks(text), set())
 
 
 class CLI(unittest.TestCase):
+    def test_badge(self):
+        out = subprocess.run([sys.executable, str(SCRIPT), "--badge", "-"], input="The answer is 42.",
+                             capture_output=True, text=True, check=True).stdout.strip()
+        self.assertTrue(out.startswith("[![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)]"))
+
     def test_json_output_schema(self):
         out = subprocess.run(
             [sys.executable, str(SCRIPT), "--json", "-"],

@@ -68,6 +68,12 @@ a=$(python3 skills/brainres/scripts/brainlint.py --json examples/01-react-rerend
 # 7b. brainlint golden + unit tests (tests/)
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -q >/dev/null 2>&1 && ok "brainlint tests ($(grep -c 'def test_' tests/test_brainlint.py) tests)" || err "brainlint tests failed — run python3 -m unittest discover -s tests -v"
 
+# 7c. README Brain Score badges match the current score (we eat our own cooking)
+for f in README.md README.ko.md; do
+  b=$(PYTHONDONTWRITEBYTECODE=1 python3 skills/brainres/scripts/brainlint.py --badge "$f")
+  grep -qF "$b" "$f" && ok "$f badge matches score" || err "$f Brain Score badge is stale; expected: $b"
+done
+
 # 8. Research coverage may only go up (ratchet in research/.coverage-floor)
 python3 scripts/coverage.py --check >/dev/null && ok "coverage ratchet: $(python3 scripts/coverage.py | sed -n 2p)" || err "coverage fell below floor — a cited finding was removed"
 

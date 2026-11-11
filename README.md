@@ -7,7 +7,7 @@ English · [한국어](README.ko.md)
 `caveman` makes Claude shorter. `humanizer` makes it sound human.
 **brainres makes it understandable.** It reviews **725 findings** from cognitive science, psycholinguistics, decision science and human–AI trust research. Each finding is either applied as a writing rule or excluded with a stated reason.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-596%2F596-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-725-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-596%2F596-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-725-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
 ---
 
@@ -142,6 +142,15 @@ Brain Score: 50/100 (D)  ·  272 words · 18 sentences · lang=en
 ```
 
 Each check maps to a named finding. It's a heuristic, not a comprehension test. See *Honest limits* below.
+
+**Score your own README** and show it off:
+
+```bash
+python3 skills/brainres/scripts/brainlint.py --badge README.md
+# [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
+```
+
+This README scores 100. The Korean one scores 96 because its hero quotes a deliberately bad 22-어절 sentence.
 
 ## How it differs
 

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- `brainlint --badge <file>` prints a shields.io "Brain Score" badge, so anyone can score their README. Both READMEs carry their own scores, and `validate.sh` fails if a badge goes stale. The English README scores 100 and the Korean one 96; the 96 comes from the deliberately bad hero sentence.
+- brainlint fix found while dogfooding: markdown table rows were counted as one giant paragraph. Tables are now excluded from prose checks, and a test covers it (20 tests in total).
+- Korean README: the install and evidence sections are restructured into tables and short groups. They had broken our own chunking rule, at 79 → 96.
+- `assets/social-preview.png` (1280×640) and its HTML source, for the GitHub social preview and launch posts.
+
 - Opt-in output style `output-styles/brainres.md`, picked with `/output-style`. `keep-coding-instructions` is on. It is generated from the core card by `build_dist.py`, so it can't drift; the stale check covers it.
 
 - brainlint: Korean is now measured as korean.md specifies, with an average of ≤12 어절 and a long-sentence flag above 20. Headings no longer count as sentences, and 2-word labels no longer dilute the average. The Korean "before" example now scores 41 (was 45), because its 22-어절 sentence is flagged. Scores are updated in the READMEs, examples and launch draft. 3 new tests bring the total to 18.

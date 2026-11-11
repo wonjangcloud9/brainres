@@ -7,7 +7,7 @@
 `caveman`은 Claude를 짧게 만들고, `humanizer`는 사람처럼 들리게 만듭니다.
 **brainres는 이해되게 만듭니다.** 인지과학, 심리언어학, 의사결정 과학, 인간–AI 신뢰 연구에서 **725개 연구 결과**를 검토했습니다. 각 결과는 글쓰기 규칙으로 적용하거나, 이유를 적고 제외했습니다.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-596%2F596-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-725-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-596%2F596-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-725-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
 ---
 
@@ -71,14 +71,21 @@ claude plugin install brainres --marketplace wonjangcloud9/brainres
 
 Claude Code 안에서 설치하려면 `/plugin marketplace add wonjangcloud9/brainres`를 실행한 뒤 `/plugin install brainres@brainres`를 실행하세요.
 
-설치하면 바로 모든 답변에 적용됩니다.
+설치하면 바로 모든 답변에 적용됩니다. 실측 비용은 아래와 같습니다([`scripts/token_cost.sh`](scripts/token_cost.sh), Claude 토크나이저, Sonnet 3회 중앙값).
 
-- 세션 시작 때 규칙 카드(418토큰)가 한 번 들어갑니다. 카드의 11줄은 전체 연구를 RICE로 다시 줄 세워 골랐습니다([순위표](research/core-card-ranking.md)).
-- 매 메시지마다 리마인더(79토큰)가 붙습니다. 긴 대화에서는 지시가 점점 흐려지기 때문입니다.
-- 스킬 본문(3,893토큰)은 스킬을 호출할 때만 읽습니다.
-- 20번 주고받는 세션이면 추가 입력이 약 2,000토큰입니다(프롬프트 캐싱 전 기준). 측정은 [`scripts/token_cost.sh`](scripts/token_cost.sh)로 했습니다. Claude 실제 토크나이저 기준이고, Sonnet으로 3회 측정한 중앙값입니다.
+| 부분 | 토큰 | 언제 |
+|---|---:|---|
+| 규칙 카드 | 418 | 세션당 1회 |
+| 리마인더 | 79 | 매 메시지 |
+| 스킬 본문 | 3,893 | 스킬을 호출할 때만 |
+
+20번 주고받는 세션이면 추가 입력은 약 2,000토큰입니다(캐싱 전 기준). 카드의 11줄은 전체 연구를 RICE로 다시 줄 세워 골랐습니다([순위표](research/core-card-ranking.md)). 리마인더를 두는 이유는 긴 대화에서 지시가 점점 흐려지기 때문입니다.
+
+**끄기와 출력 스타일**
+
 - 끄려면 `export BRAINRES=off` 또는 `touch ~/.claude/brainres.off`를 실행하세요.
-- **출력 스타일로 쓰고 싶다면** `/output-style`에서 **brainres**를 고르세요. 규칙은 같고, Claude Code의 코딩 지침은 그대로 유지됩니다. 출력 스타일을 쓸 때는 `BRAINRES=off`로 두면 카드가 두 번 들어가지 않습니다. 다만 매 메시지 리마인더도 함께 꺼집니다.
+- 출력 스타일로 쓰려면 `/output-style`에서 **brainres**를 고르세요. 규칙은 같고, 코딩 지침도 유지됩니다.
+- 출력 스타일을 쓸 때는 `BRAINRES=off`로 두면 카드가 두 번 들어가지 않습니다. 다만 리마인더도 함께 꺼집니다.
 
 **다른 곳에서 쓰기** (모두 같은 원본에서 [`scripts/build_dist.py`](scripts/build_dist.py)로 생성):
 
@@ -140,12 +147,30 @@ Brain Score: 41/100 (D)  ·  lang=ko
 
 검사 항목마다 연구 결과 하나에 대응합니다. 다만 휴리스틱일 뿐, 이해도 시험은 아닙니다.
 
+**내 README도 채점해서 배지로 달 수 있습니다.**
+
+```bash
+python3 skills/brainres/scripts/brainlint.py --badge README.md
+```
+
+이 문서는 96점입니다. 맨 위 예시에 일부러 넣은 22어절짜리 나쁜 문장 때문입니다. 영어 README는 100점입니다.
+
 ## 감이 아니라 근거
 
-- **커버리지 장부.** 7개 카탈로그에서 연구 결과 725개를 검토했습니다. 적용 대상 596개는 모두 스킬 규칙이 인용하고 있습니다(100%). 129개는 이유를 적고 제외했습니다(텍스트와 무관, 재현 실패, 뉴로미스, 조작적 기법). 분야끼리 겹치는 결과는 한 번만 셉니다. 현황은 [`research/coverage.md`](research/coverage.md)에 있고, 적용 개수가 줄어드는 커밋은 검증에서 막힙니다.
-- **프롬프트는 가볍게.** 상시 카드는 418토큰입니다. 상황별 원리는 13개 참고 파일에 나눠 두고, 그 상황일 때만 읽습니다.
-- **쓰지 않는 뉴로미스.** 학습 스타일, 좌뇌/우뇌, "8초 집중력", 데일의 원뿔, Bionic Reading, "도파민 자극" 포맷팅.
-- **솔직한 한계.** LLM 채팅 답변의 포맷 규칙을 통제 실험으로 검증한 연구는 아직 없습니다. 저희도 아직 안 했습니다. 기준값은 튜닝할 출발점이고, 사람 대상 이해도 벤치마크는 [로드맵](BACKLOG.md)에 있습니다.
+7개 카탈로그에서 연구 결과 **725개**를 검토했습니다. 각 결과에는 출처, 근거 등급, 그리고 규칙 또는 제외 이유가 붙어 있습니다.
+
+| 구분 | 개수 |
+|---|---:|
+| 적용 대상 (모두 스킬 규칙이 인용) | 596 / 596 |
+| 이유를 적고 제외 (텍스트와 무관, 재현 실패, 뉴로미스, 조작적 기법) | 129 |
+
+분야끼리 겹치는 결과는 한 번만 셉니다. 현황은 [`research/coverage.md`](research/coverage.md)에 있고, 적용 개수가 줄어드는 커밋은 검증에서 막힙니다.
+
+**프롬프트는 가볍게 유지합니다.** 상시 카드는 418토큰입니다. 상황별 원리는 13개 참고 파일에 나눠 두고, 그 상황일 때만 읽습니다.
+
+**쓰지 않는 뉴로미스**: 학습 스타일, 좌뇌/우뇌, "8초 집중력", 데일의 원뿔, Bionic Reading, "도파민 자극" 포맷팅, "집중 회복에 23분". 카탈로그에 모두 30개가 있습니다.
+
+**솔직한 한계.** LLM 채팅 답변의 포맷 규칙을 통제 실험으로 검증한 연구는 아직 없습니다. 저희도 아직 안 했습니다. 기준값은 튜닝할 출발점이고, 사람 대상 이해도 벤치마크는 [로드맵](BACKLOG.md)에 있습니다.
 
 ## 밤새 루프가 만드는 레포
 

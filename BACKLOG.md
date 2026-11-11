@@ -20,7 +20,6 @@ The loop always takes the highest-scoring `todo` item.
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
 | B11 | brainlint v0.2: answer-first detection beyond preamble regex, causal-connective loss in bullets, term-swap detection | T | 10 | 1 | 0.8 | 1 | **8** | todo |
 | B13 | 4 more before/after examples: concept explanation, comparison table, risk numbers, misconception refutation | G | 10 | 1 | 0.8 | 1 | **8** | todo |
-| B22 | Social preview image + "Brain Score" badge for READMEs | G | 8 | 1 | 0.5 | 0.5 | **8** | todo |
 | B09 | Eval harness: 12 prompts × {baseline, brainres} via `claude -p`; report brainlint score, words, answer-in-sentence-1 rate | T | 10 | 2 | 0.8 | 2 | **8** | todo |
 | B16 | `references/rewrite.md`: claim inventory → rewrite → lost-claim check (humanizer v3 lesson) | Q | 2 | 2 | 0.8 | 0.5 | **6.4** | todo |
 | B10 | Human comprehension benchmark protocol: quiz + time-to-answer on paired answers. Nobody else measures this | T | 10 | 3 | 0.5 | 3 | **5** | todo |
@@ -36,6 +35,7 @@ The loop always takes the highest-scoring `todo` item.
 | B12 | brainlint golden tests (`tests/`), run from validate.sh | T | 5 | 1 | 1.0 | 0.5 | 10 | done 2026-11-12 (15 tests) |
 | B06 | brainlint: Korean sentence splitter + 어절-based long-sentence check (korean.md rules already shipped) | T | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 |
 | B08 | Opt-in output style `output-styles/brainres.md` for people who want it as their style | Q | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 |
+| B22 | Social preview image + "Brain Score" badge for READMEs | G | 8 | 1 | 0.5 | 0.5 | 8 | done 2026-11-12 |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

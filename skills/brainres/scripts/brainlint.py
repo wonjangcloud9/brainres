@@ -8,6 +8,7 @@ Usage:
   python3 scripts/brainlint.py answer.md            # human report
   python3 scripts/brainlint.py --json answer.md     # machine-readable
   cat answer.md | python3 scripts/brainlint.py -
+  python3 scripts/brainlint.py --badge README.md   # markdown badge for your README
 """
 from __future__ import annotations
 
@@ -96,8 +97,12 @@ def sentences_of(prose: str) -> list[str]:
     return out
 
 
+TABLE_ROW = re.compile(r"^\s*\|")
+
+
 def lint(text: str) -> Report:
-    prose = strip_code(text)
+    # Code blocks and table rows are structure, not prose: they aren't paragraphs or sentences.
+    prose = "\n".join(l for l in strip_code(text).splitlines() if not TABLE_ROW.match(l))
     lines = prose.splitlines()
     words = prose.split()
     n_words = max(len(words), 1)
@@ -202,15 +207,28 @@ def grade(score: int) -> str:
     return "A" if score >= 90 else "B" if score >= 75 else "C" if score >= 60 else "D" if score >= 40 else "F"
 
 
+BADGE_COLORS = {"A": "2ea44f", "B": "97ca00", "C": "dfb317", "D": "fe7d37", "F": "e05d44"}
+
+
+def badge(score: int) -> str:
+    g = grade(score)
+    return (f"[![Brain Score](https://img.shields.io/badge/Brain_Score-{score}%2F100_{g}-{BADGE_COLORS[g]})]"
+            "(https://github.com/wonjangcloud9/brainres)")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("file", help="markdown/text file, or - for stdin")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--badge", action="store_true", help="print a shields.io markdown badge for the score")
     a = ap.parse_args()
     text = sys.stdin.read() if a.file == "-" else open(a.file, encoding="utf-8").read()
     r = lint(text)
     if a.json:
         print(json.dumps(asdict(r), ensure_ascii=False, indent=2))
+        return 0
+    if a.badge:
+        print(badge(r.score))
         return 0
     print(f"Brain Score: {r.score}/100 ({grade(r.score)})  ·  {r.words} words · {r.sentences} sentences · avg {r.avg_sentence_words}/sentence · lang={r.lang}")
     for f in sorted(r.findings, key=lambda f: -f.penalty):
