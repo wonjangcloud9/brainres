@@ -53,6 +53,16 @@ META_TALK = re.compile(
     r"in this (answer|response)|자세히 (설명|알아)|하나씩 살펴보|정리해 ?드리)",
     re.I,
 )
+BURIED_EN = re.compile(
+    r"^\s*(there are (several|many|a few|multiple|various)\b|it (really )?depends\b|when it comes to\b|"
+    r"before (we|i) (dive|get) in|in order to understand\b|this is a (common|great|good|tricky) (question|issue|problem)|"
+    r"there('s| is) no (simple|easy|one-size)|the answer (to this )?(is not|isn't) (simple|straightforward))",
+    re.I,
+)
+BURIED_KO = re.compile(r"^\s*(여러 가지|다양한 (요인|방법|측면)|경우에 따라|상황에 따라|~?에 대해 (알아|설명)|이 질문은|많은 (분들|개발자)들?이)")
+CAUSAL = re.compile(r"\b(because|so|therefore|since|thus|hence|which means|as a result|that's why)\b|때문|그래서|따라서|그러므로|이유는|왜냐하면|그 결과", re.I)
+TERM_SWAPS = [("folder", "directory"), ("routine", "function"), ("app", "application"),
+              ("폴더", "디렉터리"), ("폴더", "디렉토리"), ("앱", "애플리케이션")]
 BOLD_LEAD = re.compile(r"^\s*([-*+]|\d+[.)])\s+(\*\*|__)")
 
 HANGUL = re.compile(r"[가-힣]")
@@ -124,6 +134,9 @@ def lint(text: str) -> Report:
         add("preamble", "Primacy effect + BLUF", f"opens with filler: '{first.strip()[:60]}'", 15)
     if META_TALK.search(first_para):
         add("meta_talk", "Extraneous load", "first paragraph announces the answer instead of giving it", 6)
+    elif not PREAMBLE.search(first) and (BURIED_KO if ko else BURIED_EN).search(first):
+        add("buried_answer", "BLUF / preference for advance information (#28, AN-49)",
+            f"first sentence frames instead of answering: '{first.strip()[:60]}'", 8)
 
     # 2. Generic outro (recency slot wasted)
     tail = "\n".join([l for l in lines if l.strip()][-2:])
@@ -161,6 +174,20 @@ def lint(text: str) -> Report:
     big = [r for r in runs if r > 5]
     if big:
         add("list_overload", "Chunking (Cowan 4±1)", f"list(s) of {', '.join(map(str, big))} items; group into labeled chunks of <=4", min(5 * len(big), 12))
+
+    # 5b. Fragmented reasoning: mostly bullets, no causal links (#36, HC-16, PL-54)
+    content_lines = [l for l in lines if l.strip()]
+    list_lines = [l for l in content_lines if LIST_ITEM.match(l)]
+    if n_words >= 120 and content_lines and len(list_lines) / len(content_lines) > 0.6 and not CAUSAL.search(prose):
+        add("fragmented_reasoning", "Causal connectives (#36) / bullets fragment reasoning (HC-16)",
+            "mostly bullets and no because/so: the reader must infer how points connect", 6)
+
+    # 5c. Elegant variation: two names for one thing (PL-33, HC-34)
+    low = prose.lower()
+    swaps = [f"{a}/{b}" for a, b in TERM_SWAPS
+             if re.search(rf"(?<![\w가-힣]){a}(?![a-z])", low) and re.search(rf"(?<![\w가-힣]){b}(?![a-z])", low)]
+    if swaps:
+        add("term_swap", "Argument overlap: one term per concept (PL-33, HC-34)", f"same thing named two ways: {', '.join(swaps)}", 3)
 
     # 6. Signal dilution: too much bold (von Restorff only works if rare)
     bolds = len(BOLD.findall(prose))

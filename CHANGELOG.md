@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- brainlint v0.2 adds 3 checks:
+  - `buried_answer`: the first sentence frames instead of answering ("There are several factors…", "It depends…", "여러 가지…"). It is skipped when a preamble was already penalized.
+  - `fragmented_reasoning`: more than 60% of lines are bullets and there are no causal links, in answers of at least 120 words.
+  - `term_swap`: curated synonym pairs such as folder/directory and 앱/애플리케이션 appear in the same answer.
+  Golden scores are unchanged. 5 new tests bring the total to 23.
+
 - The SKILL.md body drops from 3,893 to 3,309 tokens (−15%, measured). The 35 inline evidence-ID groups moved to `references/rule-sources.md`, which maps each rule to its findings. Coverage stays at 596/596.
 
 - `brainlint --badge <file>` prints a shields.io "Brain Score" badge, so anyone can score their README. Both READMEs carry their own scores, and `validate.sh` fails if a badge goes stale. The English README scores 100 and the Korean one 96; the 96 comes from the deliberately bad hero sentence.

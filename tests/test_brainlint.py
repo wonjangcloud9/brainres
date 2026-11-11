@@ -108,6 +108,27 @@ class Checks(unittest.TestCase):
         self.assertNotIn("wall_of_text", checks(text))
         self.assertNotIn("long_sentences", checks(text))
 
+    def test_buried_answer(self):
+        self.assertIn("buried_answer", checks("There are several factors to consider here. Use Redis."))
+        self.assertIn("buried_answer", checks("It depends on your traffic. Use Redis."))
+        self.assertIn("buried_answer", checks("여러 가지 방법이 있습니다. 메모리 캐시를 쓰세요."))
+        self.assertNotIn("buried_answer", checks("Use Redis. There are several reasons."))
+        # a preamble is already penalized; don't double-count the same opening
+        self.assertNotIn("buried_answer", checks("Great question! There are several factors."))
+
+    def test_fragmented_reasoning(self):
+        bullets = "\n".join(f"- Point {i} describes a separate fact about the cache layer and its timing behaviour under load"
+                             for i in range(8))
+        self.assertIn("fragmented_reasoning", checks("Notes:\n\n" + bullets))
+        linked = bullets.replace("Point 3 describes", "Point 3 matters because it describes")
+        self.assertNotIn("fragmented_reasoning", checks("Notes:\n\n" + linked))
+
+    def test_term_swap(self):
+        self.assertIn("term_swap", checks("Open the folder. Then list the directory contents."))
+        self.assertIn("term_swap", checks("Open the app. The application starts on port 3000."))
+        self.assertIn("term_swap", checks("폴더를 여세요. 그 디렉터리 안에 파일이 있습니다."))
+        self.assertNotIn("term_swap", checks("Open the application. This approach is fast."))
+
     def test_code_blocks_are_ignored(self):
         text = "Run this:\n\n```\n# Overview\nGreat question! hope this helps\n```\n\nIt prints 42."
         self.assertEqual(checks(text), set())

@@ -17,7 +17,6 @@ The loop always takes the highest-scoring `todo` item.
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
-| B11 | brainlint v0.2: answer-first detection beyond preamble regex, causal-connective loss in bullets, term-swap detection | T | 10 | 1 | 0.8 | 1 | **8** | todo |
 | B13 | 4 more before/after examples: concept explanation, comparison table, risk numbers, misconception refutation | G | 10 | 1 | 0.8 | 1 | **8** | todo |
 | B09 | Eval harness: 12 prompts × {baseline, brainres} via `claude -p`; report brainlint score, words, answer-in-sentence-1 rate | T | 10 | 2 | 0.8 | 2 | **8** | todo |
 | B16 | `references/rewrite.md`: claim inventory → rewrite → lost-claim check (humanizer v3 lesson) | Q | 2 | 2 | 0.8 | 0.5 | **6.4** | todo |
@@ -36,6 +35,7 @@ The loop always takes the highest-scoring `todo` item.
 | B08 | Opt-in output style `output-styles/brainres.md` for people who want it as their style | Q | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 |
 | B22 | Social preview image + "Brain Score" badge for READMEs | G | 8 | 1 | 0.5 | 0.5 | 8 | done 2026-11-12 |
 | B26 | Trim SKILL.md token cost (3,893 measured): compact ID citations (e.g. one trailing cite line per rule) without losing coverage | Q | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 (3,893 → 3,309 tokens) |
+| B11 | brainlint v0.2: answer-first detection beyond preamble regex, causal-connective loss in bullets, term-swap detection | T | 10 | 1 | 0.8 | 1 | 8 | done 2026-11-12 |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
