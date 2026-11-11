@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- The SKILL.md body drops from 3,893 to 3,309 tokens (−15%, measured). The 35 inline evidence-ID groups moved to `references/rule-sources.md`, which maps each rule to its findings. Coverage stays at 596/596.
+
 - `brainlint --badge <file>` prints a shields.io "Brain Score" badge, so anyone can score their README. Both READMEs carry their own scores, and `validate.sh` fails if a badge goes stale. The English README scores 100 and the Korean one 96; the 96 comes from the deliberately bad hero sentence.
 - brainlint fix found while dogfooding: markdown table rows were counted as one giant paragraph. Tables are now excluded from prose checks, and a test covers it (20 tests in total).
 - Korean README: the install and evidence sections are restructured into tables and short groups. They had broken our own chunking rule, at 79 → 96.
