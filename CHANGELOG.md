@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Evals final, part 3 of 3 (B09b), with 3 samples per prompt per condition (72 answers): words −27% (per prompt −54, 95% CI −89 to −20), output tokens −16% (CI −179 to −33), Brain Score 91.2 → 96.2 (+5.0, CI +0.8 to +9.2), and 29/36 → 32/36 answers within the length budget. The earlier single-sample claim (−33% words, −24% tokens) is superseded in the READMEs and launch drafts.
+
 - Evals, part 2 of 3 (B09b): baseline now has 3 samples per prompt (n=36). Interim per-prompt result: Brain Score +4.6 (95% CI +0.4 to +8.8), words −54 (CI −89 to −20), output tokens −117 (CI −213 to −22).
 
 - Evals, part 1 of 3 (B09b): runs now record the card hash so card versions never mix, plus a length-budget metric. `evals/combine.py` merges runs and reports SD and a paired 95% CI. Interim result per prompt: Brain Score +4.2 (CI +0.2 to +8.2), words −63 (CI −99 to −27), output tokens −165 (CI −263 to −67).

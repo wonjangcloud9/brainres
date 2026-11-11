@@ -152,23 +152,22 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 
 This README scores 100. The Korean one scores 96 because its hero quotes a deliberately bad 22-어절 sentence.
 
-## First measurement
+## Measurement
 
-We ran the same 12 questions with and without brainres: 24 calls on Sonnet, with tools off ([`evals/`](evals/)).
+We asked the same 12 questions with and without brainres, 3 times each, for 72 answers on Sonnet with tools off. Full details are in [`evals/`](evals/).
 
-| | baseline | brainres |
-|---|---:|---:|
-| Median answer length | 210 words | **140 words (−33%)** |
-| Mean output tokens | 710 | **537 (−24%)** |
-| Mean Brain Score | 91.6 | 93.5 |
+| | baseline | brainres | per-prompt difference (95% CI) |
+|---|---:|---:|---|
+| Words per answer | 202 | **147** | **−27%** (−54 words; −89 to −20) |
+| Output tokens | 662 | **556** | **−16%** (−106; −179 to −33) |
+| Within length budget | 29/36 | **32/36** | |
+| Brain Score | 91.2 | **96.2** | +5.0 (+0.8 to +9.2) |
 
-What we learned:
+What this shows:
 
-- Claude Code already avoids preambles: 12 of 12 baseline answers had none.
-- brainres made answers a third shorter with fewer formatting violations.
-- Two prompts got worse, and [both are documented](evals/README.md).
-
-It is a small, single-sample run, and comprehension itself is not measured yet.
+- Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
+- An earlier single-sample run looked better (−33% words). The bigger sample shrank the effect, and we report the bigger sample.
+- Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
 ## How it differs
 

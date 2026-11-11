@@ -7,17 +7,19 @@
 
 Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go to `results/<date>/`.
 
-## Repeated samples (B09b, in progress)
+## Final result (B09b): 3 samples per prompt per condition
 
-[`combine.py`](combine.py) merges runs made with the same core card. Answers from older cards are excluded because each run records `card_sha`. It reports means with SD and the per-prompt paired difference with a 95% t-interval. The interim result, with brainres at 2 samples and baseline at 3, is in [`results/combined-interim.md`](results/combined-interim.md):
+[`combine.py`](combine.py) merges runs made with the same core card. Each run records `card_sha`, so answers from an older card are excluded automatically. The final report is [`results/combined-final.md`](results/combined-final.md), with baseline n=36 and brainres n=36:
 
-| | brainres − baseline per prompt | 95% CI |
-|---|---:|---|
-| Brain Score | +4.6 | +0.4 to +8.8 |
-| Words | −54 | −89 to −20 |
-| Output tokens | −117 | −213 to −22 |
+| | baseline | brainres | per-prompt difference (95% CI over 12 prompts) |
+|---|---:|---:|---|
+| Words | 201.7 | 147.3 | −54.4 (−89.1 to −19.6), −27% |
+| Output tokens | 662 | 556 | −106 (−179 to −33), −16% |
+| Brain Score | 91.2 | 96.2 | +5.0 (+0.8 to +9.2) |
+| Within length budget | 29/36 | 32/36 | |
+| No preamble / buried answer | 36/36 | 36/36 | |
 
-Answers within the length budget (≤100 words for yes/no and myth questions, ≤300 for everything else): 29/36 for baseline and 21/24 for brainres. The final numbers wait on 1 more brainres sample.
+The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
 ## First run (2026-11-12)
 

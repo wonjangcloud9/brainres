@@ -10,7 +10,7 @@ Caveman-style skills cut tokens, and humanizer skills remove AI tells. I wanted 
 - **Always on:** 461 tokens per session plus a 79-token reminder each turn (measured), so the rules don't fade.
 - **Situation files:** debugging, decisions, risk numbers, emotional support, accessibility and Korean get their own rules. They load only when needed.
 - **Anti-sycophancy:** it checks your premise and agrees only with evidence.
-- **First eval:** answers 33% shorter (median 210 → 140 words) and 24% fewer output tokens, n=12 with the regressions documented.
+- **Eval (72 answers, 3 samples each):** answers 27% shorter and 16% fewer output tokens, with 95% CIs. Earlier, rosier single-sample numbers are kept for honesty.
 - **`brainlint`:** scores any answer out of 100. Every check maps to a paper.
 
 Install: `claude plugin install brainres --marketplace wonjangcloud9/brainres`
