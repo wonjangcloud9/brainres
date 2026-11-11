@@ -1,0 +1,20 @@
+{
+  "name": "brainres",
+  "version": "0.1.0",
+  "description": "Brain-friendly answers: Claude formats every reply for how human working memory, attention and reading actually work. Evidence-based, token-lean.",
+  "author": {
+    "name": "wonjangcloud9",
+    "url": "https://github.com/wonjangcloud9"
+  },
+  "homepage": "https://github.com/wonjangcloud9/brainres",
+  "repository": "https://github.com/wonjangcloud9/brainres",
+  "license": "MIT",
+  "keywords": [
+    "readability",
+    "cognitive-load",
+    "output-style",
+    "humanizer",
+    "token-saving",
+    "neuroscience"
+  ]
+}

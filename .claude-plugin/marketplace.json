@@ -1,0 +1,11 @@
+{
+  "name": "brainres",
+  "owner": { "name": "wonjangcloud9" },
+  "plugins": [
+    {
+      "name": "brainres",
+      "source": "./",
+      "description": "Brain-friendly answers: Claude formats every reply for how human working memory, attention and reading actually work."
+    }
+  ]
+}
