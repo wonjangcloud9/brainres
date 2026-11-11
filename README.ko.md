@@ -79,15 +79,17 @@ Claude Code 안에서 설치하려면 `/plugin marketplace add wonjangcloud9/bra
 - 20번 주고받는 세션이면 추가 입력이 약 2,000토큰입니다(프롬프트 캐싱 전 기준). 측정은 [`scripts/token_cost.sh`](scripts/token_cost.sh)로 했습니다. Claude 실제 토크나이저 기준이고, Sonnet으로 3회 측정한 중앙값입니다.
 - 끄려면 `export BRAINRES=off` 또는 `touch ~/.claude/brainres.off`를 실행하세요.
 
-<details><summary>수동 설치 / 다른 에이전트</summary>
+**다른 곳에서 쓰기** (모두 같은 원본에서 [`scripts/build_dist.py`](scripts/build_dist.py)로 생성):
 
-```bash
-git clone https://github.com/wonjangcloud9/brainres
-cp -R brainres/skills/brainres ~/.claude/skills/brainres
-```
+| 어디서 | 파일 | 방법 |
+|---|---|---|
+| claude.ai / Claude 데스크톱 | [`dist/brainres-skill.zip`](dist/brainres-skill.zip) | 설정 → 스킬 → 업로드 |
+| ChatGPT, Gemini 등 모든 LLM | [`dist/system-prompt.md`](dist/system-prompt.md) | 맞춤 지침에 붙여 넣기(1,011바이트, ChatGPT 1,500자 칸에 들어감) |
+| Codex 등 AGENTS.md를 읽는 에이전트 | [`dist/AGENTS.md`](dist/AGENTS.md) | 레포 루트에 복사하거나 기존 AGENTS.md 뒤에 붙이기 |
+| Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | `.cursor/rules/brainres.mdc`로 복사 |
+| 플러그인 없이 Claude Code | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres` 후 `/brainres` |
 
-수동 설치는 스킬만 들어가며, `/brainres`로 호출합니다. 항상 적용하고 싶으면 [`hooks/core-card.md`](hooks/core-card.md) 내용을 `CLAUDE.md`나 다른 LLM의 시스템 프롬프트에 붙여 넣으세요.
-</details>
+hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로 설치하면 규칙 카드나 스킬은 들어가지만, 매 메시지 리마인더는 붙지 않습니다.
 
 ## 10가지 규칙
 

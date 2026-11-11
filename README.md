@@ -68,15 +68,17 @@ claude plugin install brainres --marketplace wonjangcloud9/brainres
 
 Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/plugin install brainres@brainres`.
 
-<details><summary>Manual install / other agents</summary>
+**Use it anywhere** (built by [`scripts/build_dist.py`](scripts/build_dist.py) from the same sources):
 
-```bash
-git clone https://github.com/wonjangcloud9/brainres
-cp -R brainres/skills/brainres ~/.claude/skills/brainres
-```
+| Where | File | How |
+|---|---|---|
+| claude.ai / Claude desktop | [`dist/brainres-skill.zip`](dist/brainres-skill.zip) | Customize → Skills → upload |
+| ChatGPT, Gemini, any LLM | [`dist/system-prompt.md`](dist/system-prompt.md) | Paste into custom instructions (1,011 bytes, fits ChatGPT's 1,500-character field) |
+| Codex and other AGENTS.md readers | [`dist/AGENTS.md`](dist/AGENTS.md) | Copy to your repo root, or append to an existing AGENTS.md |
+| Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | Copy to `.cursor/rules/brainres.mdc` |
+| Claude Code, without the plugin | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres`, then `/brainres` |
 
-A manual install gives you the skill only. Invoke it with `/brainres`, or paste [`hooks/core-card.md`](hooks/core-card.md) into your `CLAUDE.md` or any LLM's system prompt to get the always-on behavior.
-</details>
+Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the per-message reminder.
 
 Once installed, it's always on. A session-start hook adds the rule card once per session, and a short reminder rides along with each message, because instructions fade over long sessions.
 
