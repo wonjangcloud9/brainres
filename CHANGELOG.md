@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- `README.ko.md`: Korean README with a Korean before/after hero (45 → 100), linked from the English README.
+
 - Coverage ledger (`scripts/coverage.py`, `research/coverage.md`): every catalogued finding is applied in a skill file or excluded with a reason; validate.sh ratchets the count.
 - Situation router + 9 reference files (explain, decide, numbers, code, procedure, learn, correction, long-form, voice). The original catalog is at 87/87 applicable findings applied.
 

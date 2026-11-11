@@ -2,6 +2,8 @@
 
 **Claude answers your brain can actually read.**
 
+English · [한국어](README.ko.md)
+
 `caveman` makes Claude shorter. `humanizer` makes it sound human.
 **brainres makes it understandable**: 90 findings from cognitive science, compressed into 10 rules that shape every answer.
 
