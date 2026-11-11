@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Evals, part 2 of 3 (B09b): baseline now has 3 samples per prompt (n=36). Interim per-prompt result: Brain Score +4.6 (95% CI +0.4 to +8.8), words −54 (CI −89 to −20), output tokens −117 (CI −213 to −22).
+
 - Evals, part 1 of 3 (B09b): runs now record the card hash so card versions never mix, plus a length-budget metric. `evals/combine.py` merges runs and reports SD and a paired 95% CI. Interim result per prompt: Brain Score +4.2 (CI +0.2 to +8.2), words −63 (CI −99 to −27), output tokens −165 (CI −263 to −67).
 
 - Core card v2.1 adds a Korean line to rule 10: 해요체, ≤12 어절, no 번역투. In the eval re-run (4 Korean prompts × 2), answers with long sentences went from 2 of 4 to 0 of 8, and the mean Korean Brain Score went from 89.2 to 93.9. The card cost rose from 418 to 461 tokens (measured), and the READMEs, launch drafts and social image are updated. `evals/run.py` gains `--ids`, `--conditions`, `--samples` and `--tag`.
