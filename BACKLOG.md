@@ -16,7 +16,8 @@ The loop always takes the highest-scoring `todo` item.
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
-| B10 | Human comprehension benchmark protocol: quiz + time-to-answer on paired answers. Nobody else measures this | T | 10 | 3 | 0.5 | 3 | **5** | todo |
+| B10-2 | Benchmark: write 2 quiz questions per item (find + understand) answerable from BOTH versions; reviewer check | T | 10 | 3 | 0.5 | 1 | **15** | todo |
+| B10-3 | Benchmark: static quiz page (bench/index.html, counterbalanced lists, timer, JSON export) + GitHub issue template for submissions | T | 10 | 3 | 0.5 | 1 | **15** | todo |
 | B24 | Document interplay with Claude Code's built-in Concise/Explanatory styles | Q | 5 | 0.5 | 0.8 | 0.5 | **4** | todo |
 | B21 | Web playground (GitHub Pages): paste text → Brain Score (brainlint port to JS) | G | 8 | 2 | 0.5 | 2 | **4** | todo |
 | B23 | Voice-mode rules (transient information effect, #9) | Q | 1 | 1 | 0.8 | 0.5 | **1.6** | todo |
@@ -41,6 +42,7 @@ The loop always takes the highest-scoring `todo` item.
 | B09b-2 | Evals: 2 more baseline samples (24 calls) | T | 8 | 1 | 0.8 | 1 | 6.4 | done 2026-11-12 (baseline n=36) |
 | B09b-3 | Evals: 1 more brainres sample (12 calls) + final combined report in READMEs | T | 8 | 1 | 0.8 | 1 | 6.4 | done 2026-11-12 (n=36 each: words −27%, tokens −16%, score +5.0 [+0.8,+9.2]) |
 | B16 | `references/rewrite.md`: claim inventory → rewrite → lost-claim check (humanizer v3 lesson) | Q | 2 | 2 | 0.8 | 0.5 | 6.4 | done 2026-11-12 (+ brainlint --compare) |
+| B10 | Human comprehension benchmark protocol: quiz + time-to-answer on paired answers. Nobody else measures this | T | 10 | 3 | 0.5 | 3 | 5 | B10-1 done 2026-11-12 (protocol + frozen items) — split into B10-2/3 |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

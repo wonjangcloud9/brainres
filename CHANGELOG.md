@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Human comprehension benchmark, step 1 of 3. `bench/PROTOCOL.md` pre-registers 3 hypotheses (find faster; comprehension non-inferior at a 5 pp margin; better calibration), a counterbalanced within-subject design, n=60, an analysis plan, exclusions and a decision rule. 12 answer pairs are frozen in `bench/items/`, with SHA-256 hashes in `MANIFEST.sha256`.
+
 - `rewrite` mode gets its own procedure in `references/rewrite.md`: inventory the claims and payload, rewrite, mark each item ✓/⚠/✗, then report. This answers the meaning-loss failures of other rewrite skills (humanizer #212, CAVEWOMAN's 51.9% drift).
 - `brainlint --compare original rewritten` checks mechanically for numbers, code spans, URLs and negations that a rewrite dropped, and exits 1 when anything is missing. List numbering and trailing URL punctuation are ignored. 4 new tests bring the total to 30.
 
