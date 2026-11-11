@@ -30,6 +30,8 @@ The always-on card is 418 tokens (measured with Claude's tokenizer; script in th
 
 There's also `brainlint`, a stdlib Python scorer that maps each check to a finding. A typical answer that opens with "Great question!", uses 7 bold bullets and ends with "Hope this helps!" scores 50/100. The rewrite scores 100.
 
+First measurement (12 prompts × with/without, Sonnet, tools off): median answer length 210 → 140 words (−33%), output tokens −24%, Brain Score 91.6 → 93.5. Claude Code already avoided preambles in all 12 baseline answers, so the gain is mostly length and formatting. Two prompts regressed, and both are documented in evals/README.md.
+
 Honest limits: nobody, including me, has run controlled studies of formatting rules on LLM chat answers. "Applied" currently means "cited by a rule", not "shown to improve comprehension". A human comprehension benchmark is the next big item. The repo is also being improved by a Claude Code loop every 20 minutes, and every iteration is logged in LOOP_LOG.md.
 
 I'd love criticism of specific rules. Before/after pairs where brainres made an answer worse would be the most useful.

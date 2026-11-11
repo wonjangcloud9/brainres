@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- First eval harness (`evals/run.py`, 12 prompts × baseline and brainres on Sonnet, tools and MCP off). Median answer length fell from 210 to 140 words (−33%), output tokens fell 24%, and the mean Brain Score rose from 91.6 to 93.5. Claude Code's baseline already had no preambles. Two regressions are documented: Korean sentence length, and brainlint's blind spot on raw length. Results are in `evals/results/`, a summary is in both READMEs, and the launch drafts now carry the measured numbers.
+- brainlint ignores HTML comments, which readers never see; a test covers it. Follow-ups: C12 (a Korean line in the card) and B09b (repeated samples).
+
 - Verification round 1 (`research/verification-2026-11.md`) checked 11 citations against primary records.
   - **Verified:** the 5 studies the README leans on most (Cheng 2026 *Science*, Ding 2025 AAAI, Ibrahim 2026 *Nature*, Kim 2024 FAccT, Steyvers 2025), plus Gopstein 2017 and Langhout & Aniche 2021.
   - **Upgraded:** Ashktorab 2019 (EM-110), read in full text, goes from W to M.

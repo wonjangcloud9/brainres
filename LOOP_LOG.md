@@ -22,3 +22,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 05:58 · B13 · +4 before/after pairs (concept, comparison, risk, misconception) + examples index; fixed 2 brainlint gaps they exposed
 - 2026-11-12 06:18 · C07 · brainlint +7 line-level checks (25 total), no score drift on examples/READMEs, 25 tests
 - 2026-11-12 06:39 · C08 · verification round 1: 11 citations checked (9 verified, EM-110 W→M, PL-14 W–M→W 'n=98' removed); no rules removed
+- 2026-11-12 06:59 · B09 · first eval (24 calls): words −33%, output tokens −24%, score 91.6→93.5; 2 regressions documented; brainlint ignores HTML comments; +C12, +B09b

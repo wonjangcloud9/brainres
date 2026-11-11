@@ -105,8 +105,12 @@ class Report:
     findings: list[Finding] = field(default_factory=list)
 
 
+HTML_COMMENT = re.compile(r"<!--.*?-->", re.S)
+
+
 def strip_code(text: str) -> str:
-    return CODE_FENCE.sub(" ", text)
+    # Code blocks and HTML comments are not prose the reader reads.
+    return HTML_COMMENT.sub(" ", CODE_FENCE.sub(" ", text))
 
 
 def sentences_of(prose: str) -> list[str]:

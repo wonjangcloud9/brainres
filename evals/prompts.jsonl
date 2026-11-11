@@ -1,0 +1,12 @@
+{"id": "01-debug", "type": "debug", "lang": "en", "q": "My Python script says ModuleNotFoundError: No module named 'requests'. Why?"}
+{"id": "02-concept", "type": "concept", "lang": "en", "q": "What is a race condition?"}
+{"id": "03-decision", "type": "decision", "lang": "en", "q": "Should I use REST or GraphQL for a small internal API used by one frontend?"}
+{"id": "04-yesno", "type": "yes/no", "lang": "en", "q": "Is 0.1 + 0.2 === 0.3 true in JavaScript?"}
+{"id": "05-numbers", "type": "numbers", "lang": "en", "q": "A test for a disease is 99% accurate and 1 in 1,000 people have it. I tested positive. How likely is it that I actually have it?"}
+{"id": "06-procedure", "type": "procedure", "lang": "en", "q": "How do I undo my last git commit but keep the changes?"}
+{"id": "07-myth", "type": "misconception", "lang": "en", "q": "Humans only use 10% of their brains, right?"}
+{"id": "08-explain", "type": "concept", "lang": "en", "q": "Explain how HTTPS keeps my password safe."}
+{"id": "09-ko-concept", "type": "concept", "lang": "ko", "q": "도커랑 가상머신 차이가 뭐야?"}
+{"id": "10-ko-debug", "type": "debug", "lang": "ko", "q": "리액트에서 useEffect가 두 번 실행돼. 왜 그래?"}
+{"id": "11-ko-stress", "type": "stress", "lang": "ko", "q": "회사에서 실수로 프로덕션 DB 테이블을 지웠어. 지금 뭐부터 해야 해?"}
+{"id": "12-ko-decision", "type": "decision", "lang": "ko", "q": "파이썬에서 리스트랑 튜플 중에 뭘 써야 해?"}

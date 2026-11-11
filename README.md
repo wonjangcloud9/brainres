@@ -152,6 +152,24 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 
 This README scores 100. The Korean one scores 96 because its hero quotes a deliberately bad 22-어절 sentence.
 
+## First measurement
+
+We ran the same 12 questions with and without brainres: 24 calls on Sonnet, with tools off ([`evals/`](evals/)).
+
+| | baseline | brainres |
+|---|---:|---:|
+| Median answer length | 210 words | **140 words (−33%)** |
+| Mean output tokens | 710 | **537 (−24%)** |
+| Mean Brain Score | 91.6 | 93.5 |
+
+What we learned:
+
+- Claude Code already avoids preambles: 12 of 12 baseline answers had none.
+- brainres made answers a third shorter with fewer formatting violations.
+- Two prompts got worse, and [both are documented](evals/README.md).
+
+It is a small, single-sample run, and comprehension itself is not measured yet.
+
 ## How it differs
 
 | | Optimizes for | Grounded in |

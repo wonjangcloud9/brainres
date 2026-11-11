@@ -157,6 +157,10 @@ class Checks(unittest.TestCase):
     def test_check_marks_are_not_emoji(self):
         self.assertNotIn("emoji", checks("✓ Do this. ✗ Not that. ✓ Then this."))
 
+    def test_html_comments_are_ignored(self):
+        text = "The answer is 42. It is the product of 6 and 7."
+        self.assertEqual(brainlint.lint("<!-- Q: what is it? -->\n\n" + text).sentences, brainlint.lint(text).sentences)
+
     def test_code_blocks_are_ignored(self):
         text = "Run this:\n\n```\n# Overview\nGreat question! hope this helps\n```\n\nIt prints 42."
         self.assertEqual(checks(text), set())
