@@ -1,7 +1,7 @@
 # Catalog PL — psycholinguistics & reading science (incl. L2 and Korean reading)
 
 Compiled 2026-11-12. IDs `PL-nn`. Ev: S strong · M moderate · W weak · C contested/failed.
-Researcher notes: Korean evidence is largely small Korean-journal studies (M/W); Dixon goal-first and Hales abbreviation study confirmed via abstracts; "former/latter" ban is extrapolated from interference research.
+Researcher notes: Korean evidence is largely small Korean-journal studies (M/W); Dixon goal-first confirmed via abstract only; Hales 2017 turned out to be an opinion piece (downgraded to W, 2026-11-12); "former/latter" ban is extrapolated from interference research.
 
 ## A. Eye-movement control
 
@@ -25,7 +25,7 @@ Researcher notes: Korean evidence is largely small Korean-journal studies (M/W);
 | PL-11 | Length effect independent of frequency | Longer words get more refixations | New et al. 2006 | S | Yes | Between equally frequent synonyms, pick the shorter (use > utilize) | core |
 | PL-12 | Age of acquisition & contextual diversity | Early-learned, many-context words recognized faster | Juhasz 2005; Kuperman 2012; Adelman 2006 | S/M | Yes | Everyday, early-learned words; gloss a domain-only word at first use, ≤1 per sentence | accessibility |
 | PL-13 | Subordinate-bias effect | Dominant meaning activates first | Duffy, Morris & Rayner 1988 | S | Yes | Term whose technical sense isn't everyday (branch, kernel, token, "significant") → set up the domain first or gloss | explain |
-| PL-14 | Abbreviation cost | Undefined acronyms reduce clarity | Hales et al. 2017; Barnett & Doubleday 2020 | W–M | Yes | Define acronyms the user hasn't used; spell out ones used ≤2 times; never coin acronyms | core |
+| PL-14 | Abbreviation cost | Undefined acronyms exclude readers; most coined acronyms are rarely reused (79% appear <10 times) | Hales, Williams & Rector 2017 (APS Observer opinion piece, not an experiment); Barnett & Doubleday 2020 eLife corpus study | W | Yes | Define acronyms the user hasn't used; spell out ones used ≤2 times; never coin acronyms | core |
 | PL-15 | Emoji substituted for words | Reading slows at/after the emoji | Cohn 2018; Scheffler 2022 | M | Yes | Never replace words with emoji; status icons need a text label | accessibility |
 | PL-16 | Digits vs number words | Digits read faster; fractions understood better | Rello et al. 2013 | M | Yes | Digits for all quantities; proportions in both forms: "1 in 4 (25%)" | numbers |
 

@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Verification round 1 (`research/verification-2026-11.md`) checked 11 citations against primary records.
+  - **Verified:** the 5 studies the README leans on most (Cheng 2026 *Science*, Ding 2025 AAAI, Ibrahim 2026 *Nature*, Kim 2024 FAccT, Steyvers 2025), plus Gopstein 2017 and Langhout & Aniche 2021.
+  - **Upgraded:** Ashktorab 2019 (EM-110), read in full text, goes from W to M.
+  - **Downgraded:** Hales 2017 (PL-14) is an opinion piece, not an experiment. It goes from W–M to W, and the unsupported "n=98" is removed.
+  - **Flagged:** Wright & Reid 1973 and Dixon 1982 exist, but their specific results were not located.
+  No rule had to be removed.
+
 - brainlint adds 7 line-level checks from craft.md and SKILL.md: `scope_ambiguity` ("all … not"), `bare_this`, `former_latter`, `minimizer` ("simply", "just run", 간단히), `understanding_check` ("does that make sense?"), `emoji` (✓/✗ excluded because they carry meaning), and `boilerplate_warning`. There are now 25 checks in total. No example or README score changed. Trigger and non-trigger tests bring the total to 25.
 
 - 4 new before/after pairs, for 6 in total: concept (DB index), comparison table (SQLite/Postgres/MongoDB), risk numbers (flaky-test cumulative probability, computed), and misconception (incognito). `examples/README.md` indexes them with scores, and all 12 files are pinned as golden cases (23 tests in total).

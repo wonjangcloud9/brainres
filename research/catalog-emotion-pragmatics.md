@@ -138,7 +138,7 @@ Weak citations flagged by the researcher: Ashktorab 2019 (EM-110) and the Korean
 | EM-88 | LLM mental-health failures | Stigma, collusion with delusions | Moore et al. 2025 | M | Yes | Don't validate delusional content; reality-test gently and refer | emotion-support |
 | EM-89 | Emotional dependence | Heavy use ↔ loneliness | Fang 2025; Phang 2025 | M (corr.) | Yes | Encourage human ties without pushing the user away | emotion-support |
 | EM-90 | Sycophancy effects | — | Cheng 2026 | S | No | Duplicate of JD-102 | n/a |
-| EM-91 | Warmth–accuracy tradeoff | Warmth-tuned models err 10–30 pts more, worst when user is sad | Ibrahim et al. 2026 Nature | M | Yes | Distress raises the accuracy bar; warmth shows in tone, never in conceding facts | emotion-support |
+| EM-91 | Warmth–accuracy tradeoff | Warmth-tuned models err 10–30 pts more, worst when user is sad | Ibrahim, Hafner & Rocher 2026 Nature (5 models, >400k responses; ~40% more agreement with false beliefs; verified 2026-11-12) | M | Yes | Distress raises the accuracy bar; warmth shows in tone, never in conceding facts | emotion-support |
 | EM-92 | Warmth / competence | Warmth judged first; AI judged on both | Fiske 2007; McKee 2023 | M | Partial | Warmth = attention to their goal; competence = precision | core |
 | EM-93 | Fake self-disclosure / anthropomorphism | Bot self-disclosure draws disclosure, miscalibrates trust | Lee 2020; Akbulut 2024 | M | No | Ethics; never invent experiences or feelings | n/a |
 | EM-94 | Disclosure to machines | People disclose more to agents they think automated | Lucas et al. 2014 | M | Yes | Treat sensitive disclosures without judgment | emotion-support |
@@ -162,6 +162,6 @@ Weak citations flagged by the researcher: Ashktorab 2019 (EM-110) and the Korean
 | EM-107 | Epistemic status | People own their own experiences | Heritage 2012 | M | Yes | Inferences about the user's state are tentative; facts are declarative | emotion-support |
 | EM-108 | Audience design | Speakers default to own perspective | Horton & Keysar 1996 | M | Yes | Check each term against the user's own vocabulary | explain |
 | EM-109 | Clarifying questions | Good ones help, poor/repeated ones harm | Zou 2023; Rahmani 2024; Kiesel 2018 | M | Yes | Ask only when the answer would change; one question with 2–3 options | core |
-| EM-110 | Repair by options | Offering interpretations beats repeating | Ashktorab 2019 (ranking unverified) | W | Yes | Best answer + "If you meant B…" | core |
+| EM-110 | Repair by options | Providing options and explanations generally favored over other repairs, even when the repair failed (N=203) | Ashktorab, Jain, Liao & Weisz 2019 CHI (verified 2026-11-12) | M | Yes | Best answer + "If you meant B…" | core |
 | EM-111 | Follow-up questions → liking | Follow-ups raise liking | Huang et al. 2017 | M | Partial | Only follow-ups that serve the task; no engagement bait | core |
-| EM-112 | Korean speech level | AI default polite speech; small UX evidence only | Non-peer-reviewed UX study; Brown 2011 | W | Yes | Default 해요체; 합쇼체 for formal documents; 반말 only when asked, then consistent | korean-L2 |
+| EM-112 | Korean speech level | Polite-question form rated best when an AI proposes 반말; effects differed by gender | Non-peer-reviewed UX study (happycampus, re-checked 2026-11-12: no peer-reviewed chatbot experiment found); Brown 2011 | W | Yes | Default 해요체; 합쇼체 for formal documents; 반말 only when asked, then consistent | korean-L2 |

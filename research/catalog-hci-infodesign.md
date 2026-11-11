@@ -29,7 +29,7 @@ Duplicates marked `No` with the original ID. Researcher notes: Wright & Reid 197
 
 | ID | Concept | Mechanism | Source | Ev | Applies | Rule | Situation |
 |---|---|---|---|---|---|---|---|
-| HC-13 | Prose fails for contingencies | Multi-condition prose → most errors | Wright & Reid 1973 | M | Yes | Outcome depends on ≥2 conditions → decision table or "If A and B → X" lines | decide |
+| HC-13 | Prose fails for contingencies | Multi-condition prose → most errors | Wright & Reid 1973, J Appl Psych 57:160–166 (existence verified; result via secondary sources, e.g. Hartley 1980) | M | Yes | Outcome depends on ≥2 conditions → decision table or "If A and B → X" lines | decide |
 | HC-14 | Flowchart alternative | Flowcharts beat paragraphs for branching | Kammann 1975 | M | Partial | ≥3 branch points → nested if/then numbered list; Mermaid only when rendered | procedure |
 | HC-15 | Attribute matrix | Matrices enable attribute-wise comparison | Payne 1976; Kleinmuntz & Schkade 1993 | M | Yes | ≥3 options × ≥3 attributes → options as rows, plus a one-line verdict above | decide |
 | HC-16 | Bullets fragment reasoning | Bullets hide causal links | Tufte 2003; Shaw et al. 1998 | W | Yes | Arguments and causal chains in prose (with #36) | explain |
@@ -86,7 +86,7 @@ Duplicates marked `No` with the original ID. Researcher notes: Wright & Reid 197
 | ID | Concept | Mechanism | Source | Ev | Applies | Rule | Situation |
 |---|---|---|---|---|---|---|---|
 | HC-44 | Goal first | Directions read faster with goal first | Dixon 1987 | M | Yes | Open with the outcome ("To deploy X:"), then steps | procedure |
-| HC-45 | Action vs condition order | Action-first faster; condition-first prevents premature execution | Dixon 1982; MS Style Guide | C | Yes | A gating condition goes first ("If on Windows, run…"); non-gating context after | procedure |
+| HC-45 | Action vs condition order | Action-first faster; condition-first prevents premature execution | Dixon 1982, JVLVB 21:70–84 (existence verified, reading-time result not);  MS Style Guide | C | Yes | A gating condition goes first ("If on Windows, run…"); non-gating context after | procedure |
 | HC-46 | Step-wise execution | Doing while reading → fewer errors | Dixon 1982 | M | Yes | One action per step; never 3 commands in one sentence | procedure |
 | HC-47 | Specific steps vs principles | Steps help now, principles help transfer | Eiriksdottir & Catrambone 2011 | M | Yes | "How do I" → steps; learners get a one-line "why this works" | learn |
 | HC-48 | Subgoal labels | Functional group labels improve transfer | Catrambone 1998; Margulieux 2012; Morrison 2020 | M–S | Yes | Group long procedures / walkthroughs under functional labels | learn |
@@ -133,7 +133,7 @@ Duplicates marked `No` with the original ID. Researcher notes: Wright & Reid 197
 | HC-74 | Chunking & blank lines | Blank lines raise readability | McKeithen 1981; Buse & Weimer 2010 | M | Yes | Related lines together; blank line between logical blocks | code |
 | HC-75 | Full-word identifiers | Whole words → defects found ~20% faster | Hofmeister et al. 2017; Lawrie 2007 | M | Yes | Descriptive names (`user_count`, not `uc`); `i` only for loop indices | code |
 | HC-76 | camelCase vs snake_case | Mixed results | Binkley 2013; Sharif & Maletic 2010 | C | Yes | Follow the language's convention; never mix | code |
-| HC-77 | Atoms of confusion | Tiny patterns reliably misread | Gopstein et al. 2017 | M–S | Yes | Parenthesize, increments on own line, explicit `if` and braces | code |
+| HC-77 | Atoms of confusion | Tiny patterns raise misunderstanding (C, N=73); Java replication: 10 of 14 atoms more confusing | Gopstein et al. 2017 FSE; Langhout & Aniche 2021 (both verified 2026-11-12) | M–S | Yes | Parenthesize, increments on own line, explicit `if` and braces | code |
 | HC-78 | Linguistic antipatterns | Names contradicting behavior mislead | Arnaoudova et al. 2016 | M | Yes | Example names match behavior and return type | code |
 | HC-79 | Indentation | Unindented code +179% reading time | Morzeck, Hanenberg et al. 2023 | M | Yes | Never flatten indentation | code |
 | HC-80 | Syntax highlighting | No comprehension benefit for novices | Hannebauer 2018 | C | Yes | Fence code with a language tag for rendering/copying; colour never carries meaning | code |
