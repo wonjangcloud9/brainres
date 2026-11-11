@@ -9,14 +9,14 @@ The loop always takes the highest-scoring `todo` item.
 | C07 | brainlint v0.2: deterministic checks for new line-level rules — "all…not", bare "This", "former/latter", "simply/just/obviously", "great question", "Does that make sense?", emoji in technical answers, warning boilerplate | T | 10 | 1 | 0.8 | 1 | **8** | todo |
 | C08 | Research round 2: re-verify every W/C citation flagged "unverified" in the catalogs; up/downgrade grades | Q | 10 | 1 | 0.8 | 1 | **8** | todo |
 | C09 | Research round 2: new domains (cross-cultural pragmatics, diagram cognition — Larkin & Simon, argumentation/Toulmin, journalism inverted-pyramid studies, numeracy individual differences) | Q | 5 | 1 | 0.5 | 1 | **2.5** | todo |
-| C10 | Condensed core card v2: re-rank always-on rules by RICE across all 725 findings (keep ≤500 tokens) | Q | 10 | 2 | 0.8 | 1 | **16** | todo |
+| B26 | Trim SKILL.md token cost (3,893 measured): compact ID citations (e.g. one trailing cite line per rule) without losing coverage | Q | 5 | 1 | 0.8 | 0.5 | **8** | todo |
+| C10 | Condensed core card v2: re-rank always-on rules by RICE across all 725 findings (currently 631 tokens measured; target ≤500) | Q | 10 | 2 | 0.8 | 1 | **16** | todo |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C03 | Close **core** coverage gaps (see `research/coverage.md` → "Not yet applied", situation=core) | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 (596/596) |
 | C04 | Close **explain / long-form / learn** coverage gaps | Q | 5 | 3 | 0.8 | 1 | **12** | done 2026-11-12 (596/596) |
 | C05 | Close **decide / numbers / correction / procedure / code / voice** coverage gaps | Q | 5 | 3 | 0.8 | 1 | **12** | done 2026-11-12 (596/596) |
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
-| B25 | Measure and publish the token cost of the core card and reminder in the README (honest numbers) | G | 8 | 1 | 1.0 | 0.5 | **16** | todo |
 | B19 | Portable builds: `dist/system-prompt.md` (any LLM), AGENTS.md / Cursor rule, claude.ai skill zip | G | 8 | 2 | 0.8 | 1 | **12.8** | todo |
 | B12 | brainlint golden tests (`tests/`), run from validate.sh | T | 5 | 1 | 1.0 | 0.5 | **10** | todo |
 | B08 | Opt-in output style `output-styles/brainres.md` for people who want it as their style | Q | 5 | 1 | 0.8 | 0.5 | **8** | todo |
@@ -35,6 +35,7 @@ The loop always takes the highest-scoring `todo` item.
 | B20 | GitHub Action: brainlint on docs in PRs | T | 2 | 1 | 0.5 | 1 | **1** | todo |
 | B07 | `README.ko.md` for Korean devs (GeekNews, Korean X) | G | 5 | 2 | 0.8 | 0.5 | 16 | done 2026-11-12 |
 | B14 | Launch drafts in `launch/`: Show HN, X thread, GeekNews, r/ClaudeAI. Owner posts them | G | 8 | 2 | 0.5 | 0.5 | 16 | done 2026-11-12 |
+| B25 | Measure and publish the token cost of the core card and reminder in the README (honest numbers) | G | 8 | 1 | 1.0 | 0.5 | 16 | done 2026-11-12 (card 631, reminder 79, skill 3,893 tokens) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

@@ -78,7 +78,17 @@ cp -R brainres/skills/brainres ~/.claude/skills/brainres
 A manual install gives you the skill only. Invoke it with `/brainres`, or paste [`hooks/core-card.md`](hooks/core-card.md) into your `CLAUDE.md` or any LLM's system prompt to get the always-on behavior.
 </details>
 
-Once installed, it's always on. A session-start hook adds a ~450-token rule card once per session. A ~60-token reminder rides along with each message, because instructions fade over long sessions. To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
+Once installed, it's always on. A session-start hook adds the rule card once per session, and a short reminder rides along with each message, because instructions fade over long sessions.
+
+**Measured cost** ([`scripts/token_cost.sh`](scripts/token_cost.sh), Claude's own tokenizer, Sonnet, median of 3):
+
+| Part | Tokens | When |
+|---|---:|---|
+| Rule card | 631 | once per session |
+| Reminder | 79 | each message |
+| Full skill body | 3,893 | only when the skill is invoked |
+
+A 20-message session costs about 2,200 extra input tokens before prompt caching. To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
 ## The 10 rules
 
@@ -155,7 +165,7 @@ Every finding in [`research/`](research/) has a source, an evidence grade (stron
 
 The **[coverage ledger](research/coverage.md)** shows 596 applicable findings, all 596 cited by a rule in the skill, and 129 excluded. Exclusions fall into four groups: not applicable to text, failed replication, neuromyth, or manipulative. Cross-domain duplicates are counted once. `validate.sh` blocks any commit that lowers the applied count.
 
-The always-on card stays small (~450 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
+The always-on card stays small (631 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
 
 - **Neuromyths we refuse:** learning styles; left/right brain; the "8-second attention span"; Dale's cone; Bionic Reading; "dopamine-hit" formatting; "23 minutes to refocus"; "willpower is glucose"; "we read words by their shape". Thirty in total are listed in the catalogs.
 - **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](BACKLOG.md).

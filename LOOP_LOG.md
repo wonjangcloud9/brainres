@@ -10,3 +10,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 01:38 · C01 · 6 domain catalogs ingested: 725 findings (596 applicable, 129 excluded with reason); applied 87/596
 - 2026-11-12 01:43 · C01–C06 · full coverage: 596/596 applicable findings applied (725 reviewed); +4 reference files; honesty rules in core card
 - 2026-11-12 01:44 · B14 · launch drafts (Show HN, X thread, GeekNews, r/ClaudeAI) in launch/
+- 2026-11-12 02:00 · B25 · measured token cost (card 631, reminder 79, skill 3,893; Sonnet, MCP off, median of 3); README/launch numbers corrected; ~31 headless calls used (1 over budget while debugging the method)
