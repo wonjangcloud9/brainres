@@ -21,7 +21,7 @@ from dataclasses import dataclass, field, asdict
 # ---------- patterns ----------
 
 PREAMBLE = re.compile(
-    r"^\s*(great question|good question|sure[!,. ]|certainly[!,. ]|absolutely[!,. ]|of course[!,. ]|"
+    r"^\s*((that'?s |what )?(a |an )?(great|good|interesting|excellent|fantastic) question|sure[!,. ]|certainly[!,. ]|absolutely[!,. ]|of course[!,. ]|"
     r"i'?d be (happy|glad) to|happy to help|let me (explain|help|break)|thanks for asking|"
     r"좋은 질문|물론입니다|물론이죠|네[,!] ?(알겠습니다|좋습니다)|도와드리겠습니다|설명해 ?드리겠습니다)",
     re.I,
@@ -56,7 +56,9 @@ META_TALK = re.compile(
 BURIED_EN = re.compile(
     r"^\s*(there are (several|many|a few|multiple|various)\b|it (really )?depends\b|when it comes to\b|"
     r"before (we|i) (dive|get) in|in order to understand\b|this is a (common|great|good|tricky) (question|issue|problem)|"
-    r"there('s| is) no (simple|easy|one-size)|the answer (to this )?(is not|isn't) (simple|straightforward))",
+    r"there('s| is) no (simple|easy|one-size)|the answer (to this )?(is not|isn't) (simple|straightforward)|"
+    r"[^.!?]*\b(is|are) an? (crucial|important|key|critical|big) (decision|choice|question|consideration)\b|"
+    r"[^.!?]*\bdepends on (many|several|various|a number of|a variety of) factors\b)",
     re.I,
 )
 BURIED_KO = re.compile(r"^\s*(여러 가지|다양한 (요인|방법|측면)|경우에 따라|상황에 따라|~?에 대해 (알아|설명)|이 질문은|많은 (분들|개발자)들?이)")

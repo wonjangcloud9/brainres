@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- 4 new before/after pairs, for 6 in total: concept (DB index), comparison table (SQLite/Postgres/MongoDB), risk numbers (flaky-test cumulative probability, computed), and misconception (incognito). `examples/README.md` indexes them with scores, and all 12 files are pinned as golden cases (23 tests in total).
+- brainlint gaps found by the new examples are fixed. "That's an interesting question" now counts as a preamble, and "…is a crucial decision that depends on many factors" now counts as a buried answer. The blind spot that remains is answers with no recommendation, which needs the question; it is documented.
+
 - brainlint v0.2 adds 3 checks:
   - `buried_answer`: the first sentence frames instead of answering ("There are several factors…", "It depends…", "여러 가지…"). It is skipped when a preamble was already penalized.
   - `fragmented_reasoning`: more than 60% of lines are bullets and there are no causal links, in answers of at least 120 words.

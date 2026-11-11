@@ -29,6 +29,14 @@ class GoldenExamples(unittest.TestCase):
         "examples/01-react-rerender/after.md": 100,
         "examples/02-ko-cache/before.md": 41,
         "examples/02-ko-cache/after.md": 100,
+        "examples/03-concept-index/before.md": 50,
+        "examples/03-concept-index/after.md": 100,
+        "examples/04-comparison-db/before.md": 78,
+        "examples/04-comparison-db/after.md": 100,
+        "examples/05-risk-flaky/before.md": 66,
+        "examples/05-risk-flaky/after.md": 100,
+        "examples/06-misconception-incognito/before.md": 71,
+        "examples/06-misconception-incognito/after.md": 100,
     }
 
     def test_golden_scores(self):
@@ -50,6 +58,7 @@ class Checks(unittest.TestCase):
     def test_preamble_en_and_ko(self):
         self.assertIn("preamble", checks("Great question! The answer is 42."))
         self.assertIn("preamble", checks("좋은 질문입니다! 답은 42입니다."))
+        self.assertIn("preamble", checks("That's an interesting question! The answer is 42."))
         self.assertNotIn("preamble", checks("The answer is 42."))
 
     def test_meta_talk(self):
@@ -111,6 +120,7 @@ class Checks(unittest.TestCase):
     def test_buried_answer(self):
         self.assertIn("buried_answer", checks("There are several factors to consider here. Use Redis."))
         self.assertIn("buried_answer", checks("It depends on your traffic. Use Redis."))
+        self.assertIn("buried_answer", checks("Choosing a database is a crucial decision that depends on many factors. Use SQLite."))
         self.assertIn("buried_answer", checks("여러 가지 방법이 있습니다. 메모리 캐시를 쓰세요."))
         self.assertNotIn("buried_answer", checks("Use Redis. There are several reasons."))
         # a preamble is already penalized; don't double-count the same opening

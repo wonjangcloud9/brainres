@@ -19,3 +19,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 04:59 · B22 · social preview image + brainlint --badge; dogfooding fixed table false-positive and KO README (79→96); badge freshness check
 - 2026-11-12 05:18 · B26 · SKILL.md citations moved to references/rule-sources.md: 3,893 → 3,309 tokens (measured, 6 calls); coverage 596/596
 - 2026-11-12 05:38 · B11 · brainlint v0.2: buried_answer, fragmented_reasoning, term_swap (+5 tests, goldens unchanged)
+- 2026-11-12 05:58 · B13 · +4 before/after pairs (concept, comparison, risk, misconception) + examples index; fixed 2 brainlint gaps they exposed

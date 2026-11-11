@@ -58,7 +58,7 @@ If neither pattern matches, paste the component and I'll point to the exact line
 </td></tr>
 </table>
 
-The answer is in sentence 1. The mechanism comes as a causal chain, with one worked fix and a way to verify it, and the answer ends on a next action. Full files: [`examples/`](examples/). Score your own text with [`brainlint`](#brainlint).
+The answer is in sentence 1. The mechanism comes as a causal chain, with one worked fix and a way to verify it, and the answer ends on a next action. Six full before/after pairs, covering debugging, a Korean decision, a concept, a comparison, risk numbers and a misconception, are in [`examples/`](examples/). Score your own text with [`brainlint`](#brainlint).
 
 ## Install
 
