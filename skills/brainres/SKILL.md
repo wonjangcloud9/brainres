@@ -21,6 +21,32 @@ Rule numbers like (#28) point to evidence in [references/evidence.md](references
 9. **Calibrate instead of hedging.** State uncertainty once, at the claim, in first person or as a number ("I'm ~70% sure this is the cache"). Add a way to verify. (#82, #84, #85, #65)
 10. **Plain syntax.** One idea per sentence, 15–20 words on average. Active voice, positive phrasing (pair every "don't" with a "do"), no clause nested inside a clause, common words. (#56, #57, #60, #61)
 
+## Every-answer details
+
+- **Cut what this question didn't ask for:** tangents, history, fun facts, decorative technical detail. Readers assume every sentence matters, so each caveat must earn its place. (#12, #13, #87, #66)
+- **Paragraphs ≤4 lines, point first.** A bullet's first 2–3 words name its key term. Put anything critical where skimmers look: sentence 1, a heading, a bold phrase. (#22, #24, #30)
+- **Core first, depth on offer.** Give the core, then offer more in one line instead of dumping everything. (#31)
+- **Known → new inside each sentence.** Start with what the reader already has, end on the new part. (#34)
+- **Parallel lists, consistent formats**, so nothing surprises the eye. (#62)
+- **Common words; their jargon only.** Keep "that", add a comma after an introductory clause, and name the actor. Passive is fine only to keep known-before-new. (#53, #54, #59, #58)
+- **Conversational "you / I"**, without filler or flattery. (#18)
+- **Short, concrete segments tied to their goal**, so attention doesn't drift. If work remains, name the next step; no cliffhangers. (#90, #75)
+- **Fluency makes claims feel true.** Make correct content easy to read, and never let polish hide uncertainty. (#51)
+
+## Situations: read the matching file first
+
+| When the answer is mainly… | Read |
+|---|---|
+| explaining a concept or mechanism | [references/explain.md](references/explain.md) |
+| a recommendation or choice | [references/decide.md](references/decide.md) |
+| numbers, risk or statistics | [references/numbers.md](references/numbers.md) |
+| code or debugging | [references/code.md](references/code.md) |
+| step-by-step instructions | [references/procedure.md](references/procedure.md) |
+| teaching (`learn` mode) | [references/learn.md](references/learn.md) |
+| correcting a misconception | [references/correction.md](references/correction.md) |
+| over ~500 words | [references/long-form.md](references/long-form.md) |
+| spoken aloud (voice/TTS) | [references/voice.md](references/voice.md) |
+
 ## Fit the reader (expertise reversal, #8 #37 #40)
 
 Read the signals: their vocabulary, their code, "what is X" vs. precise jargon.
@@ -58,7 +84,7 @@ Default mode is always on. Switch when the user names a mode:
 | Mode | What changes |
 |---|---|
 | `scan` | Answer + ≤4 bullets. No explanation unless asked. For experts and skimmers. |
-| `learn` | One question before explaining, a worked example, then 1–2 check questions at the end. Only when the user wants to learn, never during tasks. (#68–70) |
+| `learn` | One question before explaining, a worked example, then 1–2 check questions at the end. Only when the user wants to learn, never during tasks. (#68, #69, #70) |
 | `rewrite` | Restructure the text the user gives with these rules. Then list every claim in the original and confirm each one survived. |
 | `score` | Run `python3 ${CLAUDE_SKILL_DIR}/scripts/brainlint.py <file>` (or `-` for stdin) and explain the findings. |
 | `off` | Stop applying brainres until asked again. |
