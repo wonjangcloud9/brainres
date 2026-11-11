@@ -78,6 +78,7 @@ Claude Code 안에서 설치하려면 `/plugin marketplace add wonjangcloud9/bra
 - 스킬 본문(3,893토큰)은 스킬을 호출할 때만 읽습니다.
 - 20번 주고받는 세션이면 추가 입력이 약 2,000토큰입니다(프롬프트 캐싱 전 기준). 측정은 [`scripts/token_cost.sh`](scripts/token_cost.sh)로 했습니다. Claude 실제 토크나이저 기준이고, Sonnet으로 3회 측정한 중앙값입니다.
 - 끄려면 `export BRAINRES=off` 또는 `touch ~/.claude/brainres.off`를 실행하세요.
+- **출력 스타일로 쓰고 싶다면** `/output-style`에서 **brainres**를 고르세요. 규칙은 같고, Claude Code의 코딩 지침은 그대로 유지됩니다. 출력 스타일을 쓸 때는 `BRAINRES=off`로 두면 카드가 두 번 들어가지 않습니다. 다만 매 메시지 리마인더도 함께 꺼집니다.
 
 **다른 곳에서 쓰기** (모두 같은 원본에서 [`scripts/build_dist.py`](scripts/build_dist.py)로 생성):
 

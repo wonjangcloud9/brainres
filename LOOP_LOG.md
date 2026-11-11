@@ -15,3 +15,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 02:37 · B19 · portable builds (system prompt, AGENTS.md, Cursor rule, claude.ai zip) + stale-dist check
 - 2026-11-12 04:13 · B12 · brainlint golden/unit tests (15), wired into validate.sh; mutation check passed; fixed stale-.pyc masking
 - 2026-11-12 04:18 · B06 · brainlint Korean 어절 thresholds (avg ≤12, long >20) + headings excluded from sentences; KO before 45→41; 18 tests; backlog tidy (B17/B18 superseded)
+- 2026-11-12 04:37 · B08 · opt-in output style generated from the core card (/output-style → brainres)

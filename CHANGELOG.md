@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Opt-in output style `output-styles/brainres.md`, picked with `/output-style`. `keep-coding-instructions` is on. It is generated from the core card by `build_dist.py`, so it can't drift; the stale check covers it.
+
 - brainlint: Korean is now measured as korean.md specifies, with an average of ≤12 어절 and a long-sentence flag above 20. Headings no longer count as sentences, and 2-word labels no longer dilute the average. The Korean "before" example now scores 41 (was 45), because its 22-어절 sentence is flagged. Scores are updated in the READMEs, examples and launch draft. 3 new tests bring the total to 18.
 - Backlog tidy: B17 and B18 are marked superseded by the coverage work, and B06 is re-scoped to the scorer.
 

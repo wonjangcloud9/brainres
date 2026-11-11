@@ -16,7 +16,6 @@ The loop always takes the highest-scoring `todo` item.
 | C04 | Close **explain / long-form / learn** coverage gaps | Q | 5 | 3 | 0.8 | 1 | **12** | done 2026-11-12 (596/596) |
 | C05 | Close **decide / numbers / correction / procedure / code / voice** coverage gaps | Q | 5 | 3 | 0.8 | 1 | **12** | done 2026-11-12 (596/596) |
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
-| B08 | Opt-in output style `output-styles/brainres.md` for people who want it as their style | Q | 5 | 1 | 0.8 | 0.5 | **8** | todo |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
 | B11 | brainlint v0.2: answer-first detection beyond preamble regex, causal-connective loss in bullets, term-swap detection | T | 10 | 1 | 0.8 | 1 | **8** | todo |
@@ -36,6 +35,7 @@ The loop always takes the highest-scoring `todo` item.
 | B19 | Portable builds: `dist/system-prompt.md` (any LLM), AGENTS.md / Cursor rule, claude.ai skill zip | G | 8 | 2 | 0.8 | 1 | 12.8 | done 2026-11-12 |
 | B12 | brainlint golden tests (`tests/`), run from validate.sh | T | 5 | 1 | 1.0 | 0.5 | 10 | done 2026-11-12 (15 tests) |
 | B06 | brainlint: Korean sentence splitter + 어절-based long-sentence check (korean.md rules already shipped) | T | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 |
+| B08 | Opt-in output style `output-styles/brainres.md` for people who want it as their style | Q | 5 | 1 | 0.8 | 0.5 | 8 | done 2026-11-12 |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

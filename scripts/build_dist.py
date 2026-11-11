@@ -5,9 +5,10 @@
   dist/AGENTS.md             drop into a repo for agents that read AGENTS.md (Codex, etc.)
   dist/cursor/brainres.mdc   Cursor project rule (always applied)
   dist/brainres-skill.zip    upload to claude.ai / Claude desktop (Customize → Skills)
+  output-styles/brainres.md  opt-in Claude Code output style shipped with the plugin (/output-style)
 
 Usage: python3 scripts/build_dist.py [--check]
-  --check  rebuild in memory and exit 1 if dist/ is stale (used by validate.sh)
+  --check  rebuild in memory and exit 1 if any generated file is stale (used by validate.sh)
 """
 from __future__ import annotations
 
@@ -34,18 +35,18 @@ def build() -> dict[str, bytes]:
     c = card()
     out: dict[str, bytes] = {}
 
-    out["system-prompt.md"] = (
+    out["dist/system-prompt.md"] = (
         c.replace("brainres is active. ", "")
         + "\n"
     ).encode()
 
-    out["AGENTS.md"] = (
+    out["dist/AGENTS.md"] = (
         "# Answer style (brainres)\n\n"
         "When you reply to the user in chat, follow these rules. They are evidence-based; sources: "
         f"{REPO}\n\n" + c.replace("brainres is active. ", "") + "\n"
     ).encode()
 
-    out["cursor/brainres.mdc"] = (
+    out["dist/cursor/brainres.mdc"] = (
         "---\n"
         "description: brainres — answer style grounded in cognitive science (answer first, chunked, calibrated, honest)\n"
         "globs:\n"
@@ -61,24 +62,34 @@ def build() -> dict[str, bytes]:
                 info.compress_type = zipfile.ZIP_DEFLATED
                 info.external_attr = 0o644 << 16
                 z.writestr(info, f.read_bytes())
-    out["brainres-skill.zip"] = buf.getvalue()
+    out["dist/brainres-skill.zip"] = buf.getvalue()
+
+    # Output style: same rules, selectable with /output-style. keep-coding-instructions
+    # keeps Claude Code's engineering behavior; brainres only changes how answers read.
+    out["output-styles/brainres.md"] = (
+        "---\n"
+        "name: brainres\n"
+        "description: Answers shaped for how people read — answer first, chunked, calibrated, honest (725 cognitive-science findings)\n"
+        "keep-coding-instructions: true\n"
+        "---\n\n" + (ROOT / "hooks" / "core-card.md").read_text(encoding="utf-8").replace("brainres is active. ", "").strip() + "\n"
+    ).encode()
     return out
 
 
 def main() -> int:
     files = build()
     if "--check" in sys.argv:
-        stale = [p for p, data in files.items() if not (DIST / p).exists() or (DIST / p).read_bytes() != data]
+        stale = [p for p, data in files.items() if not (ROOT / p).exists() or (ROOT / p).read_bytes() != data]
         if stale:
-            print("dist/ is stale: " + ", ".join(stale) + " — run python3 scripts/build_dist.py")
+            print("stale: " + ", ".join(stale) + " — run python3 scripts/build_dist.py")
             return 1
-        print("dist/ up to date")
+        print("generated files up to date")
         return 0
     for p, data in files.items():
-        target = DIST / p
+        target = ROOT / p
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
-        print(f"wrote dist/{p} ({len(data)} bytes)")
+        print(f"wrote {p} ({len(data)} bytes)")
     return 0
 
 

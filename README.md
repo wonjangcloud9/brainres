@@ -82,6 +82,8 @@ Only the plugin install adds the hooks. With the other routes you get the rule c
 
 Once installed, it's always on. A session-start hook adds the rule card once per session, and a short reminder rides along with each message, because instructions fade over long sessions.
 
+**Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the per-message reminder.
+
 **Measured cost** ([`scripts/token_cost.sh`](scripts/token_cost.sh), Claude's own tokenizer, Sonnet, median of 3):
 
 | Part | Tokens | When |
