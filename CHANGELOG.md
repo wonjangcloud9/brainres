@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- `rewrite` mode gets its own procedure in `references/rewrite.md`: inventory the claims and payload, rewrite, mark each item ✓/⚠/✗, then report. This answers the meaning-loss failures of other rewrite skills (humanizer #212, CAVEWOMAN's 51.9% drift).
+- `brainlint --compare original rewritten` checks mechanically for numbers, code spans, URLs and negations that a rewrite dropped, and exits 1 when anything is missing. List numbering and trailing URL punctuation are ignored. 4 new tests bring the total to 30.
+
 - Evals final, part 3 of 3 (B09b), with 3 samples per prompt per condition (72 answers): words −27% (per prompt −54, 95% CI −89 to −20), output tokens −16% (CI −179 to −33), Brain Score 91.2 → 96.2 (+5.0, CI +0.8 to +9.2), and 29/36 → 32/36 answers within the length budget. The earlier single-sample claim (−33% words, −24% tokens) is superseded in the READMEs and launch drafts.
 
 - Evals, part 2 of 3 (B09b): baseline now has 3 samples per prompt (n=36). Interim per-prompt result: Brain Score +4.6 (95% CI +0.4 to +8.8), words −54 (CI −89 to −20), output tokens −117 (CI −213 to −22).

@@ -27,3 +27,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 07:38 · B09b-1 · evals: card_sha + length budget + combine.py (95% CI); brainres ×2 (24 calls); interim: score +4.2 [+0.2,+8.2], words −63 [−99,−27]
 - 2026-11-12 07:58 · B09b-2 · baseline ×2 (24 calls) → n=36; interim: score +4.6 [+0.4,+8.8], words −54 [−89,−20], tokens −117 [−213,−22]
 - 2026-11-12 08:18 · B09b-3 · brainres ×1 (12 calls) → n=36 each; final: words −27%, tokens −16%, score +5.0 [+0.8,+9.2]; READMEs/launch updated, single-run claim superseded
+- 2026-11-12 08:38 · B16 · rewrite.md procedure (inventory → rewrite → ✓/⚠/✗ → report) + brainlint --compare payload check (+4 tests)

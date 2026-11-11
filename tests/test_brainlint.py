@@ -166,6 +166,28 @@ class Checks(unittest.TestCase):
         self.assertEqual(checks(text), set())
 
 
+class RewriteSafety(unittest.TestCase):
+    def test_keeps_everything(self):
+        orig = "Set `timeout=30` before 9 am. Do not restart the DB. See https://example.com/docs."
+        new = "Do not restart the DB. Before 9 am, set `timeout=30` (https://example.com/docs)."
+        self.assertEqual(brainlint.compare(orig, new), [])
+
+    def test_detects_dropped_payload(self):
+        orig = "Keep 3 replicas. Never run `rm -rf /data`. Docs: https://example.com/a."
+        new = "Keep replicas. Run cleanup carefully."
+        problems = " ".join(brainlint.compare(orig, new))
+        self.assertIn("missing number: 3", problems)
+        self.assertIn("missing code/command: rm -rf /data", problems)
+        self.assertIn("missing URL", problems)
+        self.assertIn("negations/limiters dropped", problems)
+
+    def test_list_numbering_is_not_payload(self):
+        self.assertEqual(brainlint.compare("1. Open it\n2. Close it", "- Open it\n- Close it"), [])
+
+    def test_korean_negation_drop(self):
+        self.assertTrue(brainlint.compare("서버를 재시작하지 않아요.", "서버를 재시작해요."))
+
+
 class CLI(unittest.TestCase):
     def test_badge(self):
         out = subprocess.run([sys.executable, str(SCRIPT), "--badge", "-"], input="The answer is 42.",

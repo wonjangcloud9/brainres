@@ -9,6 +9,7 @@ Usage:
   python3 scripts/brainlint.py --json answer.md     # machine-readable
   cat answer.md | python3 scripts/brainlint.py -
   python3 scripts/brainlint.py --badge README.md   # markdown badge for your README
+  python3 scripts/brainlint.py --compare original.md rewritten.md   # did a rewrite drop payload?
 """
 from __future__ import annotations
 
@@ -270,6 +271,37 @@ def grade(score: int) -> str:
     return "A" if score >= 90 else "B" if score >= 75 else "C" if score >= 60 else "D" if score >= 40 else "F"
 
 
+# --- rewrite safety: payload that a rewrite must never silently drop ---
+NUM = re.compile(r"(?<![\w.])\d[\d,]*(?:\.\d+)?%?")
+CODE_SPAN = re.compile(r"`([^`\n]+)`")
+URL = re.compile(r"https?://[^\s)>\]]+")
+NEGATORS_EN = re.compile(r"\b(not|never|no|none|nothing|only|except|unless|without|can't|cannot|don't|doesn't|isn't|won't|must not)\b", re.I)
+NEGATORS_KO = re.compile(r"(않|안 |못 |없|아니|말고|제외|만 )")
+
+
+def payload(text: str) -> dict:
+    fences = "\n".join(CODE_FENCE.findall(text))
+    no_markers = re.sub(r"(?m)^\s*\d+[.)]\s+", "", text)  # list numbering is layout, not payload
+    return {
+        "numbers": set(NUM.findall(no_markers)),
+        "code": set(CODE_SPAN.findall(text)) | {l.strip() for l in fences.splitlines() if l.strip() and not l.startswith("```")},
+        "urls": {u.rstrip(".,;:!?") for u in URL.findall(text)},
+        "negators": len(NEGATORS_EN.findall(text)) + len(NEGATORS_KO.findall(text)),
+    }
+
+
+def compare(original: str, rewritten: str) -> list[str]:
+    """Return human-readable problems: payload present in the original but missing from the rewrite."""
+    a, b = payload(original), payload(rewritten)
+    problems = []
+    for key, label in [("numbers", "number"), ("code", "code/command"), ("urls", "URL")]:
+        for item in sorted(a[key] - b[key]):
+            problems.append(f"missing {label}: {item}")
+    if b["negators"] < a["negators"]:
+        problems.append(f"negations/limiters dropped: {a['negators']} → {b['negators']} (not, never, only, except, 않, 없…)")
+    return problems
+
+
 BADGE_COLORS = {"A": "2ea44f", "B": "97ca00", "C": "dfb317", "D": "fe7d37", "F": "e05d44"}
 
 
@@ -282,10 +314,20 @@ def badge(score: int) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("file", help="markdown/text file, or - for stdin")
+    ap.add_argument("rewritten", nargs="?", help="with --compare: the rewritten file")
+    ap.add_argument("--compare", action="store_true", help="check that a rewrite kept every number, code span, URL and negation")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--badge", action="store_true", help="print a shields.io markdown badge for the score")
     a = ap.parse_args()
     text = sys.stdin.read() if a.file == "-" else open(a.file, encoding="utf-8").read()
+    if a.compare:
+        if not a.rewritten:
+            ap.error("--compare needs two files: original rewritten")
+        problems = compare(text, open(a.rewritten, encoding="utf-8").read())
+        print("Payload check: " + ("OK, nothing dropped" if not problems else f"{len(problems)} problem(s)"))
+        for p in problems:
+            print(f"  - {p}")
+        return 1 if problems else 0
     r = lint(text)
     if a.json:
         print(json.dumps(asdict(r), ensure_ascii=False, indent=2))

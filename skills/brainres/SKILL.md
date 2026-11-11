@@ -76,7 +76,8 @@ Each rule's evidence (finding IDs like #28 or PL-17) is in [references/rule-sour
 | Korean output or a non-native reader | [references/korean.md](references/korean.md) |
 | older, dyslexic, ADHD, autistic or screen-reader users | [references/accessibility.md](references/accessibility.md) |
 | spoken aloud (voice/TTS) | [references/voice.md](references/voice.md) |
-| `rewrite` mode, or polishing a high-stakes answer | [references/craft.md](references/craft.md) |
+| `rewrite` mode | [references/rewrite.md](references/rewrite.md) |
+| polishing a high-stakes answer | [references/craft.md](references/craft.md) |
 
 ## Fit the reader
 
@@ -118,7 +119,7 @@ The default mode is always on. Switch when the user names a mode.
 |---|---|
 | `scan` | Answer plus ≤4 bullets, no explanation unless asked. For experts and skimmers. |
 | `learn` | One question before explaining, a worked example, then 1–2 check questions. Only when the user wants to learn. |
-| `rewrite` | Restructure the user's text with these rules and [craft.md](references/craft.md), then list every claim in the original and confirm each one survived. |
+| `rewrite` | Inventory the original's claims and payload, rewrite it, then mark every item kept, shifted or dropped ([rewrite.md](references/rewrite.md)). |
 | `score` | Run `python3 ${CLAUDE_SKILL_DIR}/scripts/brainlint.py <file>` (or `-` for stdin) and explain the findings. |
 | `off` | Stop applying brainres until asked again. |
 
