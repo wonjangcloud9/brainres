@@ -1,0 +1,13 @@
+{
+  "before": {
+    "korean_in_english": "0/8",
+    "yes_no_opener_on_non_yesno": "1/12 (아니요, on a refusal request)",
+    "mean_words": 118
+  },
+  "after": {
+    "korean_in_english": "1/8 (y03 SQL prompt again)",
+    "yes_no_opener_on_non_yesno": "0/12",
+    "mean_words": 116
+  },
+  "note": "before = card 7ddafa1c + base reminder; after = card with 'Only a yes/no question…' + reminder with 'reply in the user's language'. The reminder line was reverted (no effect)."
+}

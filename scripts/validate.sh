@@ -49,7 +49,7 @@ else
   ok "no neuromyths used as support"
 fi
 
-# 5b. Always-on card budget: 498 tokens measured at 1,349 bytes (~2.7 bytes/token); cap ≈500 tokens
+# 5b. Always-on card budget: 500 tokens measured at 1,349 bytes (~2.7 bytes/token); cap ≈500 tokens
 card_chars=$(wc -c < hooks/core-card.md | tr -d ' ')
 [ "$card_chars" -le 1350 ] && ok "core card $card_chars chars (<=1350, ~500 tokens)" || err "core card $card_chars chars > 1350 — re-rank (research/core-card-ranking.md)"
 

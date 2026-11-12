@@ -153,6 +153,19 @@ Haiku is at ceiling too, so **summary-first code explanations and the recommend-
 
 **Two card side effects on Haiku.** One of 4 Korean answers with the card came back in English: "This query lists users who…" for "이 쿼리 뭐 하는 거야?". Across every saved run, that is 1 of 16 Haiku card answers to Korean prompts, against 0 of 16 Haiku baseline, 0 of 99 Sonnet card or plugin, and 0 of 8 Opus card answers. One answer to "What does this code do?" opened with "Yes," (1 of 8): card rule 1's yes/no clause was over-applied. Both are tracked as C19.
 
+### Card side effects on Haiku (C19)
+
+We used 6 prompts built to provoke the two side effects ([`prompts-c19.jsonl`](prompts-c19.jsonl)): what/why questions, short Korean questions over code, and a Korean refusal request. Each ran on Haiku with the card, 2 samples, before and after a change (24 calls).
+
+| | before | after |
+|---|---:|---:|
+| Korean prompt answered in English | 0 / 8 | 1 / 8 |
+| Yes/No opener on a non-yes/no question | 1 / 12 | 0 / 12 |
+| Mean words | 118 | 116 |
+
+- **"Reply in the user's language" in the per-turn reminder: no effect, reverted.** The same SQL prompt ("이 쿼리 뭐 하는 거야?" over a SQL block) flipped to English again. Across saved runs it has now flipped in 2 of 6 Haiku card answers, and every other Korean prompt has stayed in Korean. This looks like a Haiku-specific pull from an English system prompt plus code-heavy input. It remains open as C20.
+- **Card rule 1 now says "*Only* a yes/no question starts with "Yes"/"No"."** Across every saved run, Yes/No openers on non-yes/no questions appeared in 3 of 173 card answers, against 0 of 145 baseline and 0 of 90 plugin answers. After the change they appeared in 0 of 12, against 1 of 12 before. That is too few to show an effect, so it is kept as a zero-cost precision fix, not a measured win. The card stays at 1,349 bytes and is now **500 tokens**, measured; it was 498.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

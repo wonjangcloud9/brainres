@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Card side effects on Haiku (C19, 30 calls):
+  - **Reverted:** a "reply in the user's language" line in the per-turn reminder had no effect. The same code-heavy Korean SQL prompt still came back in English (0/8 before, 1/8 after), so that case moves to C20 (1.8).
+  - **Kept:** card rule 1 now reads "*Only* a yes/no question starts with "Yes"/"No"". Yes/No openers on non-yes/no questions were 3 of 173 card answers across saved runs, and 1/12 before vs 0/12 after this change. That is too few to prove an effect, so it is recorded as a zero-cost precision fix.
+  - The card stays at 1,349 bytes and is now 500 tokens (measured, was 498). The READMEs, launch drafts and social image are updated.
+
 - Haiku ceiling audit (B45, 24 calls): summary-first code explanations (8/8 vs 8/8) and the recommend-plus-alternative decision shape (4/4 vs 4/4) are at ceiling on Haiku too. Both READMEs now say these are default Claude behaviour, not brainres effects. On these prompts brainres made answers 20% (explanations) to 38% (decisions) shorter.
 - **Found C19 (score 9):** with the card, Haiku answered 1 of 16 Korean prompts in English, against 0 of 99 on Sonnet. It also opened one non-yes/no answer with "Yes,".
 
