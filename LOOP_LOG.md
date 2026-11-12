@@ -71,3 +71,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 21:39 · B45 · Haiku ceiling audit (24 calls): summary-first + decision shape at ceiling → README marks them default behaviour; found C19 (Haiku+card: 1/16 Korean answered in English, 1/8 misapplied Yes)
 - 2026-11-12 22:00 · C19 · Haiku side effects (30 calls): reminder language line no effect → reverted; card rule 1 'Only a yes/no question…' kept as precision fix (1/12 → 0/12); card 500 tokens; C20 scored 1.8
 - 2026-11-12 22:18 · B44 · agentic with tests runnable (12 runs): pass 6/6 both; observed result in sentence 1 6/6 both; beyond-tests 3/6 vs 2/6 → B43 gap was noise; parity
+- 2026-11-12 22:38 · C20 · Haiku SQL language flip (20 calls): current card 0/10, language line 0/10 → reverted, closed; backlog now has no todo items

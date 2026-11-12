@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Haiku language flip (C20, 20 calls): the Korean SQL prompt that had come back in English stayed Korean in 10/10 runs with the current card, so there was nothing to fix. A "Reply in the user's language" first line on the card also scored 0/10, so the card change was reverted per the pre-stated rule. The residual risk is about 1 in 12 runs on that prompt.
+
 - Agentic re-run with the test runner allowed (B44, 12 runs): `evals/agentic.py --allow-tests` auto-approves only `python -m unittest`. Both conditions passed 6/6, and every final message opened with the test result it actually saw. Notes on what the tests don't cover appeared in 3/6 baseline vs 2/6 plugin messages, so the 0/6 vs 2/6 gap seen in B43 was noise. On final messages the plugin is at parity with default Claude Code.
 
 - Card side effects on Haiku (C19, 30 calls):
