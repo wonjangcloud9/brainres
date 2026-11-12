@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Benchmark</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+<style>
+  :root { --bg:#fbfaf8; --fg:#1d1c1a; --muted:#6b6862; --card:#ffffff; --line:#e4e1db; --accent:#2f6f4f; --warn:#9a3b2b; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#14151a; --fg:#e9e7e3; --muted:#a19d96; --card:#1c1e25; --line:#2c2f39; --accent:#7ee2a8; --warn:#f0a36b; } }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.55 -apple-system,"Segoe UI","Apple SD Gothic Neo",sans-serif }
+  main { max-width:760px; margin:0 auto; padding:24px 16px 64px }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin:16px 0 }
+  .q { font-weight:600 }
+  .muted { color:var(--muted); font-size:15px }
+  button { font:inherit; padding:10px 16px; border-radius:8px; border:1px solid var(--line); background:var(--card); color:var(--fg); cursor:pointer }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent) }
+  @media (prefers-color-scheme: dark) { button.primary { color:#0f1117 } }
+  button:disabled { opacity:.45; cursor:not-allowed }
+  label.opt { display:block; padding:10px 12px; border:1px solid var(--line); border-radius:8px; margin:8px 0; cursor:pointer }
+  label.opt input { margin-right:8px }
+  .answer table { border-collapse:collapse; width:100%; font-size:15px; display:block; overflow-x:auto }
+  .answer th, .answer td { border:1px solid var(--line); padding:6px 8px; text-align:left }
+  .answer pre { background:rgba(127,127,127,.12); padding:10px; border-radius:8px; overflow-x:auto }
+  .answer code { font-size:14px }
+  .scale { display:flex; gap:8px; flex-wrap:wrap } .scale label { border:1px solid var(--line); border-radius:8px; padding:6px 12px; cursor:pointer }
+  .two { display:grid; grid-template-columns:1fr; gap:12px } @media (min-width:900px){ main{max-width:1100px} .two{grid-template-columns:1fr 1fr} }
+  textarea { width:100%; height:160px; font:13px/1.4 ui-monospace,monospace; background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:8px }
+  .progress { height:4px; background:var(--line); border-radius:2px; overflow:hidden } .progress div { height:100%; background:var(--accent) }
+</style>
+</head>
+<body><main id="app"></main>
+<script>
+const DATA = /*__DATA__*/null;
+const REPO = "https://github.com/wonjangcloud9/brainres";
+const T = {
+  en: { title:"How easy is this answer to understand?", intro:"You'll read short answers to technical questions and answer a few questions about each. It takes about 10 minutes. We record only your choices and timings, with a random ID. Nothing else.",
+        fluent:"I read this language fluently", start:"Start", next:"Next", read:"Question", q1:"You can look at the answer while you choose.", q2:"The answer is hidden now. Answer from what you remember and understood.",
+        conf:"How confident are you? (1 = guessing, 5 = certain)", pref:"Which of these two answers is easier to understand?", left:"Left one", right:"Right one", same:"About the same",
+        done:"Thank you! Please submit your result:", dl:"Download result (.json)", copy:"Copy result", issue:"Open the submission form on GitHub", attn:"Attention check: please select the option that says “Blue”." },
+  ko: { title:"이 답은 얼마나 이해하기 쉬운가요?", intro:"기술 질문에 대한 짧은 답을 읽고, 각 답마다 질문 몇 개에 답합니다. 약 10분 걸립니다. 무작위 ID와 선택·응답 시간만 기록하고, 그 밖의 정보는 남기지 않습니다.",
+        fluent:"이 언어로 된 글을 편하게 읽을 수 있어요", start:"시작", next:"다음", read:"질문", q1:"답을 보면서 고르세요.", q2:"이제 답이 가려졌어요. 읽고 이해한 내용으로 답하세요.",
+        conf:"얼마나 확신하나요? (1 = 찍음, 5 = 확실)", pref:"두 답 중 어느 쪽이 더 이해하기 쉬운가요?", left:"왼쪽", right:"오른쪽", same:"비슷함",
+        done:"감사합니다! 결과를 제출해 주세요.", dl:"결과 다운로드 (.json)", copy:"결과 복사", issue:"GitHub 제출 양식 열기", attn:"주의력 확인: “Blue”라고 적힌 선택지를 고르세요." }
+};
+const app = document.getElementById("app");
+const rid = () => Math.random().toString(36).slice(2, 10);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const md = s => (window.marked ? marked.parse(s) : "<pre>" + s.replace(/</g, "&lt;") + "</pre>");
+let S = { id: rid(), started: new Date().toISOString(), ua: navigator.userAgent.slice(0, 120), lang: null, fluent: null, list: Math.random() < 0.5 ? "A" : "B", trials: [], attention: null, preference: [] };
+let L = T.en;
+
+function view(html) { app.innerHTML = html; window.scrollTo(0, 0); }
+function radio(name, opts) { return opts.map((o, i) => `<label class="opt"><input type="radio" name="${name}" value="${i}">${o}</label>`).join(""); }
+function scale(name) { return `<div class="scale">${[1,2,3,4,5].map(v => `<label><input type="radio" name="${name}" value="${v}"> ${v}</label>`).join("")}</div>`; }
+function picked(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? Number(el.value) : null; }
+function waitFor(names, btn) { const b = document.getElementById(btn); const f = () => { b.disabled = !names.every(n => picked(n) !== null); }; document.querySelectorAll("input").forEach(i => i.addEventListener("change", f)); f(); }
+
+function intro() {
+  view(`<h1>${T.en.title}<br><span class="muted">${T.ko.title}</span></h1>
+  <div class="card"><p>${T.en.intro}</p><p class="muted">${T.ko.intro}</p>
+  <p><button onclick="pickLang('en')">English set (8)</button> <button onclick="pickLang('ko')">한국어 세트 (4)</button></p></div>`);
+}
+function pickLang(lang) {
+  S.lang = lang; L = T[lang];
+  view(`<div class="card"><label class="opt"><input type="checkbox" id="fl"> ${L.fluent}</label><p><button class="primary" onclick="begin()">${L.start}</button></p></div>`);
+}
+function begin() {
+  S.fluent = document.getElementById("fl").checked;
+  const items = shuffle(DATA.items.filter(it => it.lang === S.lang));
+  // Counterbalancing: items sorted by id get alternating versions; list B flips them.
+  const order = DATA.items.filter(it => it.lang === S.lang).map(it => it.id).sort();
+  S.plan = items.map(it => { const k = order.indexOf(it.id) % 2 === 0; const brainres = (S.list === "A") ? k : !k; return { id: it.id, version: brainres ? "brainres" : "baseline" }; });
+  S.attnAt = 1 + Math.floor(Math.random() * Math.max(1, S.plan.length - 1));
+  S.step = 0; trial();
+}
+function progress() { const n = S.plan.length; return `<div class="progress"><div style="width:${Math.round(100 * S.step / n)}%"></div></div>`; }
+function trial() {
+  if (S.step === S.attnAt && S.attention === null) return attention();
+  if (S.step >= S.plan.length) return preference();
+  const p = S.plan[S.step], it = DATA.items.find(x => x.id === p.id), quiz = it.quiz, opts1 = shuffle(quiz.q1.options.map((o, i) => [o, i]));
+  view(`${progress()}<div class="card"><div class="muted">${L.read}</div><div class="q">${it.question}</div></div>
+  <div class="card answer">${md(it[p.version])}</div>
+  <div class="card"><div class="q">${quiz.q1.text}</div><div class="muted">${L.q1}</div>${radio("q1", opts1.map(o => o[0]))}<p>${L.conf}</p>${scale("c1")}<p><button class="primary" id="b1">${L.next}</button></p></div>`);
+  const t0 = performance.now(); waitFor(["q1", "c1"], "b1");
+  document.getElementById("b1").onclick = () => { const choice = opts1[picked("q1")][1]; const rec = { id: p.id, version: p.version, q1: { correct: choice === quiz.q1.answer, ms: Math.round(performance.now() - t0), conf: picked("c1") } }; q2(it, rec); };
+}
+function q2(it, rec) {
+  const quiz = it.quiz, opts2 = shuffle(quiz.q2.options.map((o, i) => [o, i]));
+  view(`${progress()}<div class="card"><div class="q">${quiz.q2.text}</div><div class="muted">${L.q2}</div>${radio("q2", opts2.map(o => o[0]))}<p>${L.conf}</p>${scale("c2")}<p><button class="primary" id="b2">${L.next}</button></p></div>`);
+  const t0 = performance.now(); waitFor(["q2", "c2"], "b2");
+  document.getElementById("b2").onclick = () => { const choice = opts2[picked("q2")][1]; rec.q2 = { correct: choice === quiz.q2.answer, ms: Math.round(performance.now() - t0), conf: picked("c2") }; S.trials.push(rec); S.step++; trial(); };
+}
+function attention() {
+  const opts = shuffle(["Red", "Blue", "Green", "Yellow"]);
+  view(`${progress()}<div class="card"><div class="q">${L.attn}</div>${radio("at", opts)}<p><button class="primary" id="ba">${L.next}</button></p></div>`);
+  waitFor(["at"], "ba");
+  document.getElementById("ba").onclick = () => { S.attention = opts[picked("at")] === "Blue"; trial(); };
+}
+function preference() {
+  const pool = shuffle(DATA.items.filter(it => it.lang === S.lang)).slice(0, 2);
+  const show = (k) => {
+    if (k >= pool.length) return finish();
+    const it = pool[k], leftIsBrainres = Math.random() < 0.5;
+    const L1 = leftIsBrainres ? it.brainres : it.baseline, R1 = leftIsBrainres ? it.baseline : it.brainres;
+    view(`<div class="card"><div class="muted">${L.read}</div><div class="q">${it.question}</div></div>
+    <div class="two"><div class="card answer">${md(L1)}</div><div class="card answer">${md(R1)}</div></div>
+    <div class="card"><div class="q">${L.pref}</div>${radio("pf", [L.left, L.right, L.same])}<p><button class="primary" id="bp">${L.next}</button></p></div>`);
+    waitFor(["pf"], "bp");
+    document.getElementById("bp").onclick = () => { const v = picked("pf"); S.preference.push({ id: it.id, choice: v === 2 ? "same" : ((v === 0) === leftIsBrainres ? "brainres" : "baseline") }); show(k + 1); };
+  };
+  show(0);
+}
+function finish() {
+  S.finished = new Date().toISOString(); S.items_sha = DATA.items_sha; delete S.step; delete S.attnAt;
+  const json = JSON.stringify(S, null, 1);
+  view(`<div class="card"><h2>${L.done}</h2>
+  <p><button class="primary" id="dl">${L.dl}</button> <button id="cp">${L.copy}</button></p>
+  <p><a href="${REPO}/issues/new?template=benchmark-result.yml" target="_blank" rel="noopener">${L.issue} →</a></p>
+  <textarea readonly>${json.replace(/</g, "&lt;")}</textarea></div>`);
+  document.getElementById("dl").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); a.download = `brainres-bench-${S.id}.json`; a.click(); };
+  document.getElementById("cp").onclick = () => { try { navigator.clipboard.writeText(json); } catch (e) {} };
+}
+// #autotest: click through the whole study with the first options (used by validate.sh via headless Chrome)
+function autotest() {
+  const tick = () => {
+    const btns = [...document.querySelectorAll("button")];
+    const lang = btns.find(b => b.textContent.startsWith("English set"));
+    if (lang) { lang.click(); return setTimeout(tick, 0); }
+    const fl = document.getElementById("fl"); if (fl) { fl.checked = true; begin(); return setTimeout(tick, 0); }
+    const ta = document.querySelector("textarea"); if (ta) { document.title = "AUTOTEST_DONE"; return; }
+    ["q1","c1","q2","c2","at","pf"].forEach(n => { const r = document.querySelector(`input[name="${n}"]`); if (r) { r.checked = true; r.dispatchEvent(new Event("change")); } });
+    const next = document.querySelector("button.primary"); if (next) next.click();
+    setTimeout(tick, 0);
+  };
+  setTimeout(tick, 0);
+}
+intro();
+if (location.hash === "#autotest") autotest();
+</script>
+</body>
+</html>

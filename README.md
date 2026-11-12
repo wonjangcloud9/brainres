@@ -170,6 +170,10 @@ What this shows:
 - An early card made Claude invent confidence numbers (`~80% sure`) in 7 of 36 answers, against 0 of 36 for the baseline. We rewrote the rule, and the re-run had 0 of 24 with the length gains intact ([details](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
+### Help measure comprehension (10 minutes)
+
+The open question is whether people actually understand brainres answers better. The [reading benchmark](bench/) is pre-registered: 8 short answers, unlabeled, with timed questions. You submit an anonymous JSON result through an issue form, and every result will be published, good or bad.
+
 ## How it differs
 
 | | Optimizes for | Grounded in |

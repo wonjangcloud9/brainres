@@ -6,6 +6,7 @@
   dist/cursor/brainres.mdc   Cursor project rule (always applied)
   dist/brainres-skill.zip    upload to claude.ai / Claude desktop (Customize → Skills)
   output-styles/brainres.md  opt-in Claude Code output style shipped with the plugin (/output-style)
+  bench/index.html           human comprehension benchmark page (items embedded from bench/items/)
 
 Usage: python3 scripts/build_dist.py [--check]
   --check  rebuild in memory and exit 1 if any generated file is stale (used by validate.sh)
@@ -73,7 +74,26 @@ def build() -> dict[str, bytes]:
         "keep-coding-instructions: true\n"
         "---\n\n" + (ROOT / "hooks" / "core-card.md").read_text(encoding="utf-8").replace("brainres is active. ", "").strip() + "\n"
     ).encode()
+    out["bench/index.html"] = build_bench()
     return out
+
+
+def build_bench() -> bytes:
+    import hashlib, json
+    langs = {json.loads(l)["id"]: json.loads(l)["lang"] for l in (ROOT / "evals/prompts.jsonl").read_text().splitlines() if l.strip()}
+    items = []
+    for d in sorted((ROOT / "bench/items").iterdir()):
+        if not d.is_dir():
+            continue
+        base = (d / "baseline.md").read_text(encoding="utf-8")
+        q = base.splitlines()[0].removeprefix("<!-- Q: ").removesuffix(" -->")
+        strip = lambda t: "\n".join(t.splitlines()[1:]).strip()
+        items.append({"id": d.name, "lang": langs[d.name], "question": q, "baseline": strip(base),
+                      "brainres": strip((d / "brainres.md").read_text(encoding="utf-8")),
+                      "quiz": json.loads((d / "quiz.json").read_text(encoding="utf-8"))})
+    sha = hashlib.sha256((ROOT / "bench/items/MANIFEST.sha256").read_bytes()).hexdigest()[:16]
+    data = json.dumps({"items": items, "items_sha": sha}, ensure_ascii=False).replace("</", "<\\/")
+    return (ROOT / "bench/template.html").read_text(encoding="utf-8").replace("/*__DATA__*/null", data).encode()
 
 
 def main() -> int:

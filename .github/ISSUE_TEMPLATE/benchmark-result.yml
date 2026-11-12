@@ -1,0 +1,25 @@
+name: Benchmark result
+description: Submit your result from the brainres reading benchmark (bench/index.html)
+title: "Benchmark result"
+labels: ["benchmark-result"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the reading benchmark. Paste the JSON from the last screen below.
+        It contains only a random ID, your choices, confidence ratings and timings. Please don't add personal information.
+  - type: textarea
+    id: result
+    attributes:
+      label: Result JSON
+      description: Paste the full JSON shown on the final screen (or the contents of the downloaded .json file).
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I agree that this anonymous result may be published in the brainres repository and analysis.
+          required: true

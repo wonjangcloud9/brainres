@@ -80,6 +80,18 @@ python3 scripts/coverage.py --check >/dev/null && ok "coverage ratchet: $(python
 # 8b. Portable builds in dist/ match the sources (rebuild with scripts/build_dist.py)
 python3 scripts/build_dist.py --check >/dev/null && ok "dist/ up to date" || err "dist/ is stale — run python3 scripts/build_dist.py"
 
+# 8c. Benchmark page works end to end (headless Chrome autotest), when Chrome is available
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+if [ -x "$CHROME" ]; then
+  dom=$("$CHROME" --headless=new --disable-gpu --virtual-time-budget=5000 --dump-dom "file://$PWD/bench/index.html#autotest" 2>/dev/null)
+  printf '%s' "$dom" | python3 -c "
+import sys,re,json,html
+m=re.search(r'<textarea[^>]*>(.*?)</textarea>', sys.stdin.read(), re.S)
+d=json.loads(html.unescape(m.group(1))); v=[t['version'] for t in d['trials']]
+assert len(v)==8 and v.count('brainres')==4 and d['attention'] is not None and len(d['preference'])==2
+" && ok "benchmark page autotest (8 trials, 4/4 counterbalanced)" || err "benchmark page autotest failed"
+fi
+
 # 9. Official plugin validator, when the CLI is available
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate . >/dev/null 2>&1 && ok "claude plugin validate" || err "claude plugin validate failed"
