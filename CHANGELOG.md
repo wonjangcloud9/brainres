@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Thinking-token cost checked from saved suite data (K3, no calls), and nothing was changed.
+  - **The cost is real:** with the card, Sonnet thinks before answering in 32 of 78 prompts, against 4 of 78 without it. That adds 99 thinking tokens per prompt (CI +59 to +139), against a repeat-sample noise SD of 86.
+  - **It pays for itself:** visible output shrinks more, so total output still falls 91 tokens per prompt (CI −135 to −48), and no answer type shows a reliable net cost.
+  - **Not measured:** the latency to the first visible token.
+
 - **Korean bold limit is now scaled (K2).** `bold_overuse` multiplies its limit by the eojeol/word ratio the wall check already uses (110/70), giving about 4.7 per 100 eojeol. That keeps brainlint consistent with itself; it doesn't rest on a Korean study. Tests are added.
   - **Re-score, no calls:** brainres Korean bold overuse fell from 12/32 to 0/32 and baseline from 21/32 to 7/32, so no follow-up on the output is needed. The suite gain is now +4.6 (CI +3.2 to +6.1).
   - **Multi-turn tables corrected:** the Haiku reminder gap at turns 5–7 is now 3.7 points. That still passes the 3-point rule, but narrowly, and the READMEs now say 4–6 points. Auto mode on turn 1 matched forced-on (n = 2), so the "turn 1 stays lower" claim was removed.
