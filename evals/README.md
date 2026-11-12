@@ -82,6 +82,17 @@ We used 4 prompts ([`prompts-learn.jsonl`](prompts-learn.jsonl)) in which a self
 - **The skill never loaded,** so the learner rules in `learn.md` (DV-03, DV-04) never reached the model. Earlier, the skill auto-invoked in 1 of 24 answers. Rules that live only in references apply only when someone asks for the skill. B39 tests adding learner triggers to the skill description.
 - **One failure (C18):** a brainres answer opened with the wrong program output (`[1, 5, 2, 4]`), traced the loop, and corrected itself (`[3, 2, 4]`). This is the same premature-value pattern as C17, now for *traced output* rather than arithmetic. It happened in 1 of 8 card answers, 0 of 8 baseline answers and 0 of 8 plugin answers.
 
+### Learner triggers in the skill description (B39): tried and reverted
+
+We added learner triggers to the SKILL.md description ("I'm learning", "beginner", "homework", 공부 중, 배우는 중, 과제; 910 of 1,024 chars) and re-ran with the real plugin:
+
+| | before | after |
+|---|---:|---:|
+| Skill invoked on the 4 learner prompts × 2 | 0 / 8 | 1 / 8 |
+| Skill invoked on the 12 general prompts (false triggers) | 1 / 24 earlier | 0 / 12 |
+
+Even the one invoked answer still led with a rewrite instead of fixing the user's own line, and it asked no self-test question. A description trigger barely changes whether Sonnet loads a skill for a one-shot answer, and loading it did not change the behaviour. **We reverted it,** because it cost about 40 always-loaded tokens for no measured gain. The lever left is the per-turn reminder hook, which sees the prompt and can add one targeted line only when a learner, stress or calculation signal appears (B40).
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.
