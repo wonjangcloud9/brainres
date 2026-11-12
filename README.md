@@ -78,11 +78,11 @@ Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/pl
 | Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | Copy to `.cursor/rules/brainres.mdc` |
 | Claude Code, without the plugin | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres`, then `/brainres` |
 
-Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the per-message reminder.
+Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the situation lines.
 
-Once installed, it's always on. A session-start hook adds the rule card once per session, and a short reminder rides along with each message, because instructions fade over long sessions.
+Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. We dropped an always-on per-message reminder after 7-turn sessions scored just as well with it turned off ([B46](evals/README.md)).
 
-**Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the per-message reminder.
+**Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the situation lines.
 
 **With Claude Code's built-in output styles.** The hooks work alongside any style. We ran a small test (4 prompts, 1 sample each, so treat it as directional):
 
@@ -99,10 +99,10 @@ With Concise, brainres puts back the "why / when to switch / next step" content 
 | Part | Tokens | When |
 |---|---:|---|
 | Rule card | 500 | once per session |
-| Reminder | 84 (about +20–28 on learner or emergency prompts) | each message |
+| Situation line | about 20–28 | only on learner or emergency messages |
 | Full skill body | 3,391 | only when the skill is invoked |
 
-A 20-message session costs about 2,200 extra input tokens before prompt caching. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
+A 20-message session costs about 500 extra input tokens before prompt caching, plus about 25 for each learner or emergency message. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
 ## The 10 rules
 

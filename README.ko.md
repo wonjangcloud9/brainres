@@ -76,12 +76,12 @@ Claude Code 안에서 설치하려면 `/plugin marketplace add wonjangcloud9/bra
 | 부분 | 토큰 | 언제 |
 |---|---:|---|
 | 규칙 카드 | 500 | 세션당 1회 |
-| 리마인더 | 84 (학습자·긴급 질문이면 약 +20–28) | 매 메시지 |
+| 상황별 한 줄 | 약 20–28 | 학습자·긴급 메시지일 때만 |
 | 스킬 본문 | 3,391 | 스킬을 호출할 때만 |
 
-- 20번 주고받는 세션이면 추가 입력은 약 2,200토큰입니다(캐싱 전 기준).
+- 20번 주고받는 세션이면 추가 입력은 약 500토큰입니다(캐싱 전 기준). 학습자·긴급 메시지마다 약 25토큰이 더해집니다.
 - 카드의 11줄은 전체 연구를 RICE로 다시 줄 세워 골랐습니다([순위표](research/core-card-ranking.md)).
-- 리마인더를 두는 이유는 긴 대화에서 지시가 점점 흐려지기 때문입니다.
+- 매 메시지 리마인더는 뺐습니다. 7턴 대화에서 리마인더 없이도 품질이 떨어지지 않았습니다([B46](evals/README.md)).
 
 **Claude Code 내장 출력 스타일과 함께 쓰기.** brainres의 hook은 어떤 스타일과도 함께 동작합니다. 작은 측정 결과입니다. 질문 4개를 1번씩만 돌린 것이라 방향만 참고하세요.
 
@@ -97,7 +97,7 @@ Concise와 함께 쓰면 brainres가 "이유, 언제 바꿀지, 다음 할 일"�
 
 - 끄려면 `export BRAINRES=off` 또는 `touch ~/.claude/brainres.off`를 실행하세요.
 - 출력 스타일로 쓰려면 `/output-style`에서 **brainres**를 고르세요. 규칙은 같고, 코딩 지침도 유지됩니다.
-- 출력 스타일을 쓸 때는 `BRAINRES=off`로 두면 카드가 두 번 들어가지 않습니다. 다만 리마인더도 함께 꺼집니다.
+- 출력 스타일을 쓸 때는 `BRAINRES=off`로 두면 카드가 두 번 들어가지 않습니다. 다만 상황별 한 줄도 함께 꺼집니다.
 
 **다른 곳에서 쓰기** (모두 같은 원본에서 [`scripts/build_dist.py`](scripts/build_dist.py)로 생성):
 
@@ -109,7 +109,7 @@ Concise와 함께 쓰면 brainres가 "이유, 언제 바꿀지, 다음 할 일"�
 | Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | `.cursor/rules/brainres.mdc`로 복사 |
 | 플러그인 없이 Claude Code | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres` 후 `/brainres` |
 
-hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로 설치하면 규칙 카드나 스킬은 들어가지만, 매 메시지 리마인더는 붙지 않습니다.
+hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로 설치하면 규칙 카드나 스킬은 들어가지만, 상황별 한 줄은 붙지 않습니다.
 
 ## 10가지 규칙
 

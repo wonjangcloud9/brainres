@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Cut the always-on per-turn reminder (B46), saving 84 tokens on every message.**
+  - **Test:** `evals/multiturn.py` ran 7-turn sessions with the real plugin (EN and KO conversations, 28 calls). Turns 5–7 scored 98.7 without the reminder and 97.0 with it, so there was no drift. The transcripts confirm the card loads once per session.
+  - **Hook:** it now emits nothing unless a learner or emergency signal appears, and both of those lines were measured to work.
+  - **Eval proxy:** `run.py`'s card proxy is now the card alone.
+  - **Docs:** the READMEs, Reddit draft and validation checks are updated. A 20-message session costs about 500 extra tokens instead of about 2,200.
+  - **Untested:** long sessions with large tool outputs; B47 (score 3) covers them.
+
 - At the owner's request, removed the "built by a 20-min Claude loop" badge and the loop section from both READMEs, and the loop lines from the Show HN, X and GeekNews drafts. LOOP.md and LOOP_LOG.md stay in the repo.
 
 - Research round 7 (`research/catalog-round7.md`): we found no controlled study of how streaming changes comprehension or trust in LLM answers, and recorded that as the main finding. ST-01, a practitioner report that readers act on partly streamed text, now backs the C17 rule in numbers.md. Three system-level studies (pacing, response delay, multiple answers) are catalogued and excluded.

@@ -177,6 +177,21 @@ We ran the one prompt that had flipped ("이 쿼리 뭐 하는 거야?" over a S
 
 The current card produced no English answers, so there was nothing to fix. With the card, this prompt has now flipped in 1 of 12 runs; an earlier card version flipped 2 of 6. **The card change was reverted.** The word drop was not the outcome we tested, so it is not a reason to keep the change. A residual risk of about 1 in 12 on code-heavy Korean prompts with Haiku is noted here and not acted on.
 
+## Does the per-turn reminder prevent drift? (B46): no, so it was cut
+
+The plugin used to append an 84-token reminder to every message, because instructions are known to drift in long dialogs (Li et al. 2024). We had never measured that on Claude. [`evals/multiturn.py`](multiturn.py) runs scripted 7-turn sessions with the real plugin, resuming one session per conversation, with the reminder on vs off (`BRAINRES_REMINDER=off`; the card stays on). There were 2 conversations (EN and KO), 28 calls on Sonnet. We checked the transcripts: the card was injected once at session start and not again on resume, so this matches a real session.
+
+| Mean per answer | reminder on | reminder off |
+|---|---:|---:|
+| Brain Score, turns 1–2 | 94.5 | 96.8 |
+| Brain Score, turns 3–4 | 100.0 | 98.0 |
+| Brain Score, turns 5–7 | 97.0 | **98.7** |
+| Words, turns 5–7 | 134 | 123 |
+
+There was no drift without the reminder, so per the pre-stated rule the always-on line was cut. That saves 84 tokens on every message. The hook now emits nothing unless a learner or emergency signal appears; those lines were measured to change behaviour (B40, B41).
+
+**Limit:** 7 short turns is a small context. Long Claude Code sessions full of tool output are not covered. B47 tests that case.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

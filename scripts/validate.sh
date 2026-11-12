@@ -56,7 +56,9 @@ card_chars=$(wc -c < hooks/core-card.md | tr -d ' ')
 # 6. Hook emits valid JSON
 out=$(CLAUDE_PLUGIN_ROOT="$PWD" bash hooks/brainres-context.sh)
 printf '%s' "$out" | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['hookSpecificOutput']['additionalContext']" && ok "session hook emits context" || err "session hook output invalid"
-bash hooks/brainres-reminder.sh < /dev/null | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert 0 < len(c) <= 300" && ok "per-turn reminder valid (<=300 chars)" || err "per-turn reminder invalid or too long"
+[ -z "$(bash hooks/brainres-reminder.sh < /dev/null)" ] && ok "situation hook silent without a prompt" || err "situation hook should emit nothing without a signal"
+[ -z "$(printf '{"prompt":"How do I rename a git branch?"}' | bash hooks/brainres-reminder.sh)" ] && ok "situation hook silent on a general prompt (B46)" || err "situation hook emitted on a general prompt"
+printf '{"prompt":"I am learning Python"}' | bash hooks/brainres-reminder.sh | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert 0 < len(c) <= 300" && ok "situation line valid JSON (<=300 chars)" || err "situation line invalid or too long"
 # Situation line (B40): learner prompts get it, general prompts and learner-ish paths in cwd don't.
 rem() { printf '{"prompt":%s,"cwd":"/home/homework/beginner"}' "$(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1")" | bash hooks/brainres-reminder.sh; }
 learner_ok=1

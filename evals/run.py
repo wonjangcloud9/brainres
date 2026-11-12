@@ -7,7 +7,7 @@
 
 Conditions
   baseline  : `claude -p` with tools and MCP disabled, run from an empty directory
-  brainres  : same, plus the plugin's SessionStart card and per-turn reminder appended to
+  brainres  : same, plus the plugin's SessionStart card appended to
               the system prompt (a proxy for the installed hooks)
   plugin    : the real plugin via --plugin-dir (hooks fire, skill can be invoked; tools: Skill, Read)
 
@@ -46,10 +46,10 @@ def card_sha() -> str:
 
 def brainres_prompt() -> str:
     card = (ROOT / "hooks/core-card.md").read_text(encoding="utf-8")
-    # No prompt on stdin → the base reminder only (situation lines need the real hook, i.e. --conditions plugin).
-    reminder = json.loads(subprocess.run(["bash", str(ROOT / "hooks/brainres-reminder.sh")], stdin=subprocess.DEVNULL,
-                                         capture_output=True, text=True, check=True).stdout)
-    return card + "\n\n" + reminder["hookSpecificOutput"]["additionalContext"]
+    # The proxy is the card alone. Since B46 the per-turn hook emits nothing without a situation signal
+    # (situation lines need the real hook: --conditions plugin). Runs before 2026-11-12 B46 also appended
+    # the 84-token base reminder.
+    return card
 
 
 def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = None, plugin: bool = False) -> dict:
