@@ -45,3 +45,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 13:39 · B28b · Opus eval (25 calls): words −34% [−117,−41], score +2.9 n.s.; output tokens include hidden reasoning → run.py records thinking split; B28c added
 - 2026-11-12 13:59 · B29 · real-plugin eval (24 calls): −54 words, +5.0 score (matches proxy); skill auto-invoked 1/24 — hooks do the work
 - 2026-11-12 14:19 · B28c · Opus split (24 calls): visible output −36% [−472,−144 tokens], thinking ×2.6 (borderline), total flat; READMEs updated
+- 2026-11-12 14:20 · fix · a139844 pushed with failing validation (piped to grep); README split back to 100; LOOP.md exit-status rule; optional install-hooks.sh (not installed)

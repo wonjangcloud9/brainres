@@ -12,7 +12,7 @@ Keep each iteration small enough to finish, verify, commit and push in ~15 minut
    If the item is too big for one iteration, split it into sub-items (re-score them), do the first one.
 3. **Implement.** Make the change. Ground every new rule in `research/` (cite the concept name + source).
    No rule enters `SKILL.md` without a source in `research/cognitive-principles.md`.
-4. **Verify.** Run `bash scripts/validate.sh`. It must pass. If it fails, fix the cause, not the check.
+4. **Verify.** Run `bash scripts/validate.sh` and judge it by its **exit status**: run it on its own, or use `set -o pipefail`. Never pipe it into `grep`, because that once let a failing validation through to a push. It must pass. If it fails, fix the cause, not the check. The owner can optionally enforce this with `scripts/install-hooks.sh`, but the loop does not install hooks.
 5. **Record.**
    - Mark the backlog item `done` with the date.
    - Add a line to `CHANGELOG.md` under `## Unreleased`.
