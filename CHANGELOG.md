@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Research round on LLM-side risk (`research/llm-side-effects.md`). Strict format restrictions degrade LLM reasoning (Tam 2024), and "be concise" prompts trade accuracy for length (Lee 2025). Our evals have shown no accuracy loss on 18 single-step traps, and on Opus brainres moved effort into hidden reasoning. Multi-step problems are untested. New backlog: B33a/B33b (accuracy cost on 30 multi-step problems) and B32 (agentic coding check).
+
 - C16: the refutation rules (SKILL.md, correction.md) now apply only to misconceptions the user stated or implied, and never to opening by knocking down an answer nobody proposed (#52). A new `brainlint --question` check, `preemptive_refutation`, flags sentence-1 openings like "X is wrong." / "X는 틀렸어요" when X isn't in the question. It catches the real Haiku answer from B31b and produces no false positives on the 12 example files. 1 new test.
 
 - B31b: 10 harder prompts on Haiku, covering dates, letter counts, multiplication, Python aliasing, JS sort, pricing and leap years (20 calls). Checked by hand, Haiku answered all 10 correctly in both conditions. After 18 trap prompts, natural errors don't occur often enough to test the LR-01 risk, which would need answers that are wrong by construction. Reasoning visibility with brainres was equal or better. One artifact surfaced: an answer pre-emptively refuted a wrong answer nobody had proposed. This is logged as C16. `tricky.py --set` selects the prompt file.

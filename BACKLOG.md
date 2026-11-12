@@ -6,6 +6,9 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| B33a | Accuracy-cost eval, part 1: 15 multi-step word problems (answers computed in Python) × {baseline, brainres} on Haiku (30 calls). Does brainres lower accuracy when reasoning is the visible answer? (llm-side-effects.md) | Q | 8 | 2 | 0.8 | 1 | **12.8** | todo |
+| B33b | Accuracy-cost eval, part 2: 15 more problems + combined report with CI; if accuracy drops, add a card line "brevity applies to the final answer, not to working" and re-test | Q | 8 | 2 | 0.8 | 1 | **12.8** | todo |
+| B32 | Agentic coding check: small repo tasks with tests, Claude Code with/without the plugin; pass rate and diff size | Q | 8 | 2 | 0.5 | 2 | **4** | todo |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |

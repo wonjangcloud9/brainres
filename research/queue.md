@@ -13,3 +13,4 @@ Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file
 - [x] Round 2: re-verify citations flagged unverified/weak (done 2026-11-12 → research/verification-2026-11.md) in catalog headers (Ashktorab 2019, Korean speech-level study, Wright & Reid 1973, Dixon 1982, Hales 2017, Langhout & Aniche 2021)
 - [ ] Round 2 domains: cross-cultural pragmatics (high/low-context), diagram cognition (Larkin & Simon 1987), argumentation (Toulmin), journalism inverted-pyramid studies, individual differences in numeracy
 - [ ] Run our own bullets-vs-prose comprehension condition inside the human benchmark (gap confirmed in round 3)
+- [x] LLM-side effects of style rules (format restrictions, brevity vs accuracy) → research/llm-side-effects.md (2026-11-12)
