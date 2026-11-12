@@ -1,0 +1,134 @@
+{
+  "model": "haiku",
+  "card_sha": "0bd557e38b55",
+  "rows": [
+    {
+      "id": "t1-decimal",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 47
+    },
+    {
+      "id": "t1-decimal",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 25
+    },
+    {
+      "id": "t2-sisters",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 56
+    },
+    {
+      "id": "t2-sisters",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 46
+    },
+    {
+      "id": "t3-batball",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 1,
+      "words": 56
+    },
+    {
+      "id": "t3-batball",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 4,
+      "words": 86
+    },
+    {
+      "id": "t4-widgets",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 50
+    },
+    {
+      "id": "t4-widgets",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 1,
+      "words": 77
+    },
+    {
+      "id": "t5-montyclear",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 118
+    },
+    {
+      "id": "t5-montyclear",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 134
+    },
+    {
+      "id": "t6-apples",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 1,
+      "words": 41
+    },
+    {
+      "id": "t6-apples",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 1,
+      "words": 52
+    },
+    {
+      "id": "t7-river",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 55
+    },
+    {
+      "id": "t7-river",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 80
+    },
+    {
+      "id": "t8-ko-age",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 93
+    },
+    {
+      "id": "t8-ko-age",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 95
+    }
+  ]
+}

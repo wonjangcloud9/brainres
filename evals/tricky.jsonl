@@ -1,0 +1,8 @@
+{"id": "t1-decimal", "q": "Which is bigger, 9.11 or 9.9?", "expect": "9\\.9(?!\\d)", "wrong": "9\\.11 is (bigger|larger|greater)"}
+{"id": "t2-sisters", "q": "Sally has 3 brothers. Each brother has 2 sisters. How many sisters does Sally have?", "expect": "\\b(1|one)\\b", "wrong": "\\b(2|two|6|six) sisters"}
+{"id": "t3-batball", "q": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?", "expect": "(\\$?0?\\.05|5 cents|five cents)", "wrong": "(\\$?0?\\.10|10 cents)(?! more)"}
+{"id": "t4-widgets", "q": "If 5 machines take 5 minutes to make 5 widgets, how long would 100 machines take to make 100 widgets?", "expect": "\\b5 minutes", "wrong": "100 minutes"}
+{"id": "t5-montyclear", "q": "Monty Hall, but the doors are transparent: you can see the car behind door 1. You pick door 1. The host opens door 3 to show a goat and offers a switch to door 2. Should you switch?", "expect": "(don'?t switch|do not switch|stay|keep door 1|no\\b)", "wrong": "(should switch|always switch|yes, switch)"}
+{"id": "t6-apples", "q": "I have 3 apples today. Yesterday I ate one apple. How many apples do I have now?", "expect": "\\b(3|three)\\b", "wrong": "\\b(2|two) apples"}
+{"id": "t7-river", "q": "A farmer and a goat need to cross a river. The boat can carry the farmer and one animal. What's the fewest crossings needed?", "expect": "\\b(1|one|a single)\\b (crossing|trip)", "wrong": "\\b(3|three|5|five|7|seven) (crossings|trips)"}
+{"id": "t8-ko-age", "q": "철수의 나이는 동생의 두 배야. 동생이 4살일 때 철수는 8살이었어. 지금 동생이 10살이면 철수는 몇 살이야?", "expect": "14\\s*살", "wrong": "20\\s*살"}

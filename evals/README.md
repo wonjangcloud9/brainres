@@ -21,6 +21,22 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Does brainres hide reasoning on error-prone prompts? (B31, inconclusive)
+
+The LR-01 risk is that cutting length removes the reasoning a reader needs to catch a wrong answer (Friedman 2026). [`tricky.py`](tricky.py) asks 8 classic trap questions ([`tricky.jsonl`](tricky.jsonl)) on Haiku, with and without brainres. Results are in `results/2026-11-12-tricky-haiku/`.
+
+| | Correct | Reason within the first 2 sentences | Median words |
+|---|---:|---:|---:|
+| baseline | 8 / 8 | 2 / 8 | 56 |
+| brainres | 8 / 8 | **4 / 8** | 80 |
+
+- **Inconclusive on the real question.** Haiku got every trap right in both conditions, so the "wrong answer" case never occurred.
+- **No sign of hidden reasoning.** On these prompts brainres attached a reason to the verdict twice as often ("9.9 is bigger. 9.9 = 9.90, and…").
+- **Two lessons about our own tooling:**
+  - A whole-text regex first marked several correct answers wrong because the explanations mentioned the tempting wrong answer. Correctness is now judged from sentence 1 and was checked by hand.
+  - Prompt t8 was internally contradictory; both conditions correctly pointed this out.
+- **Next (B31b):** use prompts with a real error rate, such as multi-step word problems, date arithmetic and code-output prediction.
+
 ## Real plugin vs the card-append proxy (B29)
 
 All earlier runs appended the card and reminder to the system prompt. This run installs the real plugin (`--plugin-dir`, so hooks fire and the skill can be invoked with the `Skill` and `Read` tools) and asks the 12 prompts × 2 samples. Results are in [`results/combined-plugin.md`](results/combined-plugin.md).

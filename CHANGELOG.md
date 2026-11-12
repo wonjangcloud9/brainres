@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- LR-01 risk check (B31; `evals/tricky.py`, 8 trap questions on Haiku, 16 calls). The result is inconclusive because both conditions answered all 8 correctly, so the "wrong answer" case never occurred. No hidden reasoning was observed: brainres attached a reason within the first 2 sentences in 4 of 8 answers, against 2 of 8 for the baseline. Tooling lessons: a whole-text regex misjudged correct answers, so correctness is now judged from sentence 1 and was verified by hand. Prompt t8 was contradictory. B31b follows with harder prompts.
+
 - **Process fix.** Commit `a139844` was pushed while `validate.sh` failed on a stale README badge. Validation had been piped into `grep`, which hid its exit status. The English README measurement list was split, bringing its score from 94 back to 100. LOOP.md now says to judge validation by exit status. `scripts/install-hooks.sh` offers an optional pre-commit hook for the owner; the loop doesn't install it.
 
 - Opus token puzzle resolved (B28c; 24 calls, with the thinking/visible split). With brainres, Opus writes less and thinks more. Visible output tokens fell by 308 per prompt (−36%, 95% CI −472 to −144). Hidden reasoning rose by 253 (about 2.6×, borderline CI), so total output is about flat. Pooled over both Opus runs: words −80 (−35%) and Brain Score +3.3 (not significant). The READMEs now say plainly that the bill doesn't shrink on Opus.
