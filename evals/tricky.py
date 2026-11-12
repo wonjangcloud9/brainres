@@ -39,7 +39,10 @@ def classify(text: str, item: dict) -> dict:
     body = [l for l in text.splitlines() if l.strip() and not l.startswith("<!--")]
     sents = re.split(r"(?<=[.!?。])\s+", " ".join(body).replace("**", ""))
     first, first_two = (sents[0] if sents else ""), " ".join(sents[:2])
-    correct = bool(re.search(item["expect"], first, re.I)) and not re.search(item["wrong"], first, re.I)
+    region = first
+    if item.get("check") == "first_or_last":  # multi-step problems: answer may come first (brainres) or last (default)
+        region = first + " " + " ".join(body[-3:]).replace("**", "")
+    correct = bool(re.search(item["expect"], region, re.I)) and not re.search(item["wrong"], first, re.I)
     return {"correct": correct, "reason_in_first_two": bool(REASONING.search(first_two)),
             "reasoning_markers": len(REASONING.findall(text)), "words": len(text.split())}
 

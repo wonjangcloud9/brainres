@@ -13,6 +13,19 @@ Research round, 2026-11-12, run because the backlog was empty. The catalogs cove
 - On **Opus**, brainres raised hidden reasoning about 2.6× while visible output fell 36% (B28c). That is the desirable split: think fully, write briefly.
 - On **18 trap prompts on Haiku** (B31/B31b), accuracy was identical with and without brainres (18/18 both). These were mostly single-step traps, though, not long multi-step problems.
 
+## B33a result: multi-step problems on Haiku
+
+[`evals/math15.jsonl`](../evals/math15.jsonl) holds 15 problems with answers computed in Python: tax and discount, train catch-up, tank fill, compound interest, scaling, ages, work rate, time zones, server capacity, mixtures, two Korean word problems, disk growth and dice. Each was run with and without the card (30 calls). Results are in `evals/results/2026-11-12-math15-haiku/`.
+
+| | Correct (first sentence or last 3 lines; spot-checked by hand) | Reason within the first 2 sentences | Median words |
+|---|---:|---:|---:|
+| baseline | 15 / 15 | 12 / 15 | 45 |
+| brainres | 15 / 15 | 6 / 15 | 51 |
+
+- **No accuracy cost was observed.** Both conditions hit the ceiling, though, so this run can't detect a small cost.
+- **One reasoning slip appeared in a brainres explanation.** The time-zone answer said "Seoul is 9 hours ahead of UTC-8"; the correct gap is 17 hours, or 9 hours ahead of UTC. The final answer was still right, and the baseline explanation was correct. One case in 15 is not a pattern, but it's worth watching.
+- **Next (B33b, rescoped):** problems hard enough that Haiku errs (5+ steps), so an accuracy difference can show.
+
 ## Open question → backlog
 
 Does the card lower accuracy on **multi-step** problems for models that reason in the visible answer? B33 tests 30 multi-step word problems with computed answers, with and without the card.

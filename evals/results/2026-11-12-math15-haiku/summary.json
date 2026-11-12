@@ -1,0 +1,246 @@
+{
+  "model": "haiku",
+  "card_sha": "0bd557e38b55",
+  "rows": [
+    {
+      "id": "m01-tax",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 8,
+      "words": 34
+    },
+    {
+      "id": "m01-tax",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 35
+    },
+    {
+      "id": "m02-train",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 7,
+      "words": 84
+    },
+    {
+      "id": "m02-train",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 4,
+      "words": 63
+    },
+    {
+      "id": "m03-tank",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 5,
+      "words": 56
+    },
+    {
+      "id": "m03-tank",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 52
+    },
+    {
+      "id": "m04-interest",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 6,
+      "words": 39
+    },
+    {
+      "id": "m04-interest",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 6,
+      "words": 34
+    },
+    {
+      "id": "m05-flour",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 40
+    },
+    {
+      "id": "m05-flour",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 51
+    },
+    {
+      "id": "m06-ages",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 6,
+      "words": 75
+    },
+    {
+      "id": "m06-ages",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 4,
+      "words": 57
+    },
+    {
+      "id": "m07-work",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 49
+    },
+    {
+      "id": "m07-work",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 49
+    },
+    {
+      "id": "m08-price",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 45
+    },
+    {
+      "id": "m08-price",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 66
+    },
+    {
+      "id": "m09-tz",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 1,
+      "words": 29
+    },
+    {
+      "id": "m09-tz",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 36
+    },
+    {
+      "id": "m10-servers",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 32
+    },
+    {
+      "id": "m10-servers",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 99
+    },
+    {
+      "id": "m11-juice",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 7,
+      "words": 71
+    },
+    {
+      "id": "m11-juice",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 4,
+      "words": 57
+    },
+    {
+      "id": "m12-ko-apples",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 5,
+      "words": 36
+    },
+    {
+      "id": "m12-ko-apples",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 5,
+      "words": 37
+    },
+    {
+      "id": "m13-ko-speed",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 41
+    },
+    {
+      "id": "m13-ko-speed",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 51
+    },
+    {
+      "id": "m14-disk",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 5,
+      "words": 77
+    },
+    {
+      "id": "m14-disk",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 4,
+      "words": 88
+    },
+    {
+      "id": "m15-dice",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 54
+    },
+    {
+      "id": "m15-dice",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 2,
+      "words": 31
+    }
+  ]
+}

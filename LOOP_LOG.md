@@ -50,3 +50,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 14:58 · B31b · 10 harder prompts on Haiku (20 calls): 10/10 both by hand; LR-01 not observable via natural errors; found pre-emptive-refutation artifact → C16
 - 2026-11-12 15:19 · C16 · refute only stated misconceptions (SKILL + correction.md); brainlint preemptive_refutation (catches the B31b artifact, 0 false positives on examples)
 - 2026-11-12 15:38 · research · LLM-side risk of style rules (Tam 2024, Lee 2025, Wu 2025) → research/llm-side-effects.md; B33a/B33b/B32 scored
+- 2026-11-12 15:58 · B33a · 15 multi-step problems on Haiku (30 calls): 15/15 both (ceiling); 1 brainres explanation slip; B33b rescoped to harder problems

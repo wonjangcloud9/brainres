@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Accuracy-cost eval, part 1 (B33a): 15 multi-step word problems on Haiku, with answers computed in Python, 30 calls. Both conditions scored 15/15, so no accuracy cost was observed, but that is a ceiling result. One brainres explanation contained a slip ("Seoul is 9 hours ahead of UTC-8") alongside a correct final answer. `tricky.py` gains a first-sentence-or-last-lines check for multi-step sets. B33b is rescoped to harder problems.
+
 - Research round on LLM-side risk (`research/llm-side-effects.md`). Strict format restrictions degrade LLM reasoning (Tam 2024), and "be concise" prompts trade accuracy for length (Lee 2025). Our evals have shown no accuracy loss on 18 single-step traps, and on Opus brainres moved effort into hidden reasoning. Multi-step problems are untested. New backlog: B33a/B33b (accuracy cost on 30 multi-step problems) and B32 (agentic coding check).
 
 - C16: the refutation rules (SKILL.md, correction.md) now apply only to misconceptions the user stated or implied, and never to opening by knocking down an answer nobody proposed (#52). A new `brainlint --question` check, `preemptive_refutation`, flags sentence-1 openings like "X is wrong." / "X는 틀렸어요" when X isn't in the question. It catches the real Haiku answer from B31b and produces no false positives on the 12 example files. 1 new test.
