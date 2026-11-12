@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- The backlog was empty, so new items came from the measurements (LOOP direction) rather than new research.
+  - **K1 (8):** `wall_of_text` fires on numbered step lists that have no blank lines between items. Every stress answer we checked that was flagged as a wall was a 5-item list. This needs a check fix and re-scores.
+  - **K2 (4):** Korean bold density appears over-penalised. Korean is 12 of the 16 brainres bold flags, and the bold threshold ignores the eojeol-vs-word ratio that brainlint's other thresholds already apply.
+  - **K3 (0.75):** the hidden-reasoning cost, to examine only once its noise has been measured.
+
 - **Card ablation complete (V3b, 30 calls): every card line stays.**
   - **G3 (structure):** removing it scored −2.3 and raised walls of text, list overload, outros, hedging and long sentences.
   - **G4 (precision and style):** removing it raised bold overuse from 1 to 3 and long sentences from 0 to 3.
