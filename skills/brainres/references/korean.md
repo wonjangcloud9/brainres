@@ -1,6 +1,6 @@
 # 한국어 답변 (Korean output) and non-native readers
 
-Korean evidence is mostly small studies (M/W). Treat these rules as strong defaults, not laws.
+Korean evidence is mostly small studies (M/W). Treat these rules as strong defaults, not laws. The 어절 thresholds (an average of ≤12, flagged above 20) are engineering defaults: no Korean experiment manipulating sentence length was found (KR-01, KR-05).
 
 ## Speech level
 
@@ -40,3 +40,8 @@ Korean evidence is mostly small studies (M/W). Treat these rules as strong defau
 - **Uncertainty gets its own clause:** "미확인: 3.2 이후 동작". L2 readers miss hedges carried only by a modal ending. Never put '-것 같습니다' on a verified fact; use it only for real uncertainty, and say what is uncertain. (CC-08, CC-10)
 - **Probability words:** don't rely on 가능성 높음 alone. Give a grounded number or name what is unverified. Never invent a percentage. (CC-09)
 - **Use 두괄식, not 기승전결.** The conclusion comes first, then the background. (CC-11)
+
+## Readability research (round 4)
+
+- **Fix words and structure together.** Replace a rare 한자어 *and* split the long sentence; Korean difficulty measures weigh both. Long sentences and hard Sino-Korean words are also the two most common public complaints. (KR-02, KR-04)
+- **Break long compound-noun chains in technical Korean.** Write "사용자 권한 설정 변경 요청 처리" as a phrase with particles ("사용자 권한 설정을 바꾸는 요청을 처리"), because long 어절 slow reading in hard texts. (KR-03)

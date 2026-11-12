@@ -5,9 +5,9 @@
 [English](README.md) · 한국어
 
 `caveman`은 Claude를 짧게 만들고, `humanizer`는 사람처럼 들리게 만듭니다.
-**brainres는 이해되게 만듭니다.** 인지과학, 심리언어학, 의사결정 과학, 인간–AI 신뢰 연구에서 **781개 연구 결과**를 검토했습니다. 각 결과는 글쓰기 규칙으로 적용하거나, 이유를 적고 제외했습니다.
+**brainres는 이해되게 만듭니다.** 인지과학, 심리언어학, 의사결정 과학, 인간–AI 신뢰 연구에서 **786개 연구 결과**를 검토했습니다. 각 결과는 글쓰기 규칙으로 적용하거나, 이유를 적고 제외했습니다.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-644%2F644-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-781-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-648%2F648-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-786-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
 ---
 
@@ -214,12 +214,12 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 
 ## 감이 아니라 근거
 
-9개 카탈로그에서 연구 결과 **781개**를 검토했습니다. 각 결과에는 출처, 근거 등급, 그리고 규칙 또는 제외 이유가 붙어 있습니다.
+10개 카탈로그에서 연구 결과 **786개**를 검토했습니다. 각 결과에는 출처, 근거 등급, 그리고 규칙 또는 제외 이유가 붙어 있습니다.
 
 | 구분 | 개수 |
 |---|---:|
-| 적용 대상 (모두 스킬 규칙이 인용) | 644 / 644 |
-| 이유를 적고 제외 (텍스트와 무관, 재현 실패, 뉴로미스, 조작적 기법) | 137 |
+| 적용 대상 (모두 스킬 규칙이 인용) | 648 / 648 |
+| 이유를 적고 제외 (텍스트와 무관, 재현 실패, 뉴로미스, 조작적 기법) | 138 |
 
 분야끼리 겹치는 결과는 한 번만 셉니다. 현황은 [`research/coverage.md`](research/coverage.md)에 있고, 적용 개수가 줄어드는 커밋은 검증에서 막힙니다.
 

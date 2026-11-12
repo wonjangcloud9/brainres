@@ -6,6 +6,9 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| B34 | Korean eval set: 12 Korean prompts (debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal 합쇼체 doc…) × {baseline, brainres} — the Korean effect is measured on only 4 prompts so far | T | 5 | 2 | 0.8 | 1 | **8** | todo |
+| B36 | Benchmark study 2 (pre-register before data): bullets vs prose for the same content — the gap no published study fills (catalog-round3) | T | 8 | 2 | 0.5 | 2 | **4** | todo |
+| B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |

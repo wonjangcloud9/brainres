@@ -4,7 +4,7 @@ Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file
 
 - [ ] ISO 24495-1:2023 plain-language standard + plainlanguage.gov guidelines → rule gaps?
 - [ ] W3C Cognitive Accessibility (COGA) "Making Content Usable" + dyslexia style guides (BDA)
-- [ ] Korean readability research: 국립국어원 쉬운 공공언어, 문장 길이·어절 연구, 번역투 연구
+- [x] Korean readability research → catalog-round4.md (2026-11-12): no sentence-length comprehension experiment found; thresholds labelled as defaults
 - [x] Human studies of LLM answer formatting 2024–2026 (round 3 → catalog-round3.md; no bullets-vs-prose comprehension study exists yet)
 - [x] Eye-tracking on LLM answers (round 3: OASST-ETC, Chang 2026; no position-of-attention finding verified)
 - [ ] Program comprehension research for code explanations (beacons, chunking in code reading)

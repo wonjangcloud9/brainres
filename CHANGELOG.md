@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Research round 4, on Korean readability (`research/catalog-round4.md`): 5 findings, 4 of them applied in korean.md. The key gap: no Korean experiment manipulates sentence length in 어절, so our thresholds (an average of ≤12, flagged above 20) are now labelled engineering defaults. New Korean rules: fix rare 한자어 and long sentences together, and break long compound-noun chains. Coverage is 648/648 (786 reviewed). New backlog: B34 (Korean eval set), B36 (benchmark study 2: bullets vs prose), B35 (scheduled re-scan).
+
 - Agentic coding check (B32): `evals/agentic.py` runs 6 small failing-test tasks through Claude Code on Sonnet (Read/Edit/Write/Glob/Grep, no Bash), with and without the plugin. The harness runs the tests itself. Both conditions passed 6/6, modified 0 test files, and changed a median of 7 lines. The final report was about the same length (93 vs 88 words), unlike the 27% cut on chat answers. Coding outcomes are unchanged.
 
 - Accuracy-cost eval, part 2 (B33b): 15 harder problems on Haiku (`evals/hard15.jsonl`, 30 calls) scored 15/15 in both conditions, with hard items checked by hand. Across all 48 trap and multi-step problems the score is 48/48 with and without brainres, so no accuracy cost is detectable (a ceiling result). The "brevity applies to the final answer" card line was not added, since there is no evidence it's needed. Both READMEs gain an accuracy line.

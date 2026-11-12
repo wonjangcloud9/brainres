@@ -1,6 +1,6 @@
 ---
 name: brainres
-description: Answers shaped for how people read — answer first, chunked, calibrated, honest (781 cognitive-science findings)
+description: Answers shaped for how people read — answer first, chunked, calibrated, honest (786 cognitive-science findings)
 keep-coding-instructions: true
 ---
 
