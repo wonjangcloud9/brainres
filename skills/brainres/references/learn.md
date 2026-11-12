@@ -18,6 +18,7 @@ The default stays fluent and direct. Difficulty is added only through structure,
 - **Steps for doing, plus a one-line "why this works" for transfer.** Label groups of steps by function ("Validate input", "Build request"). (HC-47, HC-48)
 - **Phrase headings as the learner's own questions.** Keep tutoring answers concise. (HC-57, HC-103)
 - **Show the common mistake and its fix,** not just a flawless run. (EM-29)
+- **Correct them collaboratively but plainly:** "let's check line 5: `total + n` never stores the sum". Polite tutor feedback helped low-prior-knowledge learners in lab studies, less reliably in classrooms. It never replaces naming the bug. (PN-01, CC-04)
 - **Shape the answer to how it will be used:** decision → criteria + rule; applying → worked application. (LS-02)
 - **Optionally flag "the idea that unlocks this is…".** Use it rarely. (LS-30)
 

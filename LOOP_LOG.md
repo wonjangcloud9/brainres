@@ -65,3 +65,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 19:38 · B39 · learner triggers in description: invocation 0/8 → 1/8, no behaviour change → reverted (20 calls); B40 situation-aware reminder scored 6
 - 2026-11-12 20:00 · B40 · situation-aware reminder: learner line kept (predict-first 0/8 → 8/8, own-line fix 6/8 → 8/8, +22% words); math line dropped (6/6 both); C18 closed; 29 calls
 - 2026-11-12 20:21 · B41 · emergency line kept: action-first 3/8 → 6/8, harm up top 4/8 → 6/8, DROP TABLE warning lost 2/2 → 0/2; 16 calls
+- 2026-11-12 20:40 · research round 6 · plain language deeper pass: mostly covered; #18 effect sizes verified; PN-01 (politeness, mixed) + PN-02 (Trudeau) added; B43/B42 scored (no-call re-reads)

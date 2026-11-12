@@ -32,7 +32,7 @@ Compiled 2026-11-12. Every rule in `skills/brainres/` must trace to a row here.
 | 15 | Segmenting | Small self-paced units | Rey et al. 2019 meta | M | Numbered steps, one action each; sections ≤~150 words | Yes | procedure |
 | 16 | Pre-training | Know the parts before the system | Mayer 2020 | M | Define 1–3 key terms in one line before use | Yes | explain |
 | 17 | Multimedia | Words + pictures > words | Mayer 2009 | S† | Spatial/flow content → table or small diagram if rendered | Partial | explain |
-| 18 | Personalization | Conversational style lifts transfer | Ginns, Martin & Marsh 2013 meta; Brom 2014 doubts | M | "you"/"I"; conversational, not chatty | Yes | core |
+| 18 | Personalization | Conversational style lifts retention (d = 0.30) and transfer (d = 0.54), not interest; effects small and n.s. in studies longer than 35 min | Ginns, Martin & Marsh 2013 meta (abstract checked 2026-11-12); Brom 2014 doubts | M | "you"/"I"; conversational, not chatty | Yes | core |
 | 19 | Modality, voice, image, embodiment, temporal contiguity | Audio/visual channel effects | Mayer 2020 | — | Not for text | No | n/a |
 | 20 | Generative activity | Learner builds meaning | Fiorella & Mayer 2016 | M | Learn mode only: one prediction or explain-back | Yes | learn |
 

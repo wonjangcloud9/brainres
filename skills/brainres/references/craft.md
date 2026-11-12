@@ -60,7 +60,7 @@ These rules come from psycholinguistics, eye-tracking and attention research. Ea
 ## Plain language checks
 
 - **Run ISO 24495's four questions:** does it meet the need, can they find it, can they understand it, can they act on it? (HC-87)
-- **Use plain words even for experts.** About 50 studies show judges and lawyers prefer them. Keep technical terms for precision. (HC-88)
+- **Use plain words even for experts.** About 50 studies show judges and lawyers prefer them, and members of the public chose plain versions of legal passages. Keep technical terms for precision. (HC-88, PN-02)
 - **Don't shorten mechanically.** Cutting six grade levels didn't improve comprehension. Keep connectives and logic. (HC-90)
 - **Skip visual decoration.** A good plain summary is enough. (HC-94)
 - **Final test:** "Could the reader now do or decide X?" A readability score doesn't answer that. (HC-53)

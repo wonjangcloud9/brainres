@@ -5,9 +5,9 @@
 English · [한국어](README.ko.md)
 
 `caveman` makes Claude shorter. `humanizer` makes it sound human.
-**brainres makes it understandable.** It reviews **793 findings** from cognitive science, psycholinguistics, decision science and human–AI trust research. Each finding is either applied as a writing rule or excluded with a stated reason.
+**brainres makes it understandable.** It reviews **795 findings** from cognitive science, psycholinguistics, decision science and human–AI trust research. Each finding is either applied as a writing rule or excluded with a stated reason.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-654%2F654-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-793-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-656%2F656-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-795-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
 ---
 
@@ -216,7 +216,7 @@ The open question is whether people actually understand brainres answers better.
 |---|---|---|
 | terse / caveman-style skills | fewer output tokens | token counts |
 | humanizer / anti-slop skills | not sounding like AI | Wikipedia's *Signs of AI writing* |
-| **brainres** | **understanding per second of reading** | **793 findings reviewed, each rated for evidence strength** |
+| **brainres** | **understanding per second of reading** | **795 findings reviewed, each rated for evidence strength** |
 
 brainres keeps what those projects got right: no preamble, protect code and numbers, full sentences for safety warnings. It adds what they don't cover: chunking, define-before-use, reader expertise, calibrated uncertainty, causal explanations, anti-sycophancy, stress-aware procedures, and Korean and L2 reading research. The survey is in [`research/trending-skills.md`](research/trending-skills.md).
 
@@ -237,8 +237,9 @@ Every finding in [`research/`](research/) has a source, an evidence grade (stron
 | [Round 3: how people read LLM answers (2025–2026)](research/catalog-round3.md) | 6 |
 | [Round 4: Korean readability](research/catalog-round4.md) | 5 |
 | [Round 5: how people use LLM coding help](research/catalog-round5.md) | 7 |
+| [Round 6: plain language and politeness](research/catalog-round6.md) | 2 |
 
-The **[coverage ledger](research/coverage.md)** shows 654 applicable findings, all 654 cited by a rule in the skill, and 139 excluded. Exclusions fall into four groups: not applicable to text, failed replication, neuromyth, or manipulative. Cross-domain duplicates are counted once. `validate.sh` blocks any commit that lowers the applied count.
+The **[coverage ledger](research/coverage.md)** shows 656 applicable findings, all 656 cited by a rule in the skill, and 139 excluded. Exclusions fall into four groups: not applicable to text, failed replication, neuromyth, or manipulative. Cross-domain duplicates are counted once. `validate.sh` blocks any commit that lowers the applied count.
 
 The always-on card stays small (498 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
 

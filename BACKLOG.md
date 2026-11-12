@@ -6,6 +6,8 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| B43 | Agentic final message check: code.md says agentic work ends with "what changed, what wasn't done, how to verify" (HC-35), but references rarely load (B38/B39). Re-read the B32 agentic final messages (no new calls) and score each for the three parts; if the plugin misses them, test an end-of-task line (situation hook can't see "end of task", so the candidate is the card or the base reminder) | Q | 8 | 1 | 0.5 | 1 | **4** | todo |
+| B42 | Decision answers without the skill: do decision prompts (03-decision, k03, k12) already follow decide.md (recommendation + deciding factor first, options as a table, when the other choice wins)? Score existing eval outputs (no new calls) before considering a decision situation line | Q | 5 | 1 | 0.5 | 1 | 2.5 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |

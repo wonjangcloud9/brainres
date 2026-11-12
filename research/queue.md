@@ -2,7 +2,7 @@
 
 Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file when done.
 
-- [ ] ISO 24495-1:2023 plain-language standard + plainlanguage.gov guidelines → rule gaps? (first pass: HC-87; deeper pass open)
+- [ ] ISO 24495-1:2023 plain-language standard + plainlanguage.gov guidelines → rule gaps? (first pass: HC-87; round 6 found personalization/plain-for-experts already covered and added PN-01/02; the ISO text itself is paywalled and still unread)
 - [ ] W3C Cognitive Accessibility (COGA) "Making Content Usable" + dyslexia style guides (BDA) (first pass: AN-90; deeper pass open)
 - [x] Korean readability research → catalog-round4.md (2026-11-12): no sentence-length comprehension experiment found; thresholds labelled as defaults
 - [x] Human studies of LLM answer formatting 2024–2026 (round 3 → catalog-round3.md; no bullets-vs-prose comprehension study exists yet)

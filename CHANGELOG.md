@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Research round 6, a deeper pass on plain language (`research/catalog-round6.md`). Most of it was already covered, by #18 (personalization), HC-88 (plain language for experts) and #57 (nominalizations). #18 now carries verified effect sizes: retention d = 0.30, transfer d = 0.54, no reliable effect beyond 35 minutes. Two findings are new: PN-01, the politeness effect in tutoring (mixed evidence, added to learn.md as "correct collaboratively but plainly"), and PN-02, Trudeau 2012 (supports HC-88). Coverage is 656/656 (795 reviewed). New backlog: B43 (agentic final-message check, 4) and B42 (decision answers without the skill, 2.5). Both re-read existing outputs, so they cost no new calls.
+
 - Emergency situation line (B41): the reminder hook now also adds "Emergency: the single next action first; if the habitual move is harmful, say so up top; ≤5 steps, then why" when a prompt shows a stress or emergency signal (urgent, outage, "by accident", DROP TABLE, 급해, 망했, 날아갔, 실수로…).
   - Measured with the real plugin, off vs on, 16 calls: answers whose sentence 1 is the next action rose from 3/8 to 6/8, and answers flagging a harmful habitual move before the steps rose from 4/8 to 6/8.
   - One loss: on DROP TABLE, the up-top write warning fell from 2/2 to 0/2.
