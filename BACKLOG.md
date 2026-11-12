@@ -6,6 +6,19 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| D1 | **Refresh the repo About text** (owner approved 2026-11-13). It still says "10 rules from 90 cognitive-science findings", and every visitor sees it first. `gh repo edit --description`, updating to the current facts (801 findings reviewed, 80-prompt result) | G | 10 | 1 | 0.8 | 0.1 | **80** | todo |
+| D3 | **One-line install with `npx skills add`** (Vercel skills.sh, an open Agent Skills installer for Claude Code, Codex, Cursor and others, with an install leaderboard). Check that the repo layout is found (`npx skills add wonjangcloud9/brainres --list`), fix the layout if needed, and add the line to both READMEs' install sections | G | 8 | 2 | 0.8 | 0.5 | **25.6** | todo |
+| D4 | **End-to-end install test from a clean environment:** in a temp HOME, run `claude plugin marketplace add` and install from GitHub, then confirm in one `claude -p` call that the SessionStart card is injected. A broken install wastes every launch effort. Add a scripted, opt-in check (`BRAINRES_NET_CHECKS=1`) | Q | 10 | 2 | 0.5 | 0.5 | **20** | todo |
+| D5a | **Draft submission entries** for the curated lists in `launch/submissions.md`: awesome-claude-code, ComposioHQ/awesome-claude-plugins, claudemarketplaces.com and anthropics/claude-plugins-community. One-line descriptions in each list's style, plus the checklist each requires. The owner submits them (the loop never opens PRs elsewhere) | G | 8 | 2 | 0.5 | 0.5 | **16** | todo |
+| D7 | **Demo GIF on the first screen:** the same question answered by default Claude and with brainres, rendered from real saved suite answers (no new calls), as a looping GIF or animated SVG under 1 MB, in both READMEs | G | 8 | 2 | 0.5 | 1 | **8** | todo |
+| D9 | **claude.ai and ChatGPT install guide:** a short section on uploading `dist/brainres-skill.zip` as a claude.ai Skill and pasting `dist/system-prompt.md` into custom instructions or a GPT, with what you lose (no hooks, no situation lines) | G | 6 | 1 | 0.5 | 0.5 | **6** | todo |
+| D10 | **Tidy the repo root** (owner approved 2026-11-13): move LOOP.md, LOOP_LOG.md and BACKLOG.md into `docs/dev/`, fix every link and script path (validate.sh, CI and the README development section), and update the loop's cron prompt path | G | 10 | 0.5 | 0.5 | 0.5 | **5** | todo |
+| D11 | **"Hard-to-read answer" issue template:** users paste a prompt and the answer that read badly, and the loop turns them into suite prompts, so real-world prompts feed the measurements | G | 3 | 1 | 0.5 | 0.5 | 3 | todo |
+| D12 | **Slash commands** (`commands/score.md` → `/brainres:score <file>`, `/brainres:rewrite`) so the scorer is discoverable inside Claude Code | F | 6 | 1 | 0.5 | 1 | 3 | todo |
+| D2 | Post the launch drafts (HN, Reddit, GeekNews, X); they carry the current numbers | G | 10 | 3 | 0.5 | 0.5 | 30 | owner |
+| D5 | Submit D5a's entries to the curated lists | G | 8 | 2 | 0.5 | 0.5 | 16 | owner (after D5a) |
+| D6 | Enable GitHub Pages (Settings → Pages → main, root), which makes the playground and benchmark pages live | G | 5 | 1 | 0.8 | 0.25 | 16 | owner |
+| D8 | Tag v0.2.0 as a GitHub release and tick "Publish this Action to the GitHub Marketplace" | G | 3 | 1 | 0.5 | 0.25 | 6 | owner |
 | M3 | Coverage on Haiku: blind-mark M1's 15 pairs against the frozen suite key facts (5 calls). Does Haiku lose more detail than Sonnet (−1.8 pp)? Blocked on M1 | T | 4 | 1 | 0.5 | 0.5 | **4** | todo |
 | M2 | Suite on Opus: the same V1a subset on Opus (30 calls, costlier). Re-check the 12-prompt finding that Opus's Brain Score gain isn't significant and that its thinking rises about 2.6× | T | 3 | 1 | 0.8 | 1 | 2.4 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |

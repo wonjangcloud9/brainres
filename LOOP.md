@@ -1,7 +1,15 @@
 # LOOP.md — autonomous iteration protocol
 
-This file drives the 20-minute improvement loop. One run = one iteration.
+This file drives the 30-minute improvement loop. One run = one iteration.
 Keep each iteration small enough to finish, verify, commit and push in ~15 minutes.
+
+## Direction (owner, 2026-11-13, second update): distribution and usability first
+
+The measure-and-prune phase is done: an 80-prompt suite, coverage, ablation and three brainlint fixes. The bottleneck now is that nobody can find the project: 0 stars and 3 unique visitors. The loop works the D-series items in RICE order (`Type G` = growth): install paths, first-screen clarity, submission drafts and repo tidiness.
+
+- **Items marked `owner`** need the owner (posting, Pages, releases, submitting to lists). The loop never does them and never picks them.
+- **Outward-facing exception:** on 2026-11-13 the owner approved updating **this repo's own GitHub About text and topics** (D1). Nothing else outside this repo changes. Posting, PRs or issues elsewhere and new repos remain owner-only.
+- **Measurement is still the rule for behaviour changes:** any change to the card or hooks needs a before/after on the suite, with the rule stated in advance.
 
 ## Direction (owner, 2026-11-13): measure outputs, verify and prune
 

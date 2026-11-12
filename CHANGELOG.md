@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+- **New direction (owner, 2026-11-13): distribution and usability first.** The repo has 0 stars and 3 unique visitors, so measuring more won't help until people can find and install it. The loop now runs every 30 minutes and works the D-series in RICE order:
+  - D1 About text (80)
+  - D3 one-line `npx skills add` install (25.6)
+  - D4 clean-environment install test (20)
+  - D5a curated-list submission drafts (16)
+  - D7 demo GIF (8)
+  - D9 claude.ai/ChatGPT guide (6)
+  - D10 root tidy (5)
+  - D11 bad-answer issue template (3)
+  - D12 slash commands (3)
+
+  Launch posts, Pages, the release and list submissions are owner items. LOOP.md records that the owner approved editing this repo's own About text.
+
 - Haiku on the suite (M1, 30 calls): on 14 V1a prompts, after one debug prompt timed out in both conditions, Haiku answers were 31% shorter (CI −97 to −16 words per prompt) and visible tokens fell by 186. The Brain Score gain was +3.0 (CI −0.3 to +6.3, not significant at n = 14). On the same prompts Sonnet was 27% shorter with +4.8. Both READMEs' cross-model lines now include this. M3 (Haiku coverage) is unblocked.
 
 - The backlog was empty, so new items came from a gap in the measurements: the 80-prompt suite has run only on Sonnet, and the README's cross-model lines still come from the old 12-prompt set.
