@@ -1,0 +1,167 @@
+{
+  "model": "haiku",
+  "card_sha": "0bd557e38b55",
+  "rows": [
+    {
+      "id": "h01-weekday",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 6
+    },
+    {
+      "id": "h01-weekday",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 15
+    },
+    {
+      "id": "h02-plus100",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 1,
+      "words": 39
+    },
+    {
+      "id": "h02-plus100",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 32
+    },
+    {
+      "id": "h03-weekday99",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 6
+    },
+    {
+      "id": "h03-weekday99",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 8
+    },
+    {
+      "id": "h04-letters",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 8
+    },
+    {
+      "id": "h04-letters",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 9
+    },
+    {
+      "id": "h05-mult",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 23
+    },
+    {
+      "id": "h05-mult",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 31
+    },
+    {
+      "id": "h06-alias",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 7,
+      "words": 83
+    },
+    {
+      "id": "h06-alias",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 49
+    },
+    {
+      "id": "h07-listmult",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 72
+    },
+    {
+      "id": "h07-listmult",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 66,
+      "manual_override": "correct output [[1, 0], [1, 0]] given in sentence 2; sentence 1 pre-emptively refuted an answer nobody proposed"
+    },
+    {
+      "id": "h08-jssort",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 59
+    },
+    {
+      "id": "h08-jssort",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 68
+    },
+    {
+      "id": "h09-pens",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 94
+    },
+    {
+      "id": "h09-pens",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 64
+    },
+    {
+      "id": "h10-days",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 2,
+      "words": 42
+    },
+    {
+      "id": "h10-days",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 30
+    }
+  ]
+}

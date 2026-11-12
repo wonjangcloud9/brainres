@@ -1,0 +1,10 @@
+{"id": "h01-weekday", "q": "What day of the week was July 4, 2023? Answer without using any tools.", "expect": "tuesday", "wrong": "(monday|wednesday|thursday|friday|saturday|sunday)"}
+{"id": "h02-plus100", "q": "What date is exactly 100 days after February 15, 2024?", "expect": "may 25", "wrong": "may (2[0-46-9]|1\\d|3\\d)|june|april"}
+{"id": "h03-weekday99", "q": "What day of the week was December 31, 1999?", "expect": "friday", "wrong": "(monday|tuesday|wednesday|thursday|saturday|sunday)"}
+{"id": "h04-letters", "q": "How many times does the letter e appear in the word nevertheless?", "expect": "\\b(4|four)\\b", "wrong": "\\b(3|three|5|five)\\b"}
+{"id": "h05-mult", "q": "What is 347 × 286? Do it in your head.", "expect": "99,?242", "wrong": "\\b(?!99,?242)\\d{2},?\\d{3}\\b"}
+{"id": "h06-alias", "q": "In Python: x = [1, 2, 3]; y = x; y += [4]; print(len(x)). What is printed?", "expect": "\\b4\\b", "wrong": "\\b3\\b"}
+{"id": "h07-listmult", "q": "In Python: a = [[0] * 2] * 2; a[0][0] = 1; print(a). What is printed?", "expect": "\\[\\[1, 0\\], \\[1, 0\\]\\]", "wrong": "\\[\\[1, 0\\], \\[0, 0\\]\\]"}
+{"id": "h08-jssort", "q": "In JavaScript, what does [10, 1, 2].sort() return?", "expect": "\\[1, 10, 2\\]", "wrong": "\\[1, 2, 10\\]"}
+{"id": "h09-pens", "q": "Pens cost $2 for a pack of 3, and single pens cost $0.70 each. What is the cheapest way to buy exactly 47 pens, and what does it cost?", "expect": "31\\.40|31\\.4\\b", "wrong": "\\$3[02]\\.\\d"}
+{"id": "h10-days", "q": "How many days are there from January 31, 2024 to March 1, 2024 (not counting the start day)?", "expect": "\\b30\\b", "wrong": "\\b(29|31|28)\\b"}

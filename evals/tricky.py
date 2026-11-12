@@ -26,8 +26,11 @@ import run  # noqa: E402  (reuses ask() and the brainres prompt)
 REASONING = re.compile(r"\b(because|since|so|therefore|thus|which means|that means)\b|=|때문|그래서|따라서|이므로|^\s*\d+[.)]\s", re.I | re.M)
 
 
+SET = "tricky.jsonl"
+
+
 def load_items() -> list[dict]:
-    return [json.loads(l) for l in (ROOT / "evals/tricky.jsonl").read_text().splitlines() if l.strip()]
+    return [json.loads(l) for l in (ROOT / "evals" / SET).read_text().splitlines() if l.strip()]
 
 
 def classify(text: str, item: dict) -> dict:
@@ -68,12 +71,15 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="haiku")
     ap.add_argument("--rescore", help="re-score an existing results folder without new calls")
+    ap.add_argument("--set", default="tricky.jsonl", help="prompt file in evals/ (tricky.jsonl, tricky2.jsonl)")
     a = ap.parse_args()
+    global SET
+    SET = a.set
     if a.rescore:
         return rescore(Path(a.rescore))
     items = load_items()
     system = run.brainres_prompt()
-    out_dir = ROOT / "evals/results" / f"{dt.date.today().isoformat()}-tricky-{a.model}"
+    out_dir = ROOT / "evals/results" / f"{dt.date.today().isoformat()}-{Path(a.set).stem}-{a.model}"
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = []
     with tempfile.TemporaryDirectory() as empty, cf.ThreadPoolExecutor(6) as ex:

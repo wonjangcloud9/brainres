@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- B31b: 10 harder prompts on Haiku, covering dates, letter counts, multiplication, Python aliasing, JS sort, pricing and leap years (20 calls). Checked by hand, Haiku answered all 10 correctly in both conditions. After 18 trap prompts, natural errors don't occur often enough to test the LR-01 risk, which would need answers that are wrong by construction. Reasoning visibility with brainres was equal or better. One artifact surfaced: an answer pre-emptively refuted a wrong answer nobody had proposed. This is logged as C16. `tricky.py --set` selects the prompt file.
+
 - LR-01 risk check (B31; `evals/tricky.py`, 8 trap questions on Haiku, 16 calls). The result is inconclusive because both conditions answered all 8 correctly, so the "wrong answer" case never occurred. No hidden reasoning was observed: brainres attached a reason within the first 2 sentences in 4 of 8 answers, against 2 of 8 for the baseline. Tooling lessons: a whole-text regex misjudged correct answers, so correctness is now judged from sentence 1 and was verified by hand. Prompt t8 was contradictory. B31b follows with harder prompts.
 
 - **Process fix.** Commit `a139844` was pushed while `validate.sh` failed on a stale README badge. Validation had been piped into `grep`, which hid its exit status. The English README measurement list was split, bringing its score from 94 back to 100. LOOP.md now says to judge validation by exit status. `scripts/install-hooks.sh` offers an optional pre-commit hook for the owner; the loop doesn't install it.

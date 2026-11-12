@@ -6,7 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| B31b | Error-prone prompt set with a real error rate (multi-step word problems, date arithmetic, code-output prediction) so the wrong-answer case actually occurs; re-test reasoning visibility | Q | 5 | 2 | 0.5 | 1 | **5** | todo |
+| C16 | Refute a misconception only if the user stated or implied it; never open by naming a wrong answer nobody proposed (#52 illusory truth). Add to correction.md + a brainlint check for openings like "X is wrong." | Q | 2 | 1 | 0.5 | 0.5 | **2** | todo |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -55,6 +55,7 @@ The loop always takes the highest-scoring `todo` item.
 | B29 | Real-plugin eval across all 12 prompts (`--plugin-dir`, hooks + skill invocation) to validate the card-append proxy | T | 8 | 1 | 0.5 | 1 | 4 | done 2026-11-12 (proxy validated: −54 words, +5.0 score; skill invoked 1/24) |
 | B28c | Re-run Opus with thinking/visible token split (run.py now records it) to test whether the card raises hidden reasoning | T | 5 | 0.5 | 1.0 | 1 | 2.5 | done 2026-11-12 (visible −36%, thinking ×2.6, total flat) |
 | B31 | LR-01 risk check: prompts where models often err; does brainres hide reasoning when wrong? Measure reasoning-step visibility | Q | 5 | 2 | 0.5 | 2 | 2.5 | done 2026-11-12 — inconclusive (Haiku 8/8 correct both; brainres gave reasons in first 2 sentences 4/8 vs 2/8) |
+| B31b | Error-prone prompt set with a real error rate (multi-step word problems, date arithmetic, code-output prediction) so the wrong-answer case actually occurs; re-test reasoning visibility | Q | 5 | 2 | 0.5 | 1 | 5 | done 2026-11-12 — Haiku 10/10 both (hand-checked); LR-01 not observable via natural errors |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

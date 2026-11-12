@@ -35,7 +35,9 @@ The LR-01 risk is that cutting length removes the reasoning a reader needs to ca
 - **Two lessons about our own tooling:**
   - A whole-text regex first marked several correct answers wrong because the explanations mentioned the tempting wrong answer. Correctness is now judged from sentence 1 and was checked by hand.
   - Prompt t8 was internally contradictory; both conditions correctly pointed this out.
-- **Next (B31b):** use prompts with a real error rate, such as multi-step word problems, date arithmetic and code-output prediction.
+- **B31b followed up** with 10 harder prompts ([`tricky2.jsonl`](tricky2.jsonl)): weekday and date arithmetic, letter counting, 3-digit multiplication, Python aliasing, `[[0]*2]*2`, JS `.sort()`, a pens-pricing problem and leap-year day counts. Results are in `results/2026-11-12-tricky2-haiku/`. Checked by hand, Haiku was **10/10 correct in both conditions** again. Reason within the first 2 sentences was 5/10 for both, and median words were 42 (baseline) and 32 (brainres).
+- **Conclusion after 18 prompts:** current models made no natural errors on these traps, so the LR-01 risk can't be observed this way. Testing it needs answers that are wrong by construction, as in Friedman 2026. Where it could be measured, reasoning visibility was equal (5/10) or better (4/8 vs 2/8) with brainres.
+- **A small brainres artifact:** one answer opened with "[[0, 0], [0, 0]] is wrong.", refuting an answer nobody had proposed. Repeating a myth the user never held can make it stick (#52). Logged as C16.
 
 ## Real plugin vs the card-append proxy (B29)
 
