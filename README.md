@@ -192,7 +192,7 @@ What this shows:
 - **The real plugin matches the eval proxy:** −54 words and +5.0 Brain Score per prompt. The always-on card does the work, and the full skill was auto-invoked in only 1 of 24 answers.
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
-Accuracy: across 48 trap and multi-step math problems on Haiku, brainres and baseline both scored 48/48. There is no detectable accuracy cost, but this is a ceiling result ([details](research/llm-side-effects.md)).
+Accuracy: across 48 trap and multi-step math problems on Haiku, brainres and baseline both scored 48/48. On 6 agentic coding tasks in Claude Code, both passed 6/6 with identical diff sizes. There is no detectable accuracy cost, but this is a ceiling result ([details](research/llm-side-effects.md)).
 
 Across models ([per-model table](evals/README.md)):
 

@@ -52,3 +52,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 15:38 · research · LLM-side risk of style rules (Tam 2024, Lee 2025, Wu 2025) → research/llm-side-effects.md; B33a/B33b/B32 scored
 - 2026-11-12 15:58 · B33a · 15 multi-step problems on Haiku (30 calls): 15/15 both (ceiling); 1 brainres explanation slip; B33b rescoped to harder problems
 - 2026-11-12 16:18 · B33b · 15 harder problems on Haiku (30 calls): 15/15 both; 48/48 across all sets — no detectable accuracy cost (ceiling); card line not added
+- 2026-11-12 16:40 · B32 · agentic coding (6 tasks × 2, Sonnet, no Bash): 6/6 pass both, same diff size, final report not shorter

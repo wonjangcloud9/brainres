@@ -21,6 +21,18 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Agentic coding: does the plugin change outcomes? (B32)
+
+[`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.
+
+| | Tests pass | Test files modified | Median lines changed | Median words in final message |
+|---|---:|---:|---:|---:|
+| baseline | 6 / 6 | 0 | 7 | 93 |
+| plugin | 6 / 6 | 0 | 7 | 88 |
+
+- **No change in coding outcomes:** same pass rate, same diff size, and the tests were left alone in both conditions.
+- **The final report wasn't shorter.** That contrasts with the 27% cut on chat answers. Claude Code's own agentic reporting conventions seem to dominate there. The sample is small (1 run per task).
+
 ## Does brainres hide reasoning on error-prone prompts? (B31, inconclusive)
 
 The LR-01 risk is that cutting length removes the reasoning a reader needs to catch a wrong answer (Friedman 2026). [`tricky.py`](tricky.py) asks 8 classic trap questions ([`tricky.jsonl`](tricky.jsonl)) on Haiku, with and without brainres. Results are in `results/2026-11-12-tricky-haiku/`.
