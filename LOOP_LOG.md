@@ -82,3 +82,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 00:58 · V1d · suite chunk 4 (30 calls): 58 pairs — Brain Score +4.9 (CI +2.9 to +7.0), words −30%, visible tokens −29%; stress = weak category (2 lower, 2 tied of 4)
 - 2026-11-13 01:18 · V1e · suite chunk 5 (30 calls): 73 pairs — Brain Score +4.6 (CI +2.8 to +6.3), words −28%, visible tokens −28%; stress still weak (2 lower, 3 tied of 5)
 - 2026-11-13 01:40 · V1f + V4 · suite complete (10 calls): 78 pairs — Brain Score +4.7 (CI +3.0 to +6.3), words −29%, visible −28%, total output −14% (thinking +~100); README headline replaced; weakness report: stress −3.2, debug −2.5; F1/F2 added
+- 2026-11-13 02:00 · V2 · information coverage (30 calls): 94.1% vs 96.0% (−1.8 pp, n.s.; less on 31, more on 13, p=.01); detail not facts (full→partial 37 vs 17; dropped 2 vs 3); README caveat; F4 Opus cross-check (8), F3 concept/stress detail (2.5)

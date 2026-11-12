@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Information coverage (V2, 30 calls), new `evals/coverage_judge.py`.**
+  - **Method:** a Sonnet judge wrote key facts from each question alone (397 facts), which were then frozen. It marked both answers blinded and in random order.
+  - **Result:** brainres covered 94.1% of key facts against 96.0% for baseline (−1.8 pp, CI −4.1 to +0.4). It covered less on 31 prompts and more on 13 (sign test p = .01).
+  - **What changed is detail, not facts.** 37 facts went from full to partial coverage, against 17 the other way. Only 2 facts were dropped outright, against 3 the other way.
+  - Concept and stress answers lost the most detail (−10 pp each).
+  - Both READMEs now state this trade-off.
+  - New items: F4 (8), an Opus cross-check, and F3 (2.5), detail loss in concept and stress.
+
 - **Suite complete (V1f, 10 calls): 78 valid pairs across 80 prompts.** Per prompt, Brain Score rose 4.7 (CI +3.0 to +6.3), words fell 56 (−29%), visible output tokens fell 28%, and total output tokens including hidden reasoning fell 14%. This replaces the 12-prompt result as the headline in both READMEs and the Show HN, Reddit and GeekNews drafts.
 - **Weakness report (V4, no calls)** from the new `evals/suite_report.py`, written to `results/suite-weakness.md`:
   - brainres was ahead in 14 of 16 types and behind in stress (−3.2) and debugging (−2.5).

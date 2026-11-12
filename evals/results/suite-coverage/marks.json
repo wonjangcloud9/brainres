@@ -1,0 +1,1322 @@
+{
+  "s012-debug": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s013-debug": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s014-debug": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s015-debug": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s021-concept": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s022-concept": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s023-concept": {
+    "brainres": [
+      1,
+      1,
+      1,
+      0.5,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s024-concept": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s025-concept": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s031-decision": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s032-decision": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s033-decision": {
+    "brainres": [
+      0.5,
+      0.5,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      0.5,
+      0.5,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s034-decision": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      0.5,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      0.5,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s035-decision": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      0.5,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s041-yesno": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s042-yesno": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s043-yesno": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s044-yesno": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s045-yesno": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s051-numbers": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "a_is_brainres": false
+  },
+  "s052-numbers": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s053-numbers": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "a_is_brainres": false
+  },
+  "s054-numbers": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "a_is_brainres": true
+  },
+  "s055-numbers": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s061-procedure": {
+    "brainres": [
+      0.5,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s062-procedure": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s063-procedure": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s064-procedure": {
+    "brainres": [
+      0.5,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s065-procedure": {
+    "brainres": [
+      1,
+      0.5,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s071-myth": {
+    "brainres": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s072-myth": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      0.5,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s073-myth": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s074-myth": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": true
+  },
+  "s075-myth": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s081-stress": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "a_is_brainres": true
+  },
+  "s082-stress": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": false
+  },
+  "s083-stress": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s084-stress": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s085-stress": {
+    "brainres": [
+      0.5,
+      0,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": true
+  },
+  "s091-refusal": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s092-refusal": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      0.5,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s093-refusal": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s094-refusal": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s095-refusal": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s101-doc": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s102-doc": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s103-doc": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s104-doc": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s105-doc": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": false
+  },
+  "s111-novice": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      0.5,
+      1,
+      0.5
+    ],
+    "a_is_brainres": true
+  },
+  "s112-novice": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      0.5,
+      0.5
+    ],
+    "a_is_brainres": false
+  },
+  "s113-novice": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": true
+  },
+  "s114-novice": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": true
+  },
+  "s115-novice": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      0.5,
+      0.5
+    ],
+    "a_is_brainres": false
+  },
+  "s121-compare": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s122-compare": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s123-compare": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s124-compare": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s125-compare": {
+    "brainres": [
+      1,
+      1,
+      1,
+      0.5,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s131-codex": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s132-codex": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s133-codex": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s134-codex": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s135-codex": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s141-write": {
+    "brainres": [
+      1,
+      1,
+      1,
+      0.5,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s142-write": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s144-write": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s145-write": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "a_is_brainres": false
+  },
+  "s151-multi": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s152-multi": {
+    "brainres": [
+      1,
+      0.5,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s153-multi": {
+    "brainres": [
+      1,
+      0.5,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s154-multi": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s155-multi": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s161-advice": {
+    "brainres": [
+      1,
+      1,
+      0.5,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s162-advice": {
+    "brainres": [
+      1,
+      1,
+      1,
+      0.5,
+      0.5
+    ],
+    "baseline": [
+      1,
+      0.5,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s163-advice": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": true
+  },
+  "s164-advice": {
+    "brainres": [
+      0.5,
+      1,
+      1,
+      1,
+      1
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  },
+  "s165-advice": {
+    "brainres": [
+      1,
+      1,
+      1,
+      1,
+      0.5
+    ],
+    "baseline": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "a_is_brainres": false
+  }
+}
