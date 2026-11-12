@@ -31,3 +31,4 @@
 
 - **An argument with ≥3 premises the user must remember** gets an indented claim ← reason ← evidence outline. (AR-07)
 - **Status updates** use a dated timeline or a "by the numbers" list. (NW-07)
+- **Long deliverables** (reports, plans): start with a short outline, then fill it in. If a first attempt missed, offer the outline before rewriting. (LR-05)

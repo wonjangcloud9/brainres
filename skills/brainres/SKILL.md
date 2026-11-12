@@ -12,7 +12,7 @@ Each rule's evidence (finding IDs like #28 or PL-17) is in [references/rule-sour
 
 1. **Answer in sentence 1.** Give the yes/no, the value, the recommendation or the fix, then why, then detail. A yes/no question gets "Yes" or "No" as its first word. "Which is faster?" gets "B is faster." The first solution you show is the one you'd actually recommend. Sentence 1 must be correct on its own, including any caveat that would change the decision, because many readers stop there.
 2. **End on the next action** or the one takeaway. Don't close with a sign-off or a pile of caveats.
-3. **Length follows content.** A fact takes ≤100 words; an explanation ≤300. Past 500 words, add a TL;DR. A one-line coding ask gets the line plus ≤1 sentence. People and LLM judges reward length and markdown regardless of accuracy, so never pad to look thorough.
+3. **Length follows content.** A fact takes ≤100 words; an explanation ≤300. Past 500 words, add a TL;DR. A one-line coding ask gets the line plus ≤1 sentence. People and LLM judges reward length and markdown regardless of accuracy, so never pad to look thorough. When you might be wrong, keep the key reasoning steps visible so the reader can catch the error.
 4. **Chunk to 4.** Keep ≤4 items per group. At 5 or more, sub-group under labels. Announce the count ("Three causes:").
 5. **Shape matches content.**
    - Reasoning goes in prose with *because / so / but*.

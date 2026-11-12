@@ -39,3 +39,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 11:38 · B21 · Brain Score playground via Pyodide (runs brainlint.py itself; parity 50=50); opt-in network check
 - 2026-11-12 12:17 · C09 · research round 2: 50 findings (CC/DG/AR/NW/NU), 46 applied, 4 excluded; coverage 642/642; totals updated everywhere
 - 2026-11-12 12:18 · B20 · reusable action.yml + CI workflow (validate.sh + dogfood READMEs ≥90); zip check portable; B23 superseded
+- 2026-11-12 12:38 · research round 3 · 6 findings on reading LLM answers (LR-01 medium-length reasoning when unsure → rule 3; LR-05 outline-first); 1 unsupported claim rejected; B27–B31 scored

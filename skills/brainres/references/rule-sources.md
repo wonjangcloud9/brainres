@@ -7,7 +7,7 @@ Kept out of SKILL.md so the always-loaded skill stays cheap. The citations still
 
 - **Rule 1: Answer in sentence 1**: #28, #3, EM-102, PL-57, HC-55, AN-49, HC-31, NW-05, NW-06, AR-02, NW-03
 - **Rule 2: End on the next action**: #25, #76
-- **Rule 3: Length follows content**: #29, #71, #83, HC-97, HC-98, HC-99, HC-106, HC-107, HC-37
+- **Rule 3: Length follows content**: #29, #71, #83, HC-97, HC-98, HC-99, HC-106, HC-107, HC-37, LR-01
 - **Rule 4: Chunk to 4**: #1, #2, PL-38
 - **Rule 5: Shape matches content**: #50, #36, #15, HC-17, PL-54, HC-59, DG-02
 - **Rule 6: Signal sparingly**: #14, #23, #26, #27, AN-02, AN-04, PL-50, PL-04, AN-03, HC-10, HC-11, LS-83
