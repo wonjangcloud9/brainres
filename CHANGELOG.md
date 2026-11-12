@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Situation-aware reminder (B40): `hooks/brainres-reminder.sh` now reads the prompt and adds one targeted line, about 20 tokens, only when it sees a learner signal ("I'm learning", "beginner", "homework", 공부 중, 배우는 중, 과제…). It ignores `cwd`, and `BRAINRES_SITUATIONS=off` disables it.
+  - **Learner line kept.** With the real plugin, answers ending in a predict-first question went from 0/8 to 8/8, and fixes made on the user's own line went from 6/8 to 8/8. Answers got 22% longer.
+  - **Math/trace line dropped.** It made no difference, with sentence 1 correct in 6/6 answers with and without it. C18 is closed because it did not recur.
+  - The regex fired on none of the 52 other eval prompts, and `validate.sh` checks the routing.
+  - The hook no longer blocks when run from a terminal, and `run.py` passes `/dev/null` to it.
+  - 29 calls.
+
 - Tried and reverted (B39): learner triggers in the skill description raised skill invocation on learner prompts only from 0/8 to 1/8, with 0/12 false triggers on general prompts. Even when the skill was loaded, the answer still rewrote the user's code and asked no self-test question, so the change bought nothing for about 40 always-loaded tokens. 20 calls. Next is B40 (score 6), a situation-aware reminder hook that adds one targeted line only when the prompt shows a learner, stress or calculation signal.
 
 - Learner eval (B38): 4 broken-code prompts from self-described learners, run under baseline, card and plugin with 2 samples each, 24 calls, judged by hand.

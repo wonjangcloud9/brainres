@@ -46,7 +46,8 @@ def card_sha() -> str:
 
 def brainres_prompt() -> str:
     card = (ROOT / "hooks/core-card.md").read_text(encoding="utf-8")
-    reminder = json.loads(subprocess.run(["bash", str(ROOT / "hooks/brainres-reminder.sh")],
+    # No prompt on stdin → the base reminder only (situation lines need the real hook, i.e. --conditions plugin).
+    reminder = json.loads(subprocess.run(["bash", str(ROOT / "hooks/brainres-reminder.sh")], stdin=subprocess.DEVNULL,
                                          capture_output=True, text=True, check=True).stdout)
     return card + "\n\n" + reminder["hookSpecificOutput"]["additionalContext"]
 

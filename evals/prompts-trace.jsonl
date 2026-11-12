@@ -1,0 +1,3 @@
+{"id": "t01-alias", "type": "numbers", "lang": "en", "q": "What does this print?\n\n```python\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(len(x))\n```"}
+{"id": "t02-sort", "type": "numbers", "lang": "en", "q": "What does this output?\n\n```js\nconsole.log([10, 1, 2].sort());\n```"}
+{"id": "t03-remove-ko", "type": "numbers", "lang": "ko", "q": "이 코드 실행하면 뭐가 출력돼?\n\n```python\nnums = [2, 4, 6, 1]\nfor n in nums:\n    if n % 2 == 0:\n        nums.remove(n)\nprint(nums)\n```"}

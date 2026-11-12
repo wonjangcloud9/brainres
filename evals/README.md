@@ -93,6 +93,23 @@ We added learner triggers to the SKILL.md description ("I'm learning", "beginner
 
 Even the one invoked answer still led with a rewrite instead of fixing the user's own line, and it asked no self-test question. A description trigger barely changes whether Sonnet loads a skill for a one-shot answer, and loading it did not change the behaviour. **We reverted it,** because it cost about 40 always-loaded tokens for no measured gain. The lever left is the per-turn reminder hook, which sees the prompt and can add one targeted line only when a learner, stress or calculation signal appears (B40).
 
+## Situation-aware reminder (B40)
+
+Rules that live only in skill references reach the model only when the skill loads, which happened in 1 of 24 general prompts and 1 of 8 learner prompts (B38, B39). The per-turn hook does see the prompt, so it now appends **one targeted line only when the prompt shows that situation's signal**. It reads only the `prompt` field, never `cwd` or paths.
+
+We measured each candidate line with the real plugin on Sonnet, with the line off (`BRAINRES_SITUATIONS=off`) and on, 2 samples per prompt (28 calls), judged by hand:
+
+| Line | Behaviour | off | on | Kept? |
+|---|---|---:|---:|---|
+| **Learner:** "fix their own line first (not a rewrite); end with one predict-first question" | Ends with a predict-first question (DV-04) | 0 / 8 | **8 / 8** | **yes** |
+| | Primary fix on the user's own line (DV-03) | 6 / 8 | **8 / 8** | |
+| | Mean words | 89 | 109 (+22%) | |
+| Math / program output: "sentence 1 = the one-line calculation or trace + result" | Sentence 1 states the right output (3 trace prompts) | 6 / 6 | 6 / 6 | no, no effect |
+
+With the learner line, the loop-removal answers led with the one-character fix to the user's own loop (`for n in nums[:]:`) and ended with questions like "what does `sum_even([1, 3, 5])` return, and why?". The 22% extra words are the question and the trace, and we judged them worth it for a learner. The math line changed nothing, because the plugin was already right on all 3 trace prompts, so it was dropped. C18 (wrong traced output in sentence 1, seen once in the card proxy) did not recur in 12 plugin answers.
+
+**Trigger precision:** the learner regex fires on all 4 learner prompts and on none of the 52 prompts in the other eval sets. `validate.sh` checks the routing, including a `cwd` named `homework/beginner`. The line costs about 20 tokens, an estimate from its 88 characters, and only on turns that match.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

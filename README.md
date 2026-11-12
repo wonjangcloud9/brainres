@@ -99,7 +99,7 @@ With Concise, brainres puts back the "why / when to switch / next step" content 
 | Part | Tokens | When |
 |---|---:|---|
 | Rule card | 498 | once per session |
-| Reminder | 84 | each message |
+| Reminder | 84 (about +20 on learner prompts) | each message |
 | Full skill body | 3,391 | only when the skill is invoked |
 
 A 20-message session costs about 2,200 extra input tokens before prompt caching. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.

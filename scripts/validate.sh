@@ -56,8 +56,15 @@ card_chars=$(wc -c < hooks/core-card.md | tr -d ' ')
 # 6. Hook emits valid JSON
 out=$(CLAUDE_PLUGIN_ROOT="$PWD" bash hooks/brainres-context.sh)
 printf '%s' "$out" | python3 -c "import json,sys; d=json.load(sys.stdin); assert d['hookSpecificOutput']['additionalContext']" && ok "session hook emits context" || err "session hook output invalid"
-bash hooks/brainres-reminder.sh | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert 0 < len(c) <= 300" && ok "per-turn reminder valid (<=300 chars)" || err "per-turn reminder invalid or too long"
-[ -z "$(BRAINRES=off bash hooks/brainres-reminder.sh)" ] && ok "BRAINRES=off silences reminder" || err "BRAINRES=off did not silence reminder"
+bash hooks/brainres-reminder.sh < /dev/null | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert 0 < len(c) <= 300" && ok "per-turn reminder valid (<=300 chars)" || err "per-turn reminder invalid or too long"
+# Situation line (B40): learner prompts get it, general prompts and learner-ish paths in cwd don't.
+rem() { printf '{"prompt":%s,"cwd":"/home/homework/beginner"}' "$(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1")" | bash hooks/brainres-reminder.sh; }
+learner_ok=1
+for p in "I'm learning Python. This returns 0" "파이썬 공부 중인데요" "C 배우는 중이에요"; do rem "$p" | grep -q "Learner:" || learner_ok=0; done
+for p in "CORS가 뭐야?" "How do I rename a git branch?" "Why is my query slow?"; do rem "$p" | grep -q "Learner:" && learner_ok=0; done
+BRAINRES_SITUATIONS=off rem "I'm learning Python" | grep -q "Learner:" && learner_ok=0
+[ $learner_ok = 1 ] && ok "reminder adds the learner line only on learner prompts" || err "reminder learner-line routing wrong"
+[ -z "$(BRAINRES=off bash hooks/brainres-reminder.sh < /dev/null)" ] && ok "BRAINRES=off silences reminder" || err "BRAINRES=off did not silence reminder"
 [ -z "$(BRAINRES=off bash hooks/brainres-context.sh)" ] && ok "BRAINRES=off silences hook" || err "BRAINRES=off did not silence hook"
 
 # 7. brainlint sanity: bad example scores lower than good example
