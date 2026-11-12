@@ -6,7 +6,6 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| C13 | Stress prompt (eval 11) still bullet-heavy (82): check support.md stress mode reaches answers; consider a 1-line stress rule in the card | Q | 2 | 2 | 0.5 | 0.5 | **4** | todo |
 | C09 | Research round 2: new domains (cross-cultural pragmatics, diagram cognition — Larkin & Simon, argumentation/Toulmin, journalism inverted-pyramid studies, numeracy individual differences) | Q | 5 | 1 | 0.5 | 1 | **2.5** | todo |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -47,6 +46,7 @@ The loop always takes the highest-scoring `todo` item.
 | C15 | Re-measure reminder tokens (text changed +13 chars in C14) with scripts/token_cost.sh; drop the README asterisk | T | 8 | 0.25 | 1.0 | 0.25 | 8 | done 2026-11-12 (card 488, reminder 84, skill 3,391) |
 | B10-4 | Benchmark analysis script (bench/analyze.py): read submitted JSONs, apply exclusions, H1 mixed model (fallback Wilcoxon), H2 non-inferiority, H3 Brier; publish report | T | 10 | 3 | 0.5 | 2 | 7.5 | done 2026-11-12 (stdlib fallback analysis; simulation-validated; protocol v1.1 margin 5→10 pp) |
 | B24 | Document interplay with Claude Code's built-in Concise/Explanatory styles | Q | 5 | 0.5 | 0.8 | 0.5 | 4 | done 2026-11-12 (measured: Explanatory −27% words, Insight kept; Concise +23%) |
+| C13 | Stress prompt (eval 11) still bullet-heavy (82): check support.md stress mode reaches answers; consider a 1-line stress rule in the card | Q | 2 | 2 | 0.5 | 0.5 | 4 | done 2026-11-12 (partial: stress triggers in skill description; skill invoked 1/3, steps ≤5 3/3; brainlint list fixes) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

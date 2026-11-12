@@ -133,6 +133,14 @@ class Checks(unittest.TestCase):
         linked = bullets.replace("Point 3 describes", "Point 3 matters because it describes")
         self.assertNotIn("fragmented_reasoning", checks("Notes:\n\n" + linked))
 
+    def test_numbered_steps_are_not_fragmented_reasoning(self):
+        steps = "\n".join(f"{i}. Step {i} does one concrete thing to the database and the replica server here" for i in range(1, 8))
+        self.assertNotIn("fragmented_reasoning", checks("Do this:\n\n" + steps))
+
+    def test_nested_items_do_not_count_toward_the_parent_list(self):
+        text = "Steps:\n\n1. One\n2. Two\n3. Three\n4. Four, with options:\n   - a\n   - b\n   - c"
+        self.assertNotIn("list_overload", checks(text))
+
     def test_term_swap(self):
         self.assertIn("term_swap", checks("Open the folder. Then list the directory contents."))
         self.assertIn("term_swap", checks("Open the app. The application starts on port 3000."))

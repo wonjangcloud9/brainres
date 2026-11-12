@@ -21,6 +21,20 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Stress prompt with the real plugin (C13)
+
+Card-only evals can't reach `support.md` because skill references load only when the skill is invoked. We ran the emergency prompt (11, "I deleted a production table") through the real plugin (`--plugin-dir`, tools `Skill Read`), 3 times before and 3 times after adding stress triggers to the skill description:
+
+| | Old description | Description with stress triggers |
+|---|---|---|
+| Skill invoked | 0 / 3 | 1 / 3 |
+| ≤5 numbered steps (support.md rule) | 2 / 3 | 3 / 3 |
+| Mean Brain Score (rescored with the fixed brainlint) | 87.7 | 87.3 |
+
+This is a partial effect on a tiny sample. The description change costs nothing always-on, so we kept it. The stress rule stays off the always-on card because its RICE score (3) is below the card's cut line ([ranking](../research/core-card-ranking.md)).
+
+While doing this, brainlint got two fixes. `fragmented_reasoning` now ignores numbered steps, because steps are the right shape for procedures (#15). Nested list items no longer count toward the parent list. Scores in older `summary.json` files were computed with the scorer as it stood at run time.
+
 ## Interplay with built-in output styles (B24)
 
 The style is passed with `--style` (`--settings {"outputStyle": ...}`). We used 4 prompts (01, 03, 08, 10), 1 sample each, comparing each style alone with the same style plus brainres. Results are in `results/2026-11-12-style-*`.

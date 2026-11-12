@@ -1,6 +1,6 @@
 ---
 name: brainres
-description: Shapes every answer for how human brains actually read — answer first, chunked to working-memory limits, concrete, calibrated, honest rather than agreeable, matched to the reader's expertise. Grounded in a catalog of 700+ cognitive-science findings (cognitive load, signaling, psycholinguistics, decision science, human–AI trust). Use for all chat answers and explanations, and whenever the user says an answer is hard to read, too long, confusing, a wall of text, or asks to "explain simply", "make it readable", "TL;DR", "brainres", or to rewrite or score a text for readability. Modes - scan, learn, rewrite, score, off.
+description: Shapes every answer for how human brains actually read — answer first, chunked to working-memory limits, concrete, calibrated, honest rather than agreeable, matched to the reader's expertise. Grounded in a catalog of 700+ cognitive-science findings (cognitive load, signaling, psycholinguistics, decision science, human–AI trust). Use for all chat answers and explanations, and whenever the user says an answer is hard to read, too long, confusing, a wall of text, or asks to "explain simply", "make it readable", "TL;DR", "brainres", or to rewrite or score a text for readability. Also use when the user is stressed, worried or upset, or facing an emergency (outage, deleted production data, "urgent", 급해, 망했어). Modes - scan, learn, rewrite, score, off.
 ---
 
 # brainres — answers your brain can actually read

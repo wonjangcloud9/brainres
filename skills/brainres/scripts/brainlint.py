@@ -189,7 +189,7 @@ def lint(text: str) -> Report:
     # 5. List overload (Cowan's 4±1 / chunking)
     run, runs = 0, []
     for l in lines:
-        if LIST_ITEM.match(l) and not l.startswith(("    ", "\t")):
+        if LIST_ITEM.match(l) and not l.startswith(("  ", "\t")):  # nested items belong to their parent
             run += 1
         elif l.strip():
             if run:
@@ -203,7 +203,8 @@ def lint(text: str) -> Report:
 
     # 5b. Fragmented reasoning: mostly bullets, no causal links (#36, HC-16, PL-54)
     content_lines = [l for l in lines if l.strip()]
-    list_lines = [l for l in content_lines if LIST_ITEM.match(l)]
+    # Numbered steps are the right shape for procedures (#15); only unordered bullets fragment reasoning.
+    list_lines = [l for l in content_lines if re.match(r"^\s*[-*+]\s+", l)]
     if n_words >= 120 and content_lines and len(list_lines) / len(content_lines) > 0.6 and not CAUSAL.search(prose):
         add("fragmented_reasoning", "Causal connectives (#36) / bullets fragment reasoning (HC-16)",
             "mostly bullets and no because/so: the reader must infer how points connect", 6)

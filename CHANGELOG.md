@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Stress handling (C13, partial). The skill description now names emergencies and distress as triggers, so `support.md` can load. Real-plugin runs, 3 per condition: skill invoked 0/3 → 1/3, answers with ≤5 steps 2/3 → 3/3, Brain Score unchanged within noise. brainlint fixes: numbered steps no longer count as `fragmented_reasoning`, and nested items no longer inflate list length (+2 tests, 34 total). Golden scores are unchanged.
+
 - Interplay with Claude Code's built-in output styles is now measured and documented (B24). `evals/run.py --style` sets the style, using 4 prompts with 1 sample each. With Explanatory, brainres cut words 27%, raised the Brain Score from 92.8 to 98.5, and kept all ★ Insight blocks. With Concise, brainres added 23% words (decision support) at an equal score. Both READMEs recommend Concise alone or `scan` for the shortest answers. Style runs are kept out of `combine.py`.
 
 - Benchmark analysis (B10-4): `bench/analyze.py` is stdlib only. It reads local JSON files or `--from-issues` via `gh`, applies the pre-registered exclusions, and runs paired Wilcoxon and t-interval analyses for H1–H3, a sign test for E1, and the decision rule. 5 tests on simulated participants cover a planted effect, null data, an accuracy drop, exclusions, and an exact Wilcoxon value.
