@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Research round 7 (`research/catalog-round7.md`): we found no controlled study of how streaming changes comprehension or trust in LLM answers, and recorded that as the main finding. ST-01, a practitioner report that readers act on partly streamed text, now backs the C17 rule in numbers.md. Three system-level studies (pacing, response delay, multiple answers) are catalogued and excluded.
+- `llm-side-effects.md`: added two LLM-side studies, Li 2024 (instructions drift within about 8 rounds) and Laban 2025 (multi-turn performance −39%).
+- The COGA and dyslexia queue item was already covered.
+- Coverage is 657/657 (799 reviewed).
+- New B46 (score 5) tests whether the 84-token per-turn reminder actually prevents drift on Claude. It has never been measured.
+
 - Haiku language flip (C20, 20 calls): the Korean SQL prompt that had come back in English stayed Korean in 10/10 runs with the current card, so there was nothing to fix. A "Reply in the user's language" first line on the card also scored 0/10, so the card change was reverted per the pre-stated rule. The residual risk is about 1 in 12 runs on that prompt.
 
 - Agentic re-run with the test runner allowed (B44, 12 runs): `evals/agentic.py --allow-tests` auto-approves only `python -m unittest`. Both conditions passed 6/6, and every final message opened with the test result it actually saw. Notes on what the tests don't cover appeared in 3/6 baseline vs 2/6 plugin messages, so the 0/6 vs 2/6 gap seen in B43 was noise. On final messages the plugin is at parity with default Claude Code.

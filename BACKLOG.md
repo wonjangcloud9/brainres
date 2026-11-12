@@ -6,6 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| B46 | **Does the per-turn reminder earn its 84 tokens?** It exists because instructions drift in long dialogs (Li 2024: within 8 rounds), but it has never been measured on Claude. Run 8-turn conversations (`claude -p` then `--continue`, plugin) with the reminder on vs off (new `BRAINRES_REMINDER=off`, card still on), 3 conversations × 2 conditions; score Brain Score, words and answer-first at turns 1, 4 and 8. Keep the reminder only if turn-8 scores drop without it; otherwise cut it to save 84 tokens/turn | Q | 10 | 1 | 0.5 | 1 | **5** | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |

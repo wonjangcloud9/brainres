@@ -3,7 +3,7 @@
 Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file when done.
 
 - [ ] ISO 24495-1:2023 plain-language standard + plainlanguage.gov guidelines → rule gaps? (first pass: HC-87; round 6 found personalization/plain-for-experts already covered and added PN-01/02; the ISO text itself is paywalled and still unread)
-- [ ] W3C Cognitive Accessibility (COGA) "Making Content Usable" + dyslexia style guides (BDA) (first pass: AN-90; deeper pass open)
+- [x] W3C COGA + dyslexia style guides: deeper check 2026-11-12. Already covered by AN-73–75, AN-90, HC-10/11, HC-96 and PL-16 (Rello studies, italics/caps, word frequency, digits); nothing new to add
 - [x] Korean readability research → catalog-round4.md (2026-11-12): no sentence-length comprehension experiment found; thresholds labelled as defaults
 - [x] Human studies of LLM answer formatting 2024–2026 (round 3 → catalog-round3.md; no bullets-vs-prose comprehension study exists yet)
 - [x] Eye-tracking on LLM answers (round 3: OASST-ETC, Chang 2026; no position-of-attention finding verified)
@@ -14,3 +14,5 @@ Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file
 - [x] Round 2 domains (done → catalog-round2.md): cross-cultural pragmatics (high/low-context), diagram cognition (Larkin & Simon 1987), argumentation (Toulmin), journalism inverted-pyramid studies, individual differences in numeracy
 - [x] Run our own bullets-vs-prose comprehension condition (gap confirmed in round 3) → bench/study2 (protocol v1.2 + page ready; data needs participants)
 - [x] LLM-side effects of style rules (format restrictions, brevity vs accuracy) → research/llm-side-effects.md (2026-11-12)
+- [x] Streaming LLM answers → catalog-round7.md (2026-11-12): no comprehension or trust study found; ST-01 (practitioner, W) supports sentence-1-stands-alone
+- [x] LLM instruction drift in multi-turn dialog → llm-side-effects.md (Li 2024, Laban 2025); our reminder is unmeasured → B46
