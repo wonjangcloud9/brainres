@@ -199,7 +199,7 @@ What this shows:
 
 Caveats:
 
-- **Shorter answers carry slightly less detail:** 94.1% of key facts covered, against 96.0% for baseline (−1.8 pp, CI −4.1 to +0.4). Secondary details were cut, but facts were rarely dropped ([V2](evals/README.md)).
+- **Shorter answers carry slightly less detail:** 94.1% of key facts covered vs 96.0% (−1.8 pp, CI −4.1 to +0.4). Details were cut, but facts were rarely dropped. An Opus judge agreed ([V2](evals/README.md)).
 - **Hidden reasoning rose by about 100 tokens per answer,** so total output tokens fell 14% while visible tokens fell 28%.
 - **Some rules describe default behaviour.** Opening a code explanation with a purpose summary, and opening a decision with a recommendation plus when the other option wins, were already 100% in baseline Sonnet and Haiku. brainres doesn't cause them ([B37, B42, B45](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).

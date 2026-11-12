@@ -79,12 +79,15 @@ def phase_checklists() -> None:
     print(f"checklists: {len(out)} prompts, {sum(len(v) for v in out.values())} facts; missing {missing}")
 
 
-def phase_mark(limit: int | None) -> None:
+def phase_mark(limit: int | None, marks_name: str = "marks.json", subset: int | None = None) -> None:
     S, P = suite(), pairs()
     keys = json.loads((OUT / "checklists.json").read_text())
-    marks_path = OUT / "marks.json"
+    marks_path = OUT / marks_name
     marks = json.loads(marks_path.read_text()) if marks_path.exists() else {}
-    todo = [i for i in sorted(P) if i not in marks and i in keys]
+    pool = sorted(P)
+    if subset:  # F4: a fixed random subset for the cross-judge check
+        pool = sorted(random.Random(4).sample(pool, subset))
+    todo = [i for i in pool if i not in marks and i in keys]
     rng = random.Random(20261113)
     order = {i: rng.random() < 0.5 for i in sorted(P)}  # True → A is brainres
     batches = [todo[i:i + 3] for i in range(0, len(todo), 3)]
@@ -111,6 +114,39 @@ def phase_mark(limit: int | None) -> None:
                 marks[i] = {"brainres": bres, "baseline": base, "a_is_brainres": order[i]}
     marks_path.write_text(json.dumps(marks, ensure_ascii=False, indent=2))
     print(f"marked {len(marks)}/{len(P)} prompts")
+
+
+def phase_agree(other: str) -> None:
+    """F4: compare two judges' marks on the prompts both marked."""
+    A = json.loads((OUT / "marks.json").read_text())
+    B = json.loads((OUT / other).read_text())
+    common = sorted(set(A) & set(B))
+    def cov(v):
+        return sum(v) / len(v) if v else 0.0
+    same = total = 0
+    for i in common:
+        for c in ("baseline", "brainres"):
+            for x, y in zip(A[i][c], B[i][c]):
+                total += 1
+                same += x == y
+    def delta(M):
+        return st.mean(cov(M[i]["brainres"]) - cov(M[i]["baseline"]) for i in common)
+    def counts(M):
+        d = [cov(M[i]["brainres"]) - cov(M[i]["baseline"]) for i in common]
+        return sum(x < 0 for x in d), sum(x == 0 for x in d), sum(x > 0 for x in d)
+    ca = [cov(A[i][c]) for i in common for c in ("baseline", "brainres")]
+    cb = [cov(B[i][c]) for i in common for c in ("baseline", "brainres")]
+    r = st.correlation(ca, cb) if len(set(ca)) > 1 and len(set(cb)) > 1 else float("nan")
+    lines = [f"# Cross-judge check (F4): {len(common)} prompts", "",
+             "| | Sonnet judge | Opus judge |", "|---|---:|---:|",
+             f"| Mean coverage, baseline | {st.mean(cov(A[i]['baseline']) for i in common):.1%} | {st.mean(cov(B[i]['baseline']) for i in common):.1%} |",
+             f"| Mean coverage, brainres | {st.mean(cov(A[i]['brainres']) for i in common):.1%} | {st.mean(cov(B[i]['brainres']) for i in common):.1%} |",
+             f"| Δ brainres − baseline | {delta(A) * 100:+.1f} pp | {delta(B) * 100:+.1f} pp |",
+             f"| Prompts brainres covers less / same / more | {'/'.join(map(str, counts(A)))} | {'/'.join(map(str, counts(B)))} |", "",
+             f"Exact agreement on individual fact marks: {same}/{total} ({same / total:.0%}). Correlation of per-answer coverage: r = {r:.2f}."]
+    text = "\n".join(lines) + "\n"
+    (OUT / "CROSS-JUDGE.md").write_text(text)
+    print(text)
 
 
 def phase_report() -> None:
@@ -149,10 +185,16 @@ def phase_report() -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--phase", choices=["checklists", "mark", "report"], required=True)
+    ap.add_argument("--phase", choices=["checklists", "mark", "report", "agree"], required=True)
     ap.add_argument("--limit", type=int, help="max judge calls in the mark phase (eval budget)")
+    ap.add_argument("--judge", default="sonnet")
+    ap.add_argument("--marks", default="marks.json", help="marks file name (F4: marks-opus.json)")
+    ap.add_argument("--subset", type=int, help="mark a fixed random subset of N prompts")
     a = ap.parse_args()
-    {"checklists": phase_checklists, "mark": lambda: phase_mark(a.limit), "report": phase_report}[a.phase]()
+    global JUDGE
+    JUDGE = a.judge
+    {"checklists": phase_checklists, "mark": lambda: phase_mark(a.limit, a.marks, a.subset), "report": phase_report,
+     "agree": lambda: phase_agree(a.marks)}[a.phase]()
     return 0
 
 

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Cross-judge check of the coverage result (F4, 9 calls): we re-marked 26 prompts with Opus using the same frozen key facts and answer order. The two judges agreed on 94% of fact marks (r = 0.82 on coverage). The direction held, but Opus measured a smaller gap: −0.6 pp, against −1.3 pp from Sonnet on the same prompts. `coverage_judge.py` gained the `--judge`, `--marks`, `--subset` and `--phase agree` options, and both READMEs mention the check.
+
 - **Information coverage (V2, 30 calls), new `evals/coverage_judge.py`.**
   - **Method:** a Sonnet judge wrote key facts from each question alone (397 facts), which were then frozen. It marked both answers blinded and in random order.
   - **Result:** brainres covered 94.1% of key facts against 96.0% for baseline (−1.8 pp, CI −4.1 to +0.4). It covered less on 31 prompts and more on 13 (sign test p = .01).
