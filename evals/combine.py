@@ -32,14 +32,15 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="sonnet")
     ap.add_argument("--out")
+    ap.add_argument("--prompts", default="prompts.jsonl", help="only combine runs of this prompt set")
     ap.add_argument("--treatment", default="brainres", help="condition to compare with baseline (brainres or plugin)")
     a = ap.parse_args()
     sha = hashlib.sha256((ROOT / "hooks/core-card.md").read_bytes()).hexdigest()[:12]
     rows, used = [], []
     for f in sorted((ROOT / "evals/results").glob("*/summary.json")):
         d = json.loads(f.read_text())
-        if d.get("model") != a.model or d.get("style"):  # style experiments are reported separately
-            continue
+        if d.get("model") != a.model or d.get("style") or d.get("prompt_set", "prompts.jsonl") != a.prompts:
+            continue  # style experiments and other prompt sets are reported separately
         keep = [r for r in d["rows"] if r["condition"] == "baseline" or (d.get("card_sha") == sha and r["condition"] == a.treatment)]
         for r in keep:
             if r["condition"] == a.treatment:

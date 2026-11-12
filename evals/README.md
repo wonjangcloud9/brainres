@@ -21,6 +21,21 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Korean prompt set (B34)
+
+We ran 12 Korean prompts ([`prompts-ko.jsonl`](prompts-ko.jsonl)) covering debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, a formal email, a novice explanation and a comparison. Each was asked with and without brainres on Sonnet, 1 sample each. Results are in [`results/combined-ko12.md`](results/combined-ko12.md). `--prompts` keeps prompt sets from mixing.
+
+| Per prompt | brainres − baseline (95% CI) |
+|---|---|
+| Words | −30 (−20%; −52 to −8) |
+| Visible output tokens | −135 (−18%; −227 to −42) |
+| Brain Score | +2.7 (−1.4 to +6.7, CI includes 0) |
+| Answers mixing speech levels (해요체/합쇼체/평서체) | baseline **7 / 12** → brainres **1 / 12** |
+
+The effect is smaller than in English (−27%). The clearest Korean gain is consistency of speech level. The one remaining mix is the formal email: 해요체 in the chat wrapper and 합쇼체 in the email body, which is correct.
+
+**Failure found: a premature number in sentence 1 (C17).** On the savings question (300만 원 × 40% per month toward 1억), **both** conditions opened with "약 8년 4개월", computed 6년 11개월 in the next lines, and corrected themselves. That was 1 of 1 per condition in the main run, then 3 of 3 per condition on re-run. Reasoning stays visible, so a careful reader catches it, but a skimmer keeps the wrong headline (NW-06). Models without hidden reasoning have nowhere to "compute first". We added "do any math first, never state an unchecked number" to the card. **It did not help: 3 of 3 still wrong.** C17 will test putting the one-line calculation *in* sentence 1.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

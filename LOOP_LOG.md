@@ -54,3 +54,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 16:18 · B33b · 15 harder problems on Haiku (30 calls): 15/15 both; 48/48 across all sets — no detectable accuracy cost (ceiling); card line not added
 - 2026-11-12 16:40 · B32 · agentic coding (6 tasks × 2, Sonnet, no Bash): 6/6 pass both, same diff size, final report not shorter
 - 2026-11-12 16:58 · research round 4 · Korean readability: 5 findings (4 applied); thresholds labelled defaults (no Korean sentence-length experiment); B34/B36/B35 scored
+- 2026-11-12 17:21 · B34 · Korean set (30 calls): words −20%, speech-level mixing 7/12 → 1/12; found C17 (premature wrong number in sentence 1, both conditions 9/9); card compute-first line did not help (0/3)

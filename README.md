@@ -194,6 +194,8 @@ What this shows:
 
 Accuracy: across 48 trap and multi-step math problems on Haiku, brainres and baseline both scored 48/48. On 6 agentic coding tasks in Claude Code, both passed 6/6 with identical diff sizes. There is no detectable accuracy cost, but this is a ceiling result ([details](research/llm-side-effects.md)).
 
+Korean (12 prompts): answers came out 20% shorter, and answers that mixed speech levels fell from 7 of 12 to 1 of 12. One known failure remains, shared with the baseline: on a savings calculation, both versions stated a wrong number in sentence 1 and corrected it later (C17, [details](evals/README.md)).
+
 Across models ([per-model table](evals/README.md)):
 
 - Answers came out 35% shorter on both Haiku and Opus, with 95% CIs excluding zero.

@@ -5,7 +5,7 @@ Kept out of SKILL.md so the always-loaded skill stays cheap. The citations still
 
 ## The 10 rules
 
-- **Rule 1: Answer in sentence 1**: #28, #3, EM-102, PL-57, HC-55, AN-49, HC-31, NW-05, NW-06, AR-02, NW-03
+- **Rule 1: Answer in sentence 1**: #28, #3, EM-102, PL-57, HC-55, AN-49, HC-31, NW-05, NW-06, AR-02, NW-03, LS-91
 - **Rule 2: End on the next action**: #25, #76
 - **Rule 3: Length follows content**: #29, #71, #83, HC-97, HC-98, HC-99, HC-106, HC-107, HC-37, LR-01
 - **Rule 4: Chunk to 4**: #1, #2, PL-38

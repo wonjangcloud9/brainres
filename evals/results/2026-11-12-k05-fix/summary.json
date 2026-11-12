@@ -1,0 +1,123 @@
+{
+  "model": "sonnet",
+  "samples": 3,
+  "card_sha": "7f63573fea82",
+  "style": null,
+  "prompt_set": "prompts-ko.jsonl",
+  "rows": [
+    {
+      "id": "k05-numbers",
+      "type": "numbers",
+      "lang": "ko",
+      "condition": "baseline",
+      "sample": 1,
+      "score": 92,
+      "words": 55,
+      "output_tokens": 200,
+      "thinking_tokens": 0,
+      "visible_output_tokens": 200,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 92,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "k05-numbers",
+      "type": "numbers",
+      "lang": "ko",
+      "condition": "baseline",
+      "sample": 2,
+      "score": 92,
+      "words": 56,
+      "output_tokens": 208,
+      "thinking_tokens": 0,
+      "visible_output_tokens": 208,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 92,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "k05-numbers",
+      "type": "numbers",
+      "lang": "ko",
+      "condition": "baseline",
+      "sample": 3,
+      "score": 92,
+      "words": 80,
+      "output_tokens": 294,
+      "thinking_tokens": 0,
+      "visible_output_tokens": 294,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 92,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "k05-numbers",
+      "type": "numbers",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 57,
+      "output_tokens": 259,
+      "thinking_tokens": 0,
+      "visible_output_tokens": 259,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 100,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "k05-numbers",
+      "type": "numbers",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 70,
+      "output_tokens": 298,
+      "thinking_tokens": 0,
+      "visible_output_tokens": 298,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 100,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "k05-numbers",
+      "type": "numbers",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 3,
+      "score": 100,
+      "words": 98,
+      "output_tokens": 412,
+      "thinking_tokens": 0,
+      "visible_output_tokens": 412,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 100,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": []
+    }
+  ]
+}

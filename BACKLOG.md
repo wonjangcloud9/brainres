@@ -6,7 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| B34 | Korean eval set: 12 Korean prompts (debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal 합쇼체 doc…) × {baseline, brainres} — the Korean effect is measured on only 4 prompts so far | T | 5 | 2 | 0.8 | 1 | **8** | todo |
+| C17 | **Premature number in sentence 1:** on calculations, models without hidden reasoning state a guess first and correct it later (9/9 on k05 across both conditions). "Do any math first" on the card did NOT help (0/3). Test: "for math, sentence 1 = the one-line calculation and its result"; re-run k05 ×3 + 2 more calc prompts; keep whichever wording works, drop the other | Q | 3 | 3 | 0.8 | 0.5 | **14.4** | todo |
 | B36 | Benchmark study 2 (pre-register before data): bullets vs prose for the same content — the gap no published study fills (catalog-round3) | T | 8 | 2 | 0.5 | 2 | **4** | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
@@ -62,6 +62,7 @@ The loop always takes the highest-scoring `todo` item.
 | B33a | Accuracy-cost eval, part 1: 15 multi-step word problems (answers computed in Python) × {baseline, brainres} on Haiku (30 calls). Does brainres lower accuracy when reasoning is the visible answer? (llm-side-effects.md) | Q | 8 | 2 | 0.8 | 1 | 12.8 | done 2026-11-12 (15/15 both, ceiling; 1 explanation slip in brainres) |
 | B33b | Accuracy-cost eval, part 2 (rescoped after ceiling): 15 harder multi-step problems (5+ steps) where Haiku errs; combined report; if brainres lowers accuracy, add "brevity applies to the final answer, not to working" and re-test | Q | 8 | 2 | 0.8 | 1 | 12.8 | done 2026-11-12 (15/15 both; 48/48 across all sets — no detectable cost, ceiling) |
 | B32 | Agentic coding check: small repo tasks with tests, Claude Code with/without the plugin; pass rate and diff size | Q | 8 | 2 | 0.5 | 2 | 4 | done 2026-11-12 (6/6 pass both, same diff size; final report not shorter) |
+| B34 | Korean eval set: 12 Korean prompts (debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal 합쇼체 doc…) × {baseline, brainres} — the Korean effect is measured on only 4 prompts so far | T | 5 | 2 | 0.8 | 1 | 8 | done 2026-11-12 (KO: words −20%, speech-level mixing 7/12 → 1/12; found C17) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

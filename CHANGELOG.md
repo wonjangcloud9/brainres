@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Korean eval set (B34): 12 Korean prompts via `evals/run.py --prompts prompts-ko.jsonl` (24 calls). Per prompt, words fell 30 (−20%, 95% CI −52 to −8) and visible output tokens fell 18%. Answers mixing speech levels dropped from 7/12 to 1/12. The Brain Score gain, +2.7, has a CI that includes 0.
+- **Failure found (C17):** on a savings calculation, both conditions stated a wrong number in sentence 1 ("8년 4개월") and corrected it later, in 9 of 9 answers. A card change ("do any math first, never state an unchecked number", which keeps the card at 1,348 bytes) did not help, with 3 of 3 still wrong. SKILL.md and numbers.md now carry the guidance. C17 tests the alternative, putting the calculation inside sentence 1.
+
 - Research round 4, on Korean readability (`research/catalog-round4.md`): 5 findings, 4 of them applied in korean.md. The key gap: no Korean experiment manipulates sentence length in 어절, so our thresholds (an average of ≤12, flagged above 20) are now labelled engineering defaults. New Korean rules: fix rare 한자어 and long sentences together, and break long compound-noun chains. Coverage is 648/648 (786 reviewed). New backlog: B34 (Korean eval set), B36 (benchmark study 2: bullets vs prose), B35 (scheduled re-scan).
 
 - Agentic coding check (B32): `evals/agentic.py` runs 6 small failing-test tasks through Claude Code on Sonnet (Read/Edit/Write/Glob/Grep, no Bash), with and without the plugin. The harness runs the tests itself. Both conditions passed 6/6, modified 0 test files, and changed a median of 7 lines. The final report was about the same length (93 vs 88 words), unlike the 27% cut on chat answers. Coding outcomes are unchanged.

@@ -79,9 +79,10 @@ def main() -> int:
     ap.add_argument("--conditions", default="baseline,brainres")
     ap.add_argument("--samples", type=int, default=1, help="answers per prompt and condition")
     ap.add_argument("--tag", default="", help="suffix for the results folder")
+    ap.add_argument("--prompts", default="prompts.jsonl", help="prompt set in evals/ (prompts.jsonl, prompts-ko.jsonl)")
     ap.add_argument("--style", help="built-in output style to combine with every condition (e.g. Concise, Explanatory)")
     a = ap.parse_args()
-    prompts = [json.loads(l) for l in (ROOT / "evals/prompts.jsonl").read_text().splitlines() if l.strip()]
+    prompts = [json.loads(l) for l in (ROOT / "evals" / a.prompts).read_text().splitlines() if l.strip()]
     if a.ids:
         wanted = set(a.ids.split(","))
         prompts = [p for p in prompts if p["id"] in wanted]
@@ -110,7 +111,8 @@ def main() -> int:
                          "answer_first": not (FRONT & set(checks)), "checks": checks})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)
     rows.sort(key=lambda r: (r["id"], r["condition"], r["sample"]))
-    (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "style": a.style, "rows": rows},
+    (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "style": a.style,
+                                                      "prompt_set": a.prompts, "rows": rows},
                                                      ensure_ascii=False, indent=2))
 
     def agg(cond, key, fn=statistics.mean, rs=None):
