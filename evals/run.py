@@ -9,6 +9,7 @@ Conditions
   baseline  : `claude -p` with tools and MCP disabled, run from an empty directory
   brainres  : same, plus the plugin's SessionStart card and per-turn reminder appended to
               the system prompt (a proxy for the installed hooks)
+  plugin    : the real plugin via --plugin-dir (hooks fire, skill can be invoked; tools: Skill, Read)
 
 Writes evals/results/<date>/<id>.<condition>.md, summary.json and REPORT.md.
 """
@@ -50,9 +51,13 @@ def brainres_prompt() -> str:
     return card + "\n\n" + reminder["hookSpecificOutput"]["additionalContext"]
 
 
-def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = None) -> dict:
-    args = ["claude", "-p", q, "--model", model, "--output-format", "json", "--tools", "",
-            "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}']
+def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = None, plugin: bool = False) -> dict:
+    # plugin=True: the real installed experience — hooks inject the card/reminder, the skill may be
+    # invoked (Skill + Read tools only, so it can load references but touch nothing else).
+    args = ["claude", "-p", q, "--model", model, "--output-format", "json",
+            "--tools", "Skill Read" if plugin else "", "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}']
+    if plugin:
+        args += ["--plugin-dir", str(ROOT)]
     if style:
         args += ["--settings", json.dumps({"outputStyle": style})]
     if system:
@@ -63,7 +68,7 @@ def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = No
     thinking = sum(m.get("thinkingTokens", 0) for m in (d.get("modelUsage") or {}).values())
     out = d.get("usage", {}).get("output_tokens", 0)
     return {"text": d.get("result", ""), "output_tokens": out, "thinking_tokens": thinking,
-            "visible_output_tokens": max(0, out - thinking)}
+            "visible_output_tokens": max(0, out - thinking), "turns": d.get("num_turns", 1)}
 
 
 def main() -> int:
@@ -87,7 +92,8 @@ def main() -> int:
     jobs = [(p, c, k) for p in prompts for c in conds for k in range(a.samples)]
     rows = []
     with tempfile.TemporaryDirectory() as empty, cf.ThreadPoolExecutor(a.jobs) as ex:
-        futs = {ex.submit(ask, p["q"], a.model, system if c == "brainres" else None, empty, a.style): (p, c, k) for p, c, k in jobs}
+        futs = {ex.submit(ask, p["q"], a.model, system if c == "brainres" else None, empty, a.style, c == "plugin"): (p, c, k)
+                for p, c, k in jobs}
         for f in cf.as_completed(futs):
             p, c, k = futs[f]
             r = f.result()
@@ -99,7 +105,7 @@ def main() -> int:
             budget = BUDGET.get(p["type"], DEFAULT_BUDGET)
             rows.append({"id": p["id"], "type": p["type"], "lang": p["lang"], "condition": c, "sample": k + 1, "score": rep.score,
                          "words": rep.words, "output_tokens": r["output_tokens"], "thinking_tokens": r["thinking_tokens"],
-                         "visible_output_tokens": r["visible_output_tokens"], "within_budget": rep.words <= budget,
+                         "visible_output_tokens": r["visible_output_tokens"], "turns": r["turns"], "within_budget": rep.words <= budget,
                          "score_q": rep_q.score, "question_checks": sorted({x.check for x in rep_q.findings} - {x.check for x in rep.findings}),
                          "answer_first": not (FRONT & set(checks)), "checks": checks})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)

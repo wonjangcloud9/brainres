@@ -43,3 +43,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 12:58 · B27 · brainlint --question (yesno_not_first, no_recommendation) closes the documented blind spot; evals score_q; playground question field; 43 tests
 - 2026-11-12 13:18 · B28a · Haiku eval (24 calls): words −35% [−114,−28], score +3.9; README measurement list split to stay within our own limits
 - 2026-11-12 13:39 · B28b · Opus eval (25 calls): words −34% [−117,−41], score +2.9 n.s.; output tokens include hidden reasoning → run.py records thinking split; B28c added
+- 2026-11-12 13:59 · B29 · real-plugin eval (24 calls): −54 words, +5.0 score (matches proxy); skill auto-invoked 1/24 — hooks do the work

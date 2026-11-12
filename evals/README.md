@@ -21,6 +21,19 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Real plugin vs the card-append proxy (B29)
+
+All earlier runs appended the card and reminder to the system prompt. This run installs the real plugin (`--plugin-dir`, so hooks fire and the skill can be invoked with the `Skill` and `Read` tools) and asks the 12 prompts × 2 samples. Results are in [`results/combined-plugin.md`](results/combined-plugin.md).
+
+| Per-prompt vs baseline (Sonnet) | Real plugin | Card-append proxy |
+|---|---|---|
+| Words | −54 (95% CI −82 to −27) | −54 (−88 to −20) |
+| Brain Score | +5.0 (+0.0 to +10.0) | +5.3 (+0.4 to +10.2) |
+| Invented confidence % | 0 / 24 | 0 / 24 |
+
+- **The proxy is valid.** The installed plugin produces the same effect.
+- **The hooks do the work.** The skill was auto-invoked in only 1 of 24 answers, the emergency prompt (11). This matches the cost table: the 3,391-token skill body loads rarely, while the 488-token card and 84-token reminder are always present.
+
 ## Other models (B28)
 
 The same 12 prompts were run with and without brainres on the current card, 1 sample each. Per-prompt differences are given with 95% CIs ([`results/combined-haiku.md`](results/combined-haiku.md)).

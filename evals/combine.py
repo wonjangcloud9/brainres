@@ -32,6 +32,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="sonnet")
     ap.add_argument("--out")
+    ap.add_argument("--treatment", default="brainres", help="condition to compare with baseline (brainres or plugin)")
     a = ap.parse_args()
     sha = hashlib.sha256((ROOT / "hooks/core-card.md").read_bytes()).hexdigest()[:12]
     rows, used = [], []
@@ -39,7 +40,10 @@ def main() -> int:
         d = json.loads(f.read_text())
         if d.get("model") != a.model or d.get("style"):  # style experiments are reported separately
             continue
-        keep = [r for r in d["rows"] if r["condition"] == "baseline" or d.get("card_sha") == sha]
+        keep = [r for r in d["rows"] if r["condition"] == "baseline" or (d.get("card_sha") == sha and r["condition"] == a.treatment)]
+        for r in keep:
+            if r["condition"] == a.treatment:
+                r["condition"] = "brainres"  # the comparison column; the label below names the treatment
         for r in keep:
             r.setdefault("within_budget", r["words"] <= BUDGET.get(r["type"], DEFAULT_BUDGET))
         if keep:
@@ -61,7 +65,7 @@ def main() -> int:
         half = t95(len(d) - 1) * st.stdev(d) / len(d) ** 0.5 if len(d) > 1 else float("nan")
         return m, m - half, m + half
 
-    lines = [f"# Combined eval (card {sha}, model={a.model})", "", "Runs: " + "; ".join(used), "",
+    lines = [f"# Combined eval (card {sha}, model={a.model}, treatment={a.treatment})", "", "Runs: " + "; ".join(used), "",
              f"Paired prompts: {len(paired)}. Baseline rows are card-independent; brainres rows only from card {sha}.", "",
              "| Metric | baseline mean (SD, n) | brainres mean (SD, n) | brainres − baseline per prompt (95% CI) |",
              "|---|---|---|---|"]

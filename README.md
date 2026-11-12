@@ -189,6 +189,7 @@ We asked the same 12 questions with and without brainres, 3 times each, for 72 a
 What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
+- **The real plugin matches the eval proxy.** Installed via `--plugin-dir`, it gave −54 words and +5.0 Brain Score per prompt. The always-on card does the work: the full skill was auto-invoked in only 1 of 24 answers.
 - **It holds across models.** Answers came out 35% shorter on Haiku and 34% shorter on Opus, with 95% CIs excluding zero. On Opus the Brain Score gain (+2.9) is not significant, and total output tokens include hidden reasoning ([per-model table](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
