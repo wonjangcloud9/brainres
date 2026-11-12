@@ -12,7 +12,7 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 From 2026-11-13 the main measurement is [`suite.jsonl`](suite.jsonl): 80 prompts, 16 answer types × 5, 32 of them in Korean. The types are debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal doc, novice, compare, code explanation, code writing, multi-part and advice. It runs baseline vs brainres (card proxy) on Sonnet in chunks of 15 prompts. [`combine.py --prompts suite.jsonl`](combine.py) pairs every chunk run with the current card. Answers that are raw tool-call markup, a tool-less harness artifact, are flagged (`tool_markup`) and excluded.
 
-**After chunks V1a–V1d** (58 valid pairs, 60 of 80 prompts run; two answers excluded as tool markup). Track progress with `python3 evals/suite_next.py --report`.
+**After chunks V1a–V1d** (58 valid pairs, 60 of 80 prompts run; 3 answers on 2 prompts excluded as tool markup: one baseline debug answer, and both answers to the bash-script prompt s143). Track progress with `python3 evals/suite_next.py --report`.
 
 | Per prompt | brainres − baseline (95% CI) |
 |---|---|
