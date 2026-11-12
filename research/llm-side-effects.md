@@ -26,6 +26,15 @@ Research round, 2026-11-12, run because the backlog was empty. The catalogs cove
 - **One reasoning slip appeared in a brainres explanation.** The time-zone answer said "Seoul is 9 hours ahead of UTC-8"; the correct gap is 17 hours, or 9 hours ahead of UTC. The final answer was still right, and the baseline explanation was correct. One case in 15 is not a pattern, but it's worth watching.
 - **Next (B33b, rescoped):** problems hard enough that Haiku errs (5+ steps), so an accuracy difference can show.
 
+## B33b result: harder problems
+
+[`evals/hard15.jsonl`](../evals/hard15.jsonl) holds 15 harder problems with answers computed in Python, including inclusion–exclusion, digit sums, trailing zeros in 125!, clock angles, multiset permutations, 1000-day weekday, the probability of at least one six, digit-sum counting, loan amortization, 7^2025 mod 10, derangements and two Korean problems. There were 30 calls; results are in `evals/results/2026-11-12-hard15-haiku/`.
+
+- Both conditions scored **15/15**, and four hard items were checked by hand.
+- **Across all 48 problems** (18 traps + 30 multi-step), Haiku was 48/48 with brainres and 48/48 without. That is **no detectable accuracy cost**.
+- **Limit:** every run hit the ceiling, so a small cost can't be ruled out. Finding problems Haiku actually fails would take a different source, such as a benchmark subset with known error rates. The card line "brevity applies to the final answer, not to working" was **not** added, because there is no evidence it's needed.
+- **Side note:** on the derangement problem the baseline opened with framing ("This is a derangement problem."), while brainres answered first ("**44** of the 120 possible outcomes…").
+
 ## Open question → backlog
 
 Does the card lower accuracy on **multi-step** problems for models that reason in the visible answer? B33 tests 30 multi-step word problems with computed answers, with and without the card.

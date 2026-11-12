@@ -1,0 +1,246 @@
+{
+  "model": "haiku",
+  "card_sha": "0bd557e38b55",
+  "rows": [
+    {
+      "id": "x01-incl",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 13,
+      "words": 93
+    },
+    {
+      "id": "x01-incl",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 6,
+      "words": 101
+    },
+    {
+      "id": "x02-digits",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 53
+    },
+    {
+      "id": "x02-digits",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 56
+    },
+    {
+      "id": "x03-zeros",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 49
+    },
+    {
+      "id": "x03-zeros",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 5,
+      "words": 83
+    },
+    {
+      "id": "x04-clock",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 4,
+      "words": 43
+    },
+    {
+      "id": "x04-clock",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 57
+    },
+    {
+      "id": "x05-banana",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 2,
+      "words": 35
+    },
+    {
+      "id": "x05-banana",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 53
+    },
+    {
+      "id": "x06-1000days",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 26
+    },
+    {
+      "id": "x06-1000days",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 48
+    },
+    {
+      "id": "x07-sixes",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 3,
+      "words": 21
+    },
+    {
+      "id": "x07-sixes",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 41
+    },
+    {
+      "id": "x08-digitsum9",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 7,
+      "words": 100
+    },
+    {
+      "id": "x08-digitsum9",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 8,
+      "words": 91
+    },
+    {
+      "id": "x09-loan",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 9,
+      "words": 61
+    },
+    {
+      "id": "x09-loan",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 7,
+      "words": 62
+    },
+    {
+      "id": "x10-mod",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 41
+    },
+    {
+      "id": "x10-mod",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 1,
+      "words": 39
+    },
+    {
+      "id": "x11-ko-incl",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 6,
+      "words": 45
+    },
+    {
+      "id": "x11-ko-incl",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 32
+    },
+    {
+      "id": "x12-rect",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 10,
+      "words": 63
+    },
+    {
+      "id": "x12-rect",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 10,
+      "words": 58
+    },
+    {
+      "id": "x13-leapday",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 0,
+      "words": 6
+    },
+    {
+      "id": "x13-leapday",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 2,
+      "words": 35
+    },
+    {
+      "id": "x14-derange",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 5,
+      "words": 76
+    },
+    {
+      "id": "x14-derange",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 3,
+      "words": 74
+    },
+    {
+      "id": "x15-ko-dice",
+      "condition": "baseline",
+      "correct": true,
+      "reason_in_first_two": false,
+      "reasoning_markers": 10,
+      "words": 101
+    },
+    {
+      "id": "x15-ko-dice",
+      "condition": "brainres",
+      "correct": true,
+      "reason_in_first_two": true,
+      "reasoning_markers": 6,
+      "words": 94
+    }
+  ]
+}

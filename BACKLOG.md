@@ -6,7 +6,6 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| B33b | Accuracy-cost eval, part 2 (rescoped after ceiling): 15 harder multi-step problems (5+ steps) where Haiku errs; combined report; if brainres lowers accuracy, add "brevity applies to the final answer, not to working" and re-test | Q | 8 | 2 | 0.8 | 1 | **12.8** | todo |
 | B32 | Agentic coding check: small repo tasks with tests, Claude Code with/without the plugin; pass rate and diff size | Q | 8 | 2 | 0.5 | 2 | **4** | todo |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -59,6 +58,7 @@ The loop always takes the highest-scoring `todo` item.
 | B31b | Error-prone prompt set with a real error rate (multi-step word problems, date arithmetic, code-output prediction) so the wrong-answer case actually occurs; re-test reasoning visibility | Q | 5 | 2 | 0.5 | 1 | 5 | done 2026-11-12 — Haiku 10/10 both (hand-checked); LR-01 not observable via natural errors |
 | C16 | Refute a misconception only if the user stated or implied it; never open by naming a wrong answer nobody proposed (#52 illusory truth). Add to correction.md + a brainlint check for openings like "X is wrong." | Q | 2 | 1 | 0.5 | 0.5 | 2 | done 2026-11-12 |
 | B33a | Accuracy-cost eval, part 1: 15 multi-step word problems (answers computed in Python) × {baseline, brainres} on Haiku (30 calls). Does brainres lower accuracy when reasoning is the visible answer? (llm-side-effects.md) | Q | 8 | 2 | 0.8 | 1 | 12.8 | done 2026-11-12 (15/15 both, ceiling; 1 explanation slip in brainres) |
+| B33b | Accuracy-cost eval, part 2 (rescoped after ceiling): 15 harder multi-step problems (5+ steps) where Haiku errs; combined report; if brainres lowers accuracy, add "brevity applies to the final answer, not to working" and re-test | Q | 8 | 2 | 0.8 | 1 | 12.8 | done 2026-11-12 (15/15 both; 48/48 across all sets — no detectable cost, ceiling) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

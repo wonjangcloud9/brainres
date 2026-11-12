@@ -1,0 +1,15 @@
+{"id": "x01-incl", "q": "How many integers from 1 to 1000 inclusive are divisible by 3 or 5 but not by 7? Work it out without code.", "expect": "\\b401\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x02-digits", "q": "What is the sum of all the digits of all the integers from 1 to 100?", "expect": "\\b901\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x03-zeros", "q": "How many trailing zeros does 125! have?", "expect": "\\b31\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x04-clock", "q": "A clock shows 3:40. What is the smaller angle between the hour and minute hands, in degrees?", "expect": "\\b130\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x05-banana", "q": "How many distinct arrangements are there of the letters in BANANA?", "expect": "\\b60\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x06-1000days", "q": "If today is a Wednesday, what day of the week will it be 1000 days from now?", "expect": "tuesday", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x07-sixes", "q": "What is the probability of getting at least one six in four rolls of a fair die? Give a percentage to one decimal place.", "expect": "51\\.8", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x08-digitsum9", "q": "How many 4-digit numbers have digits that add up to 9?", "expect": "\\b165\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x09-loan", "q": "A $10,000 loan at 6% annual interest, compounded monthly, is repaid in 24 equal monthly payments. What is the monthly payment, to the cent?", "expect": "443\\.2[01]", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x10-mod", "q": "What is the last digit of 7^2025?", "expect": "\\b7\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x11-ko-incl", "q": "1부터 200까지의 정수 중에서 4의 배수도 아니고 6의 배수도 아닌 수는 몇 개야?", "expect": "133\\s?개", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x12-rect", "q": "A rectangle has perimeter 46 and a diagonal of length 17. What is its area?", "expect": "\\b120\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x13-leapday", "q": "What day of the week was February 29, 2000?", "expect": "tuesday", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x14-derange", "q": "Five people each put a hat in a box and each takes one back at random. In how many of the possible outcomes does nobody get their own hat?", "expect": "\\b44\\b", "wrong": "(?!)", "check": "first_or_last"}
+{"id": "x15-ko-dice", "q": "주사위 3개를 던졌을 때 눈의 합이 정확히 10이 되는 경우는 216가지 중 몇 가지야?", "expect": "27\\s?(가지|개)?", "wrong": "(?!)", "check": "first_or_last"}
