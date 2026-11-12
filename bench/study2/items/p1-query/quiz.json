@@ -1,0 +1,30 @@
+{
+  "item": "p1-query",
+  "content": "parallel",
+  "q1": {
+    "kind": "find",
+    "text": "Which option helps when you only show the first page?",
+    "options": [
+      "An index",
+      "Selecting fewer columns",
+      "A LIMIT",
+      "Caching"
+    ],
+    "answer": 2
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Your data changes every second. Which option is the weakest fit?",
+    "options": [
+      "An index",
+      "Selecting fewer columns",
+      "A LIMIT",
+      "Caching the result"
+    ],
+    "answer": 3
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

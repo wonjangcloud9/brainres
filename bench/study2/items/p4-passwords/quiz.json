@@ -1,0 +1,30 @@
+{
+  "item": "p4-passwords",
+  "content": "parallel",
+  "q1": {
+    "kind": "find",
+    "text": "Which accounts does the answer say to protect with two-factor authentication first?",
+    "options": [
+      "Social media",
+      "Email and banking",
+      "Shopping",
+      "Work chat"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "One site you use is breached. Which habit limits the damage to only that site?",
+    "options": [
+      "Installing updates",
+      "A different password for every site",
+      "Two-factor on email",
+      "Logging out"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

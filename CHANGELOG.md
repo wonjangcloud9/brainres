@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Study 2, part 1 of 2 (B36a): `bench/study2/PROTOCOL.md` pre-registers a 2×2 within-subject test of rule 5, crossing content (causal vs parallel) with format (prose vs bullets). Hypotheses: H1, prose helps understanding for causal content only; H2, bullets speed up finding in parallel content. The protocol includes a decision rule and an analysis plan. Eight topics are written in both formats with identical claims, plus find and understand quizzes, frozen in `items/MANIFEST.sha256`. B36b covers the independent review, the power simulation, the page and the analysis.
+
 - Premature-number fix (C17): card rule 1 now reads "For math, sentence 1 = the one-line calculation + result", and SKILL.md and numbers.md match. Across 3 calculation prompts × 3 samples, sentence 1 was right in 9 of 9 answers, against 0 of 3 with "do any math first" and 0 of 1 with the original card. The baseline was unstable on the same prompt (wrong in 4/4 earlier, right in 3/3 now), so we don't claim it beats the baseline. The card grew from 488 to 498 tokens (measured), and the READMEs, launch drafts and social image are updated.
 
 - Korean eval set (B34): 12 Korean prompts via `evals/run.py --prompts prompts-ko.jsonl` (24 calls). Per prompt, words fell 30 (−20%, 95% CI −52 to −8) and visible output tokens fell 18%. Answers mixing speech levels dropped from 7/12 to 1/12. The Brain Score gain, +2.7, has a CI that includes 0.

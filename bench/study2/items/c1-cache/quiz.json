@@ -1,0 +1,30 @@
+{
+  "item": "c1-cache",
+  "content": "causal",
+  "q1": {
+    "kind": "find",
+    "text": "How long does the cache keep a copy?",
+    "options": [
+      "1 minute",
+      "10 minutes",
+      "1 hour",
+      "Until restart"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "You shorten the cache time to 1 minute but change nothing else. What happens after an update?",
+    "options": [
+      "Old data never appears",
+      "Old data can still appear, but for at most about 1 minute",
+      "The database stops updating",
+      "The cache updates instantly"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

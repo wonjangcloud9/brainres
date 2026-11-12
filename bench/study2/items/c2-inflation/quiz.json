@@ -1,0 +1,30 @@
+{
+  "item": "c2-inflation",
+  "content": "causal",
+  "q1": {
+    "kind": "find",
+    "text": "By roughly how much does purchasing power fall each year?",
+    "options": [
+      "1%",
+      "2%",
+      "3%",
+      "4%"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "If inflation dropped to 0.5% and the account still paid 1%, what would happen?",
+    "options": [
+      "Purchasing power would still fall",
+      "Purchasing power would grow slightly",
+      "The balance would shrink",
+      "Nothing would change"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

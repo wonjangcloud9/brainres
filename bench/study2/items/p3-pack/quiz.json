@@ -1,0 +1,30 @@
+{
+  "item": "p3-pack",
+  "content": "parallel",
+  "q1": {
+    "kind": "find",
+    "text": "What example of a rollback plan does the answer give?",
+    "options": [
+      "A database backup",
+      "The previous release tag",
+      "A feature flag",
+      "A maintenance page"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Errors appear after the deploy, but nobody notices for an hour. Which check was most likely skipped?",
+    "options": [
+      "Tests passing",
+      "Migration review",
+      "Rollback plan",
+      "Monitoring alerts"
+    ],
+    "answer": 3
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

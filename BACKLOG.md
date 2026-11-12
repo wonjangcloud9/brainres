@@ -6,7 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| B36 | Benchmark study 2 (pre-register before data): bullets vs prose for the same content — the gap no published study fills (catalog-round3) | T | 8 | 2 | 0.5 | 2 | **4** | todo |
+| B36b | Study 2 launch prep: independent equivalence review of the 8 prose/bullet pairs, power simulation (target n), page via the study-1 engine (`?study=2`), autotest in validate.sh, analysis in analyze.py | T | 8 | 2 | 0.5 | 1 | **8** | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -63,6 +63,7 @@ The loop always takes the highest-scoring `todo` item.
 | B32 | Agentic coding check: small repo tasks with tests, Claude Code with/without the plugin; pass rate and diff size | Q | 8 | 2 | 0.5 | 2 | 4 | done 2026-11-12 (6/6 pass both, same diff size; final report not shorter) |
 | B34 | Korean eval set: 12 Korean prompts (debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal 합쇼체 doc…) × {baseline, brainres} — the Korean effect is measured on only 4 prompts so far | T | 5 | 2 | 0.8 | 1 | 8 | done 2026-11-12 (KO: words −20%, speech-level mixing 7/12 → 1/12; found C17) |
 | C17 | **Premature number in sentence 1:** on calculations, models without hidden reasoning state a guess first and correct it later (9/9 on k05 across both conditions). "Do any math first" on the card did NOT help (0/3). Test: "for math, sentence 1 = the one-line calculation and its result"; re-run k05 ×3 + 2 more calc prompts; keep whichever wording works, drop the other | Q | 3 | 3 | 0.8 | 0.5 | 14.4 | done 2026-11-12 (calc-in-sentence-1: 9/9 right; "compute first" 0/3; card 498 tokens) |
+| B36 | Benchmark study 2 (pre-register before data): bullets vs prose for the same content — the gap no published study fills (catalog-round3) | T | 8 | 2 | 0.5 | 2 | 4 | B36a done 2026-11-12 (protocol + 8 frozen item pairs) — B36b next |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

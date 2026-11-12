@@ -1,0 +1,30 @@
+{
+  "item": "c4-cert",
+  "content": "causal",
+  "q1": {
+    "kind": "find",
+    "text": "What does the certificate prove?",
+    "options": [
+      "That traffic is compressed",
+      "That the server is who it claims to be",
+      "That your password is strong",
+      "That the connection is fast"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "An attacker's server encrypts traffic but has no valid certificate for your bank's domain. What protects you?",
+    "options": [
+      "The encryption alone",
+      "The browser's check that the certificate matches the domain",
+      "Your antivirus",
+      "Nothing protects you"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

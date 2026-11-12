@@ -56,3 +56,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 16:58 · research round 4 · Korean readability: 5 findings (4 applied); thresholds labelled defaults (no Korean sentence-length experiment); B34/B36/B35 scored
 - 2026-11-12 17:21 · B34 · Korean set (30 calls): words −20%, speech-level mixing 7/12 → 1/12; found C17 (premature wrong number in sentence 1, both conditions 9/9); card compute-first line did not help (0/3)
 - 2026-11-12 17:39 · C17 · card: 'for math, sentence 1 = calculation + result' → 9/9 right (vs 0/3 'compute first'); card 498 tokens; 30 calls
+- 2026-11-12 17:58 · B36a · study 2 protocol (2×2 content × format) + 8 frozen prose/bullet item pairs with quizzes

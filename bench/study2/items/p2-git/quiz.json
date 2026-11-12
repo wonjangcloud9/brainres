@@ -1,0 +1,30 @@
+{
+  "item": "p2-git",
+  "content": "parallel",
+  "q1": {
+    "kind": "find",
+    "text": "Which command sends your commits to the shared repository?",
+    "options": [
+      "git status",
+      "git add",
+      "git push",
+      "git pull"
+    ],
+    "answer": 2
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "You edited a file but git commit says there is nothing to commit. Which step did you most likely skip?",
+    "options": [
+      "git push",
+      "git add",
+      "git pull",
+      "git status"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}

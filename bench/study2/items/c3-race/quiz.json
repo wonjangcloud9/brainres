@@ -1,0 +1,30 @@
+{
+  "item": "c3-race",
+  "content": "causal",
+  "q1": {
+    "kind": "find",
+    "text": "What fix does the answer suggest?",
+    "options": [
+      "Add more servers",
+      "Make the increment one atomic operation",
+      "Restart the counter nightly",
+      "Log every request"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Would running requests one at a time (never in parallel) prevent the lost updates?",
+    "options": [
+      "Yes, because no request could read between another's read and write",
+      "No, the database would still lose writes",
+      "No, the counter would double-count",
+      "Only if the counter starts at zero"
+    ],
+    "answer": 0
+  },
+  "review": {
+    "author_check": "both formats carry the same claims (2026-11-12)",
+    "independent_check": "pending"
+  }
+}
