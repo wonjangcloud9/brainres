@@ -212,6 +212,17 @@ class QuestionAware(unittest.TestCase):
             self.assertEqual("no_recommendation" in before, flagged, ex)
             self.assertNotIn("no_recommendation", after, ex)
 
+    def test_preemptive_refutation(self):
+        q = "In Python: a = [[0] * 2] * 2; a[0][0] = 1; print(a). What is printed?"
+        bad = "[[0, 0], [0, 0]] is wrong. The output is [[1, 0], [1, 0]]."
+        good = "It prints [[1, 0], [1, 0]], because both rows are the same list."
+        self.assertIn("preemptive_refutation", {f.check for f in brainlint.lint(bad, q).findings})
+        self.assertNotIn("preemptive_refutation", {f.check for f in brainlint.lint(good, q).findings})
+        # refuting what the user actually claimed is the refutation rule working as intended
+        q2 = "Isn't 0.1 + 0.2 equal to 0.3 in JavaScript?"
+        self.assertNotIn("preemptive_refutation", {f.check for f in brainlint.lint("0.3 is wrong here: you get 0.30000000000000004.", q2).findings})
+        self.assertIn("preemptive_refutation", {f.check for f in brainlint.lint("[[0, 0]]은 틀렸어요. 출력은 [[1, 0], [1, 0]]이에요.", "파이썬에서 a = [[0]*2]*2; a[0][0]=1 하면 뭐가 나와?").findings})
+
     def test_without_question_scores_are_unchanged(self):
         text = (ROOT / "examples/04-comparison-db/before.md").read_text()
         self.assertEqual(brainlint.lint(text).score, 78)

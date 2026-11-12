@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- C16: the refutation rules (SKILL.md, correction.md) now apply only to misconceptions the user stated or implied, and never to opening by knocking down an answer nobody proposed (#52). A new `brainlint --question` check, `preemptive_refutation`, flags sentence-1 openings like "X is wrong." / "X는 틀렸어요" when X isn't in the question. It catches the real Haiku answer from B31b and produces no false positives on the 12 example files. 1 new test.
+
 - B31b: 10 harder prompts on Haiku, covering dates, letter counts, multiplication, Python aliasing, JS sort, pricing and leap years (20 calls). Checked by hand, Haiku answered all 10 correctly in both conditions. After 18 trap prompts, natural errors don't occur often enough to test the LR-01 risk, which would need answers that are wrong by construction. Reasoning visibility with brainres was equal or better. One artifact surfaced: an answer pre-emptively refuted a wrong answer nobody had proposed. This is logged as C16. `tricky.py --set` selects the prompt file.
 
 - LR-01 risk check (B31; `evals/tricky.py`, 8 trap questions on Haiku, 16 calls). The result is inconclusive because both conditions answered all 8 correctly, so the "wrong answer" case never occurred. No hidden reasoning was observed: brainres attached a reason within the first 2 sentences in 4 of 8 answers, against 2 of 8 for the baseline. Tooling lessons: a whole-text regex misjudged correct answers, so correctness is now judged from sentence 1 and was verified by hand. Prompt t8 was contradictory. B31b follows with harder prompts.

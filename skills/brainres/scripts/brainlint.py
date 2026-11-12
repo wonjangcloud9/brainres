@@ -115,13 +115,21 @@ def option_tokens(q: str) -> set[str]:
     return {t for t in toks if t.lower() not in {"which", "should", "what", "for", "the", "use", "i"}}
 
 
+REFUTE_OPEN = re.compile(r"^[\s*_>\"]*(?P<x>[^.!?]{1,60}?)\s+(is|are|was|isn't|aren't) (wrong|incorrect|not (right|correct|the answer))\b|"
+                         r"^[\s*_>\"]*(?P<k>[^.!?]{1,40}?)(은|는|이|가) (틀렸|틀린 답|오답|정답이 아니)", re.I)
+
+
 def question_findings(text: str, q: str) -> list:
     kind = question_kind(q)
-    if not kind:
-        return []
     first = next((l for l in strip_code(text).splitlines() if l.strip()), "")
     first_sentence = re.split(r"(?<=[.!?。])\s+", first.strip())[0]
     out = []
+    m = REFUTE_OPEN.search(first_sentence)
+    if m:
+        target = (m.group("x") or m.group("k") or "").strip(" `*\"'")
+        if target and target.lower() not in q.lower():
+            out.append(("preemptive_refutation", "Illusory truth: don't repeat a myth nobody held (#52)",
+                        f"sentence 1 refutes '{target[:40]}', which the question never proposed", 5))
     if kind == "yesno" and not YES_NO_START.search(first_sentence):
         out.append(("yesno_not_first", "Type-conforming answers (EM-102, PL-57, HC-55)",
                     "yes/no question: make 'Yes' or 'No' the first word", 6))

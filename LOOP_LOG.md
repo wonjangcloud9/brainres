@@ -48,3 +48,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 14:20 · fix · a139844 pushed with failing validation (piped to grep); README split back to 100; LOOP.md exit-status rule; optional install-hooks.sh (not installed)
 - 2026-11-12 14:39 · B31 · tricky prompts on Haiku (16 calls): 8/8 correct both → inconclusive; brainres reason-early 4/8 vs 2/8; fixed misjudging regex by hand-check; B31b added
 - 2026-11-12 14:58 · B31b · 10 harder prompts on Haiku (20 calls): 10/10 both by hand; LR-01 not observable via natural errors; found pre-emptive-refutation artifact → C16
+- 2026-11-12 15:19 · C16 · refute only stated misconceptions (SKILL + correction.md); brainlint preemptive_refutation (catches the B31b artifact, 0 false positives on examples)

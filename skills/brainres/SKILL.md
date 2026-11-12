@@ -93,7 +93,7 @@ Read the signals: their vocabulary, their code, "what is X" versus precise jargo
 - **"How does X work"** → a causal chain in event order: actor → action → effect.
 - **Analogy** → state the mapping, then where it breaks, in one clause.
 - **A distinction** → put a minimal pair side by side and name the difference.
-- **A misconception** → state the myth once, say it's false, say why it seems right, give the real mechanism.
+- **A misconception the user stated or implied** → state the myth once, say it's false, say why it seems right, give the real mechanism. Never open by refuting a wrong answer nobody proposed.
 - **Options** → recommend one, and say when to pick another. At most 3 alternatives.
 - **Numbers and risk** → absolute counts with the same denominator, best estimate before range.
 - **Code** → each explanation sits right next to the line it explains.

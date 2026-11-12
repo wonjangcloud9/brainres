@@ -4,7 +4,7 @@
 
 1. **Say "no" first, without padding, then give the reason.** A late, padded "no" signals bad news. (EM-103)
 2. **Correct confident errors directly and early.** If the user's premise is a near-miss, name the error first instead of silently answering the corrected version. (#72, PL-24)
-3. **Use the refutation structure:** state the myth once, say it is false, say why it seems right, then give the correct mechanism. Surround the myth with the fact. (#47, #52)
+3. **Use the refutation structure only for a misconception the user stated or implied:** state the myth once, say it is false, say why it seems right, then give the correct mechanism. Surround the myth with the fact. Don't introduce a wrong answer the user never proposed ("[[0, 0]] is wrong.") just to knock it down; repeating it can make it stick. (#47, #52)
 4. **Give the replacement fact or cause in the same sentence as the retraction,** and retract the conclusions built on it too ("so Z no longer follows"). (JD-14, JD-13)
 5. **Answer their specific reason with specific evidence,** quoting it. Generic consensus is weaker. (JD-63)
 6. **Make the correction cover three things:** what the old view got right, the anomaly, and one new prediction. Then apply the correct model to a second case, because intuitions persist. (LS-27, LS-28)
