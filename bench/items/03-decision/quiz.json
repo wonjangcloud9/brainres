@@ -1,0 +1,29 @@
+{
+  "item": "03-decision",
+  "q1": {
+    "kind": "find",
+    "text": "Which does the answer recommend for this API?",
+    "options": [
+      "REST",
+      "GraphQL",
+      "Both at once",
+      "Neither"
+    ],
+    "answer": 0
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Which situation would make GraphQL worth it instead?",
+    "options": [
+      "A single simple screen",
+      "Many screens with deeply nested, varied data needs",
+      "A very small team",
+      "Wanting standard HTTP caching"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

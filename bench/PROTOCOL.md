@@ -17,7 +17,7 @@ Every eval so far counts rule violations (`brainlint`) or tokens. This benchmark
 
 ## Materials
 
-- **Items:** [`items/`](items/) holds 12 frozen answer pairs (8 English, 4 Korean) from [`evals/`](../evals/). The baseline is Claude Code's default; the brainres version uses the current card. Both are Sonnet answers to the identical question. File hashes are in [`items/MANIFEST.sha256`](items/MANIFEST.sha256), and these hashes are the pre-registration.
+- **Items:** [`items/`](items/) holds 12 frozen answer pairs (8 English, 4 Korean) from [`evals/`](../evals/). The baseline is Claude Code's default; the brainres version uses the current card. Both are Sonnet answers to the identical question. File hashes are in [`items/MANIFEST.sha256`](items/MANIFEST.sha256), covering the answers and quizzes. These hashes are the pre-registration.
 - **Questions:** 2 per item, in `items/<id>/quiz.json` (B10-2).
   - **Q1, find:** a fact that **both** versions contain. The answer stays visible, and we measure time to a correct answer.
   - **Q2, understand:** an inference or application question that **both** versions support. The answer is hidden, and we measure accuracy.
@@ -56,4 +56,6 @@ There are no accounts or names. Each participant gets a random ID, and results c
 
 - The brainres author writes the questions. Mitigations: an independent reviewer, questions frozen by commit hash before collection, and the both-versions-answer rule.
 - One sample per condition may favor or disfavor brainres by chance. Mitigation: items come from the first sample of each run, picked mechanically and not by quality.
+- **Ceiling effects.** An LLM reviewer flagged that many questions are guessable by developers, so accuracy (H2) may sit near 100% in both arms. That is acceptable for a non-inferiority test. It is also why time to a correct answer (H1) is the primary measure.
+- **Wording bias.** The reviewer found 9 stems or options that reused brainres phrasing, which would advantage brainres readers. All 9 were rewritten neutrally before freezing (see `quiz.json` → `review`).
 - Volunteers recruited from the repo audience may prefer brainres. Mitigation: versions are unlabeled, and the primary measures are behavioral (time, accuracy), not preference.

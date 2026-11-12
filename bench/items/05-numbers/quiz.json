@@ -1,0 +1,29 @@
+{
+  "item": "05-numbers",
+  "q1": {
+    "kind": "find",
+    "text": "Roughly how likely is it that you actually have the disease?",
+    "options": [
+      "About 99%",
+      "About 50%",
+      "About 9%",
+      "About 0.1%"
+    ],
+    "answer": 2
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Why is it so much lower than the test's 99% accuracy?",
+    "options": [
+      "The test is defective",
+      "False positives from the many healthy people outnumber the true positives",
+      "Most people misread their results",
+      "The disease is contagious"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

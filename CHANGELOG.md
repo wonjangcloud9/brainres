@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Benchmark, step 2 of 3 (B10-2): 24 quiz questions, a "find" question and an "understand" question for each item, each answerable from **both** versions. An independent LLM review passed 22 and flagged 2 for fixes; both are fixed. Its finding that 9 stems or options leaned on brainres wording led to neutral rewrites. Quiz hashes are added to the pre-registration manifest.
+- **Regression found (C14):** brainres answers invented confidence numbers in 6 of 36 cases ("~80% likely", "~90% 확신"), against 0 of 36 for the baseline. It is documented in `evals/README.md` and is the top backlog item.
+
 - Human comprehension benchmark, step 1 of 3. `bench/PROTOCOL.md` pre-registers 3 hypotheses (find faster; comprehension non-inferior at a 5 pp margin; better calibration), a counterbalanced within-subject design, n=60, an analysis plan, exclusions and a decision rule. 12 answer pairs are frozen in `bench/items/`, with SHA-256 hashes in `MANIFEST.sha256`.
 
 - `rewrite` mode gets its own procedure in `references/rewrite.md`: inventory the claims and payload, rewrite, mark each item ✓/⚠/✗, then report. This answers the meaning-loss failures of other rewrite skills (humanizer #212, CAVEWOMAN's 51.9% drift).

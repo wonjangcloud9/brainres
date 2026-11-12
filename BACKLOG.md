@@ -6,6 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| C14 | **Regression:** card rule 8 ("uncertainty as a number") makes Claude invent confidence %: 6/36 brainres answers vs 0/36 baseline ("~80% likely", "~90% 확신"). Reword: numbers only when grounded (measured rate, calculation); otherwise name what is uncertain + how to check (JD-33 spurious precision, #83). Add brainlint flag; re-run evals | Q | 5 | 2 | 0.8 | 0.5 | **16** | todo |
 | C13 | Stress prompt (eval 11) still bullet-heavy (82): check support.md stress mode reaches answers; consider a 1-line stress rule in the card | Q | 2 | 2 | 0.5 | 0.5 | **4** | todo |
 | C09 | Research round 2: new domains (cross-cultural pragmatics, diagram cognition — Larkin & Simon, argumentation/Toulmin, journalism inverted-pyramid studies, numeracy individual differences) | Q | 5 | 1 | 0.5 | 1 | **2.5** | todo |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
@@ -16,7 +17,6 @@ The loop always takes the highest-scoring `todo` item.
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
-| B10-2 | Benchmark: write 2 quiz questions per item (find + understand) answerable from BOTH versions; reviewer check | T | 10 | 3 | 0.5 | 1 | **15** | todo |
 | B10-3 | Benchmark: static quiz page (bench/index.html, counterbalanced lists, timer, JSON export) + GitHub issue template for submissions | T | 10 | 3 | 0.5 | 1 | **15** | todo |
 | B24 | Document interplay with Claude Code's built-in Concise/Explanatory styles | Q | 5 | 0.5 | 0.8 | 0.5 | **4** | todo |
 | B21 | Web playground (GitHub Pages): paste text → Brain Score (brainlint port to JS) | G | 8 | 2 | 0.5 | 2 | **4** | todo |
@@ -43,6 +43,7 @@ The loop always takes the highest-scoring `todo` item.
 | B09b-3 | Evals: 1 more brainres sample (12 calls) + final combined report in READMEs | T | 8 | 1 | 0.8 | 1 | 6.4 | done 2026-11-12 (n=36 each: words −27%, tokens −16%, score +5.0 [+0.8,+9.2]) |
 | B16 | `references/rewrite.md`: claim inventory → rewrite → lost-claim check (humanizer v3 lesson) | Q | 2 | 2 | 0.8 | 0.5 | 6.4 | done 2026-11-12 (+ brainlint --compare) |
 | B10 | Human comprehension benchmark protocol: quiz + time-to-answer on paired answers. Nobody else measures this | T | 10 | 3 | 0.5 | 3 | 5 | B10-1 done 2026-11-12 (protocol + frozen items) — split into B10-2/3 |
+| B10-2 | Benchmark: write 2 quiz questions per item (find + understand) answerable from BOTH versions; reviewer check | T | 10 | 3 | 0.5 | 1 | 15 | done 2026-11-12 (24 questions; LLM review 22 PASS/2 FIX, fixed; 9 wording-bias rewrites) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

@@ -1,0 +1,29 @@
+{
+  "item": "02-concept",
+  "q1": {
+    "kind": "find",
+    "text": "In the shared-counter example, what final value does the interleaving shown produce?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Which change would prevent the lost update?",
+    "options": [
+      "Adding logging around the increment",
+      "Running it under a debugger",
+      "Using a lock or an atomic increment",
+      "Running it on faster hardware"
+    ],
+    "answer": 2
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

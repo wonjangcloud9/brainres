@@ -21,6 +21,17 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Regression found while building the benchmark (C14)
+
+While writing quiz questions, we noticed brainres answers stating confidence numbers with no basis, such as "~80% likely on Homebrew Python", "Roughly 80% of small internal tools…" and "(~90% 확신)". A count across all answers:
+
+| | Answers with an ungrounded confidence % |
+|---|---:|
+| baseline | 0 / 36 |
+| brainres | **6 / 36** |
+
+The cause is card rule 8, "uncertainty … as a number". Our own catalog warns against exactly this: spurious precision signals false confidence (JD-33, Jerez-Fernandez 2014). We count it as a real harm introduced by brainres. The fix is C14, at the top of the backlog.
+
 ## First run (2026-11-12)
 
 | Metric | baseline | brainres |

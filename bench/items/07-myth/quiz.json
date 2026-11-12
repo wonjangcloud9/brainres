@@ -1,0 +1,29 @@
+{
+  "item": "07-myth",
+  "q1": {
+    "kind": "find",
+    "text": "According to the answer, roughly what share of the body's energy does the brain use?",
+    "options": [
+      "About 2%",
+      "About 10%",
+      "About 20%",
+      "About 50%"
+    ],
+    "answer": 2
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Which observation argues against the 10% claim?",
+    "options": [
+      "Injury to nearly any brain region produces some impairment",
+      "Brain scans show large regions stay dormant all day",
+      "All neurons fire at the same moment",
+      "IQ tests use about 10% of the brain"
+    ],
+    "answer": 0
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "item": "09-ko-concept",
+  "q1": {
+    "kind": "find",
+    "text": "도커 컨테이너와 가상머신의 가장 큰 차이는 무엇인가요?",
+    "options": [
+      "도커는 호스트 커널을 공유하고, 가상머신은 게스트 OS를 따로 올린다",
+      "도커는 Windows에서만 동작한다",
+      "가상머신이 도커보다 더 빨리 시작한다",
+      "도커는 하드웨어 전체를 가상화한다"
+    ],
+    "answer": 0
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Linux 서버에서 Windows 전용 프로그램을 격리해 실행해야 한다면 무엇이 맞나요?",
+    "options": [
+      "도커 컨테이너",
+      "가상머신",
+      "둘 다 똑같이 가능",
+      "둘 다 불가능"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

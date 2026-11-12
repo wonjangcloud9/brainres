@@ -1,0 +1,29 @@
+{
+  "item": "11-ko-stress",
+  "q1": {
+    "kind": "find",
+    "text": "이 답에 따르면 지금 가장 먼저 할 일은 무엇인가요?",
+    "options": [
+      "백업으로 프로덕션 DB를 바로 덮어쓴다",
+      "작업을 중단하고 팀(온콜·DBA)에 즉시 알린다",
+      "같은 이름의 빈 테이블을 새로 만든다",
+      "로그를 지우고 혼자 해결한다"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "백업에서 복원할 때 가장 안전한 방법은 무엇인가요?",
+    "options": [
+      "프로덕션 DB에 바로 덮어쓴다",
+      "새 인스턴스에 복원한 뒤 필요한 테이블만 옮긴다",
+      "개인 노트북에 복원한다",
+      "복원하지 않고 기다린다"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

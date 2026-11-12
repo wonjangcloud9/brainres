@@ -1,0 +1,29 @@
+{
+  "item": "12-ko-decision",
+  "q1": {
+    "kind": "find",
+    "text": "값이 나중에 바뀌어야 한다면 무엇을 쓰라고 하나요?",
+    "options": [
+      "튜플",
+      "리스트",
+      "딕셔너리",
+      "아무거나 상관없다"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "좌표 한 쌍 x, y를 딕셔너리의 키로 쓰려면 무엇이 맞나요?",
+    "options": [
+      "리스트",
+      "튜플",
+      "둘 다 가능",
+      "둘 다 불가능"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

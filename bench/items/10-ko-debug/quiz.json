@@ -1,0 +1,29 @@
+{
+  "item": "10-ko-debug",
+  "q1": {
+    "kind": "find",
+    "text": "개발 모드에서 useEffect가 두 번 실행되는 가장 흔한 원인은 무엇인가요?",
+    "options": [
+      "의존성 배열을 비워서",
+      "React 18 StrictMode가 개발 모드에서 컴포넌트를 다시 마운트해서",
+      "브라우저 버그 때문에",
+      "서버 사이드 렌더링 때문에"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "StrictMode를 끄지 않고 해결하는 권장 방법은 무엇인가요?",
+    "options": [
+      "useEffect 대신 useMemo를 쓴다",
+      "effect에서 정리(cleanup) 함수를 반환해 재실행돼도 문제없게 만든다",
+      "setTimeout으로 실행을 늦춘다",
+      "의존성 배열을 지운다"
+    ],
+    "answer": 1
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}

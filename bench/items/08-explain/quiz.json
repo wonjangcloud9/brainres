@@ -1,0 +1,29 @@
+{
+  "item": "08-explain",
+  "q1": {
+    "kind": "find",
+    "text": "How does the secret session key end up on both your browser and the server?",
+    "options": [
+      "The server sends it, encrypted with your password",
+      "Both sides derive it in a key exchange; it never crosses the network",
+      "The certificate authority sends it to both",
+      "The browser stores one permanent key for every site"
+    ],
+    "answer": 1
+  },
+  "q2": {
+    "kind": "understand",
+    "text": "Which threat does HTTPS NOT protect you from?",
+    "options": [
+      "An eavesdropper on public Wi-Fi",
+      "Someone altering data in transit",
+      "A phishing site with a valid certificate",
+      "An attacker reading your password on the network"
+    ],
+    "answer": 2
+  },
+  "review": {
+    "author_check": "answer supported by both versions (2026-11-12)",
+    "independent_check": "LLM reviewer 2026-11-12: 22 PASS / 2 FIX (07 q1 giveaway, 08 q1 contradicted by baseline) — fixed; wording-bias and giveaway rewrites applied; human reviewer still recommended before launch"
+  }
+}
