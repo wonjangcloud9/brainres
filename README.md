@@ -89,10 +89,10 @@ Once installed, it's always on. A session-start hook adds the rule card once per
 | Part | Tokens | When |
 |---|---:|---|
 | Rule card | 488 | once per session |
-| Reminder | 79* | each message |
-| Full skill body | 3,309 | only when the skill is invoked |
+| Reminder | 84 | each message |
+| Full skill body | 3,391 | only when the skill is invoked |
 
-\*Measured before a 13-character wording change (C14); re-measure pending. A 20-message session costs about 2,100 extra input tokens before prompt caching. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
+A 20-message session costs about 2,200 extra input tokens before prompt caching. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
 ## The 10 rules
 

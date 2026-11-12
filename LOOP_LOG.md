@@ -32,3 +32,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 09:22 · B10-2 · 24 quiz questions + independent LLM review (22 PASS/2 FIX fixed, 9 bias rewrites); found regression C14 (invented confidence %: brainres 6/36 vs baseline 0/36)
 - 2026-11-12 09:39 · C14 · rule 8 rewritten (no invented confidence %), brainlint invented_confidence; eval: 7/36 → 0/24, gains intact; card 461→488 tokens; 30 calls
 - 2026-11-12 09:59 · B10-3 · benchmark page (counterbalanced, timed, JSON export) + headless e2e autotest in validate.sh + issue template; B10-4/B10-5 added
+- 2026-11-12 10:18 · C15 · re-measured: card 488, reminder 84, skill 3,391 (12 calls); README asterisk removed
