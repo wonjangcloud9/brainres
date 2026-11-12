@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Premature-number fix (C17): card rule 1 now reads "For math, sentence 1 = the one-line calculation + result", and SKILL.md and numbers.md match. Across 3 calculation prompts × 3 samples, sentence 1 was right in 9 of 9 answers, against 0 of 3 with "do any math first" and 0 of 1 with the original card. The baseline was unstable on the same prompt (wrong in 4/4 earlier, right in 3/3 now), so we don't claim it beats the baseline. The card grew from 488 to 498 tokens (measured), and the READMEs, launch drafts and social image are updated.
+
 - Korean eval set (B34): 12 Korean prompts via `evals/run.py --prompts prompts-ko.jsonl` (24 calls). Per prompt, words fell 30 (−20%, 95% CI −52 to −8) and visible output tokens fell 18%. Answers mixing speech levels dropped from 7/12 to 1/12. The Brain Score gain, +2.7, has a CI that includes 0.
 - **Failure found (C17):** on a savings calculation, both conditions stated a wrong number in sentence 1 ("8년 4개월") and corrected it later, in 9 of 9 answers. A card change ("do any math first, never state an unchecked number", which keeps the card at 1,348 bytes) did not help, with 3 of 3 still wrong. SKILL.md and numbers.md now carry the guidance. C17 tests the alternative, putting the calculation inside sentence 1.
 

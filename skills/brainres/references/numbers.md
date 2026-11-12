@@ -38,7 +38,7 @@
 - **Show every arithmetic step and put the final number first in a plain sentence.** Never say "it's easy". Math anxiety takes up working memory. (EM-09)
 - **No asides in calculation-heavy answers.** Put extras after the result. (AN-09)
 - **Novices: give the plain-language version before the formula.** (LS-31)
-- **Recompute worked and numeric steps before presenting them.** A wrong worked example teaches the error. In particular, never commit to a number in sentence 1 before calculating it. An eval answer opened with "약 8년 4개월", computed 6년 11개월 two lines later, and corrected itself, but a skimmer keeps the wrong headline. (LS-91, NW-06)
+- **Recompute worked and numeric steps before presenting them.** A wrong worked example teaches the error. For arithmetic, put the one-line calculation and its result **in** sentence 1. Otherwise a model without hidden reasoning guesses first: an eval answer opened with "약 8년 4개월", computed 6년 11개월 two lines later, and corrected itself, but a skimmer keeps the wrong headline. With the calculation inside sentence 1, 9/9 answers were right (C17). (LS-91, NW-06)
 
 ## Readers with low numeracy (round 2)
 

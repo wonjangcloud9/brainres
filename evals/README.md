@@ -34,7 +34,19 @@ We ran 12 Korean prompts ([`prompts-ko.jsonl`](prompts-ko.jsonl)) covering debug
 
 The effect is smaller than in English (−27%). The clearest Korean gain is consistency of speech level. The one remaining mix is the formal email: 해요체 in the chat wrapper and 합쇼체 in the email body, which is correct.
 
-**Failure found: a premature number in sentence 1 (C17).** On the savings question (300만 원 × 40% per month toward 1억), **both** conditions opened with "약 8년 4개월", computed 6년 11개월 in the next lines, and corrected themselves. That was 1 of 1 per condition in the main run, then 3 of 3 per condition on re-run. Reasoning stays visible, so a careful reader catches it, but a skimmer keeps the wrong headline (NW-06). Models without hidden reasoning have nowhere to "compute first". We added "do any math first, never state an unchecked number" to the card. **It did not help: 3 of 3 still wrong.** C17 will test putting the one-line calculation *in* sentence 1.
+**Failure found: a premature number in sentence 1 (C17).** On the savings question (300만 원 × 40% per month toward 1억), **both** conditions opened with "약 8년 4개월", computed 6년 11개월 in the next lines, and corrected themselves. That was 1 of 1 per condition in the main run, then 3 of 3 per condition on re-run. Reasoning stays visible, so a careful reader catches it, but a skimmer keeps the wrong headline (NW-06). Models without hidden reasoning have nowhere to "compute first". We added "do any math first, never state an unchecked number" to the card. **It did not help: 3 of 3 still wrong.**
+
+**Fixed (C17).** We changed the card wording to "For math, sentence 1 = the one-line calculation + result". Then we re-ran 3 calculation prompts × 3 samples ([`prompts-calc.jsonl`](prompts-calc.jsonl)) and judged sentence 1 by hand:
+
+| Card wording | Sentence 1 has the right number |
+|---|---:|
+| original (no math clause) | 0 / 1 |
+| "do any math first" | 0 / 3 |
+| **"sentence 1 = calculation + result"** | **9 / 9** |
+
+For example: "300만 원 × 40% = 월 120만 원 저축이고, 1억 ÷ 120만 원 ≈ 83.3개월이라서 약 **6년 11개월**이 걸려요."
+
+The baseline was unstable on this prompt. It was wrong in 4/4 earlier runs, but this time it opened with the calculation and was right in all 3. We therefore claim only that brainres's sentence 1 is now reliable, not that it beats the baseline here. The card went from 488 to 498 tokens.
 
 ## Agentic coding: does the plugin change outcomes? (B32)
 

@@ -26,7 +26,7 @@ What it does in practice:
 - It doesn't agree with you without evidence. Sycophantic AI raises trust and harms judgment (Cheng 2026, Science).
 - It adapts to the reader: experts get terse answers, novices get definitions and one worked example (expertise reversal).
 
-The always-on card is 488 tokens (measured with Claude's tokenizer; script in the repo). Situation-specific rules (debugging, decisions, risk numbers, emotional support, accessibility, Korean) live in reference files the model reads only when needed.
+The always-on card is 498 tokens (measured with Claude's tokenizer; script in the repo). Situation-specific rules (debugging, decisions, risk numbers, emotional support, accessibility, Korean) live in reference files the model reads only when needed.
 
 There's also `brainlint`, a stdlib Python scorer that maps each check to a finding. A typical answer that opens with "Great question!", uses 7 bold bullets and ends with "Hope this helps!" scores 50/100. The rewrite scores 100.
 
