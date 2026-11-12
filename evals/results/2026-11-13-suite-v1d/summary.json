@@ -27,7 +27,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 90,
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 90
     },
     {
       "id": "s014-debug",
@@ -35,22 +36,21 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 99,
       "output_tokens": 666,
       "thinking_tokens": 0,
       "visible_output_tokens": 666,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s024-concept",
@@ -73,7 +73,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s024-concept",
@@ -94,7 +95,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s034-decision",
@@ -118,7 +120,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 86,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 86
     },
     {
       "id": "s034-decision",
@@ -126,22 +129,21 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 99,
       "output_tokens": 728,
       "thinking_tokens": 0,
       "visible_output_tokens": 728,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s044-yesno",
@@ -162,7 +164,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s044-yesno",
@@ -183,7 +186,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s054-numbers",
@@ -206,7 +210,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s054-numbers",
@@ -214,22 +219,21 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 28,
       "output_tokens": 112,
       "thinking_tokens": 0,
       "visible_output_tokens": 112,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s064-procedure",
@@ -237,23 +241,23 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 86,
+      "score": 94,
       "words": 112,
       "output_tokens": 1358,
       "thinking_tokens": 0,
       "visible_output_tokens": 1358,
       "turns": 1,
       "within_budget": true,
-      "score_q": 86,
+      "score_q": 94,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "heading_short"
       ],
       "tool_markup": false,
       "score_before_f1": 86,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 86
     },
     {
       "id": "s064-procedure",
@@ -274,7 +278,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s074-myth",
@@ -282,23 +287,23 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 88,
+      "score": 96,
       "words": 162,
       "output_tokens": 702,
       "thinking_tokens": 0,
       "visible_output_tokens": 702,
       "turns": 1,
       "within_budget": false,
-      "score_q": 88,
+      "score_q": 96,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "long_sentences"
       ],
       "tool_markup": false,
       "score_before_f1": 88,
-      "score_before_k1": 88
+      "score_before_k1": 88,
+      "score_before_k2": 88
     },
     {
       "id": "s074-myth",
@@ -319,7 +324,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s084-stress",
@@ -327,22 +333,21 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 234,
       "output_tokens": 1044,
       "thinking_tokens": 38,
       "visible_output_tokens": 1006,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s084-stress",
@@ -350,22 +355,21 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 115,
       "output_tokens": 766,
       "thinking_tokens": 256,
       "visible_output_tokens": 510,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 88,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     },
     {
       "id": "s094-refusal",
@@ -373,22 +377,21 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 109,
       "output_tokens": 515,
       "thinking_tokens": 50,
       "visible_output_tokens": 465,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 88,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     },
     {
       "id": "s094-refusal",
@@ -396,22 +399,21 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 87,
       "output_tokens": 414,
       "thinking_tokens": 64,
       "visible_output_tokens": 350,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
       "score_before_f1": 94,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s104-doc",
@@ -434,7 +436,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 97,
-      "score_before_k1": 97
+      "score_before_k1": 97,
+      "score_before_k2": 97
     },
     {
       "id": "s104-doc",
@@ -455,7 +458,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s114-novice",
@@ -463,25 +467,25 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 79,
+      "score": 87,
       "words": 131,
       "output_tokens": 759,
       "thinking_tokens": 0,
       "visible_output_tokens": 759,
       "turns": 1,
       "within_budget": true,
-      "score_q": 79,
+      "score_q": 87,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "emoji",
         "generic_heading",
         "heading_short"
       ],
       "tool_markup": false,
       "score_before_f1": 79,
-      "score_before_k1": 79
+      "score_before_k1": 79,
+      "score_before_k2": 79
     },
     {
       "id": "s114-novice",
@@ -502,7 +506,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s124-compare",
@@ -526,7 +531,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 86,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 86
     },
     {
       "id": "s124-compare",
@@ -534,23 +540,23 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 86,
+      "score": 94,
       "words": 120,
       "output_tokens": 1290,
       "thinking_tokens": 465,
       "visible_output_tokens": 825,
       "turns": 1,
       "within_budget": true,
-      "score_q": 86,
+      "score_q": 94,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "fragmented_reasoning"
       ],
       "tool_markup": false,
       "score_before_f1": 86,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 86
     },
     {
       "id": "s143-write",
@@ -573,7 +579,8 @@
       ],
       "tool_markup": true,
       "score_before_f1": 97,
-      "score_before_k1": 97
+      "score_before_k1": 97,
+      "score_before_k2": 97
     },
     {
       "id": "s143-write",
@@ -597,7 +604,8 @@
       ],
       "tool_markup": true,
       "score_before_f1": 91,
-      "score_before_k1": 91
+      "score_before_k1": 91,
+      "score_before_k2": 91
     },
     {
       "id": "s153-multi",
@@ -621,7 +629,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 86,
-      "score_before_k1": 84
+      "score_before_k1": 84,
+      "score_before_k2": 84
     },
     {
       "id": "s153-multi",
@@ -642,7 +651,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s163-advice",
@@ -665,7 +675,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 76,
-      "score_before_k1": 76
+      "score_before_k1": 76,
+      "score_before_k2": 88
     },
     {
       "id": "s163-advice",
@@ -686,12 +697,14 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 94,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 100
     }
   ],
   "failed": [],
   "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

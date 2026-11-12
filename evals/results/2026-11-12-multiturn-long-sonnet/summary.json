@@ -14,7 +14,8 @@
       ],
       "sample": 1,
       "score_before_b47_fix": 94,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 94
     },
     {
       "lang": "en",
@@ -27,7 +28,8 @@
       "checks": [],
       "sample": 2,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -40,7 +42,8 @@
       "checks": [],
       "sample": 1,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -53,7 +56,8 @@
       "checks": [],
       "sample": 2,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -68,7 +72,8 @@
       ],
       "sample": 1,
       "score_before_b47_fix": 94,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 94
     },
     {
       "lang": "en",
@@ -83,7 +88,8 @@
       ],
       "sample": 2,
       "score_before_b47_fix": 96,
-      "score_before_k1": 96
+      "score_before_k1": 96,
+      "score_before_k2": 96
     },
     {
       "lang": "en",
@@ -94,7 +100,8 @@
       "words": 252,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -105,7 +112,8 @@
       "words": 179,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -116,7 +124,8 @@
       "words": 196,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -127,7 +136,8 @@
       "words": 165,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -139,7 +149,8 @@
       "words": 249,
       "checks": [],
       "score_before_b47_fix": 92,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -151,7 +162,8 @@
       "words": 207,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -163,7 +175,8 @@
       "words": 159,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -176,7 +189,8 @@
       "checks": [],
       "sample": 1,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -184,14 +198,13 @@
       "turn": 5,
       "q": "PgBouncer를 쓰는 게 나아요, 아니면 max_connections를 올리는 게 나아요?",
       "text": "**PgBouncer를 쓰세요.** max_connections를 올리는 건 증상만 미루는 방법이에요.\n\nPostgres는 연결마다 프로세스를 하나 띄워요. 연결이 늘면 메모리가 늘고, 스냅샷과 락 경합도 커져요. 그래서 동시에 실행하는 쿼리 수가 코어 수의 몇 배를 넘으면 처리량이 오히려 떨어져요. PgBouncer는 많은 클라이언트 연결을 적은 수의 서버 연결로 묶어 줘요.\n\n| | PgBouncer | max_connections 증가 |\n|---|---|---|\n| 연결 폭주 대응 | 좋아요 | 한계가 있어요 |\n| 메모리 부담 | 낮아요 | 연결 수만큼 늘어요 (work_mem도 곱해져요) |\n| 재시작 | 필요 없어요 | Postgres 재시작이 필요해요 |\n| 호환성 | transaction 모드에서 제약이 있어요 | 제약이 없어요 |\n\n**반대 근거:** 앱 인스턴스가 적고 총 연결이 100~200개 안쪽이라면, 값을 조금 올리는 편이 더 단순해요. 운영 부담이 늘지 않기 때문이에요.\n\n**주의할 점:** `pool_mode = transaction`에서는 세션 상태가 깨져요. 영향받는 기능은 `SET`, advisory lock, `LISTEN/NOTIFY`, 세션 단위 temp table이에요. prepared statement는 PgBouncer 1.21 이상에서 `max_prepared_statements`를 설정하면 쓸 수 있어요. 버전은 `pgbouncer --version`으로 확인하세요.\n\n**시작 설정 예시:**\n```ini\npool_mode = transaction\ndefault_pool_size = 20      ; 코어 수의 2~4배 정도에서 시작\nmax_client_conn = 2000\n```\n\n현재 max_connections, 앱 인스턴스 수, 인스턴스당 풀 크기, DB 코어 수를 알려 주세요. 그러면 `default_pool_size`를 구체적으로 계산해 드릴게요.",
-      "score": 92,
+      "score": 100,
       "words": 114,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "sample": 2,
       "score_before_b47_fix": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -204,7 +217,8 @@
       "checks": [],
       "sample": 1,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -217,7 +231,8 @@
       "checks": [],
       "sample": 2,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -230,7 +245,8 @@
       "checks": [],
       "sample": 1,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -243,7 +259,8 @@
       "checks": [],
       "sample": 2,
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -254,7 +271,8 @@
       "words": 164,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -265,7 +283,8 @@
       "words": 114,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -276,7 +295,8 @@
       "words": 161,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -287,7 +307,8 @@
       "words": 81,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -299,7 +320,8 @@
       "words": 176,
       "checks": [],
       "score_before_b47_fix": 92,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -311,7 +333,8 @@
       "words": 160,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -323,11 +346,13 @@
       "words": 116,
       "checks": [],
       "score_before_b47_fix": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     }
   ],
   "rescored": "2026-11-12 after brainlint accepted 'neither…' and '더 나은 선택' as recommendations (B47)",
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

@@ -26,7 +26,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 94,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 94
     },
     {
       "id": "s125-compare",
@@ -47,7 +48,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s135-codex",
@@ -68,7 +70,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s135-codex",
@@ -89,7 +92,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s145-write",
@@ -112,7 +116,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s145-write",
@@ -133,7 +138,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s155-multi",
@@ -156,7 +162,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 92,
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "id": "s155-multi",
@@ -177,7 +184,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 100,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "s165-advice",
@@ -201,7 +209,8 @@
       ],
       "tool_markup": false,
       "score_before_f1": 86,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 86
     },
     {
       "id": "s165-advice",
@@ -222,12 +231,14 @@
       "checks": [],
       "tool_markup": false,
       "score_before_f1": 94,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     }
   ],
   "failed": [],
   "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

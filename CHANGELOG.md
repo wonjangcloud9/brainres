@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Korean bold limit is now scaled (K2).** `bold_overuse` multiplies its limit by the eojeol/word ratio the wall check already uses (110/70), giving about 4.7 per 100 eojeol. That keeps brainlint consistent with itself; it doesn't rest on a Korean study. Tests are added.
+  - **Re-score, no calls:** brainres Korean bold overuse fell from 12/32 to 0/32 and baseline from 21/32 to 7/32, so no follow-up on the output is needed. The suite gain is now +4.6 (CI +3.2 to +6.1).
+  - **Multi-turn tables corrected:** the Haiku reminder gap at turns 5–7 is now 3.7 points. That still passes the 3-point rule, but narrowly, and the READMEs now say 4–6 points. Auto mode on turn 1 matched forced-on (n = 2), so the "turn 1 stays lower" claim was removed.
+
 - **`wall_of_text` no longer counts step lists as walls (K1).** List items now count as separate segments, with tests.
   - **Re-score, no calls:** the new `evals/rescore.py` re-scored the suite, F3/F5/F6 and multi-turn runs, which changed the checks on 52 answers.
   - **Suite result:** the Brain Score gain is now +4.8 (CI +3.3 to +6.4), because baseline lists were also affected. brainres leads in 14 of 16 types. Stress moved from −0.8 to +2.8 and debugging to +0.5, and every stress run now has 0 walls, so the "stress answers are walls of text" findings are withdrawn.

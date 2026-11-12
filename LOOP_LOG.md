@@ -94,3 +94,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 04:58 · V3b · card ablation G3, G4 (30 calls): G3 removed −2.3 + 6 checks rising, G4 removed bold overuse 1→3 / long sentences 0→3 → keep every line; thinking G4 −40, G3 −21; backlog now has no todo
 - 2026-11-13 05:18 · items from measurements · K1 wall_of_text fires on step lists (all checked stress walls were 5-item lists) (8), K2 Korean bold threshold uncalibrated (4), K3 thinking cost (0.75)
 - 2026-11-13 05:39 · K1 · wall_of_text segments list items; re-scored 52 answers (no calls): suite Δ +4.8, stress −0.8 → +2.8, ahead 14/16, stress walls 0; fixed report/judge reading ablation runs
+- 2026-11-13 05:58 · K2 · Korean bold limit scaled (≈4.7/100 eojeol); re-score: KO brainres bold 12/32 → 0/32, baseline 21 → 7; suite Δ +4.6; Haiku reminder gap now 3.7 (narrow pass); B50 turn-1 claim dropped

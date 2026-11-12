@@ -76,6 +76,7 @@ The gain is +20 pp and the loss is −1.9 pp, which passes the rule, so the line
 
 - **brainres is ahead in 14 of 16 types** after the F1 and K1 re-scores. It is about even in **formal docs** (Δ −0.2) and **refusals** (lower on 2, higher on 2). Stress, once the weakest type (−3.2), is now +2.8, and debugging is +0.5. Both earlier gaps came from checks, not answers: bold lead-ins (F1) and step lists counted as walls of text (K1).
 - **No readability check fires more often with brainres than without.**
+- **K2: Korean bold was over-penalised.** `bold_overuse` used 3 bold spans per 100 words in both languages, but Korean counts eojeol, which run fewer per idea. The limit now scales by the same eojeol/word ratio the wall check already uses (70/110, the most conservative of brainlint's Korean ratios), giving about 4.7 per 100 eojeol. That is internal consistency, not a Korean study. After the re-score, Korean bold overuse fell to 0/32 for brainres (from 12/32) and 7/32 for baseline (from 21/32), while English is unchanged (4/47 vs 19/46). Suite Brain Score: baseline 94.0, brainres 98.6, **+4.6** (CI +3.2 to +6.1).
 - **K1: step lists were being counted as walls of text.** `wall_of_text` split paragraphs only at blank lines, so a 5-item numbered list with no blank lines read as one 133–182-word paragraph. Every flagged stress answer we checked was such a list. List items now count as separate segments, and a wall needs long prose or one over-long item. The re-score changed checks on 52 saved answers. Suite Brain Score: baseline 92.6, brainres 97.4, **+4.8** (CI +3.3 to +6.4); baseline lists were affected too. Walls of text are now 0 in every stress run (F3, F5, F6), so the earlier "stress answers are walls of text" findings are withdrawn. The coverage findings stand.
 - **Most of the stress gap came from the check (F1).** Lorch, Lorch & Klusewitz 1995 found heavy cueing "no better than none", not worse, and NN/g recommends front-loading bullets with scan words. So brainlint now flags only sentence-length bold leads (> 5 words on average), at −4 instead of −6. Re-scoring every saved answer (no calls) changed the checks on 29 answers. Stress moved from −3.2 to −0.8. What remains there is walls of text in step lists (4/5), which F3 targets.
 - **Hidden reasoning rises by about 100 tokens per answer with the card,** up to +442 on multi-part prompts. Net output still falls 14%. V3's ablation now also tracks which card lines drive it.
@@ -257,8 +258,8 @@ The plugin used to append an 84-token reminder to every message, because instruc
 | Mean per answer | reminder on | reminder off |
 |---|---:|---:|
 | Brain Score, turns 1–2 | 99.0 | 96.2 |
-| Brain Score, turns 3–4 | 100.0 | 98.0 |
-| Brain Score, turns 5–7 | 98.0 | **98.7** |
+| Brain Score, turns 3–4 | 100.0 | 100.0 |
+| Brain Score, turns 5–7 | 99.3 | **100.0** |
 | Words, turns 5–7 | 134 | 123 |
 
 There was no drift without the reminder, so per the pre-stated rule the always-on line was cut. That saves 84 tokens on every message. The hook now emits nothing unless a learner or emergency signal appears; those lines were measured to change behaviour (B40, B41).
@@ -269,13 +270,13 @@ There was no drift without the reminder, so per the pre-stated rule the always-o
 
 | Haiku, mean Brain Score | reminder on | reminder off |
 |---|---:|---:|
-| Turns 1–2 | 98.0 | 90.0 |
-| Turns 3–4 | 98.5 | 94.5 |
-| Turns 5–7 | **100.0** | **93.7** |
+| Turns 1–2 | 98.0 | 92.0 |
+| Turns 3–4 | 98.5 | 96.5 |
+| Turns 5–7 | **100.0** | **96.3** |
 
-These are scores after the K1 re-score; off was 88.5 and 92.7 before.
+These are scores after the K1 and K2 re-scores. Off was originally 88.5 and 92.7. The turns 5–7 gap is now 3.7 points, which still passes the 3-point rule, but narrowly.
 
-The gap is there from turn 1, so this is not drift. On Haiku the card alone is weaker. Without the reminder, Haiku showed bold overuse (5 answers) and long sentences (3), and the two walls of text it was flagged for turned out to be step lists (K1); with it, those almost vanished. That passes the pre-stated rule (turns 5–7 down 3 points or more without it).
+The gap is there from turn 1, so this is not drift. On Haiku the card alone is weaker. After both re-scores, the remaining difference without the reminder is long sentences (3 answers) and a too-long average sentence (3). The earlier walls of text and Korean bold flags were check artifacts (K1, K2). That passes the pre-stated rule (turns 5–7 down 3 points or more without it).
 
 The hook now switches the line back on automatically **when the session's last answer came from Haiku**. It reads the model name from the transcript tail (`"model":"claude-haiku-…"`). Turn 1 has no answer yet, so it starts on turn 2. `BRAINRES_REMINDER=on` forces it for any model and `off` disables it. `validate.sh` checks this routing, and the hook was tested against a real Haiku transcript.
 
@@ -283,16 +284,16 @@ The hook now switches the line back on automatically **when the session's last a
 
 | Haiku, mean Brain Score | forced on (B48) | **auto (B50)** | off (B48) |
 |---|---:|---:|---:|
-| Turn 1 | 96.0 | 92.0 | 85.0 |
-| Turns 5–7 | 100.0 | **98.7** | 93.7 |
+| Turn 1 | 96.0 | 96.0 | 89.0 |
+| Turns 5–7 | 100.0 | **100.0** | 96.3 |
 
-Auto mode recovers almost all of the gap from turn 2 on. Turn 1 stays lower because no hook can see the model then: the SessionStart input has `cwd`, `session_id`, `source` and `transcript_path`, but no model. Haiku users who want turn 1 covered too can set `BRAINRES_REMINDER=on`.
+Auto mode matches forced-on from turn 2. After the re-scores, auto turn 1 also scores 96.0, but with n = 2 that is within noise. No hook can see the model on turn 1: the SessionStart input has `cwd`, `session_id`, `source` and `transcript_path`, but no model. Haiku users who want turn 1 covered too can set `BRAINRES_REMINDER=on`.
 
 **Long context (B47).** `python3 evals/multiturn.py --long` pastes about 3k tokens of logs or code in each of turns 1–4. The session reaches about 30k context tokens. Turns 5–7 are plain database questions, also asked in fresh sessions as the control (2 samples each). Card only, no per-turn reminder, Sonnet, EN + KO, 26 calls:
 
 | Mean per answer | long session | fresh session |
 |---|---:|---:|
-| Brain Score, turns 5–7 | **100.0** | 98.0 |
+| Brain Score, turns 5–7 | **100.0** | 98.7 |
 | Words, turns 5–7 | 178 | 159 |
 
 There was no drift at about 30k tokens either, so no periodic reminder was added. Two late-turn answers were first flagged `no_recommendation`, and both were brainlint false positives:

@@ -91,6 +91,16 @@ class Checks(unittest.TestCase):
         one_long_item = "Do this:\n\n1. " + " ".join(["step"] * 120) + "\n2. short"
         self.assertIn("wall_of_text", checks(one_long_item))
 
+    def test_korean_bold_limit_scaled(self):
+        # K2: 4 bold spans in ~100 eojeol is fine in Korean (limit ≈ 4.7), 6 is overuse; English limit stays 3
+        filler = " ".join(["설명을"] * 24)
+        ko4 = " ".join(f"**핵심{i}** {filler}" for i in range(4)) + "."
+        ko6 = " ".join(f"**핵심{i}** {' '.join(['설명을'] * 15)}" for i in range(6)) + "."
+        self.assertNotIn("bold_overuse", checks(ko4))
+        self.assertIn("bold_overuse", checks(ko6))
+        en4 = " ".join(f"**key{i}** " + " ".join(["detail"] * 24) for i in range(4)) + "."
+        self.assertIn("bold_overuse", checks(en4))
+
     def test_generic_heading(self):
         self.assertIn("generic_heading", checks("## Overview\n\nThe answer is 42."))
         self.assertIn("generic_heading", checks("## 개요\n\n답은 42입니다."))

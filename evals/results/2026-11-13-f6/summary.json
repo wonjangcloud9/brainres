@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 100
     },
     {
       "id": "e01-outage",
@@ -45,7 +46,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 96
     },
     {
       "id": "e02-deleted",
@@ -65,7 +67,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 100
     },
     {
       "id": "e02-deleted",
@@ -87,7 +90,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 96
     },
     {
       "id": "e03-hacked",
@@ -107,7 +111,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "e03-hacked",
@@ -129,7 +134,8 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 96
     },
     {
       "id": "e04-forcepush",
@@ -151,7 +157,8 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "score_before_k1": 96
+      "score_before_k1": 96,
+      "score_before_k2": 96
     },
     {
       "id": "e04-forcepush",
@@ -171,7 +178,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "e05-wrongfile",
@@ -193,7 +201,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 96
     },
     {
       "id": "e05-wrongfile",
@@ -215,7 +224,8 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 96
     },
     {
       "id": "e06-ko-down",
@@ -235,7 +245,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "e06-ko-down",
@@ -255,7 +266,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "e07-ko-update",
@@ -275,7 +287,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "id": "e07-ko-update",
@@ -297,7 +310,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     },
     {
       "id": "e08-ko-secret",
@@ -305,21 +319,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 106,
       "output_tokens": 860,
       "thinking_tokens": 363,
       "visible_output_tokens": 497,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     },
     {
       "id": "e08-ko-secret",
@@ -327,21 +340,20 @@
       "lang": "ko",
       "condition": "plugin",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 156,
       "output_tokens": 758,
       "thinking_tokens": 52,
       "visible_output_tokens": 706,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     },
     {
       "id": "e09-ko-passport",
@@ -349,22 +361,22 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 88,
+      "score": 96,
       "words": 153,
       "output_tokens": 670,
       "thinking_tokens": 0,
       "visible_output_tokens": 670,
       "turns": 1,
       "within_budget": true,
-      "score_q": 88,
+      "score_q": 96,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_k1": 82
+      "score_before_k1": 82,
+      "score_before_k2": 88
     },
     {
       "id": "e09-ko-passport",
@@ -384,7 +396,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 100
     },
     {
       "id": "e10-ko-bill",
@@ -392,21 +405,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 173,
       "output_tokens": 1279,
       "thinking_tokens": 494,
       "visible_output_tokens": 785,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ],
+      "checks": [],
       "tool_markup": false,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     },
     {
       "id": "e10-ko-bill",
@@ -428,11 +440,13 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 92
     }
   ],
   "failed": [],
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

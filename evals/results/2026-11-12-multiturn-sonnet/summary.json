@@ -12,7 +12,8 @@
       "checks": [
         "term_swap"
       ],
-      "score_before_k1": 97
+      "score_before_k1": 97,
+      "score_before_k2": 97
     },
     {
       "lang": "en",
@@ -25,7 +26,8 @@
       "checks": [
         "long_sentences"
       ],
-      "score_before_k1": 96
+      "score_before_k1": 96,
+      "score_before_k2": 96
     },
     {
       "lang": "en",
@@ -36,7 +38,8 @@
       "score": 100,
       "words": 164,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -47,7 +50,8 @@
       "score": 100,
       "words": 258,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -58,7 +62,8 @@
       "score": 100,
       "words": 168,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -69,7 +74,8 @@
       "score": 100,
       "words": 113,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -80,7 +86,8 @@
       "score": 100,
       "words": 194,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -91,7 +98,8 @@
       "score": 100,
       "words": 159,
       "checks": [],
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -104,7 +112,8 @@
       "checks": [
         "long_sentences"
       ],
-      "score_before_k1": 96
+      "score_before_k1": 96,
+      "score_before_k2": 96
     },
     {
       "lang": "en",
@@ -115,7 +124,8 @@
       "score": 100,
       "words": 195,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -126,7 +136,8 @@
       "score": 100,
       "words": 221,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -137,7 +148,8 @@
       "score": 100,
       "words": 212,
       "checks": [],
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -148,7 +160,8 @@
       "score": 100,
       "words": 111,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -159,7 +172,8 @@
       "score": 100,
       "words": 172,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -172,7 +186,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -183,7 +198,8 @@
       "score": 100,
       "words": 73,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -191,12 +207,11 @@
       "turn": 3,
       "q": "블로그면 SSR이랑 SSG 중에 뭐가 나아요?",
       "text": "블로그는 SSG가 나아요. 글은 자주 바뀌지 않아서 매 요청마다 서버가 HTML을 만들 필요가 없고, CDN에서 바로 주면 더 빠르고 싸요.\n\n- **새 글 반영**: 글을 올릴 때마다 다시 빌드해도 되지만, 글이 많으면 느려요. 그럴 땐 ISR(`revalidate`)로 일정 주기마다 페이지만 갱신하세요.\n- **SSR이 필요한 경우**: 로그인한 사용자별 화면이나 실시간 조회수를 HTML에 넣을 때만 필요해요. 댓글은 클라이언트에서 불러오면 SSG를 유지할 수 있어요.\n- **배포 이점**: `output: 'export'`로 정적 파일만 만들면 S3나 GitHub Pages 같은 싼 호스팅에도 올릴 수 있어요. 다만 이 모드에서는 ISR을 쓸 수 없어요.\n\n지금 블로그에 로그인이나 개인화 기능이 있는지 알려주시면, SSG로 충분한지 같이 확인해 드릴게요.",
-      "score": 92,
+      "score": 100,
       "words": 95,
-      "checks": [
-        "bold_overuse"
-      ],
-      "score_before_k1": 92
+      "checks": [],
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -207,7 +222,8 @@
       "score": 100,
       "words": 99,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -215,12 +231,11 @@
       "turn": 5,
       "q": "환경 변수를 클라이언트에서 쓰려면 어떻게 해요?",
       "text": "변수 이름 앞에 `NEXT_PUBLIC_`을 붙이세요. 그러면 빌드할 때 브라우저용 코드에 값이 그대로 박혀요.\n\n```bash\n# .env.local\nNEXT_PUBLIC_API_URL=https://api.example.com\nDB_PASSWORD=secret   # 접두사 없음 → 서버에서만 읽혀요\n```\n\n```tsx\n// 클라이언트 컴포넌트\nconst res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`);\n```\n\n주의할 점이 세 가지 있어요.\n\n- **공개 값이에요**: 브라우저 번들에 들어가서 누구나 볼 수 있어요. API 비밀 키나 DB 비밀번호에는 **절대 `NEXT_PUBLIC_`을 붙이지 마세요**.\n- **빌드 시점에 고정돼요**: 배포 후에 값을 바꿔도 반영되지 않아요. 다시 빌드해야 해요. 처음에 말씀드린 흰 화면의 흔한 원인이 이거예요.\n- **동적 접근은 안 돼요**: `process.env[name]`처럼 쓰면 값이 치환되지 않아요. 항상 `process.env.NEXT_PUBLIC_API_URL`처럼 이름을 직접 적으세요.\n\n`.env.local`은 로컬 전용이라 배포 환경에는 올라가지 않아요. 배포 플랫폼의 환경변수 설정에 같은 값을 넣고 다시 빌드하세요.",
-      "score": 92,
+      "score": 100,
       "words": 88,
-      "checks": [
-        "bold_overuse"
-      ],
-      "score_before_k1": 92
+      "checks": [],
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -231,7 +246,8 @@
       "score": 100,
       "words": 66,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -242,7 +258,8 @@
       "score": 100,
       "words": 107,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -253,7 +270,8 @@
       "score": 100,
       "words": 144,
       "checks": [],
-      "score_before_k1": 88
+      "score_before_k1": 88,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -264,7 +282,8 @@
       "score": 100,
       "words": 100,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -275,7 +294,8 @@
       "score": 100,
       "words": 116,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -286,7 +306,8 @@
       "score": 100,
       "words": 96,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -294,13 +315,13 @@
       "turn": 5,
       "q": "환경 변수를 클라이언트에서 쓰려면 어떻게 해요?",
       "text": "변수 이름 앞에 `NEXT_PUBLIC_`을 붙이면 클라이언트에서 쓸 수 있어요.\n\n```bash\n# .env.local\nNEXT_PUBLIC_API_URL=https://api.example.com\nDB_PASSWORD=secret   # 접두사 없음 → 서버에서만 보임\n```\n\n```js\n// 클라이언트 컴포넌트\nfetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`)\n```\n\n주의할 점이 세 가지예요.\n\n1. **비밀 값은 절대 `NEXT_PUBLIC_`을 붙이지 마세요.** 빌드 때 JS 번들에 그대로 박혀서 누구나 볼 수 있어요.\n2. **값은 빌드 시점에 고정돼요.** 배포 후 환경변수를 바꾸면 다시 빌드해야 반영돼요.\n3. **`process.env[key]`처럼 동적으로 읽으면 안 돼요.** 반드시 `process.env.NEXT_PUBLIC_API_URL`처럼 이름을 직접 써야 치환돼요.\n\n첫 질문의 흰 화면과도 연결돼요. `.env.local`은 보통 git에 안 올라가서, 배포 서비스의 빌드 환경에 같은 변수를 따로 등록하지 않으면 값이 `undefined`가 되고 클라이언트가 죽을 수 있어요.\n\n다음으로 배포 서비스 설정 화면에서 `NEXT_PUBLIC_*` 변수가 등록되어 있는지 확인하고, 없다면 추가한 뒤 다시 빌드하세요.",
-      "score": 88,
+      "score": 96,
       "words": 95,
       "checks": [
-        "bold_overuse",
         "long_sentences"
       ],
-      "score_before_k1": 88
+      "score_before_k1": 88,
+      "score_before_k2": 88
     },
     {
       "lang": "ko",
@@ -311,7 +332,8 @@
       "score": 100,
       "words": 82,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -322,10 +344,12 @@
       "score": 100,
       "words": 135,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     }
   ],
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

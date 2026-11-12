@@ -10,7 +10,8 @@
       "score": 100,
       "words": 218,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -21,7 +22,8 @@
       "score": 100,
       "words": 129,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -32,7 +34,8 @@
       "score": 100,
       "words": 114,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -43,7 +46,8 @@
       "score": 100,
       "words": 131,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -54,7 +58,8 @@
       "score": 100,
       "words": 151,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -65,7 +70,8 @@
       "score": 100,
       "words": 48,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -78,7 +84,8 @@
       "checks": [
         "double_negation"
       ],
-      "score_before_k1": 96
+      "score_before_k1": 96,
+      "score_before_k2": 96
     },
     {
       "lang": "en",
@@ -89,7 +96,8 @@
       "score": 100,
       "words": 169,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -100,7 +108,8 @@
       "score": 100,
       "words": 147,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -111,7 +120,8 @@
       "score": 100,
       "words": 159,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -122,7 +132,8 @@
       "score": 100,
       "words": 152,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -133,7 +144,8 @@
       "score": 100,
       "words": 153,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -144,7 +156,8 @@
       "score": 100,
       "words": 71,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -155,7 +168,8 @@
       "score": 100,
       "words": 165,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -163,14 +177,14 @@
       "turn": 1,
       "q": "Next.js 앱에서 빌드는 되는데 배포하면 흰 화면만 나와요. 어디부터 봐야 해요?",
       "text": "먼저 브라우저 개발자 도구(F12)의 **Console**과 **Network** 탭을 확인하세요. 흰 화면은 대개 JS 에러로 React가 렌더링을 멈춰서 생기고, 콘솔에 원인이 찍혀 있는 경우가 많습니다.\n\n확인할 항목은 보통 이 순서입니다.\n\n1. **Network 탭의 404 또는 실패 요청**: `/_next/static/...` 파일이 404이면 배포 시 정적 파일이 빠졌거나 `basePath`/`assetPrefix` 설정이 배포 주소와 맞지 않는 것입니다.\n2. **환경 변수 누락**: `NEXT_PUBLIC_*` 값은 빌드할 때 코드에 박히므로, 빌드 환경에는 있는데 배포 환경의 빌드 설정에는 없으면 `undefined`가 렌더링되면서 크래시가 날 수 있습니다.\n3. **하이드레이션 에러**: 클라이언트 컴포넌트에서 `window`, `localStorage`, `Date`처럼 서버와 브라우저에서 결과가 다른 값을 쓰면 \"Hydration failed\" 에러가 나고 화면이 비워질 수 있습니다.\n4. **배포 방식과 기능 불일치**: `output: 'export'`로 정적 배포했는데 API Route, 서버 액션, 동적 `getServerSideProps` 같은 서버 기능을 쓰고 있다면 페이지가 정상적으로 동작하지 않습니다.\n\n콘솔에 뜬 빨간 에러 메시지와 배포 환경(Vercel, Docker, 정적 호스팅 등)을 알려주시면 원인을 더 좁혀 드릴게요.",
-      "score": 70,
+      "score": 78,
       "words": 135,
       "checks": [
-        "bold_overuse",
         "long_sentences",
         "sentence_length"
       ],
-      "score_before_k1": 64
+      "score_before_k1": 64,
+      "score_before_k2": 70
     },
     {
       "lang": "ko",
@@ -183,7 +197,8 @@
       "checks": [
         "sentence_length"
       ],
-      "score_before_k1": 90
+      "score_before_k1": 90,
+      "score_before_k2": 90
     },
     {
       "lang": "ko",
@@ -196,7 +211,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -204,13 +220,13 @@
       "turn": 4,
       "q": "이미지 최적화에 next/image 꼭 써야 해요?",
       "text": "꼭 써야 하는 것은 아니지만, Next.js 앱이라면 쓰는 편이 낫습니다. `<img>` 태그로도 이미지는 보이지만, `next/image`를 쓰면 최적화를 자동으로 해 줍니다.\n\n- **자동 포맷 변환**: 브라우저가 지원하는 WebP나 AVIF로 바꿔 줍니다.\n- **반응형 크기**: 화면 너비에 맞는 크기를 `srcset`으로 제공합니다.\n- **지연 로딩**: 화면에 들어올 때 불러옵니다.\n- **레이아웃 밀림 방지**: `width`/`height`를 강제해서 이미지가 뒤늦게 뜨며 글이 밀리는 현상(CLS)을 줄입니다.\n\n다만 주의할 점이 있습니다. 기본 최적화는 **Next.js 이미지 최적화 서버**가 처리합니다. Vercel에서는 자동으로 되지만, 직접 호스팅하거나 `output: 'export'`로 정적 배포하면 이 기능이 동작하지 않습니다. 이때는 `next.config.js`에서 `images: { unoptimized: true }`를 설정하거나 별도 로더를 써야 합니다. 빌드는 되는데 이미지가 깨진다면 이 설정을 먼저 확인해 보세요.\n\n블로그를 정적 배포하신다면, 이미지를 미리 WebP로 변환해 두고 `next/image`를 `unoptimized`로 쓰는 방법도 괜찮습니다.",
-      "score": 86,
+      "score": 94,
       "words": 112,
       "checks": [
-        "bold_overuse",
         "yesno_not_first"
       ],
-      "score_before_k1": 86
+      "score_before_k1": 86,
+      "score_before_k2": 86
     },
     {
       "lang": "ko",
@@ -218,13 +234,13 @@
       "turn": 5,
       "q": "환경 변수를 클라이언트에서 쓰려면 어떻게 해요?",
       "text": "환경 변수 이름 앞에 `NEXT_PUBLIC_`을 붙이면 클라이언트 코드에서 쓸 수 있습니다.\n\n```bash\n# .env.local\nNEXT_PUBLIC_SITE_URL=https://example.com\n```\n\n```tsx\n// 클라이언트 컴포넌트 등 어디서나\nconst siteUrl = process.env.NEXT_PUBLIC_SITE_URL;\n```\n\n몇 가지 알아 둘 점이 있습니다.\n\n- **빌드 시점에 값이 박힙니다**: `process.env.NEXT_PUBLIC_*`는 빌드할 때 실제 문자열로 바뀝니다. 배포 후에 값을 바꿔도 반영되지 않으니, 배포 환경의 **빌드 설정**에 값을 넣고 다시 빌드해야 합니다.\n- **비밀 값은 넣지 마세요**: 브라우저 번들에 그대로 포함되어 누구나 볼 수 있습니다. API 키나 DB 비밀번호는 `NEXT_PUBLIC_` 없이 서버 코드에서만 쓰세요.\n- **동적 접근은 안 됩니다**: `process.env[key]`처럼 쓰면 치환되지 않아 `undefined`가 됩니다. 앞서 말씀드린 흰 화면 원인과 연결하면, 빌드 환경에 이 값이 없으면 `undefined`로 렌더링이 깨질 수 있으니 배포 설정을 먼저 확인해 보세요.",
-      "score": 88,
+      "score": 96,
       "words": 97,
       "checks": [
-        "bold_overuse",
         "long_sentences"
       ],
-      "score_before_k1": 82
+      "score_before_k1": 82,
+      "score_before_k2": 88
     },
     {
       "lang": "ko",
@@ -232,14 +248,14 @@
       "turn": 6,
       "q": "월 방문자 12만 명이고 평균 3페이지를 보면 하루 페이지뷰가 몇이에요?",
       "text": "월 페이지뷰는 12만 × 3 = **36만**이고, 하루 평균은 36만 ÷ 30 = **약 1만 2천 뷰**입니다.\n\n한 달을 31일로 보면 약 1만 1,600뷰입니다. 월 방문자 수가 중복을 뺀 순방문자 기준이라면, 같은 사람이 여러 날 들어온 것까지 반영하지 않으므로 하루 방문자는 이보다 적을 수 있습니다.",
-      "score": 78,
+      "score": 86,
       "words": 45,
       "checks": [
-        "bold_overuse",
         "long_sentences",
         "sentence_length"
       ],
-      "score_before_k1": 78
+      "score_before_k1": 78,
+      "score_before_k2": 78
     },
     {
       "lang": "ko",
@@ -250,7 +266,8 @@
       "score": 100,
       "words": 105,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -263,7 +280,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -274,7 +292,8 @@
       "score": 100,
       "words": 81,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -285,7 +304,8 @@
       "score": 100,
       "words": 120,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -298,7 +318,8 @@
       "checks": [
         "yesno_not_first"
       ],
-      "score_before_k1": 94
+      "score_before_k1": 94,
+      "score_before_k2": 94
     },
     {
       "lang": "ko",
@@ -309,7 +330,8 @@
       "score": 100,
       "words": 92,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -320,7 +342,8 @@
       "score": 100,
       "words": 89,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -331,10 +354,12 @@
       "score": 100,
       "words": 136,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     }
   ],
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

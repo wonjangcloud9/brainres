@@ -12,7 +12,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "score_before_k1": 92
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "en",
@@ -23,7 +24,8 @@
       "score": 100,
       "words": 140,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -34,7 +36,8 @@
       "score": 100,
       "words": 143,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -45,7 +48,8 @@
       "score": 100,
       "words": 153,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -56,7 +60,8 @@
       "score": 100,
       "words": 168,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -67,7 +72,8 @@
       "score": 100,
       "words": 77,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "en",
@@ -78,7 +84,8 @@
       "score": 100,
       "words": 153,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -86,12 +93,11 @@
       "turn": 1,
       "q": "Next.js 앱에서 빌드는 되는데 배포하면 흰 화면만 나와요. 어디부터 봐야 해요?",
       "text": "빌드는 성공하는데 배포 후 흰 화면이 나온다면, 대부분 **브라우저 콘솔 에러**부터 보면 됩니다. 원인이 거의 항상 거기 찍힙니다.\n\n**1. 브라우저 개발자 도구 콘솔 확인 (가장 먼저)**\n- 배포된 사이트를 열고 `F12` → Console 탭\n- 빨간 에러 메시지를 확인합니다. 대표적인 패턴은 다음과 같습니다.\n  - `Uncaught TypeError: Cannot read properties of undefined` → 런타임 코드 오류\n  - `Failed to load resource: 404` 또는 `Refused to execute script` → 정적 파일 경로 문제\n  - `ReferenceError` 또는 `process is not defined` → 서버 전용 코드가 클라이언트에서 실행됨\n\n**2. Network 탭에서 JS/CSS 로딩 확인**\n- `_next/static/...` 파일이 404인지, MIME 타입이 틀린지 확인합니다.\n- 404라면 대부분 `basePath`, `assetPrefix`, 또는 CDN/호스팅의 출력 경로 설정 문제입니다.\n\n**3. 환경 변수 확인**\n- `NEXT_PUBLIC_*` 값은 **빌드 시점**에 번들에 박힙니다. 빌드 환경에 값이 없으면 `undefined`로 굳어서 앱이 죽습니다.\n- 배포 플랫폼의 Build 환경과 Runtime 환경을 구분해서 설정했는지 확인합니다.\n\n**4. 호스팅 방식과 출력 설정 확인**\n- 정적 export(`output: 'export'`)를 쓴다면 `out/` 폴더를 배포해야 합니다. `.next/`를 올리면 흰 화면이 나옵니다.\n- `basePath`를 쓴다면 URL 경로가 맞는지 확인합니다.\n\n**5. 로컬에서 프로덕션 모드로 재현**\n```bash\nnpm run build && npm run start\n```\n개발 서버(`npm run dev`)에서는 되는데 프로덕션에서만 깨진다면, 여기서 같은 에러가 재현됩니다.\n\n**다음 행동:** 콘솔에 찍힌 첫 번째 빨간 에러 메시지를 그대로 알려 주세요. 그걸 보면 원인 범위를 바로 좁힐 수 있습니다. 배포 플랫폼(Vercel, Netlify, 자체 서버 등)과 `next.config.js` 내용도 같이 알려 주시면 더 정확히 짚을 수 있습니다.",
-      "score": 92,
+      "score": 100,
       "words": 198,
-      "checks": [
-        "bold_overuse"
-      ],
-      "score_before_k1": 92
+      "checks": [],
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -99,12 +105,11 @@
       "turn": 2,
       "q": "SSR이랑 SSG 차이가 뭐예요?",
       "text": "SSR은 요청이 올 때마다 서버에서 HTML을 새로 만들고, SSG는 빌드할 때 HTML을 미리 만들어 둡니다.\n\n| 구분 | SSG (정적 생성) | SSR (서버 사이드 렌더링) |\n|---|---|---|\n| HTML 생성 시점 | 빌드 시 1번 | 요청마다 |\n| 응답 속도 | 빠름 (파일을 그대로 전달) | 상대적으로 느림 (서버 연산 필요) |\n| 데이터 최신성 | 빌드 시점 데이터에 고정 | 요청 시점의 최신 데이터 |\n| 서버 필요 여부 | 불필요 (CDN에 올리면 됨) | 필요 (Node 등 런타임) |\n\nNext.js에서는 App Router 기준으로 다음처럼 나뉩니다.\n\n- **SSG:** `generateStaticParams`를 쓰거나, 동적 함수를 쓰지 않은 페이지는 기본으로 빌드 시 정적 생성됩니다.\n- **SSR:** `cookies()`, `headers()`, `searchParams`를 쓰거나 `export const dynamic = 'force-dynamic'`을 지정하면 요청마다 렌더링됩니다.\n\n이 차이는 앞서 말한 흰 화면과도 관련이 있습니다. 정적 export(`output: 'export'`)로 빌드했는데 페이지에서 SSR 전용 기능을 쓰면 빌드가 실패하거나, 정적 파일에 런타임 값이 박혀 깨질 수 있습니다.\n\n**다음 행동:** 배포한 페이지에서 `cookies()`, `headers()`, `fetch`에 `cache: 'no-store'`를 쓰는 코드가 있는지 알려 주세요. 있다면 SSR로 렌더링되는 페이지인지 바로 판별할 수 있습니다.",
-      "score": 92,
+      "score": 100,
       "words": 92,
-      "checks": [
-        "bold_overuse"
-      ],
-      "score_before_k1": 92
+      "checks": [],
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -115,7 +120,8 @@
       "score": 100,
       "words": 146,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -123,12 +129,11 @@
       "turn": 4,
       "q": "이미지 최적화에 next/image 꼭 써야 해요?",
       "text": "아니요, 꼭 써야 하는 것은 아닙니다. 다만 Next.js에서 이미지 최적화를 자동으로 받으려면 `next/image`가 가장 쉬운 방법입니다.\n\n`next/image`가 해 주는 일은 다음과 같습니다.\n\n- **포맷 변환:** 브라우저가 지원하면 WebP나 AVIF로 바꿔 줍니다.\n- **크기 조절:** `width`, `sizes`에 맞춰 여러 해상도를 만들고, 화면에 맞는 크기를 내려줍니다.\n- **지연 로딩:** 화면 밖 이미지는 기본으로 늦게 불러옵니다.\n- **레이아웃 밀림 방지:** `width`와 `height`를 주면 이미지가 뜰 때 본문이 흔들리지 않습니다.\n\n다만 정적 export(`output: 'export'`)로 배포하면 기본 최적화 서버가 없어서 `next/image`가 원본 파일을 그대로 씁니다. 이 경우 `unoptimized` 옵션을 주거나, 빌드 전에 이미지를 직접 WebP로 변환하는 편이 낫습니다.\n\n블로그를 정적으로 배포한다면 다음 중 하나를 고르면 됩니다.\n\n| 방법 | 장점 | 단점 |\n|---|---|---|\n| `next/image` + 호스팅 최적화 | 설정이 거의 없음 | Vercel 등 특정 호스팅에 맞춰짐 |\n| 빌드 전 직접 변환 (sharp 등) | 어디서나 동일하게 동작 | 이미지를 추가할 때마다 변환 과정이 필요 |\n| `<img>` 태그 직접 사용 | 가장 단순함 | 크기, 포맷, 지연 로딩을 직접 챙겨야 함 |\n\n**다음 행동:** 배포 플랫폼이 Vercel인지, 아니면 정적 파일만 올리는 곳인지 알려 주세요. 그에 맞춰 `next.config.js`의 이미지 설정을 구체적으로 잡아 드리겠습니다.",
-      "score": 92,
+      "score": 100,
       "words": 120,
-      "checks": [
-        "bold_overuse"
-      ],
-      "score_before_k1": 92
+      "checks": [],
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -136,12 +141,11 @@
       "turn": 5,
       "q": "환경 변수를 클라이언트에서 쓰려면 어떻게 해요?",
       "text": "`NEXT_PUBLIC_` 접두사를 붙이면 클라이언트 코드에서 쓸 수 있습니다.\n\n1. `.env.local` 같은 파일이나 배포 플랫폼의 환경 변수 설정에 값을 넣습니다.\n\n```bash\nNEXT_PUBLIC_SITE_URL=https://example.com\n```\n\n2. 클라이언트 컴포넌트나 일반 모듈에서 `process.env`로 읽습니다.\n\n```tsx\n'use client';\n\nexport default function Footer() {\n  return <p>{process.env.NEXT_PUBLIC_SITE_URL}</p>;\n}\n```\n\n중요한 점은 **`NEXT_PUBLIC_` 값은 빌드할 때 번들에 그대로 박힌다**는 것입니다. 그래서 다음 두 가지를 주의해야 합니다.\n\n- **비밀 값을 넣으면 안 됩니다.** API 키나 DB 비밀번호에 접두사를 붙이면 누구나 브라우저 소스에서 볼 수 있습니다.\n- **값을 바꾸면 다시 빌드해야 합니다.** 배포 후 플랫폼에서 값만 고치면 이미 만들어진 파일에는 반영되지 않습니다.\n\n앞서 말한 흰 화면 원인과도 연결됩니다. 빌드 환경에 `NEXT_PUBLIC_*` 값이 없으면 `undefined`가 박히고, 그 값을 쓰는 코드가 실행 중에 에러를 냅니다.\n\n**다음 행동:** 배포 플랫폼에서 환경 변수를 설정하는 화면이 Build 단계와 Runtime 단계를 구분하는지 확인해 보세요. 구분 없이 하나로만 있다면 빌드 전에 값이 들어가는지 로그에서 먼저 확인하면 됩니다.",
-      "score": 92,
+      "score": 100,
       "words": 124,
-      "checks": [
-        "bold_overuse"
-      ],
-      "score_before_k1": 92
+      "checks": [],
+      "score_before_k1": 92,
+      "score_before_k2": 92
     },
     {
       "lang": "ko",
@@ -152,7 +156,8 @@
       "score": 100,
       "words": 100,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     },
     {
       "lang": "ko",
@@ -163,10 +168,12 @@
       "score": 100,
       "words": 124,
       "checks": [],
-      "score_before_k1": 100
+      "score_before_k1": 100,
+      "score_before_k2": 100
     }
   ],
   "rescored_by": [
-    "k1"
+    "k1",
+    "k2"
   ]
 }

@@ -323,7 +323,10 @@ def lint(text: str, question: str | None = None) -> Report:
     if len(leads) >= 4 and len(leads) >= 0.6 * len(items) and sum(lead_words) / len(lead_words) > 5:
         add("bold_lead_ins", "Heavy cueing adds nothing (Lorch, Lorch & Klusewitz 1995)",
             f"{len(leads)} list items start with sentence-length bold; keep bold labels to a few words", 4)
-    elif bolds and bolds / n_words * 100 > 3:
+    # K2 (2026-11-13): Korean counts eojeol, which run fewer per idea than English words. Scale the bold limit by the
+    # same eojeol/word ratio the wall check uses (70/110), the most conservative of brainlint's Korean ratios
+    # (sentence 12/25, long 20/35, wall 70/110). Internal consistency, not a Korean-specific study.
+    elif bolds and bolds / n_words * 100 > (3 * 110 / 70 if ko else 3):
         add("bold_overuse", "Isolation (von Restorff) effect", f"{bolds} bold spans in {n_words} words; emphasis stops working", 8)
 
     # 7. Over-structuring short answers (coherence / extraneous load)
