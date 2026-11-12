@@ -1,0 +1,74 @@
+{
+  "t1-paginate.baseline": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t1-paginate.plugin": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": true
+  },
+  "t2-slugify.baseline": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t2-slugify.plugin": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t3-validate.baseline": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t3-validate.plugin": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t4-rounding.baseline": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t4-rounding.plugin": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t5-lru.baseline": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t5-lru.plugin": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t6-ko-wordcount.baseline": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": false
+  },
+  "t6-ko-wordcount.plugin": {
+    "what_changed": true,
+    "not_done_or_limits": true,
+    "how_to_verify": true,
+    "beyond_tests": true
+  }
+}
