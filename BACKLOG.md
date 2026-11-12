@@ -16,7 +16,6 @@ The loop always takes the highest-scoring `todo` item.
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
-| B10-4 | Benchmark analysis script (bench/analyze.py): read submitted JSONs, apply exclusions, H1 mixed model (fallback Wilcoxon), H2 non-inferiority, H3 Brier; publish report | T | 10 | 3 | 0.5 | 2 | **7.5** | todo |
 | B10-5 | **Owner:** enable GitHub Pages (Settings → Pages → main, root) and recruit ~60 participants (README/launch posts link the benchmark) | G | 10 | 3 | 0.5 | 1 | **15** | needs owner |
 | B24 | Document interplay with Claude Code's built-in Concise/Explanatory styles | Q | 5 | 0.5 | 0.8 | 0.5 | **4** | todo |
 | B21 | Web playground (GitHub Pages): paste text → Brain Score (brainlint port to JS) | G | 8 | 2 | 0.5 | 2 | **4** | todo |
@@ -47,6 +46,7 @@ The loop always takes the highest-scoring `todo` item.
 | C14 | **Regression:** card rule 8 ("uncertainty as a number") makes Claude invent confidence %: 6/36 brainres answers vs 0/36 baseline ("~80% likely", "~90% 확신"). Reword: numbers only when grounded (measured rate, calculation); otherwise name what is uncertain + how to check (JD-33 spurious precision, #83). Add brainlint flag; re-run evals | Q | 5 | 2 | 0.8 | 0.5 | 16 | done 2026-11-12 (7/36 → 0/24; card 461 → 488 tokens) |
 | B10-3 | Benchmark: static quiz page (bench/index.html, counterbalanced lists, timer, JSON export) + GitHub issue template for submissions | T | 10 | 3 | 0.5 | 1 | 15 | done 2026-11-12 (page + autotest + issue template) |
 | C15 | Re-measure reminder tokens (text changed +13 chars in C14) with scripts/token_cost.sh; drop the README asterisk | T | 8 | 0.25 | 1.0 | 0.25 | 8 | done 2026-11-12 (card 488, reminder 84, skill 3,391) |
+| B10-4 | Benchmark analysis script (bench/analyze.py): read submitted JSONs, apply exclusions, H1 mixed model (fallback Wilcoxon), H2 non-inferiority, H3 Brier; publish report | T | 10 | 3 | 0.5 | 2 | 7.5 | done 2026-11-12 (stdlib fallback analysis; simulation-validated; protocol v1.1 margin 5→10 pp) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

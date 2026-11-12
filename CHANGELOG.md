@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Benchmark analysis (B10-4): `bench/analyze.py` is stdlib only. It reads local JSON files or `--from-issues` via `gh`, applies the pre-registered exclusions, and runs paired Wilcoxon and t-interval analyses for H1–H3, a sign test for E1, and the decision rule. 5 tests on simulated participants cover a planted effect, null data, an accuracy drop, exclusions, and an exact Wilcoxon value.
+- **Protocol amendment v1.1, before any data:** the same simulation showed the 5 pp non-inferiority margin had only 28–68% power at n = 60, so it is widened to 10 pp (84–99% power). The reason and the simulation table are in PROTOCOL.md.
+
 - Re-measured costs after C14 (`scripts/token_cost.sh`, median of 3): rule card 488 tokens, reminder 84 (was 79), skill body 3,391 (was 3,309). The README tables lose their "re-measure pending" asterisk, and a 20-message session is about 2,200 extra input tokens.
 
 - Benchmark, step 3 of 3 (B10-3): `bench/index.html` is the participant page. It offers English or Korean, puts each participant on counterbalanced list A or B (50/50 versions, unlabeled), randomizes item and option order, and records timed find and understand questions with confidence, an attention check and 2 preference pairs. Results export as JSON. `build_dist.py` generates the page from the frozen items. `validate.sh` runs a headless-Chrome autotest through the whole study. Results are submitted through a GitHub issue form. Next: B10-4 (analysis) and B10-5 (the owner enables Pages and recruits).

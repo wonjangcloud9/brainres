@@ -1,4 +1,4 @@
-# Human comprehension benchmark: pre-registered protocol (v1, 2026-11-12)
+# Human comprehension benchmark: pre-registered protocol (v1.1, 2026-11-12)
 
 **Question.** For the same question, do people find and understand answers faster and as accurately when Claude writes with brainres as when it writes by default?
 
@@ -9,7 +9,7 @@ Every eval so far counts rule violations (`brainlint`) or tokens. This benchmark
 | # | Hypothesis | Test |
 |---|---|---|
 | H1 | Readers find the key fact **faster** in brainres answers | Q1 time-to-correct, log-transformed, mixed model |
-| H2 | Comprehension is **not worse** with brainres (non-inferiority margin: 5 percentage points) | Q2 accuracy, one-sided |
+| H2 | Comprehension is **not worse** with brainres (non-inferiority margin: **10** percentage points, amended from 5; see below) | Q2 accuracy, one-sided |
 | H3 | Confidence is **better calibrated** with brainres (smaller confidence−accuracy gap) | Brier score on Q1+Q2 |
 | E1 | Exploratory: which version readers prefer when shown both | Paired preference on 2 items |
 
@@ -44,7 +44,7 @@ Every eval so far counts rule violations (`brainlint`) or tokens. This benchmark
 ## Analysis plan
 
 - **H1:** linear mixed model, `log(time) ~ condition + (1|participant) + (1|item)`.
-- **H2:** logistic mixed model, `correct ~ condition + (1|participant) + (1|item)`. Non-inferiority holds if the lower 95% bound of the difference is above −5 pp.
+- **H2:** logistic mixed model, `correct ~ condition + (1|participant) + (1|item)`. Non-inferiority holds if the lower 95% bound of the difference is above −10 pp.
 - **H3:** Brier score per participant × condition, compared with a paired Wilcoxon test.
 - **Fallback if the models don't converge:** per-participant means of brainres items versus baseline items, with a paired Wilcoxon test.
 
@@ -59,3 +59,16 @@ There are no accounts or names. Each participant gets a random ID, and results c
 - **Ceiling effects.** An LLM reviewer flagged that many questions are guessable by developers, so accuracy (H2) may sit near 100% in both arms. That is acceptable for a non-inferiority test. It is also why time to a correct answer (H1) is the primary measure.
 - **Wording bias.** The reviewer found 9 stems or options that reused brainres phrasing, which would advantage brainres readers. All 9 were rewritten neutrally before freezing (see `quiz.json` → `review`).
 - Volunteers recruited from the repo audience may prefer brainres. Mitigation: versions are unlabeled, and the primary measures are behavioral (time, accuracy), not preference.
+
+## Amendment v1.1 (2026-11-12, before any data was collected)
+
+While testing `analyze.py` on simulated participants, we found H2 badly underpowered. Each participant answers only 4 understand questions per condition, so per-person accuracy is noisy. Results from 300 simulations per cell with no true difference:
+
+| True accuracy | n | Power at 5 pp margin | Power at 10 pp margin |
+|---|---:|---:|---:|
+| 0.85 | 60 | 0.28 | 0.84 |
+| 0.85 | 200 | 0.75 | 1.00 |
+| 0.95 | 60 | 0.68 | 0.99 |
+
+Keeping 5 pp would need about 200 participants, which is not realistic for a volunteer study. **The margin is widened to 10 pp, and n = 60 stays.** A 10-point comprehension drop is still a meaningful harm, so the decision rule keeps its purpose. This amendment is committed before any submission exists, and the git history is the record.
+

@@ -33,3 +33,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 09:39 · C14 · rule 8 rewritten (no invented confidence %), brainlint invented_confidence; eval: 7/36 → 0/24, gains intact; card 461→488 tokens; 30 calls
 - 2026-11-12 09:59 · B10-3 · benchmark page (counterbalanced, timed, JSON export) + headless e2e autotest in validate.sh + issue template; B10-4/B10-5 added
 - 2026-11-12 10:18 · C15 · re-measured: card 488, reminder 84, skill 3,391 (12 calls); README asterisk removed
+- 2026-11-12 10:39 · B10-4 · bench/analyze.py (stdlib, gh issues) + simulation tests; found H2 underpowered → protocol v1.1 margin 5→10 pp before data
