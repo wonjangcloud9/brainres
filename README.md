@@ -7,7 +7,7 @@ English · [한국어](README.ko.md)
 `caveman` makes Claude shorter. `humanizer` makes it sound human.
 **brainres makes it understandable.** It reviews **799 findings** from cognitive science, psycholinguistics, decision science and human–AI trust research. Each finding is either applied as a writing rule or excluded with a stated reason.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-657%2F657-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-799-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-657%2F657-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-799-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
 ---
 
@@ -247,10 +247,6 @@ The always-on card stays small (500 tokens). Situation-specific findings live in
 
 - **Neuromyths we refuse:** learning styles; left/right brain; the "8-second attention span"; Dale's cone; Bionic Reading; "dopamine-hit" formatting; "23 minutes to refocus"; "willpower is glucose"; "we read words by their shape". Thirty in total are listed in the catalogs.
 - **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](BACKLOG.md).
-
-## Built overnight by a loop
-
-The repo improves itself. Every 20 minutes a Claude Code loop takes the top item from the [RICE-scored backlog](BACKLOG.md), implements it, validates it, and pushes. When the backlog runs dry, it researches again. Every iteration is logged in [`LOOP_LOG.md`](LOOP_LOG.md). The protocol is in [`LOOP.md`](LOOP.md).
 
 ## Contributing
 

@@ -7,7 +7,7 @@
 `caveman`은 Claude를 짧게 만들고, `humanizer`는 사람처럼 들리게 만듭니다.
 **brainres는 이해되게 만듭니다.** 인지과학, 심리언어학, 의사결정 과학, 인간–AI 신뢰 연구에서 **799개 연구 결과**를 검토했습니다. 각 결과는 글쓰기 규칙으로 적용하거나, 이유를 적고 제외했습니다.
 
-[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-657%2F657-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-799-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![built by](https://img.shields.io/badge/built_by-a_20--min_Claude_loop-8a63d2)](LOOP_LOG.md) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
+[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-657%2F657-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-799-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
 ---
 
@@ -232,14 +232,6 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 **쓰지 않는 뉴로미스**: 학습 스타일, 좌뇌/우뇌, "8초 집중력", 데일의 원뿔, Bionic Reading, "도파민 자극" 포맷팅, "집중 회복에 23분". 카탈로그에 모두 30개가 있습니다.
 
 **솔직한 한계.** LLM 채팅 답변의 포맷 규칙을 통제 실험으로 검증한 연구는 아직 없습니다. 저희도 아직 안 했습니다. 기준값은 튜닝할 출발점이고, 사람 대상 이해도 벤치마크는 [로드맵](BACKLOG.md)에 있습니다.
-
-## 밤새 루프가 만드는 레포
-
-이 레포는 스스로 개선됩니다.
-
-- 20분마다 Claude Code 루프가 [RICE 점수 백로그](BACKLOG.md)에서 1위 항목을 골라 구현하고, 검증하고, 푸시합니다.
-- 백로그가 비면 다시 리서치합니다.
-- 모든 회차는 [`LOOP_LOG.md`](LOOP_LOG.md)에 기록되고, 진행 절차는 [`LOOP.md`](LOOP.md)에 있습니다.
 
 ## 기여
 

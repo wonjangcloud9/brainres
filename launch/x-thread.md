@@ -51,6 +51,4 @@ The always-on card costs 500 tokens, measured. Situation rules (debugging, risk 
 8/
 Honest limit: "applied" = cited by a rule. A human comprehension benchmark comes next.
 
-The repo is improved by a Claude loop every 20 minutes 🤖
-
 github.com/wonjangcloud9/brainres

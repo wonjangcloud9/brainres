@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- At the owner's request, removed the "built by a 20-min Claude loop" badge and the loop section from both READMEs, and the loop lines from the Show HN, X and GeekNews drafts. LOOP.md and LOOP_LOG.md stay in the repo.
+
 - Research round 7 (`research/catalog-round7.md`): we found no controlled study of how streaming changes comprehension or trust in LLM answers, and recorded that as the main finding. ST-01, a practitioner report that readers act on partly streamed text, now backs the C17 rule in numbers.md. Three system-level studies (pacing, response delay, multiple answers) are catalogued and excluded.
 - `llm-side-effects.md`: added two LLM-side studies, Li 2024 (instructions drift within about 8 rounds) and Laban 2025 (multi-turn performance −39%).
 - The COGA and dyslexia queue item was already covered.
