@@ -118,7 +118,7 @@ def conf_p(c: int) -> float:
 
 
 def analyze(subs: list[dict], lang: str = "en") -> dict:
-    subs = [s for s in subs if s.get("lang") == lang]
+    subs = [s for s in subs if s.get("lang") == lang and s.get("study", 1) == 1]
     excluded = {}
     kept = []
     seen = set()
@@ -162,6 +162,40 @@ def analyze(subs: list[dict], lang: str = "en") -> dict:
     return r
 
 
+def analyze_study2(subs: list[dict], contents: dict[str, str]) -> dict:
+    """Study 2 (bench/study2/PROTOCOL.md): format (prose/bullets) × content (causal/parallel)."""
+    subs = [s for s in subs if s.get("study") == 2]
+    kept = [s for s in subs if exclusion(s) is None]
+    did, h2t, h2a = [], [], []
+    for s in kept:
+        cell = {}
+        for t in s["trials"]:
+            cell.setdefault((contents.get(t["id"]), t["version"]), []).append(t)
+        def acc(c, v):
+            ts = cell.get((c, v), [])
+            return st.mean(1.0 if t["q2"]["correct"] else 0.0 for t in ts) if ts else None
+        a = [acc("causal", "prose"), acc("causal", "bullets"), acc("parallel", "prose"), acc("parallel", "bullets")]
+        if None not in a:
+            did.append((a[0] - a[1]) - (a[2] - a[3]))
+        lt = {v: [math.log(t["q1"]["ms"]) for t in cell.get(("parallel", v), []) if t["q1"]["correct"] and t["q1"]["ms"] > 0]
+              for v in ("prose", "bullets")}
+        if lt["prose"] and lt["bullets"]:
+            h2t.append(st.mean(lt["bullets"]) - st.mean(lt["prose"]))
+        if a[2] is not None and a[3] is not None:
+            h2a.append(a[3] - a[2])
+    r = {"study": 2, "submitted": len(subs), "analyzed": len(kept)}
+    if len(did) >= 2:
+        m, lo, hi = mean_ci(did)
+        p = wilcoxon(did)
+        r["H1"] = {"n": len(did), "did_pp": 100 * m, "ci_pp": (100 * lo, 100 * hi), "p": p, "supported": p < 0.05 and m > 0}
+    if len(h2t) >= 2:
+        m, lo, hi = mean_ci(h2t)
+        r["H2"] = {"n": len(h2t), "time_ratio": math.exp(m), "ci": (math.exp(lo), math.exp(hi)), "p": wilcoxon(h2t),
+                   "faster": wilcoxon(h2t) < 0.05 and m < 0,
+                   "acc_non_inferior": mean_ci(h2a)[1] > -NI_MARGIN if len(h2a) >= 2 else False}
+    return r
+
+
 def report(results: list[dict]) -> str:
     lines = ["# Reading benchmark report", "", f"Generated {dt.date.today().isoformat()} by `bench/analyze.py`, using the pre-registered fallback analysis in [PROTOCOL.md](PROTOCOL.md).", ""]
     for r in results:
@@ -188,13 +222,35 @@ def report(results: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def study2_contents() -> dict[str, str]:
+    return {d.name: json.loads((d / "quiz.json").read_text(encoding="utf-8"))["content"]
+            for d in sorted((ROOT / "bench/study2/items").iterdir()) if d.is_dir()}
+
+
+def report2(r: dict) -> str:
+    lines = ["## Study 2: prose vs bullets", "", f"- Submitted: {r['submitted']} · analyzed: {r['analyzed']}"]
+    if "H1" in r:
+        h = r["H1"]
+        lines.append(f"- **H1 (prose helps understanding for causal content only):** interaction {h['did_pp']:+.1f} pp "
+                     f"(95% CI {h['ci_pp'][0]:+.1f} to {h['ci_pp'][1]:+.1f}), Wilcoxon p = {h['p']:.3f}, n = {h['n']} → "
+                     + ("**supported**" if h["supported"] else "not supported"))
+    if "H2" in r:
+        h = r["H2"]
+        lines.append(f"- **H2 (bullets faster to search, parallel content):** bullets/prose time ratio {h['time_ratio']:.2f} "
+                     f"(95% CI {h['ci'][0]:.2f}–{h['ci'][1]:.2f}), p = {h['p']:.3f} → "
+                     + ("**faster**" if h["faster"] else "not shown") + "; accuracy "
+                     + ("non-inferior" if h["acc_non_inferior"] else "non-inferiority not shown"))
+    lines += ["", f"**Decision rule:** the README may say \"human evidence supports rule 5\": **{'yes' if r.get('H1', {}).get('supported') else 'no'}**.", ""]
+    return "\n".join(lines) + "\n"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--from-issues", action="store_true")
     ap.add_argument("--out")
     a = ap.parse_args()
     subs = load_issues() if a.from_issues else load_local()
-    text = report([analyze(subs, "en"), analyze(subs, "ko")])
+    text = report([analyze(subs, "en"), analyze(subs, "ko")]) + "\n" + report2(analyze_study2(subs, study2_contents()))
     print(text)
     if a.out:
         Path(a.out).write_text(text, encoding="utf-8")

@@ -90,6 +90,15 @@ m=re.search(r'<textarea[^>]*>(.*?)</textarea>', sys.stdin.read(), re.S)
 d=json.loads(html.unescape(m.group(1))); v=[t['version'] for t in d['trials']]
 assert len(v)==8 and v.count('brainres')==4 and d['attention'] is not None and len(d['preference'])==2
 " && ok "benchmark page autotest (8 trials, 4/4 counterbalanced)" || err "benchmark page autotest failed"
+  dom=$("$CHROME" --headless=new --disable-gpu --virtual-time-budget=5000 --dump-dom "file://$PWD/bench/study2/index.html#autotest" 2>/dev/null)
+  printf '%s' "$dom" | python3 -c "
+import sys,re,json,html
+m=re.search(r'<textarea[^>]*>(.*?)</textarea>', sys.stdin.read(), re.S)
+d=json.loads(html.unescape(m.group(1))); t=d['trials']
+cell=lambda c,v: sum(1 for x in t if x['content']==c and x['version']==v)
+assert d['study']==2 and len(t)==8 and all(cell(c,v)==2 for c in ('causal','parallel') for v in ('prose','bullets'))
+assert d['attention'] is not None and d['preference']==[]
+" && ok "study 2 page autotest (8 trials, 2 per content × format cell)" || err "study 2 page autotest failed"
 fi
 
 # 8d. Playground parity with brainlint.py (needs network for Pyodide; opt-in)

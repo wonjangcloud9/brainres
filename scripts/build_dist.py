@@ -76,6 +76,7 @@ def build() -> dict[str, bytes]:
         "---\n\n" + (ROOT / "hooks" / "core-card.md").read_text(encoding="utf-8").replace("brainres is active. ", "").strip() + "\n"
     ).encode()
     out["bench/index.html"] = build_bench()
+    out["bench/study2/index.html"] = build_bench2()
     out["playground/index.html"] = build_playground()
     return out
 
@@ -90,6 +91,25 @@ def build_playground() -> bytes:
     page = page.replace('/*__BRAINLINT__*/""', json.dumps(src).replace("</", "<\\/"))
     page = page.replace("/*__EXAMPLES__*/{}", json.dumps(ex, ensure_ascii=False).replace("</", "<\\/"))
     return page.encode()
+
+
+def build_bench2() -> bytes:
+    """Study 2 (bench/study2/PROTOCOL.md): the same engine, prose vs bullets, balanced within content type."""
+    import hashlib, json
+    items = []
+    for d in sorted((ROOT / "bench/study2/items").iterdir()):
+        if not d.is_dir():
+            continue
+        prose = (d / "prose.md").read_text(encoding="utf-8")
+        q = prose.splitlines()[0].removeprefix("<!-- Q: ").removesuffix(" -->")
+        strip = lambda t: "\n".join(t.splitlines()[1:]).strip()
+        quiz = json.loads((d / "quiz.json").read_text(encoding="utf-8"))
+        items.append({"id": d.name, "lang": "en", "content": quiz["content"], "question": q, "prose": strip(prose),
+                      "bullets": strip((d / "bullets.md").read_text(encoding="utf-8")), "quiz": quiz})
+    sha = hashlib.sha256((ROOT / "bench/study2/items/MANIFEST.sha256").read_bytes()).hexdigest()[:16]
+    data = json.dumps({"study": 2, "versions": ["prose", "bullets"], "preference": False, "items": items, "items_sha": sha},
+                      ensure_ascii=False).replace("</", "<\\/")
+    return (ROOT / "bench/template.html").read_text(encoding="utf-8").replace("/*__DATA__*/null", data).encode()
 
 
 def build_bench() -> bytes:

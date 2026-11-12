@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Study 2, part 2 of 2 (B36b, launch prep):
+  - **Page:** `bench/study2/index.html` reuses the study-1 engine, now generalized to take versions, content groups and an optional preference step. It balances 2 trials per content × format cell for each participant, and a headless autotest in validate.sh checks that.
+  - **Analysis:** `analyze.py` gained a study-2 analysis (H1 interaction, H2 search time plus accuracy non-inferiority) and a report section. Study 1 analysis now ignores study-2 submissions.
+  - **Sample size (protocol amendment v1.1, before any data):** a power simulation raised the target from n = 80 to n = 150. At n = 80 the power was 0.61 for a 15 pp effect; at n = 150 it is 0.89. A 10 pp effect is still underpowered (0.57), and the protocol says so.
+
 - Study 2, part 1 of 2 (B36a): `bench/study2/PROTOCOL.md` pre-registers a 2×2 within-subject test of rule 5, crossing content (causal vs parallel) with format (prose vs bullets). Hypotheses: H1, prose helps understanding for causal content only; H2, bullets speed up finding in parallel content. The protocol includes a decision rule and an analysis plan. Eight topics are written in both formats with identical claims, plus find and understand quizzes, frozen in `items/MANIFEST.sha256`. B36b covers the independent review, the power simulation, the page and the analysis.
 
 - Premature-number fix (C17): card rule 1 now reads "For math, sentence 1 = the one-line calculation + result", and SKILL.md and numbers.md match. Across 3 calculation prompts × 3 samples, sentence 1 was right in 9 of 9 answers, against 0 of 3 with "do any math first" and 0 of 1 with the original card. The baseline was unstable on the same prompt (wrong in 4/4 earlier, right in 3/3 now), so we don't claim it beats the baseline. The card grew from 488 to 498 tokens (measured), and the READMEs, launch drafts and social image are updated.

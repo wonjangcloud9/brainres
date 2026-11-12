@@ -48,7 +48,8 @@ const app = document.getElementById("app");
 const rid = () => Math.random().toString(36).slice(2, 10);
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const md = s => (window.marked ? marked.parse(s) : "<pre>" + s.replace(/</g, "&lt;") + "</pre>");
-let S = { id: rid(), started: new Date().toISOString(), ua: navigator.userAgent.slice(0, 120), lang: null, fluent: null, list: Math.random() < 0.5 ? "A" : "B", trials: [], attention: null, preference: [] };
+const STUDY = DATA.study || 1, VERSIONS = DATA.versions || ["baseline", "brainres"];
+let S = { id: rid(), study: STUDY, started: new Date().toISOString(), ua: navigator.userAgent.slice(0, 120), lang: null, fluent: null, list: Math.random() < 0.5 ? "A" : "B", trials: [], attention: null, preference: [] };
 let L = T.en;
 
 function view(html) { app.innerHTML = html; window.scrollTo(0, 0); }
@@ -60,7 +61,7 @@ function waitFor(names, btn) { const b = document.getElementById(btn); const f =
 function intro() {
   view(`<h1>${T.en.title}<br><span class="muted">${T.ko.title}</span></h1>
   <div class="card"><p>${T.en.intro}</p><p class="muted">${T.ko.intro}</p>
-  <p><button onclick="pickLang('en')">English set (8)</button> <button onclick="pickLang('ko')">한국어 세트 (4)</button></p></div>`);
+  <p>${["en", "ko"].filter(l => DATA.items.some(it => it.lang === l)).map(l => `<button onclick="pickLang('${l}')">${l === "en" ? "English set" : "한국어 세트"} (${DATA.items.filter(it => it.lang === l).length})</button>`).join(" ")}</p></div>`);
 }
 function pickLang(lang) {
   S.lang = lang; L = T[lang];
@@ -69,22 +70,24 @@ function pickLang(lang) {
 function begin() {
   S.fluent = document.getElementById("fl").checked;
   const items = shuffle(DATA.items.filter(it => it.lang === S.lang));
-  // Counterbalancing: items sorted by id get alternating versions; list B flips them.
-  const order = DATA.items.filter(it => it.lang === S.lang).map(it => it.id).sort();
-  S.plan = items.map(it => { const k = order.indexOf(it.id) % 2 === 0; const brainres = (S.list === "A") ? k : !k; return { id: it.id, version: brainres ? "brainres" : "baseline" }; });
+  // Counterbalancing: within each content group (study 2: causal / parallel), items sorted by id get
+  // alternating versions; list B flips them. Study 1 has one group, so this is the original scheme.
+  const group = it => it.content || "all";
+  const order = g => DATA.items.filter(it => it.lang === S.lang && group(it) === g).map(it => it.id).sort();
+  S.plan = items.map(it => { const k = order(group(it)).indexOf(it.id) % 2 === 0; const second = (S.list === "A") ? k : !k; return { id: it.id, content: it.content, version: VERSIONS[second ? 1 : 0] }; });
   S.attnAt = 1 + Math.floor(Math.random() * Math.max(1, S.plan.length - 1));
   S.step = 0; trial();
 }
 function progress() { const n = S.plan.length; return `<div class="progress"><div style="width:${Math.round(100 * S.step / n)}%"></div></div>`; }
 function trial() {
   if (S.step === S.attnAt && S.attention === null) return attention();
-  if (S.step >= S.plan.length) return preference();
+  if (S.step >= S.plan.length) return DATA.preference === false ? finish() : preference();
   const p = S.plan[S.step], it = DATA.items.find(x => x.id === p.id), quiz = it.quiz, opts1 = shuffle(quiz.q1.options.map((o, i) => [o, i]));
   view(`${progress()}<div class="card"><div class="muted">${L.read}</div><div class="q">${it.question}</div></div>
   <div class="card answer">${md(it[p.version])}</div>
   <div class="card"><div class="q">${quiz.q1.text}</div><div class="muted">${L.q1}</div>${radio("q1", opts1.map(o => o[0]))}<p>${L.conf}</p>${scale("c1")}<p><button class="primary" id="b1">${L.next}</button></p></div>`);
   const t0 = performance.now(); waitFor(["q1", "c1"], "b1");
-  document.getElementById("b1").onclick = () => { const choice = opts1[picked("q1")][1]; const rec = { id: p.id, version: p.version, q1: { correct: choice === quiz.q1.answer, ms: Math.round(performance.now() - t0), conf: picked("c1") } }; q2(it, rec); };
+  document.getElementById("b1").onclick = () => { const choice = opts1[picked("q1")][1]; const rec = { id: p.id, content: p.content, version: p.version, q1: { correct: choice === quiz.q1.answer, ms: Math.round(performance.now() - t0), conf: picked("c1") } }; q2(it, rec); };
 }
 function q2(it, rec) {
   const quiz = it.quiz, opts2 = shuffle(quiz.q2.options.map((o, i) => [o, i]));
@@ -117,9 +120,9 @@ function finish() {
   const json = JSON.stringify(S, null, 1);
   view(`<div class="card"><h2>${L.done}</h2>
   <p><button class="primary" id="dl">${L.dl}</button> <button id="cp">${L.copy}</button></p>
-  <p><a href="${REPO}/issues/new?template=benchmark-result.yml" target="_blank" rel="noopener">${L.issue} →</a></p>
+  <p><a href="${REPO}/issues/new?template=benchmark-result.yml&title=${encodeURIComponent(`Benchmark result (study ${STUDY})`)}" target="_blank" rel="noopener">${L.issue} →</a></p>
   <textarea readonly>${json.replace(/</g, "&lt;")}</textarea></div>`);
-  document.getElementById("dl").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); a.download = `brainres-bench-${S.id}.json`; a.click(); };
+  document.getElementById("dl").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); a.download = `brainres-bench${STUDY === 1 ? "" : STUDY}-${S.id}.json`; a.click(); };
   document.getElementById("cp").onclick = () => { try { navigator.clipboard.writeText(json); } catch (e) {} };
 }
 // #autotest: click through the whole study with the first options (used by validate.sh via headless Chrome)

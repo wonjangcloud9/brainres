@@ -57,3 +57,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 17:21 · B34 · Korean set (30 calls): words −20%, speech-level mixing 7/12 → 1/12; found C17 (premature wrong number in sentence 1, both conditions 9/9); card compute-first line did not help (0/3)
 - 2026-11-12 17:39 · C17 · card: 'for math, sentence 1 = calculation + result' → 9/9 right (vs 0/3 'compute first'); card 498 tokens; 30 calls
 - 2026-11-12 17:58 · B36a · study 2 protocol (2×2 content × format) + 8 frozen prose/bullet item pairs with quizzes
+- 2026-11-12 18:19 · B36b · study 2 page + analysis + power sim (n 80→150, amendment v1.1); independent item review running
