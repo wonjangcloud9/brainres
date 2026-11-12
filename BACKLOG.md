@@ -6,7 +6,6 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| B37 | Code-explanation eval: 6 "explain this code" / "what does this do" prompts (EN + KO) × {baseline, brainres}; score whether sentence 1 is a purpose summary (DV-01, HC-72) vs a line-by-line tour, and whether assumptions are stated (DV-07). ≤24 calls | T | 6 | 1 | 0.8 | 0.5 | **9.6** | todo |
 | B38 | Learner check: 4 "I'm learning, here's my broken code" prompts; does brainres annotate their code (DV-03) and end with a self-test (DV-04) vs rewriting? | T | 3 | 1 | 0.5 | 1 | 1.5 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
@@ -66,6 +65,7 @@ The loop always takes the highest-scoring `todo` item.
 | C17 | **Premature number in sentence 1:** on calculations, models without hidden reasoning state a guess first and correct it later (9/9 on k05 across both conditions). "Do any math first" on the card did NOT help (0/3). Test: "for math, sentence 1 = the one-line calculation and its result"; re-run k05 ×3 + 2 more calc prompts; keep whichever wording works, drop the other | Q | 3 | 3 | 0.8 | 0.5 | 14.4 | done 2026-11-12 (calc-in-sentence-1: 9/9 right; "compute first" 0/3; card 498 tokens) |
 | B36 | Benchmark study 2 (pre-register before data): bullets vs prose for the same content — the gap no published study fills (catalog-round3) | T | 8 | 2 | 0.5 | 2 | 4 | B36a done 2026-11-12 (protocol + 8 frozen item pairs) — B36b next |
 | B36b | Study 2 launch prep: independent equivalence review of the 8 prose/bullet pairs, power simulation (target n), page via the study-1 engine (`?study=2`), autotest in validate.sh, analysis in analyze.py | T | 8 | 2 | 0.5 | 1 | 8 | done 2026-11-12 (page, analysis, power → n=150, independent review: 4 FIX applied; launch needs owner: Pages + recruit) |
+| B37 | Code-explanation eval: 6 "explain this code" / "what does this do" prompts (EN + KO) × {baseline, brainres}; score whether sentence 1 is a purpose summary (DV-01, HC-72) vs a line-by-line tour, and whether assumptions are stated (DV-07). ≤24 calls | T | 6 | 1 | 0.8 | 0.5 | 9.6 | done 2026-11-12 (purpose-first 8/8 vs 8/8: ceiling; assumptions-before-code 2/2 vs 0/2, n tiny; harness now survives failed calls) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

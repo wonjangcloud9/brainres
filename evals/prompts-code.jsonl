@@ -1,0 +1,6 @@
+{"id": "x01-explain-py", "type": "explain", "lang": "en", "q": "What does this code do?\n\n```python\ndef f(xs):\n    seen = set()\n    out = []\n    for x in xs:\n        if x not in seen:\n            seen.add(x)\n            out.append(x)\n    return out\n```"}
+{"id": "x02-explain-js", "type": "explain", "lang": "en", "q": "Can you explain this?\n\n```js\nconst debounce = (fn, ms) => {\n  let t;\n  return (...args) => {\n    clearTimeout(t);\n    t = setTimeout(() => fn(...args), ms);\n  };\n};\n```"}
+{"id": "x03-explain-sql-ko", "type": "explain", "lang": "ko", "q": "이 쿼리 뭐 하는 거야?\n\n```sql\nSELECT user_id, COUNT(*) AS c\nFROM orders\nWHERE created_at >= NOW() - INTERVAL '30 days'\nGROUP BY user_id\nHAVING COUNT(*) >= 3\nORDER BY c DESC;\n```"}
+{"id": "x04-explain-sh-ko", "type": "explain", "lang": "ko", "q": "이 스크립트 설명해줘\n\n```bash\nfind . -name '*.log' -mtime +7 -print0 | xargs -0 gzip\n```"}
+{"id": "x05-write-en", "type": "write", "lang": "en", "q": "Write a function that reads a CSV file and returns the average of the price column."}
+{"id": "x06-write-ko", "type": "write", "lang": "ko", "q": "폴더 안에 있는 이미지 파일들 이름을 날짜순으로 바꿔주는 스크립트 짜줘."}

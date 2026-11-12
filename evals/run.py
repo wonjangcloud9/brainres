@@ -91,13 +91,18 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     system = brainres_prompt()
     jobs = [(p, c, k) for p in prompts for c in conds for k in range(a.samples)]
-    rows = []
+    rows, failed = [], []
     with tempfile.TemporaryDirectory() as empty, cf.ThreadPoolExecutor(a.jobs) as ex:
         futs = {ex.submit(ask, p["q"], a.model, system if c == "brainres" else None, empty, a.style, c == "plugin"): (p, c, k)
                 for p, c, k in jobs}
         for f in cf.as_completed(futs):
             p, c, k = futs[f]
-            r = f.result()
+            try:
+                r = f.result()
+            except Exception as e:  # one failed call (timeout, bad JSON) must not lose the whole run (B37)
+                failed.append({"id": p["id"], "condition": c, "sample": k + 1, "error": f"{type(e).__name__}: {e}"[:200]})
+                print(f"{p['id']:<16} {c:<9} FAILED {failed[-1]['error']}", flush=True)
+                continue
             rep = brainlint.lint(r["text"])
             rep_q = brainlint.lint(r["text"], p["q"])  # question-aware score, kept separate for comparability
             checks = sorted({x.check for x in rep.findings})
@@ -112,7 +117,7 @@ def main() -> int:
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)
     rows.sort(key=lambda r: (r["id"], r["condition"], r["sample"]))
     (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "style": a.style,
-                                                      "prompt_set": a.prompts, "rows": rows},
+                                                      "prompt_set": a.prompts, "rows": rows, "failed": failed},
                                                      ensure_ascii=False, indent=2))
 
     def agg(cond, key, fn=statistics.mean, rs=None):

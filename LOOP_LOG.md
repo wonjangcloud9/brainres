@@ -60,3 +60,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 18:19 · B36b · study 2 page + analysis + power sim (n 80→150, amendment v1.1); independent item review running
 - 2026-11-12 18:21 · B36b · independent review: 4 items fixed (amendment v1.2), Q1 timing → pick_ms, parallel prose trimmed; B36b done
 - 2026-11-12 18:40 · research round 5 · LLM coding-help studies: 7 findings (6 applied); code: assumptions line, lines-to-change; learn: annotate their code; B37/B38 scored
+- 2026-11-12 19:04 · B37 · code-explanation eval (24 calls): purpose-first 8/8 both (ceiling), explain words −18%, assumptions-before-code 2/2 vs 0/2 (n tiny); run.py survives failed calls

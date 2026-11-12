@@ -48,6 +48,22 @@ For example: "300만 원 × 40% = 월 120만 원 저축이고, 1억 ÷ 120만 �
 
 The baseline was unstable on this prompt. It was wrong in 4/4 earlier runs, but this time it opened with the calculation and was right in all 3. We therefore claim only that brainres's sentence 1 is now reliable, not that it beats the baseline here. The card went from 488 to 498 tokens.
 
+## Code explanations and unstated requirements (B37)
+
+We ran 6 prompts ([`prompts-code.jsonl`](prompts-code.jsonl)) on Sonnet, with 2 samples per condition (24 calls). Four asked to explain code: Python, JS, SQL in Korean and a shell one-liner in Korean. Two asked to write code with unstated requirements. Every answer was judged by hand, and the judgments are in [`results/2026-11-12-code/judged.json`](results/2026-11-12-code/judged.json).
+
+| | baseline | brainres |
+|---|---:|---:|
+| Explanations whose sentence 1 is a whole-code purpose summary (DV-01, HC-72) | 8 / 8 | 8 / 8 |
+| Mean words, explanations | 171 | 140 (−18%) |
+| Code answers stating assumptions *before* the code (DV-07) | 0 / 2 | 2 / 2 |
+
+**A ceiling result on summaries.** Default Sonnet already opens code explanations with a purpose summary, and neither condition gave a line-by-line tour. The card needs no change for DV-01.
+
+The assumptions difference is in the expected direction. For example: "This Python function uses only the standard library and skips blank price cells". But with n = 2 it is not evidence. The baseline put its assumptions in notes after the code.
+
+**Harness limit found.** The Korean "write me a script" prompt (x06) made the model try to create a file in all 4 runs. These runs use `--tools ""`, so no file could actually be written. The baseline emitted raw tool-call markup, brainres said "만들었어요" (I made it) about a file that was never written, and one call failed outright. These are artifacts of a tool-less run of Claude Code, which still believes it can act, so x06 is excluded. `run.py` now records a failed call in `summary.json` (`failed`) instead of crashing and losing the whole run.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

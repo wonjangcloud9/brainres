@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Code-explanation eval (B37): 6 prompts × 2 samples × 2 conditions on Sonnet, 24 calls, judged by hand.
+  - Sentence 1 was a purpose summary in 8/8 answers in both conditions, a ceiling result, so the card needs no change. brainres explanations were 18% shorter.
+  - Assumptions stated before the code: brainres 2/2, baseline 0/2. That is too small to count as evidence.
+  - Found a harness limit: in tool-less runs, a "write me a script" prompt makes the model act as if it created a file. That prompt is excluded.
+  - Also found a harness bug: one failed call crashed the whole run. `evals/run.py` now records failed calls in `summary.json` and keeps going.
+
 - Research round 5, on how people use LLM coding help (`research/catalog-round5.md`): 7 studies, 6 applied. MacNeil 2023 found students preferred summary explanations and rated line-by-line least useful; Kazemitabaar 2024 (CodeAid, 700 students); Prather 2024 (the widening gap); Nam 2024 (in-IDE explanations); Vaithilingam 2022; Liang 2024. New code rules: state unstated assumptions in one line above the code, and after non-trivial generated code name the 1–2 lines most likely to need changing. New learn rule: mark the fix on the learner's own code instead of rewriting it. Coverage is 654/654 (793 reviewed). New backlog: B37 (code-explanation eval, 9.6) and B38 (learner check, 1.5).
 
 - Study 2, part 2 of 2 (B36b, launch prep):
