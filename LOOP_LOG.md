@@ -100,3 +100,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 06:57 · G1 · growth: README first screen leads with the 80-prompt result (incl. the detail cost); social image stats −29% / +4.6; tagline 'Not just shorter'
 - 2026-11-13 07:19 · L1 · latency (30 calls): first visible text +0.45 s median (+1.58 s when thinking); total time unchanged → no change
 - 2026-11-13 07:37 · items from measurements · suite is Sonnet-only; README cross-model lines from the 12-prompt set → M1 Haiku suite subset (3.2), M3 Haiku coverage (4, blocked), M2 Opus subset (2.4)
+- 2026-11-13 08:02 · M1 · Haiku suite subset (30 calls): 14 pairs — words −31% (CI excl. 0), Brain Score +3.0 (n.s.); README cross-model lines updated; M3 unblocked
