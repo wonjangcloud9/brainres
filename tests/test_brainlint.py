@@ -212,6 +212,18 @@ class QuestionAware(unittest.TestCase):
             self.assertEqual("no_recommendation" in before, flagged, ex)
             self.assertNotIn("no_recommendation", after, ex)
 
+    def test_recommendation_forms_found_in_b47(self):
+        # premise-correcting "neither" and Korean "더 나은 선택이에요" both answer a choice question
+        q = "Should I use PgBouncer or just raise max_connections?"
+        self.assertNotIn("no_recommendation", {f.check for f in brainlint.lint(
+            "Neither is the first fix, because the error comes from your app's own pool. Raise the app pool size first.", q).findings})
+        qk = "PgBouncer를 쓰는 게 나아요, 아니면 max_connections를 올리는 게 나아요?"
+        self.assertNotIn("no_recommendation", {f.check for f in brainlint.lint(
+            "PgBouncer가 대체로 더 나은 선택이에요. 연결을 적게 유지할 수 있어요.", qk).findings})
+        # a real non-answer is still flagged
+        self.assertIn("no_recommendation", {f.check for f in brainlint.lint(
+            "Both have trade-offs. It depends on your workload and team.", q).findings})
+
     def test_preemptive_refutation(self):
         q = "In Python: a = [[0] * 2] * 2; a[0][0] = 1; print(a). What is printed?"
         bad = "[[0, 0], [0, 0]] is wrong. The output is [[1, 0], [1, 0]]."

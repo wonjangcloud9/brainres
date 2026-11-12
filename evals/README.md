@@ -192,6 +192,19 @@ There was no drift without the reminder, so per the pre-stated rule the always-o
 
 **Limit:** 7 short turns is a small context. Long Claude Code sessions full of tool output are not covered. B47 tests that case.
 
+**Long context (B47).** `python3 evals/multiturn.py --long` pastes about 3k tokens of logs or code in each of turns 1–4. The session reaches about 30k context tokens. Turns 5–7 are plain database questions, also asked in fresh sessions as the control (2 samples each). Card only, no per-turn reminder, Sonnet, EN + KO, 26 calls:
+
+| Mean per answer | long session | fresh session |
+|---|---:|---:|
+| Brain Score, turns 5–7 | **100.0** | 98.0 |
+| Words, turns 5–7 | 178 | 159 |
+
+There was no drift at about 30k tokens either, so no periodic reminder was added. Two late-turn answers were first flagged `no_recommendation`, and both were brainlint false positives:
+- One answered the PgBouncer-vs-`max_connections` question with "Neither is the first fix, because the error you logged most likely comes from your app's own pool". That uses the pasted log to correct the premise, which is better than the fresh answers.
+- The other recommended with "PgBouncer가 대체로 더 나은 선택이에요".
+
+brainlint now accepts both forms, with tests, and the run was re-scored. Before the fix, the long-session mean was 97.3. The long-context answers ran 12% longer, plausibly because they used the pasted context.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

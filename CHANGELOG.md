@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Long-context drift check (B47, 26 calls): `evals/multiturn.py --long` pasted about 3k tokens of logs or code per turn, building sessions of about 30k tokens. Late-turn answers scored 100.0, against 98.0 for the same questions in fresh sessions, so there was no drift and no periodic reminder was added.
+- **brainlint false positives fixed:** the question-aware recommendation check now accepts a premise-correcting "Neither…, because…" and Korean "더 나은 선택이에요" / "낫습니다", with tests.
+
 - **Cut the always-on per-turn reminder (B46), saving 84 tokens on every message.**
   - **Test:** `evals/multiturn.py` ran 7-turn sessions with the real plugin (EN and KO conversations, 28 calls). Turns 5–7 scored 98.7 without the reminder and 97.0 with it, so there was no drift. The transcripts confirm the card loads once per session.
   - **Hook:** it now emits nothing unless a learner or emergency signal appears, and both of those lines were measured to work.

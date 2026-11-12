@@ -1,0 +1,304 @@
+{
+  "model": "sonnet",
+  "rows": [
+    {
+      "lang": "en",
+      "condition": "fresh",
+      "turn": 5,
+      "q": "Should I use PgBouncer or just raise max_connections?",
+      "text": "Use PgBouncer in transaction mode, because each Postgres connection is a full backend process, so raising `max_connections` into the hundreds adds memory and contention without adding throughput.\n\nPast roughly 2-4x your CPU core count, active queries mostly compete rather than run faster. Pooling lets thousands of client connections share a small set of server connections (often 20-50), which keeps the database in its efficient range.\n\n| | Raise `max_connections` | PgBouncer |\n|---|---|---|\n| Effort | One setting plus a restart | New component to run and monitor |\n| Memory | Grows per connection | Stays flat |\n| Many app instances or serverless | Hits the ceiling again | Handles it well |\n| Session features | All work | Limited in transaction mode |\n\n**Transaction mode breaks session state.** `SET` without `LOCAL`, advisory locks, `LISTEN/NOTIFY`, and temp tables do not survive across transactions. Protocol-level prepared statements only work on PgBouncer 1.21+, so check your driver and version if you rely on them.\n\n**Raising `max_connections` is fine** if you have fewer than about 100-200 total connections, a handful of app instances, and no growth planned. In that case the extra component isn't worth it.\n\nTo decide, run `SELECT state, count(*) FROM pg_stat_activity GROUP BY state;` at peak. If most connections are `idle`, pooling will help a lot. If you tell me your app framework, instance count, and current `max_connections`, I can suggest a `pool_size` and config.",
+      "score": 94,
+      "words": 169,
+      "checks": [
+        "nominalization"
+      ],
+      "sample": 1,
+      "score_before_b47_fix": 94
+    },
+    {
+      "lang": "en",
+      "condition": "fresh",
+      "turn": 5,
+      "q": "Should I use PgBouncer or just raise max_connections?",
+      "text": "Use PgBouncer, because raising max_connections only hides the problem: each connection is a separate backend process, and throughput drops once active connections far exceed your CPU cores, even if memory is fine.\n\n**Why not just raise the limit**\n- Each backend uses memory (several MB at idle, more under load, multiplied by work_mem per query node), so a high limit risks OOM during a spike.\n- Most connections sit idle, but Postgres still pays for them in lock-table and snapshot overhead.\n- A common starting point is 2-4x your core count for active queries. Check against your own load with `SELECT state, count(*) FROM pg_stat_activity GROUP BY 1;`.\n\n**When raising max_connections is fine**\n- You have fewer than about 100-200 total clients.\n- Connections are long-lived and mostly busy.\n- You can't tolerate pooler restrictions (see below).\n\n**What PgBouncer costs you**\n\nIn transaction pooling mode (the one that gives the big win), session state doesn't persist between transactions. That breaks or complicates:\n- `SET` without `SET LOCAL`\n- advisory locks held across transactions\n- `LISTEN/NOTIFY`\n- temp tables\n- prepared statements, unless you run PgBouncer 1.21 or newer with `max_prepared_statements` set. Verify this against your version and driver.\n\nIt is also one more component to monitor and keep highly available.\n\n**Setup sketch**\n- `pool_mode = transaction`\n- `default_pool_size` near 2-4x cores\n- `max_client_conn` in the thousands\n- Keep Postgres `max_connections` modest, with headroom for admin and replication\n\nIf you use a managed database (RDS, Cloud SQL, Supabase), check for a built-in pooler such as RDS Proxy or Supabase's Supavisor before running your own.\n\nNext step: tell me your core count, how many app connections you open at peak, and whether you use prepared statements or LISTEN/NOTIFY, and I'll suggest concrete pool numbers.",
+      "score": 100,
+      "words": 282,
+      "checks": [],
+      "sample": 2,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "fresh",
+      "turn": 6,
+      "q": "Is it safe to run VACUUM FULL during business hours?",
+      "text": "No, not on a table that business traffic touches, because `VACUUM FULL` takes an `ACCESS EXCLUSIVE` lock that blocks every read and write on that table until the rewrite finishes. This assumes PostgreSQL; the lock also queues behind any long-running transaction, so new queries pile up behind it even before the rewrite starts.\n\nIt also rewrites the whole table and its indexes, so you need free disk roughly equal to the table's size, and the run time scales with that size.\n\nAlternatives that avoid the long lock:\n\n- **Plain `VACUUM`** (or autovacuum tuning) reclaims space for reuse inside the table without blocking traffic. It doesn't shrink the file on disk.\n- **`pg_repack`** or **`pg_squeeze`** rebuild the table online, holding the exclusive lock only briefly at the end. They need extra disk and a primary key or unique index on the table.\n\nIf you must run `VACUUM FULL`, do it in a maintenance window and set `lock_timeout` first so it fails fast instead of stalling the queue.\n\nNext step: check the table size with `SELECT pg_size_pretty(pg_total_relation_size('your_table'));`, and tell me if you want help choosing between `pg_repack` and a window.",
+      "score": 100,
+      "words": 184,
+      "checks": [],
+      "sample": 1,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "fresh",
+      "turn": 6,
+      "q": "Is it safe to run VACUUM FULL during business hours?",
+      "text": "No, because `VACUUM FULL` takes an **ACCESS EXCLUSIVE** lock on the table, which blocks all reads and writes until it finishes. It rewrites the whole table and its indexes, so the duration scales with table size, and you can't predict it well in advance.\n\nThree other costs:\n\n- **Lock queue:** even while waiting for the lock, it makes every later query on that table queue behind it, so a long-running transaction can stall the table before the vacuum starts.\n- **Disk:** it needs free space roughly equal to the table's live size, since it writes a full new copy before dropping the old one.\n- **WAL and replicas:** the rewrite generates a lot of WAL, which can cause replication lag and disk pressure.\n\n**Alternatives that work during business hours:**\n\n| Option | Locking | Notes |\n|---|---|---|\n| `pg_repack` | Brief exclusive lock at start and end | Needs a primary key or unique index on the table, plus extra disk space |\n| `pg_squeeze` | Brief exclusive lock at the end | Needs logical decoding enabled (`wal_level = logical`) |\n| Plain `VACUUM` | No blocking lock | Frees space for reuse but rarely shrinks the file |\n\nIf you must run it, do it in a maintenance window and start with `SET lock_timeout = '5s';` so it fails fast instead of blocking traffic.\n\nNext step: check whether the bloat justifies any of this, using the `pgstattuple` extension (`SELECT * FROM pgstattuple('your_table');`). If dead space is under about 20–30%, plain autovacuum tuning is usually enough.",
+      "score": 100,
+      "words": 179,
+      "checks": [],
+      "sample": 2,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "fresh",
+      "turn": 7,
+      "q": "How do I find which queries hold connections the longest in Postgres?",
+      "text": "Query `pg_stat_activity` and sort by how long each session has been running its query or transaction; for history rather than a live snapshot, use `pg_stat_statements`.\n\n**Right now (live connections):**\n\n```sql\nSELECT pid, usename, state,\n       now() - query_start AS query_age,\n       now() - xact_start  AS xact_age,\n       wait_event_type, wait_event,\n       left(query, 100) AS query\nFROM pg_stat_activity\nWHERE state <> 'idle'\n  AND pid <> pg_backend_pid()\nORDER BY xact_age DESC NULLS LAST;\n```\n\nI sort by `xact_age` because a connection is held for the whole transaction, not just the current statement. A session in `idle in transaction` shows a small `query_age` but a large `xact_age`, and that is the usual culprit. For those sessions, `query` is the last statement run, not one still executing.\n\n**Over time (which queries are slow on average):**\n\n```sql\nSELECT calls, round(mean_exec_time::numeric, 1) AS mean_ms,\n       round(total_exec_time::numeric) AS total_ms,\n       left(query, 100) AS query\nFROM pg_stat_statements\nORDER BY total_exec_time DESC\nLIMIT 10;\n```\n\nThis needs `pg_stat_statements` in `shared_preload_libraries` (restart required) and `CREATE EXTENSION pg_stat_statements;`. It measures execution time only, so it will not show time lost to idle-in-transaction.\n\n**To catch it as it happens:**\n- `log_min_duration_statement = 500` logs any statement over 500 ms.\n- `idle_in_transaction_session_timeout = '30s'` kills sessions that sit idle inside a transaction.\n\nNext step: run the first query a few times during a slow period and see whether the top rows are `active` or `idle in transaction`, since the fix differs (tune the query vs. fix the app's transaction handling).",
+      "score": 94,
+      "words": 169,
+      "checks": [
+        "nominalization"
+      ],
+      "sample": 1,
+      "score_before_b47_fix": 94
+    },
+    {
+      "lang": "en",
+      "condition": "fresh",
+      "turn": 7,
+      "q": "How do I find which queries hold connections the longest in Postgres?",
+      "text": "Query `pg_stat_activity` for the oldest running statements and transactions; it shows what holds connections right now.\n\n```sql\nSELECT pid,\n       usename,\n       state,\n       now() - query_start AS query_age,\n       now() - xact_start  AS xact_age,\n       wait_event_type,\n       left(query, 80)     AS query\nFROM pg_stat_activity\nWHERE backend_type = 'client backend'\n  AND pid <> pg_backend_pid()\n  AND state <> 'idle'\nORDER BY xact_start NULLS LAST\nLIMIT 10;\n```\n\n- **`state = 'active'`**: the query is running. `query_age` is its runtime.\n- **`state = 'idle in transaction'`**: the app opened a transaction and stopped. `query` shows only the last statement, and `xact_age` shows how long the connection has been held. This is the most common cause of long-held connections, so sort by `xact_age` rather than `query_age`.\n- **`wait_event_type = 'Lock'`**: the query is blocked, not slow. Run `SELECT pg_blocking_pids(pid)` to find the blocker.\n\nThis is a snapshot, so it misses queries that finished. For history, use one of these:\n\n1. `pg_stat_statements`: `ORDER BY total_exec_time DESC` finds the queries that cost the most overall, and `mean_exec_time` finds the slowest per call. It needs `shared_preload_libraries = 'pg_stat_statements'` and `CREATE EXTENSION pg_stat_statements;`.\n2. `log_min_duration_statement = '1s'` logs every statement slower than 1 second. It does not catch idle-in-transaction time, so also set `idle_in_transaction_session_timeout`, which terminates those sessions.\n\nNext step: run the query above while the problem is happening, and check whether the top rows are `active` or `idle in transaction`.",
+      "score": 96,
+      "words": 164,
+      "checks": [
+        "bare_this"
+      ],
+      "sample": 2,
+      "score_before_b47_fix": 96
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 1,
+      "text": "Yes: one request failed with a 500 on `POST /api/orders` (`psycopg2.OperationalError: connection pool exhausted`, 3012 ms), and every other line is a 200 in 3-90 ms.\n\n**1. The pool error**\n- The 3012 ms looks like a pool-wait timeout of about 3 s, so the request waited for a DB connection and gave up. I haven't seen your pool config, so check `pool_timeout` or `maxconn` to confirm.\n- One failure in about 190 requests is not an outage. But the surrounding requests are fast, so the pool was briefly starved, likely by a leaked connection or a slow query holding one. Look for code paths that don't release connections on exceptions.\n\n**2. The timestamp is out of order**\n- The error is stamped `10:40:12Z`, but it sits between `10:02:52` and `10:02:54`, where `10:02:53` is missing. The line was probably written with a wrong timestamp, or merged in from another source or host with a different clock.\n- Don't trust that time when correlating with DB metrics. Search your DB logs around both 10:02:53 and 10:40:12.\n\n**3. Odd method and path combinations, all returning 200**\n- `POST /health` and `POST /static/app.js` should normally return 405.\n- `GET /api/login` returning 200 is also unusual, since login is normally POST-only.\n- This may be a catch-all route or a logging quirk, or the log may be synthetic. If it's real, tighten the route method lists.\n\n**Next step:** grep the app and DB logs for pool-related errors across the full day to see whether `10:02:53` was a one-off or part of a pattern.",
+      "score": 100,
+      "words": 252,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 2,
+      "text": "Yes: all 45 handlers are identical except the `n` in the response, so replace them with one function that takes `n`.\n\n```python\ndef make_handler(n):\n    def handler(req):\n        data = req.json()\n        if not data.get('id'):\n            return {'error': 'missing id'}, 400\n        item = db.get(data['id'])\n        return {'item': item, 'n': n}, 200\n    return handler\n\nhandlers = [make_handler(n) for n in range(45)]\n```\n\nIf your router needs named functions, register them in a loop, for example `router.add(f'/h/{n}', make_handler(n))`. If `n` is only a path label, a single `handler(req, n)` with a route parameter (`/h/<int:n>`) is simpler still. I can't tell from this file how `n` is used, so check where the handlers are registered.\n\nThree bugs would be fixed once instead of 45 times:\n1. `not data.get('id')` rejects a valid `id` of `0`. Use `data.get('id') is None`.\n2. A missing item returns `{'item': None}` with a 200. A 404 is more accurate.\n3. `req.json()` raises on a malformed body, which likely gives a 500 instead of a 400.\n\nSince the refactor leaves one copy of the `db.get` call, it is also the place to check that connections are released on errors. That ties back to the pool exhaustion in your log, though I can't see `db` to confirm it is the cause.\n\nNext step: tell me where the handlers are registered and I can make the edit.",
+      "score": 100,
+      "words": 179,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 3,
+      "text": "Yes, it shows the same problem: one `POST /api/orders` 500 with `connection pool exhausted` after 3012 ms, and everything else is a 200 in 3-90 ms.\n\nTwo things make this look less like a second incident and more like a logging or data artifact:\n- **The error line is byte-identical to the morning one.** It has the same `10:40:12Z` timestamp, the same 3012 ms and the same position between `10:02:52` and `10:02:54`. Two real failures would not match to the millisecond.\n- **The timestamps say 10:00-10:04, not afternoon.** The surrounding requests are different from the morning log, but they cover the same four-minute window.\n\nSo I can't tell whether the pool was exhausted twice or whether the same error line was copied into both logs. Check whether your log pipeline or whatever generated these files injects or replays that line. Then search the raw server logs for `connection pool exhausted` with real timestamps and count the occurrences.\n\nThe method/path oddities from before also repeat here: `POST /health`, `POST /static/app.js` and `GET /api/login` all return 200.\n\nIf the raw logs show one real occurrence, the pool fix is low urgency. If they show several at different times, the leak or slow-query hunt becomes the priority.",
+      "score": 100,
+      "words": 196,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 4,
+      "text": "The older handlers look identical to the file you sent earlier: the same 45 functions (`handler_0` to `handler_44`), with the same body and only `n` changing. I compared them by reading, so run `diff old.py new.py` to confirm there is no hidden difference such as whitespace or a single changed line.\n\nIf they are identical, nothing changed between the two versions, so the same advice applies:\n1. Replace all 45 with `make_handler(n)` as in my earlier example.\n2. Fix the three bugs once: `id=0` is rejected, a missing item returns 200 with `None`, and a malformed JSON body isn't handled.\n\nLike the identical error line in the two logs, a \"newer\" file that matches the \"older\" one suggests the two uploads may be the same data. If you expected the older version to differ, check that you pasted the right file, for example with `git log -p` on the handlers file.\n\nNext step: tell me where the handlers are registered, or run the diff, and I'll proceed from there.",
+      "score": 100,
+      "words": 165,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 5,
+      "q": "Should I use PgBouncer or just raise max_connections?",
+      "text": "Neither is the first fix, because the error you logged most likely comes from your app's own pool, not from Postgres. \"connection pool exhausted\" is the message of psycopg2's client-side pool. A server-side limit would say `FATAL: sorry, too many clients already`. Raising `max_connections` wouldn't touch that error, and PgBouncer only helps indirectly. I haven't seen your pool code, so check which pool raises it.\n\n**What to do, in order:**\n1. Find out why connections aren't coming back. A leak (a connection not released on an exception path) or a slow query holding connections will exhaust any pool size. The 3012 ms suggests a ~3 s wait timeout, so also check `maxconn` and the timeout setting.\n2. Add PgBouncer in transaction pooling mode if you run many workers or processes. Each one holds its own pool, so total server connections grow as workers × pool size. PgBouncer caps that total at a small number.\n3. Raise `max_connections` last. Each connection costs server memory, and performance usually degrades well before you reach a few hundred.\n\nPgBouncer has one catch: transaction mode breaks session state such as `SET`, advisory locks and prepared statements, so check that your code doesn't rely on them.\n\nIf you have one or two workers, you may need neither. Given the single error that appears identically in both logs, I'd first confirm it happens at all (grep the raw logs, as before) before adding infrastructure.\n\nNext step: send me the pool setup (the `ThreadedConnectionPool` or SQLAlchemy engine config) and the worker count.",
+      "score": 100,
+      "words": 249,
+      "checks": [],
+      "score_before_b47_fix": 92
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 6,
+      "q": "Is it safe to run VACUUM FULL during business hours?",
+      "text": "No. `VACUUM FULL` takes an `ACCESS EXCLUSIVE` lock on the table, so every read and write to it blocks until the rewrite finishes, which can take minutes to hours on a large table.\n\nFor you, it also makes the pool problem worse. Blocked requests keep their connections checked out while they wait, so the pool drains quickly and every endpoint that touches the table starts returning 500s, much like the error in your logs.\n\nIt also rewrites the whole table, so you need free disk of roughly the table's size plus its indexes while it runs.\n\n**Safer options:**\n- **Plain `VACUUM` (or autovacuum):** doesn't block reads or writes. It marks dead space reusable but doesn't shrink the file, which is enough unless you need to return disk to the OS.\n- **`pg_repack`:** rebuilds the table online and holds the exclusive lock only briefly at the end. It needs the extension installed and about the same extra disk space.\n- **`VACUUM FULL` in a maintenance window:** if you must use it, run it off-hours with `SET lock_timeout = '5s'` so it fails fast instead of queueing behind long transactions and blocking everything behind it.\n\nBefore choosing, check whether you need `VACUUM FULL` at all. Look at bloat with `pgstattuple` or the `n_dead_tup` column in `pg_stat_user_tables`.",
+      "score": 100,
+      "words": 207,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "en",
+      "condition": "long",
+      "turn": 7,
+      "q": "How do I find which queries hold connections the longest in Postgres?",
+      "text": "Query `pg_stat_activity` and sort by how long each connection has been busy:\n\n```sql\nSELECT pid,\n       usename,\n       application_name,\n       state,\n       now() - xact_start   AS xact_age,\n       now() - query_start  AS query_age,\n       wait_event_type,\n       wait_event,\n       left(query, 120)     AS query\nFROM pg_stat_activity\nWHERE datname = current_database()\n  AND pid <> pg_backend_pid()\n  AND state <> 'idle'\nORDER BY xact_start NULLS LAST\nLIMIT 20;\n```\n\n**How to read it:**\n- **`state = 'idle in transaction'` with a large `xact_age`:** this is the classic leak. The app opened a transaction, never committed or rolled back, and the connection is held. This is the most likely cause of your pool exhaustion.\n- **`state = 'active'` with a large `query_age`:** a slow query. Run `EXPLAIN (ANALYZE, BUFFERS)` on it.\n- **`wait_event_type = 'Lock'`:** the query is blocked by another one. Find the blocker with `SELECT pid, pg_blocking_pids(pid) FROM pg_stat_activity WHERE cardinality(pg_blocking_pids(pid)) > 0;`.\n\nUse `application_name` to see which service holds the connections. Set it in your psycopg2 connection string (`application_name=orders-api`) if it's empty.\n\nThis shows only the current moment. To catch it after the fact, set these:\n- `log_min_duration_statement = 1000` logs queries slower than 1 s.\n- `idle_in_transaction_session_timeout = '30s'` makes Postgres kill leaked transactions automatically. It also acts as a safety net while you hunt the leak.\n\nNext step: run the query during a busy period and send me the rows with the largest `xact_age`.",
+      "score": 100,
+      "words": 159,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "fresh",
+      "turn": 5,
+      "q": "PgBouncer를 쓰는 게 나아요, 아니면 max_connections를 올리는 게 나아요?",
+      "text": "대부분의 경우 PgBouncer가 나아요. 연결이 많아도 DB가 실제로 쓰는 연결은 적게 유지할 수 있기 때문이에요.\n\n**왜 PgBouncer인가요**\n- Postgres는 연결마다 프로세스를 하나 만들어요. 연결이 늘면 메모리와 컨텍스트 스위칭 비용이 커져요.\n- 동시에 실행하는 쿼리가 코어 수의 몇 배를 넘으면 처리량이 오히려 떨어져요.\n- `max_connections`를 올리면 이 한계를 미룰 뿐이에요. 바꾸려면 재시작도 필요해요.\n- PgBouncer는 수천 개의 클라이언트 연결을 수십 개의 서버 연결로 묶어 줘요.\n\n**max_connections만 올려도 되는 경우**\n- 앱 서버가 적고 연결이 100~200개 안쪽이에요.\n- 트래픽이 갑자기 몰리지 않아요.\n- 연결 수를 늘려도 메모리에 여유가 있어요.\n\n**PgBouncer의 단점**\n- 서버를 하나 더 운영해야 하고, 네트워크 홉도 하나 늘어요.\n- 트랜잭션 풀링 모드에서는 세션 상태가 유지되지 않아요. `SET`, 세션 advisory lock, `LISTEN/NOTIFY`, 임시 테이블이 깨질 수 있어요.\n- prepared statement는 PgBouncer 1.21 이상에서 지원해요. 쓰는 버전과 드라이버 설정은 직접 확인해 주세요.\n\n**다음 단계**\n아래 쿼리로 현재 상태를 보고 결과를 알려 주세요.\n\n```sql\nSHOW max_connections;\nSELECT state, count(*) FROM pg_stat_activity GROUP BY state;\n```\n\n`idle`이 대부분이면 PgBouncer가 확실히 효과적이에요. 앱이 세션 기능을 쓰는지도 알려 주시면 풀링 모드를 추천드릴게요.",
+      "score": 100,
+      "words": 155,
+      "checks": [],
+      "sample": 1,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "fresh",
+      "turn": 5,
+      "q": "PgBouncer를 쓰는 게 나아요, 아니면 max_connections를 올리는 게 나아요?",
+      "text": "**PgBouncer를 쓰세요.** max_connections를 올리는 건 증상만 미루는 방법이에요.\n\nPostgres는 연결마다 프로세스를 하나 띄워요. 연결이 늘면 메모리가 늘고, 스냅샷과 락 경합도 커져요. 그래서 동시에 실행하는 쿼리 수가 코어 수의 몇 배를 넘으면 처리량이 오히려 떨어져요. PgBouncer는 많은 클라이언트 연결을 적은 수의 서버 연결로 묶어 줘요.\n\n| | PgBouncer | max_connections 증가 |\n|---|---|---|\n| 연결 폭주 대응 | 좋아요 | 한계가 있어요 |\n| 메모리 부담 | 낮아요 | 연결 수만큼 늘어요 (work_mem도 곱해져요) |\n| 재시작 | 필요 없어요 | Postgres 재시작이 필요해요 |\n| 호환성 | transaction 모드에서 제약이 있어요 | 제약이 없어요 |\n\n**반대 근거:** 앱 인스턴스가 적고 총 연결이 100~200개 안쪽이라면, 값을 조금 올리는 편이 더 단순해요. 운영 부담이 늘지 않기 때문이에요.\n\n**주의할 점:** `pool_mode = transaction`에서는 세션 상태가 깨져요. 영향받는 기능은 `SET`, advisory lock, `LISTEN/NOTIFY`, 세션 단위 temp table이에요. prepared statement는 PgBouncer 1.21 이상에서 `max_prepared_statements`를 설정하면 쓸 수 있어요. 버전은 `pgbouncer --version`으로 확인하세요.\n\n**시작 설정 예시:**\n```ini\npool_mode = transaction\ndefault_pool_size = 20      ; 코어 수의 2~4배 정도에서 시작\nmax_client_conn = 2000\n```\n\n현재 max_connections, 앱 인스턴스 수, 인스턴스당 풀 크기, DB 코어 수를 알려 주세요. 그러면 `default_pool_size`를 구체적으로 계산해 드릴게요.",
+      "score": 92,
+      "words": 114,
+      "checks": [
+        "bold_overuse"
+      ],
+      "sample": 2,
+      "score_before_b47_fix": 92
+    },
+    {
+      "lang": "ko",
+      "condition": "fresh",
+      "turn": 6,
+      "q": "업무 시간에 VACUUM FULL 돌려도 안전해요?",
+      "text": "아니요, 업무 시간에는 피하세요. VACUUM FULL은 대상 테이블에 **ACCESS EXCLUSIVE 락**을 잡아서 끝날 때까지 SELECT도 INSERT도 모두 막혀요.\n\n**왜 위험한가요**\n- 테이블 전체를 새 파일로 다시 쓰기 때문에, 큰 테이블이면 수십 분에서 수 시간까지 걸려요.\n- 그동안 해당 테이블을 쓰는 쿼리는 전부 대기하고, 커넥션이 쌓이면 서비스 전체가 멈출 수 있어요.\n- 테이블과 인덱스 크기만큼 디스크 여유가 추가로 필요해요.\n- WAL이 많이 생겨서 레플리카 지연이 커질 수 있어요.\n\n**대안**\n1. 일반 `VACUUM`(FULL 없이)은 락이 가벼워서 업무 시간에도 돌려도 돼요. 다만 디스크를 OS에 돌려주지는 않아요.\n2. `pg_repack`은 거의 락 없이 테이블을 재구성해요. 끝날 때 아주 짧은 락만 잡아요. 확장 설치가 필요해요.\n3. 부풀음(bloat)이 반복되면 autovacuum 설정을 조정해서 원인을 줄이세요.\n\n**꼭 해야 한다면**\n- 작은 테이블에만 쓰고, 먼저 `SET lock_timeout = '3s';`를 걸어 두세요. 락을 못 잡으면 바로 실패하니 서비스가 막히지 않아요.\n- 긴 트랜잭션이 있으면 락 대기가 길어지니 `pg_stat_activity`로 먼저 확인하세요.\n\nDB가 PostgreSQL이 맞다는 전제예요. 테이블 크기를 알려주시면 `pg_repack`이 나은지 점검 창구에서 FULL이 나은지 골라 드릴게요.",
+      "score": 100,
+      "words": 151,
+      "checks": [],
+      "sample": 1,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "fresh",
+      "turn": 6,
+      "q": "업무 시간에 VACUUM FULL 돌려도 안전해요?",
+      "text": "아니요, 업무 시간에는 권장하지 않아요. `VACUUM FULL`은 테이블에 **ACCESS EXCLUSIVE 락**을 잡아서 SELECT까지 막아요.\n\n이유는 이래요.\n\n- 테이블 전체를 새 파일로 다시 쓰는 방식이라, 끝날 때까지 읽기와 쓰기가 모두 대기해요.\n- 테이블이 클수록 오래 걸려요. 그동안 대기 쿼리가 쌓이면 커넥션 풀이 차서 서비스 전체가 멈출 수 있어요.\n- 새 파일을 만드는 동안 디스크가 테이블 크기만큼 더 필요해요. 여유 공간이 부족하면 중간에 실패할 수 있어요.\n- 작업 중 WAL이 많이 생겨서 복제 지연도 생길 수 있어요.\n\n업무 시간에 공간을 회수해야 하면 아래 방법이 더 안전해요.\n\n1. **pg_repack**: 락을 아주 짧게만 잡아요. 확장 설치가 필요하고, 디스크 여유도 필요해요.\n2. **일반 `VACUUM`**: 락 없이 돌아가요. 데드 튜플은 재사용 가능하게 만들지만, 파일 크기는 거의 줄지 않아요.\n3. **파티셔닝 후 파티션 단위 정리**: 장기적인 대안이에요.\n\n정말 `VACUUM FULL`이 필요하면 점검 시간대에 하세요. 먼저 `SELECT pg_size_pretty(pg_total_relation_size('테이블명'));`로 크기를 확인해서 소요 시간을 가늠해 보세요.\n\n테이블 크기와 PostgreSQL 버전을 알려주시면 어떤 방법이 맞는지 더 구체적으로 말씀드릴게요.",
+      "score": 100,
+      "words": 144,
+      "checks": [],
+      "sample": 2,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "fresh",
+      "turn": 7,
+      "q": "Postgres에서 커넥션을 가장 오래 잡고 있는 쿼리는 어떻게 찾아요?",
+      "text": "`pg_stat_activity`에서 `now() - query_start`로 정렬하면 가장 오래 실행 중인 쿼리를 찾을 수 있어요.\n\n```sql\nSELECT pid,\n       usename,\n       state,\n       now() - query_start AS query_duration,\n       now() - xact_start  AS xact_duration,\n       wait_event_type,\n       wait_event,\n       left(query, 100)    AS query\nFROM pg_stat_activity\nWHERE state <> 'idle'\n  AND pid <> pg_backend_pid()\nORDER BY query_start ASC\nLIMIT 10;\n```\n\n**`idle in transaction`** 상태도 같이 봐야 해요. 쿼리는 끝났는데 트랜잭션을 열어 둔 채로 커넥션을 잡고 있는 경우가 많기 때문이에요. 이때는 `query_start`가 아니라 `xact_start`나 `state_change` 기준으로 봐야 해요.\n\n```sql\nSELECT pid, usename, state,\n       now() - xact_start AS xact_duration,\n       left(query, 100)   AS last_query\nFROM pg_stat_activity\nWHERE state = 'idle in transaction'\nORDER BY xact_start ASC;\n```\n\n컬럼 의미는 이래요.\n\n| 컬럼 | 의미 |\n|---|---|\n| `query_start` | 현재(또는 마지막) 쿼리 시작 시각 |\n| `xact_start` | 현재 트랜잭션 시작 시각 |\n| `wait_event` | 락·I/O 등 대기 중인 이유 |\n\n`wait_event_type`이 `Lock`이면 다른 세션이 막고 있다는 뜻이에요. 이때는 `pg_blocking_pids(pid)`로 막는 쪽을 찾을 수 있어요.\n\n문제 세션을 정리하려면 먼저 `pg_cancel_backend(pid)`로 쿼리만 취소해 보세요. 안 되면 `pg_terminate_backend(pid)`로 커넥션을 끊어요. 후자는 진행 중인 트랜잭션을 롤백시키니 대상 pid를 꼭 확인하고 쓰세요.",
+      "score": 100,
+      "words": 76,
+      "checks": [],
+      "sample": 1,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "fresh",
+      "turn": 7,
+      "q": "Postgres에서 커넥션을 가장 오래 잡고 있는 쿼리는 어떻게 찾아요?",
+      "text": "`pg_stat_activity`에서 `now() - query_start`로 정렬하면 가장 오래 실행 중인 쿼리를 찾을 수 있어요.\n\n```sql\nSELECT pid,\n       usename,\n       state,\n       now() - query_start AS query_age,\n       now() - xact_start  AS xact_age,\n       wait_event_type,\n       wait_event,\n       left(query, 100)    AS query\nFROM pg_stat_activity\nWHERE pid <> pg_backend_pid()\n  AND state <> 'idle'\nORDER BY xact_age DESC NULLS LAST\nLIMIT 10;\n```\n\n**컬럼 읽는 법**\n\n- `query_age`는 마지막 쿼리가 시작된 뒤 지난 시간이에요.\n- `xact_age`는 트랜잭션이 열린 뒤 지난 시간이에요. 커넥션을 오래 잡는 원인은 대개 이 값이 커요.\n- `state`가 `idle in transaction`이면 쿼리는 끝났는데 트랜잭션을 안 닫은 거예요. 이때 `query`에는 직전 쿼리가 보여요.\n- `wait_event_type`이 `Lock`이면 다른 세션을 기다리는 중이에요.\n\n**락 때문에 막혔는지 확인하기**\n\n```sql\nSELECT pid, pg_blocking_pids(pid) AS blocked_by, left(query, 100)\nFROM pg_stat_activity\nWHERE cardinality(pg_blocking_pids(pid)) > 0;\n```\n\n`blocked_by`에 나온 pid가 진짜 원인이에요. 위 첫 쿼리에서 그 pid를 찾아보세요.\n\n**정리하기**\n\n1. 먼저 `SELECT pg_cancel_backend(<pid>);`로 쿼리만 취소해요.\n2. 안 되면 `SELECT pg_terminate_backend(<pid>);`로 커넥션을 끊어요. 진행 중인 트랜잭션은 롤백되니 확인하고 실행하세요.\n\n일반 사용자는 자기 세션만 볼 수 있어요. 다른 사용자의 `query`가 비어 보이면 `pg_read_all_stats` 권한이나 슈퍼유저로 다시 실행해 보세요.\n\n재발을 막으려면 `idle_in_transaction_session_timeout`과 `statement_timeout`을 설정하는 방법이 있어요.",
+      "score": 100,
+      "words": 116,
+      "checks": [],
+      "sample": 2,
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 1,
+      "text": "네, 한 줄이 눈에 띄어요: `10:40:12Z ERROR POST /api/orders 500 3012ms ... connection pool exhausted`.\n\n**1. 순서가 어긋난 에러 줄**\n- 이 줄은 `10:02:52`와 `10:02:54` 사이에 있어요. 원래는 `10:02:53` 자리예요.\n- 로그는 1초 간격으로 이어지는데, 이 줄만 약 37분 뒤 시각이에요.\n- 전체에서 유일한 ERROR예요.\n- 가능한 원인은 워커 간 로그 병합 오류, 시계 문제, 줄 삽입이에요. 로그만으로는 구분이 안 돼요.\n\n**2. 에러 내용 자체**\n- 3012ms는 풀 대기 타임아웃(약 3초)으로 보여요. 설정값을 확인해 보세요.\n- 진짜라면 DB 커넥션 누수나 풀 크기 부족이에요. `/api/orders`가 연결을 반납하지 않을 수 있어요.\n\n**3. 요청 패턴이 부자연스러워요**\n- 정확히 초당 1건이고 전부 200이에요.\n- `POST /health`, `POST /static/app.js`, `GET /api/login`이 모두 200이에요. 실제 라우트라면 보통 405나 404가 나와야 해요.\n- 4xx가 하나도 없어요. 로그인 실패도 없어요.\n- 합성 트래픽이거나 로그가 가공됐을 가능성이 있어요.\n\n**확인 방법**\n1. 원본 서버 로그에서 `10:40` 전후를 grep해서 같은 에러가 실제로 있는지 봐요.\n2. 있으면 그 시각의 DB 활성 연결 수와 풀 설정(`pool_size`, `timeout`)을 확인해요.\n3. 없으면 로그 수집 파이프라인(타임스탬프 부여 위치)을 점검해요.\n\n원본 로그 파일 경로를 알려 주시면 제가 grep으로 10:40 구간을 바로 확인해 볼게요.",
+      "score": 100,
+      "words": 164,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 2,
+      "text": "네, 45개 핸들러가 `n` 값만 다르고 나머지는 똑같아요. 팩토리 함수 하나로 합치면 돼요.\n\n```python\ndef make_handler(n):\n    def handler(req):\n        data = req.json()\n        if not data.get('id'):\n            return {'error': 'missing id'}, 400\n        item = db.get(data['id'])\n        return {'item': item, 'n': n}, 200\n    handler.__name__ = f'handler_{n}'\n    return handler\n\nhandlers = [make_handler(n) for n in range(45)]\n```\n\n- `handler.__name__`을 지정한 이유는 라우터나 로그가 함수 이름을 쓸 수 있어서예요. 기존 `handler_0`처럼 이름이 유지돼요.\n- 다른 파일이 `handler_7`을 직접 import하면 깨져요. 그럴 땐 `globals()`에 등록하지 말고 호출부를 `handlers[7]`로 바꾸는 걸 권해요.\n- `n`이 정말 핸들러마다 달라야 하는지도 먼저 확인해 보세요. 요청에서 받거나 라우트 파라미터(`/items/<n>`)로 받을 수 있으면 핸들러 하나로 끝나요.\n\n리팩터링하면서 함께 볼 버그 후보도 있어요.\n1. `not data.get('id')`는 `id=0`도 \"missing\"으로 처리해요. 0이 유효한 id면 `data.get('id') is None`으로 바꿔요.\n2. `req.json()`이 dict가 아니면(리스트 등) `.get`에서 500이 나요.\n3. `db.get`이 `None`을 돌려줘도 200으로 응답해요. 404가 맞는지 확인해 보세요.\n\n호출부(라우트 등록 코드)를 보여 주시면 `n`이 어떻게 쓰이는지 보고 핸들러 하나로 줄일 수 있는지 알려 드릴게요.",
+      "score": 100,
+      "words": 114,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 3,
+      "text": "네, 같은 문제예요. 오전 로그와 똑같은 ERROR 줄이 똑같은 자리에 있어요.\n\n**같은 점**\n- `10:40:12Z ERROR POST /api/orders 500 3012ms ... connection pool exhausted`가 `10:02:52`와 `10:02:54` 사이에 있어요. `10:02:53` 자리가 비어 있어요.\n- 소요 시간 3012ms까지 오전 로그와 완전히 같아요.\n- `POST /health`, `POST /static/app.js`, `GET /api/login`이 전부 200이에요.\n- 4xx가 없고, 요청은 정확히 초당 1건이에요.\n\n**새로 보이는 점**\n- 오후 로그인데 시간 범위가 `10:00:00`~`10:04:19`로 오전 로그와 같아요. 파일이 잘못 붙었거나 같은 생성기에서 나온 로그 같아요.\n- 나머지 INFO 줄(메서드, 경로, 지연시간)은 오전과 달라요. 그런데 에러 줄만 한 글자도 안 달라요.\n\n**해석**\n- 서로 다른 두 시점에 지연시간까지 같은 장애가 났을 가능성은 낮아요. 실제 장애보다 로그 생성기나 테스트 픽스처가 같은 줄을 끼워 넣은 쪽이 더 그럴듯해요.\n- 다만 로그만으로는 확정할 수 없어요. 서버의 원본 로그에서 `10:40`대 실제 `connection pool exhausted`가 있는지 보면 가려져요.\n\n**확인할 것**\n1. 두 로그를 어디서 가져왔는지 알려 주세요. 파일명과 수집 방법(직접 서버, 로그 도구 등)이 필요해요.\n2. 원본에서 `grep \"pool exhausted\"`로 실제 발생 여부를 확인해요.\n3. 없으면 로그 가공 단계(샘플 스크립트나 전처리)를 먼저 점검해요.\n\n원본 경로를 알려 주시면 제가 grep으로 같이 확인해 볼게요.",
+      "score": 100,
+      "words": 161,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 4,
+      "text": "이 \"예전 핸들러\"는 앞서 보내 주신 파일과 같아 보여요. `handler_0`~`handler_44`까지 45개가 모두 `n` 값만 다르고, 제가 훑어본 범위에서는 달라진 줄이 없어요. 눈으로 본 비교라서 확실히 하려면 `diff`를 돌려 보세요.\n\n그래서 앞서 드린 `make_handler(n)` 팩토리 리팩터링이 그대로 적용돼요. 개선 후보 세 가지도 마찬가지예요: `id=0` 처리, `req.json()`이 dict가 아닐 때의 500, `db.get`이 `None`일 때의 404.\n\n예전 버전이 정말 다른 파일이라면 붙여 넣을 때 현재 파일이 다시 들어갔을 수 있어요. `git show <커밋>:경로`로 이전 버전을 꺼내 `diff`를 실행해 보세요. 결과를 붙여 주시면 달라진 부분만 같이 볼게요.",
+      "score": 100,
+      "words": 81,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 5,
+      "q": "PgBouncer를 쓰는 게 나아요, 아니면 max_connections를 올리는 게 나아요?",
+      "text": "PgBouncer가 대체로 더 나은 선택이에요. 다만 이 에러에는 둘 다 답이 아닐 가능성이 커요.\n\n**왜 PgBouncer인가요**\n- `max_connections`를 올리면 연결마다 Postgres 백엔드 프로세스가 늘어요. 메모리를 더 쓰고, 연결이 많아질수록 성능이 떨어져요.\n- PgBouncer는 많은 클라이언트 연결을 적은 수의 서버 연결로 묶어 줘요. 워커나 인스턴스가 많을수록 효과가 커요.\n\n**이 에러에는 안 맞을 수 있어요**\n- `connection pool exhausted`는 보통 psycopg2의 클라이언트 쪽 풀(`psycopg2.pool`)이 가득 찼다는 뜻이에요. DB 서버의 연결 한도 초과라면 `too many clients already`가 나와요.\n- 클라이언트 풀 문제라면 원인은 둘 중 하나예요: 풀 크기가 부족하거나, `/api/orders`가 연결을 반납하지 않는 누수. 누수는 PgBouncer를 붙여도, `max_connections`를 올려도 해결되지 않고 늦춰질 뿐이에요.\n- 그리고 이 에러가 실제로 있었는지부터 불확실해요. 두 로그에 똑같은 줄이 같은 자리에 있었으니까요.\n\n**순서**\n1. 원본 로그에서 `pool exhausted`가 실제로 있었는지 확인해요.\n2. 있다면 `/api/orders` 코드에서 `getconn()` 뒤에 `putconn()`이 `finally`나 `with`로 보장되는지 봐요.\n3. 누수가 없고 인스턴스 수가 많아서 서버 연결이 모자란 거라면 그때 PgBouncer를 붙여요.\n\nPgBouncer를 transaction 모드로 쓸 때는 서버 측 prepared statement, `SET` 세션 변수, advisory lock이 깨질 수 있어요. 코드에서 쓰는지 먼저 확인해 보세요.\n\n`/api/orders` 핸들러에서 DB 연결을 얻고 반납하는 부분을 보여 주시면 누수 여부를 같이 볼게요.",
+      "score": 100,
+      "words": 176,
+      "checks": [],
+      "score_before_b47_fix": 92
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 6,
+      "q": "업무 시간에 VACUUM FULL 돌려도 안전해요?",
+      "text": "아니요, 업무 시간에는 안전하지 않아요. `VACUUM FULL`은 테이블에 `ACCESS EXCLUSIVE` 락을 잡아서 끝날 때까지 읽기와 쓰기가 모두 막혀요.\n\n**위험**\n- 테이블 전체를 새 파일로 다시 쓰기 때문에 큰 테이블은 수 분에서 수 시간이 걸려요.\n- 그동안 그 테이블을 건드리는 쿼리는 전부 대기해요. 대기 중인 요청이 DB 연결을 붙잡고 있으니 앞서 말한 `connection pool exhausted`로 번질 수 있어요. 특히 `orders`에 돌리면 위험해요.\n- 테이블 크기만큼의 여유 디스크 공간이 추가로 필요해요. 공간이 부족하면 실패해요.\n\n**대안**\n1. 일반 `VACUUM`(또는 autovacuum)은 락이 가벼워서 업무 시간에도 돌려도 돼요. 단, 파일 크기를 줄여 주지는 않고 공간을 재사용 가능하게만 해요.\n2. 테이블 크기를 실제로 줄여야 하면 `pg_repack`을 쓰세요. 거의 온라인으로 동작하고 전환 순간에만 짧게 락을 잡아요. 확장 설치가 필요해요.\n3. 꼭 `VACUUM FULL`을 써야 하면 점검 시간대에 하세요. 먼저 `SET lock_timeout = '5s';`를 걸어 두면 락을 못 잡을 때 다른 쿼리를 오래 막지 않고 포기해요.\n\n먼저 bloat가 정말 큰지 확인해 보세요. `pgstattuple`이나 `pg_stat_user_tables`의 `n_dead_tup`으로 볼 수 있어요. 작으면 `VACUUM FULL`은 필요 없을 수도 있어요.\n\n어떤 테이블에 얼마나 bloat가 있는지 알려 주시면 어느 방법이 맞는지 같이 고를게요.",
+      "score": 100,
+      "words": 160,
+      "checks": [],
+      "score_before_b47_fix": 100
+    },
+    {
+      "lang": "ko",
+      "condition": "long",
+      "turn": 7,
+      "q": "Postgres에서 커넥션을 가장 오래 잡고 있는 쿼리는 어떻게 찾아요?",
+      "text": "`pg_stat_activity`에서 시작 시각이 오래된 순으로 정렬하면 돼요.\n\n```sql\nSELECT pid,\n       usename,\n       application_name,\n       state,\n       now() - xact_start    AS xact_age,\n       now() - query_start   AS query_age,\n       now() - state_change  AS state_age,\n       wait_event_type,\n       wait_event,\n       left(query, 100)      AS query\nFROM pg_stat_activity\nWHERE pid <> pg_backend_pid()\n  AND state <> 'idle'\nORDER BY xact_start NULLS LAST\nLIMIT 10;\n```\n\n**읽는 법**\n- `xact_age`가 가장 긴 줄이 트랜잭션을 가장 오래 잡고 있는 연결이에요.\n- `state = 'idle in transaction'`이면서 `state_age`가 길면 연결 누수 신호예요. 쿼리는 끝났는데 `commit`/`rollback`이나 반납이 안 된 상태예요. `/api/orders`가 이 상태라면 앞서 본 풀 고갈과 맞아요.\n- `wait_event_type = 'Lock'`이면 다른 세션의 락을 기다리는 중이에요. 이때는 누가 막고 있는지 `pg_blocking_pids(pid)`로 확인해요.\n\n`idle in transaction`만 따로 보려면 `WHERE state = 'idle in transaction'`으로 바꾸세요. 앱 단위로 몇 개씩 잡고 있는지는 `GROUP BY application_name, state`로 세면 돼요.\n\n**주의**\n- 일반 사용자는 다른 사용자의 `query` 내용이 안 보일 수 있어요. 이때는 `pg_read_all_stats` 권한이 필요해요.\n- 오래 잡힌 연결을 끊을 때는 `pg_cancel_backend(pid)`로 먼저 쿼리만 취소하고, 안 되면 `pg_terminate_backend(pid)`를 써요. 후자는 연결 자체를 끊으니 쓰기 전에 어떤 작업인지 확인하세요.\n\n결과를 붙여 주시면 누수 후보를 같이 골라 볼게요.",
+      "score": 100,
+      "words": 116,
+      "checks": [],
+      "score_before_b47_fix": 100
+    }
+  ],
+  "rescored": "2026-11-12 after brainlint accepted 'neither…' and '더 나은 선택' as recommendations (B47)"
+}

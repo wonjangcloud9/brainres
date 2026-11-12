@@ -86,7 +86,8 @@ WH_KO = re.compile(r"(뭐|뭘|무엇|무슨|왜|어떻게|언제|어디|누구|�
 CHOICE_EN = re.compile(r"\b(or|vs\.?|versus|which)\b", re.I)
 CHOICE_KO = re.compile(r"(중에|중에서|아니면|vs|어느 쪽|뭐가 (나아|좋아|낫)|뭘 써|뭐 써|뭐를 써)")
 YES_NO_START = re.compile(r"^\W*(yes|no|yeah|yep|nope|not|네|예|아니|아뇨|맞아|맞습니다|맞아요|그래요|안 돼|안돼|돼요|됩니다|가능해요|불가능)", re.I)
-RECOMMEND = re.compile(r"\b(use|go with|pick|choose|start with|stick with|i'?d|recommend|prefer|switch to)\b|쓰세요|추천|시작하세요|고르세요|쓰면 돼요|맞아요|좋아요|나아요|사용하세요", re.I)
+# "Neither…, because…" answers a choice question by correcting its premise (B47); "더 나은 선택이에요" is a recommendation.
+RECOMMEND = re.compile(r"\b(use|go with|pick|choose|start with|stick with|i'?d|recommend|prefer|switch to|neither|none of them)\b|쓰세요|추천|시작하세요|고르세요|쓰면 돼요|맞아요|좋아요|나아요|나은 선택|낫습니다|사용하세요|둘 다 (답이 )?아니", re.I)
 KO_PARTICLE = re.compile(r"(이랑|랑|하고|와|과|중에서|중에|을|를|이|가|은|는|에서|에|으로|로|도)$")
 
 

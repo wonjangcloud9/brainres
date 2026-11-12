@@ -74,3 +74,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 22:38 · C20 · Haiku SQL language flip (20 calls): current card 0/10, language line 0/10 → reverted, closed; backlog now has no todo items
 - 2026-11-12 23:00 · research round 7 · streaming: no comprehension/trust study (gap); ST-01 backs C17 rule; LLM drift studies (Li 2024, Laban 2025); COGA/dyslexia already covered; B46 reminder-persistence eval scored 5
 - 2026-11-12 23:20 · B46 · multi-turn (28 calls): no drift without the per-turn reminder (turns 5–7 98.7 vs 97.0) → base reminder cut (−84 tokens/turn), situation lines kept; B47 long-context drift scored 3
+- 2026-11-12 23:40 · B47 · long-context (~30k tokens, 26 calls): turns 5–7 100.0 vs fresh 98.0 → no drift, no periodic reminder; fixed 2 brainlint recommendation false positives
