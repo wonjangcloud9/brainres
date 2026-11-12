@@ -79,8 +79,9 @@ Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/pl
 | Codex and other AGENTS.md readers | [`dist/AGENTS.md`](dist/AGENTS.md) | Copy to your repo root, or append to an existing AGENTS.md |
 | Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | Copy to `.cursor/rules/brainres.mdc` |
 | Claude Code, without the plugin | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres`, then `/brainres` |
+| Codex, Cursor, OpenCode and other agents ([skills.sh](https://skills.sh)) | `skills/brainres/` | `npx skills add wonjangcloud9/brainres` |
 
-Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the situation lines.
+Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the situation lines. A skill on its own loads only when the agent decides it's relevant, which in our Claude Code tests happened in 1 of 24 answers. So `npx skills add` works best together with `dist/AGENTS.md` or the Cursor rule, which apply every time.
 
 Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. On Sonnet an always-on per-message reminder added nothing, so it is off by default. On Haiku it raised scores 4–6 points, so it switches on automatically there from the 2nd message ([B46, B48, B50](evals/README.md)). Set `BRAINRES_REMINDER=on` to include the first.
 

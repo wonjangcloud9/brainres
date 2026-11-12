@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **One-line install for other agents (D3):** `npx skills add wonjangcloud9/brainres` (Vercel skills.sh, covering Codex, Cursor, OpenCode and more) is now in both READMEs.
+  - The repo layout already matches the CLI's documented discovery rules (`skills/<name>/SKILL.md` with `name` and `description`), and `validate.sh` now checks it. The loop read the CLI docs and source but didn't run `npx`.
+  - The READMEs state the limit: this installs the skill only, which in our Claude Code tests loaded in 1 of 24 answers, so pair it with `dist/AGENTS.md` or the Cursor rule.
+
 - The repo's GitHub About text no longer reads "10 rules from 90 findings" (D1, owner-approved). It now says: 801 findings reviewed; measured on 80 prompts: answers 29% shorter, Brain Score +4.6; plugin and scorer in English and Korean. Topics added: `korean`, `plain-language`.
 
 - **New direction (owner, 2026-11-13): distribution and usability first.** The repo has 0 stars and 3 unique visitors, so measuring more won't help until people can find and install it. The loop now runs every 30 minutes and works the D-series in RICE order:

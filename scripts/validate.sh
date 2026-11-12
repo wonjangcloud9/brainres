@@ -99,6 +99,16 @@ python3 scripts/coverage.py --check >/dev/null && ok "coverage ratchet: $(python
 # 8b. Portable builds in dist/ match the sources (rebuild with scripts/build_dist.py)
 python3 scripts/build_dist.py --check >/dev/null && ok "dist/ up to date" || err "dist/ is stale — run python3 scripts/build_dist.py"
 
+# 8b1. skills.sh / `npx skills add` discovery (D3): exactly one SKILL.md in a scanned container, name = folder name
+python3 -c "
+import pathlib, re
+roots = ['.', 'skills', '.claude/skills', '.agents/skills']
+found = [p for p in pathlib.Path('.').rglob('SKILL.md') if '.git' not in p.parts and any(str(p).startswith(r + '/') or p.parent == pathlib.Path(r) for r in roots if r != '.') or p == pathlib.Path('SKILL.md')]
+assert [str(p) for p in found] == ['skills/brainres/SKILL.md'], found
+fm = found[0].read_text().split('---')[1]
+assert re.search(r'^name: brainres$', fm, re.M) and re.search(r'^description: .+', fm, re.M)
+" && ok "skills.sh discovery: skills/brainres/SKILL.md (name = folder)" || err "skills.sh layout broken (SKILL.md location or frontmatter)"
+
 # 8b2. Eval suite (owner direction 2026-11-13): 80 prompts, 16 types x 5, unique ids, Korean included
 python3 -c "
 import json; r=[json.loads(l) for l in open('evals/suite.jsonl') if l.strip()]

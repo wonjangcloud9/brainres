@@ -111,8 +111,9 @@ Concise와 함께 쓰면 brainres가 "이유, 언제 바꿀지, 다음 할 일"�
 | Codex 등 AGENTS.md를 읽는 에이전트 | [`dist/AGENTS.md`](dist/AGENTS.md) | 레포 루트에 복사하거나 기존 AGENTS.md 뒤에 붙이기 |
 | Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | `.cursor/rules/brainres.mdc`로 복사 |
 | 플러그인 없이 Claude Code | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres` 후 `/brainres` |
+| Codex, Cursor, OpenCode 등 다른 에이전트 ([skills.sh](https://skills.sh)) | `skills/brainres/` | `npx skills add wonjangcloud9/brainres` |
 
-hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로 설치하면 규칙 카드나 스킬은 들어가지만, 상황별 한 줄은 붙지 않습니다.
+hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로 설치하면 규칙 카드나 스킬은 들어가지만, 상황별 한 줄은 붙지 않습니다. 스킬만 설치하면 에이전트가 필요하다고 판단할 때만 불러옵니다. 우리 Claude Code 측정에서는 24번 중 1번이었습니다. 그래서 `npx skills add`는 항상 적용되는 `dist/AGENTS.md`나 Cursor 규칙과 함께 쓰는 것이 좋습니다.
 
 ## 10가지 규칙
 
