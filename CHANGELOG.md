@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Emergency situation line (B41): the reminder hook now also adds "Emergency: the single next action first; if the habitual move is harmful, say so up top; ≤5 steps, then why" when a prompt shows a stress or emergency signal (urgent, outage, "by accident", DROP TABLE, 급해, 망했, 날아갔, 실수로…).
+  - Measured with the real plugin, off vs on, 16 calls: answers whose sentence 1 is the next action rose from 3/8 to 6/8, and answers flagging a harmful habitual move before the steps rose from 4/8 to 6/8.
+  - One loss: on DROP TABLE, the up-top write warning fell from 2/2 to 0/2.
+  - The line fired on 1 mild case among 52 other prompts. `validate.sh` checks the routing.
+
 - Situation-aware reminder (B40): `hooks/brainres-reminder.sh` now reads the prompt and adds one targeted line, about 20 tokens, only when it sees a learner signal ("I'm learning", "beginner", "homework", 공부 중, 배우는 중, 과제…). It ignores `cwd`, and `BRAINRES_SITUATIONS=off` disables it.
   - **Learner line kept.** With the real plugin, answers ending in a predict-first question went from 0/8 to 8/8, and fixes made on the user's own line went from 6/8 to 8/8. Answers got 22% longer.
   - **Math/trace line dropped.** It made no difference, with sentence 1 correct in 6/6 answers with and without it. C18 is closed because it did not recur.

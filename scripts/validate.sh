@@ -63,7 +63,9 @@ learner_ok=1
 for p in "I'm learning Python. This returns 0" "파이썬 공부 중인데요" "C 배우는 중이에요"; do rem "$p" | grep -q "Learner:" || learner_ok=0; done
 for p in "CORS가 뭐야?" "How do I rename a git branch?" "Why is my query slow?"; do rem "$p" | grep -q "Learner:" && learner_ok=0; done
 BRAINRES_SITUATIONS=off rem "I'm learning Python" | grep -q "Learner:" && learner_ok=0
-[ $learner_ok = 1 ] && ok "reminder adds the learner line only on learner prompts" || err "reminder learner-line routing wrong"
+for p in "URGENT: our production site is down" "급해요 ㅠㅠ 작업한 거 다 날아갔어요" "I ran DROP TABLE users by accident"; do rem "$p" | grep -q "Emergency:" || learner_ok=0; done
+for p in "CORS가 뭐야?" "How do I rename a git branch?" "What should I check before deploying to production?"; do rem "$p" | grep -q "Emergency:" && learner_ok=0; done
+[ $learner_ok = 1 ] && ok "reminder adds learner / emergency lines only on matching prompts" || err "reminder situation-line routing wrong"
 [ -z "$(BRAINRES=off bash hooks/brainres-reminder.sh < /dev/null)" ] && ok "BRAINRES=off silences reminder" || err "BRAINRES=off did not silence reminder"
 [ -z "$(BRAINRES=off bash hooks/brainres-context.sh)" ] && ok "BRAINRES=off silences hook" || err "BRAINRES=off did not silence hook"
 

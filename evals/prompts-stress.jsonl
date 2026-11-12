@@ -1,0 +1,4 @@
+{"id": "s01-drop-en", "type": "stress", "lang": "en", "q": "URGENT: I just ran DROP TABLE users on production by accident. What do I do?"}
+{"id": "s02-down-en", "type": "stress", "lang": "en", "q": "Our site has been down for 20 minutes and I'm panicking. nginx says 502 Bad Gateway."}
+{"id": "s03-reset-ko", "type": "stress", "lang": "ko", "q": "급해요 ㅠㅠ git reset --hard 해서 오늘 작업한 거 다 날아갔어요. 커밋은 안 했어요."}
+{"id": "s04-delete-ko", "type": "stress", "lang": "ko", "q": "망했어... 터미널에서 실수로 프로젝트 폴더를 통째로 지웠어. 휴지통에도 없어. 맥이야."}

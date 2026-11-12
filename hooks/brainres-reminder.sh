@@ -4,7 +4,8 @@
 # Situation lines (B40): rules that live only in skill references reach the model only
 # when the skill loads (measured 1/24 general, 1/8 learner prompts), so one targeted line
 # is appended only when the prompt shows that situation's signal. Learner line (B40): predict-first
-# question 0/8 → 8/8, fix on their own line 6/8 → 8/8 (plugin, Sonnet).
+# question 0/8 → 8/8, fix on their own line 6/8 → 8/8. Emergency line (B41): sentence 1 = the next
+# action 3/8 → 6/8, harmful habitual move flagged before the steps 4/8 → 6/8 (plugin, Sonnet).
 # Turn off: export BRAINRES=off   or   touch ~/.claude/brainres.off
 # Situation lines only: export BRAINRES_SITUATIONS=off
 [ "${BRAINRES:-on}" = "off" ] && exit 0
@@ -17,6 +18,9 @@ extra=""
 if [ "${BRAINRES_SITUATIONS:-on}" != "off" ]; then
   if printf '%s' "$prompt" | grep -qiE "i'?m (learning|new to|a beginner)|i am (learning|new to|a beginner)|beginner|newbie|homework|assignment|공부 ?중|배우는 ?중|배우고 있|초보|과제|숙제"; then
     extra="$extra Learner: fix their own line first (not a rewrite); end with one predict-first question."
+  fi
+  if printf '%s' "$prompt" | grep -qiE "urgent|asap|emergency|panick?ing|outage|(site|server|prod|production|app|db|database) (is|went|has been) down|by accident|accidentally|drop table|lost (all|everything|my work)|급해|급합니다|망했|큰일|날아갔|실수로|다운됐|장애"; then
+    extra="$extra Emergency: the single next action first; if the habitual move is harmful, say so up top; ≤5 steps, then why."
   fi
   # A math/trace line was tested too (B40) and dropped: sentence 1 was already right in 6/6 without it.
 fi

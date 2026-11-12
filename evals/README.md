@@ -110,6 +110,22 @@ With the learner line, the loop-removal answers led with the one-character fix t
 
 **Trigger precision:** the learner regex fires on all 4 learner prompts and on none of the 52 prompts in the other eval sets. `validate.sh` checks the routing, including a `cwd` named `homework/beginner`. The line costs about 20 tokens, an estimate from its 88 characters, and only on turns that match.
 
+### Emergency line (B41)
+
+We tested a third line on 4 stress prompts ([`prompts-stress.jsonl`](prompts-stress.jsonl)): DROP TABLE on production, a site down with a 502, `git reset --hard` with uncommitted work, and a project folder deleted from the terminal. The line reads "Emergency: the single next action first; if the habitual move is harmful, say so up top; ≤5 steps, then why" (from support.md, AN-35/36). We ran it with the real plugin, line off vs on, 2 samples each (16 calls), judged by hand:
+
+| | off | on |
+|---|---:|---:|
+| Sentence 1 is the next action, not an explanation | 3 / 8 | **6 / 8** |
+| A harmful habitual move is flagged before the steps | 4 / 8 | **6 / 8** |
+| Mean words | 203 | 197 |
+
+**Kept.** With the line on, the 502 answers opened with "Restarting nginx won't fix a 502…", and the `git reset` answers led with "`git gc`, `git prune`은 실행하지 마세요".
+
+**One loss.** On DROP TABLE, the line-off answers warned up top that new writes make recovery harder (2/2). The line-on answers led with `ROLLBACK;` and moved the "don't recreate the table" warning into step 1 (0/2 up top). n = 8 per condition, so this is a direction, not a proof.
+
+**Trigger precision:** the line fires on the 4 test prompts and on the 2 stress prompts in the other sets. Among the other 52 prompts it also fired on 1 mild case ("깃에서 실수로 main에 커밋했어", via "실수로"). The line is harmless there. It costs about 28 tokens, an estimate from its length, and only on matching turns.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

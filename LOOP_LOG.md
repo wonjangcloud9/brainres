@@ -64,3 +64,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 19:18 · B38 · learner eval (24 calls): fix-on-their-code 6/8 everywhere; run-it check 0/8 → 7/8/8/8; skill invoked 0/8 → B39; traced-output premature value → C18
 - 2026-11-12 19:38 · B39 · learner triggers in description: invocation 0/8 → 1/8, no behaviour change → reverted (20 calls); B40 situation-aware reminder scored 6
 - 2026-11-12 20:00 · B40 · situation-aware reminder: learner line kept (predict-first 0/8 → 8/8, own-line fix 6/8 → 8/8, +22% words); math line dropped (6/6 both); C18 closed; 29 calls
+- 2026-11-12 20:21 · B41 · emergency line kept: action-first 3/8 → 6/8, harm up top 4/8 → 6/8, DROP TABLE warning lost 2/2 → 0/2; 16 calls

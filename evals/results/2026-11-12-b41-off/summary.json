@@ -1,0 +1,174 @@
+{
+  "model": "sonnet",
+  "samples": 2,
+  "card_sha": "7ddafa1c66ce",
+  "style": null,
+  "prompt_set": "prompts-stress.jsonl",
+  "rows": [
+    {
+      "id": "s01-drop-en",
+      "type": "stress",
+      "lang": "en",
+      "condition": "plugin",
+      "sample": 1,
+      "score": 88,
+      "words": 288,
+      "output_tokens": 920,
+      "thinking_tokens": 295,
+      "visible_output_tokens": 625,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 88,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "s01-drop-en",
+      "type": "stress",
+      "lang": "en",
+      "condition": "plugin",
+      "sample": 2,
+      "score": 88,
+      "words": 296,
+      "output_tokens": 815,
+      "thinking_tokens": 189,
+      "visible_output_tokens": 626,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 88,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "s02-down-en",
+      "type": "stress",
+      "lang": "en",
+      "condition": "plugin",
+      "sample": 1,
+      "score": 96,
+      "words": 204,
+      "output_tokens": 698,
+      "thinking_tokens": 134,
+      "visible_output_tokens": 564,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 96,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "long_sentences"
+      ]
+    },
+    {
+      "id": "s02-down-en",
+      "type": "stress",
+      "lang": "en",
+      "condition": "plugin",
+      "sample": 2,
+      "score": 94,
+      "words": 165,
+      "output_tokens": 621,
+      "thinking_tokens": 162,
+      "visible_output_tokens": 459,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 94,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins"
+      ]
+    },
+    {
+      "id": "s03-reset-ko",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "plugin",
+      "sample": 1,
+      "score": 94,
+      "words": 123,
+      "output_tokens": 786,
+      "thinking_tokens": 243,
+      "visible_output_tokens": 543,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 94,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins"
+      ]
+    },
+    {
+      "id": "s03-reset-ko",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "plugin",
+      "sample": 2,
+      "score": 88,
+      "words": 131,
+      "output_tokens": 1254,
+      "thinking_tokens": 621,
+      "visible_output_tokens": 633,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 88,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "s04-delete-ko",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "plugin",
+      "sample": 1,
+      "score": 88,
+      "words": 163,
+      "output_tokens": 1014,
+      "thinking_tokens": 315,
+      "visible_output_tokens": 699,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 88,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "s04-delete-ko",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "plugin",
+      "sample": 2,
+      "score": 94,
+      "words": 135,
+      "output_tokens": 966,
+      "thinking_tokens": 343,
+      "visible_output_tokens": 623,
+      "turns": 1,
+      "within_budget": true,
+      "score_q": 94,
+      "question_checks": [],
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins"
+      ]
+    }
+  ],
+  "failed": []
+}

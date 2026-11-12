@@ -1,0 +1,34 @@
+{
+  "s01-drop-en.plugin.1": {
+    "action_first": true,
+    "harm_up_top": true
+  },
+  "s01-drop-en.plugin.2": {
+    "action_first": true,
+    "harm_up_top": true
+  },
+  "s02-down-en.plugin.1": {
+    "action_first": false,
+    "harm_up_top": false
+  },
+  "s02-down-en.plugin.2": {
+    "action_first": false,
+    "harm_up_top": false
+  },
+  "s03-reset-ko.plugin.1": {
+    "action_first": false,
+    "harm_up_top": false
+  },
+  "s03-reset-ko.plugin.2": {
+    "action_first": false,
+    "harm_up_top": false
+  },
+  "s04-delete-ko.plugin.1": {
+    "action_first": false,
+    "harm_up_top": true
+  },
+  "s04-delete-ko.plugin.2": {
+    "action_first": true,
+    "harm_up_top": true
+  }
+}
