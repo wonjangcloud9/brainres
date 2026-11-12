@@ -21,6 +21,18 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Other models (B28)
+
+The same 12 prompts were run with and without brainres on the current card, 1 sample each. Per-prompt differences are given with 95% CIs ([`results/combined-haiku.md`](results/combined-haiku.md)).
+
+| Model | Words | Brain Score | Output tokens | Invented confidence % |
+|---|---|---|---|---|
+| Sonnet (3 samples) | −27% (−54; −89 to −20) | +5.0 (+0.8 to +9.2) | −16% (CI excludes 0) | 0 / 24 after C14 |
+| **Haiku** (1 sample) | **−35%** (−71; −114 to −28) | **+3.9** (+0.1 to +7.7) | −14% (CI includes 0) | 0 / 12 |
+| Opus | pending (B28b) | | | |
+
+The question-aware check (`--question`) caught one real Haiku slip. In 12, the brainres answer opened with "다음 기준으로 고르면 됩니다." and put the recommendation in sentence 2 (`no_recommendation`).
+
 ## Stress prompt with the real plugin (C13)
 
 Card-only evals can't reach `support.md` because skill references load only when the skill is invoked. We ran the emergency prompt (11, "I deleted a production table") through the real plugin (`--plugin-dir`, tools `Skill Read`), 3 times before and 3 times after adding stress triggers to the skill description:

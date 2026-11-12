@@ -6,7 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
-| B28 | Eval generalization: run 12 prompts × {baseline, brainres} on Haiku and on Opus (one model per iteration, 24 calls each) | T | 8 | 1 | 0.8 | 1 | **6.4** | todo |
+| B28b | Eval generalization on Opus: 12 prompts × {baseline, brainres} (24 calls) | T | 8 | 1 | 0.8 | 1 | **6.4** | todo |
 | B29 | Real-plugin eval across all 12 prompts (`--plugin-dir`, hooks + skill invocation) to validate the card-append proxy | T | 8 | 1 | 0.5 | 1 | **4** | todo |
 | B31 | LR-01 risk check: prompts where models often err; does brainres hide reasoning when wrong? Measure reasoning-step visibility | Q | 5 | 2 | 0.5 | 2 | **2.5** | todo |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
@@ -52,6 +52,7 @@ The loop always takes the highest-scoring `todo` item.
 | B23 | Voice-mode rules (transient information effect, #9) | Q | 1 | 1 | 0.8 | 0.5 | 1.6 | superseded by C05 (references/voice.md: #9, AN-20, HC-115) |
 | B20 | GitHub Action: brainlint on docs in PRs | T | 2 | 1 | 0.5 | 1 | 1 | done 2026-11-12 (reusable action.yml + CI workflow) |
 | B27 | brainlint `--question`: question-aware checks (yes/no question → first word yes/no; "which X" → answer names an option; decision question with no recommendation = the documented blind spot) | T | 8 | 1 | 0.8 | 1 | 6.4 | done 2026-11-12 (yesno_not_first, no_recommendation; CLI, evals score_q, playground) |
+| B28 | Eval generalization: run 12 prompts × {baseline, brainres} on Haiku and on Opus (one model per iteration, 24 calls each) | T | 8 | 1 | 0.8 | 1 | 6.4 | B28a done 2026-11-12 (Haiku: words −35%, score +3.9) — Opus split to B28b |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

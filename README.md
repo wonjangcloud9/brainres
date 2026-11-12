@@ -189,9 +189,13 @@ We asked the same 12 questions with and without brainres, 3 times each, for 72 a
 What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
-- An earlier single-sample run looked better (−33% words). The bigger sample shrank the effect, and we report the bigger sample.
-- An early card made Claude invent confidence numbers (`~80% sure`) in 7 of 36 answers, against 0 of 36 for the baseline. We rewrote the rule, and the re-run had 0 of 24 with the length gains intact ([details](evals/README.md)).
+- **It holds on a smaller model.** On Haiku, answers were 35% shorter (−71 words per prompt, 95% CI −114 to −28) and the Brain Score rose by 3.9.
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
+
+What went wrong along the way ([details](evals/README.md)):
+
+- A single-sample run first showed −33% words. The bigger sample shrank the effect, and we report the bigger sample.
+- An early card made Claude invent confidence numbers (`~80% sure`) in 7 of 36 answers, against 0 of 36 for the baseline. After we rewrote the rule, the re-run had 0 of 24, with the length gains intact.
 
 ### Help measure comprehension (10 minutes)
 

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Generalization to Haiku (B28a; 24 calls, 12 prompts × 2 conditions): per prompt, words −71 (−35%, 95% CI −114 to −28), Brain Score +3.9 (CI +0.1 to +7.7), output tokens −14% (CI includes 0), and 0 invented confidence numbers. `--question` caught one real slip, an answer that framed before recommending. Opus follows in B28b.
+
 - `brainlint --question` (B27) adds question-aware checks. `yesno_not_first` fires when a yes/no question, including tag questions like "…, right?", doesn't get Yes or No as the first word. `no_recommendation` fires when sentence 1 of a choice question neither names an option nor recommends one. This closes the blind spot documented in `examples/README.md`: 04 "before" now scores 70 and 02 "before" 33, while every "after" stays at 100. Scores without `--question` are unchanged, and the goldens hold. Evals record `score_q` separately, and the playground has an optional question field. 9 new tests bring the total to 43.
 
 - Research round 3 (the backlog was empty). `research/catalog-round3.md` adds 6 findings on how people read LLM answers. One applies as a new rule: when an answer might be wrong, keep the key reasoning visible, because medium-length explanations helped people catch LLM errors (Friedman 2026, LR-01). Another sets an outline-first approach for long deliverables (LR-05). Four are excluded with reasons, including one search-summary claim that the abstract didn't support. The gap is confirmed: no study yet compares bullets and prose for comprehension of chatbot answers. Coverage is 644/644 applicable findings (781 reviewed). New backlog items: B27–B31.
