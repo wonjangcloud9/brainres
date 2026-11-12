@@ -1,0 +1,346 @@
+{
+  "model": "sonnet",
+  "samples": 2,
+  "card_sha": "0bd557e38b55",
+  "rows": [
+    {
+      "id": "01-debug",
+      "type": "debug",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 143,
+      "output_tokens": 501,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "01-debug",
+      "type": "debug",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 147,
+      "output_tokens": 482,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "02-concept",
+      "type": "concept",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 195,
+      "output_tokens": 481,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "02-concept",
+      "type": "concept",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 181,
+      "output_tokens": 570,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "03-decision",
+      "type": "decision",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 214,
+      "output_tokens": 442,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "03-decision",
+      "type": "decision",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 96,
+      "words": 213,
+      "output_tokens": 465,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "long_sentences"
+      ]
+    },
+    {
+      "id": "04-yesno",
+      "type": "yes/no",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 100,
+      "output_tokens": 274,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "04-yesno",
+      "type": "yes/no",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 127,
+      "output_tokens": 348,
+      "within_budget": false,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "05-numbers",
+      "type": "numbers",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 116,
+      "output_tokens": 511,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "05-numbers",
+      "type": "numbers",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 121,
+      "output_tokens": 439,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "06-procedure",
+      "type": "procedure",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 97,
+      "words": 116,
+      "output_tokens": 317,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "term_swap"
+      ]
+    },
+    {
+      "id": "06-procedure",
+      "type": "procedure",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 97,
+      "words": 120,
+      "output_tokens": 272,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "term_swap"
+      ]
+    },
+    {
+      "id": "07-myth",
+      "type": "misconception",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 89,
+      "words": 174,
+      "output_tokens": 322,
+      "within_budget": false,
+      "answer_first": true,
+      "checks": [
+        "bare_this",
+        "double_negation",
+        "scope_ambiguity"
+      ]
+    },
+    {
+      "id": "07-myth",
+      "type": "misconception",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 97,
+      "words": 142,
+      "output_tokens": 266,
+      "within_budget": false,
+      "answer_first": true,
+      "checks": [
+        "scope_ambiguity"
+      ]
+    },
+    {
+      "id": "08-explain",
+      "type": "concept",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 88,
+      "words": 268,
+      "output_tokens": 594,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "08-explain",
+      "type": "concept",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 85,
+      "words": 278,
+      "output_tokens": 678,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "scope_ambiguity",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "09-ko-concept",
+      "type": "concept",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 116,
+      "output_tokens": 1038,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "09-ko-concept",
+      "type": "concept",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 83,
+      "output_tokens": 572,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "10-ko-debug",
+      "type": "debug",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 92,
+      "words": 87,
+      "output_tokens": 906,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "10-ko-debug",
+      "type": "debug",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 92,
+      "words": 92,
+      "output_tokens": 647,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "11-ko-stress",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 179,
+      "output_tokens": 972,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "11-ko-stress",
+      "type": "stress",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 83,
+      "words": 173,
+      "output_tokens": 974,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "fragmented_reasoning",
+        "list_overload",
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "12-ko-decision",
+      "type": "decision",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 76,
+      "output_tokens": 628,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "12-ko-decision",
+      "type": "decision",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 2,
+      "score": 100,
+      "words": 93,
+      "output_tokens": 420,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Fixed the regression (C14):** card rule 8, SKILL rule 9 and numbers.md now forbid invented confidence percentages; numbers are allowed only when grounded (JD-33). A new `brainlint` check, `invented_confidence`, flags self-rated "~80% sure" and "(~90% 확신)" but not confidence intervals or calculations, with tests. Inline code is now treated as a quoted literal, so a README that *mentions* an anti-pattern isn't penalized for it (32 tests in total). The Korean README measurement section is split again after this change pushed it over the paragraph limit. Eval re-run: 7 of 36 answers flagged before the fix, 0 of 24 after, with length gains intact (words −54, CI −88 to −20). The card grew from 461 to 488 tokens. README, launch drafts and the social image are updated.
+
 - Benchmark, step 2 of 3 (B10-2): 24 quiz questions, a "find" question and an "understand" question for each item, each answerable from **both** versions. An independent LLM review passed 22 and flagged 2 for fixes; both are fixed. Its finding that 9 stems or options leaned on brainres wording led to neutral rewrites. Quiz hashes are added to the pre-registration manifest.
 - **Regression found (C14):** brainres answers invented confidence numbers in 6 of 36 cases ("~80% likely", "~90% 확신"), against 0 of 36 for the baseline. It is documented in `evals/README.md` and is the top backlog item.
 

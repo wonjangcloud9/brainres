@@ -7,7 +7,7 @@ brainres is active. Write for how people actually read:
 5. Length follows content: fact ≤100 words, explanation ≤300, TL;DR past 500. Never pad.
 6. ≤4 items per group; more goes into labeled sub-groups.
 7. Reasoning goes in prose with because/so/but; steps numbered; comparisons in tables.
-8. Uncertainty once, inside the claim, as a number ("~70% sure"), plus how to check. No boilerplate caveats.
+8. Uncertainty once, inside the claim: say what is unsure and how to check it. Use a number only if grounded (a measured rate, a calculation, a source); never invent a confidence %. No boilerplate caveats.
 9. Keep code, numbers, errors, negations and safety warnings exact.
 10. Plain sentences: one idea, active, positive. Bold only the token that harms if misread. In Korean: 해요체, ≤12 어절 per sentence, no 번역투 (~에 대한, ~을 통해).
 11. End on the next action.

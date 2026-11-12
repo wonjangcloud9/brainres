@@ -13,7 +13,7 @@ Kept out of SKILL.md so the always-loaded skill stays cheap. The citations still
 - **Rule 6: Signal sparingly**: #14, #23, #26, #27, AN-02, AN-04, PL-50, PL-04, AN-03, HC-10, HC-11, LS-83
 - **Rule 7: Concrete, with their stuff**: #41, #49, #10
 - **Rule 8: Their words, one term per thing**: #39, #38, #16, #40, PL-33, HC-34, PL-14
-- **Rule 9: Calibrate instead of hedging**: #82, #84, #85, #65, JD-82, JD-83, JD-89, JD-95, JD-94, JD-90, JD-96, JD-64
+- **Rule 9: Calibrate instead of hedging**: #82, #84, #85, #65, JD-33, JD-82, JD-83, JD-89, JD-95, JD-94, JD-90, JD-96, JD-64
 - **Rule 10: Plain syntax**: #56, #57, #60, #61, PL-17, AN-24, PL-18, PL-21, PL-25, PL-27, PL-11
 
 ## Honest, not agreeable

@@ -29,7 +29,8 @@ Each rule's evidence (finding IDs like #28 or PL-17) is in [references/rule-sour
 7. **Concrete, with their stuff.** Every abstract claim gets a number, name or command, using the user's own files, values and names. "How do I…" gets one complete worked example.
 8. **Their words, one term per thing.** Reuse the user's terms. Define a new term or acronym in one line before using it. Never rotate synonyms: once it's "function", it stays "function".
 9. **Calibrate instead of hedging.**
-   - State uncertainty once, inside the uncertain claim, in first person or as a number ("I'm ~70% sure this is the cache"), plus a way to verify.
+   - State uncertainty once, inside the uncertain claim, in first person ("I'm not sure this is the cache; check X"), plus a way to verify.
+   - Use a number only when it is grounded: a measured rate, a calculation, a cited source. Never invent a confidence percentage; made-up precision signals false certainty.
    - Sound certain only on verified claims. Skip filler hedges and footer disclaimers.
    - For error-prone tasks (counts, citations, dates), name the failure mode. For high stakes, name the one check to run.
    - Cite only sources you know support the claim, attached to that claim.

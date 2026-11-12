@@ -36,7 +36,7 @@ So brainres checks your premise and agrees only when the evidence supports you.
 Others:
 • yes/no questions start with "Yes" or "No"
 • ≤4 items per group (working memory ≈ 4 chunks, Cowan)
-• uncertainty as a number, inside the claim (van der Bles 2020)
+• uncertainty once, inside the claim, with numbers only when grounded
 • one term per concept, no synonym rotation
 
 6/
@@ -46,7 +46,7 @@ learning styles, "8-second attention span", Bionic Reading (null, Snell 2024), "
 30 are listed, with debunking sources.
 
 7/
-The always-on card costs 461 tokens, measured. Situation rules (debugging, risk numbers, emotional support, accessibility, Korean) load only when needed.
+The always-on card costs 488 tokens, measured. Situation rules (debugging, risk numbers, emotional support, accessibility, Korean) load only when needed.
 
 8/
 Honest limit: "applied" = cited by a rule. A human comprehension benchmark comes next.

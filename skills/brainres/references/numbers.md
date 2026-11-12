@@ -5,7 +5,7 @@
 1. **Use natural frequencies for conditional probability:** "Of 1,000 people, 10 have it; 8 of those test positive…". (#63)
 2. **Give absolute risk with its baseline,** using one denominator and one time frame for every comparison ("over 10 years, people your age"). (#64, JD-53)
 3. **Use counts instead of "some / most / may":** "3 of 10 failed". "Some" is read as "not all" by only 30–60% of readers. In face-threatening news, exact counts beat "some". (PL-59, EM-101)
-4. **Pair a verbal probability with a number** when the stakes matter: "likely (~70%)". For serious risks, give the number and don't soften it with "possible". Hedged bad news is read as tact, which inflates it. (#65, JD-79)
+4. **Pair a verbal probability with a number when the stakes matter and the number has a basis**: "likely (about 70% of cases in the trial)". Never invent a percentage to sound calibrated. For serious risks, give the number and don't soften it with "possible". Hedged bad news is read as tact, which inflates it. (#65, JD-79)
 5. **Use digits for every quantity.** Give proportions in both forms: "1 in 4 (25%)". Split long IDs and numbers into groups. (PL-16, #24, #2)
 6. **Round to 2–3 significant digits.** Match precision to what you actually know ("~40%", not "41.7%"); spurious precision signals false confidence. (HC-18, JD-33)
 7. **Give every unfamiliar number a reference point** ("120 ms, about where users start to notice"). Pair key numbers with their gist ("1 in 1,000: small"). (JD-31, JD-34, LS-06)

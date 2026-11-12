@@ -88,11 +88,11 @@ Once installed, it's always on. A session-start hook adds the rule card once per
 
 | Part | Tokens | When |
 |---|---:|---|
-| Rule card | 461 | once per session |
-| Reminder | 79 | each message |
+| Rule card | 488 | once per session |
+| Reminder | 79* | each message |
 | Full skill body | 3,309 | only when the skill is invoked |
 
-A 20-message session costs about 2,000 extra input tokens before prompt caching. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
+\*Measured before a 13-character wording change (C14); re-measure pending. A 20-message session costs about 2,100 extra input tokens before prompt caching. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
 ## The 10 rules
 
@@ -106,7 +106,7 @@ A 20-message session costs about 2,000 extra input tokens before prompt caching.
 | 6 | **Signal sparingly.** Headings that carry content, ≤1 bold per paragraph. | Signaling (meta g≈.5); von Restorff; signal dilution |
 | 7 | **Concrete, with your stuff.** Your files, your values, one worked example. | Concreteness, self-reference, worked-example effect (g=.48) |
 | 8 | **Your words, one term per thing.** Define new terms before using them. | Lexical entrainment; curse of knowledge |
-| 9 | **Calibrate instead of hedging.** "I'm ~70% sure", plus a way to check. | Numeric uncertainty keeps trust (van der Bles 2020); first-person hedges cut overreliance (Kim 2024) |
+| 9 | **Calibrate instead of hedging.** Say what's uncertain and how to check. Use numbers only when grounded, never an invented `~80% sure`. | Numeric uncertainty keeps trust (van der Bles 2020); first-person hedges cut overreliance (Kim 2024) |
 | 10 | **Plain syntax.** One idea per sentence, active voice, no nested clauses. | Center-embedding cost (Gibson 2022); negation cost |
 
 It is also **honest, not agreeable**. It checks the premise of your question, agrees only when the evidence supports it, and never flatters. Sycophantic AI raises trust while it harms judgment ([Cheng 2026](research/catalog-judgment-trust.md)).
@@ -167,6 +167,7 @@ What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
 - An earlier single-sample run looked better (−33% words). The bigger sample shrank the effect, and we report the bigger sample.
+- An early card made Claude invent confidence numbers (`~80% sure`) in 7 of 36 answers, against 0 of 36 for the baseline. We rewrote the rule, and the re-run had 0 of 24 with the length gains intact ([details](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
 ## How it differs
@@ -195,7 +196,7 @@ Every finding in [`research/`](research/) has a source, an evidence grade (stron
 
 The **[coverage ledger](research/coverage.md)** shows 596 applicable findings, all 596 cited by a rule in the skill, and 129 excluded. Exclusions fall into four groups: not applicable to text, failed replication, neuromyth, or manipulative. Cross-domain duplicates are counted once. `validate.sh` blocks any commit that lowers the applied count.
 
-The always-on card stays small (461 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
+The always-on card stays small (488 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
 
 - **Neuromyths we refuse:** learning styles; left/right brain; the "8-second attention span"; Dale's cone; Bionic Reading; "dopamine-hit" formatting; "23 minutes to refocus"; "willpower is glucose"; "we read words by their shape". Thirty in total are listed in the catalogs.
 - **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](BACKLOG.md).

@@ -30,3 +30,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 08:38 · B16 · rewrite.md procedure (inventory → rewrite → ✓/⚠/✗ → report) + brainlint --compare payload check (+4 tests)
 - 2026-11-12 08:58 · B10-1 · benchmark protocol pre-registered + 12 frozen answer pairs with hashes; split B10-2 (quiz), B10-3 (page)
 - 2026-11-12 09:22 · B10-2 · 24 quiz questions + independent LLM review (22 PASS/2 FIX fixed, 9 bias rewrites); found regression C14 (invented confidence %: brainres 6/36 vs baseline 0/36)
+- 2026-11-12 09:39 · C14 · rule 8 rewritten (no invented confidence %), brainlint invented_confidence; eval: 7/36 → 0/24, gains intact; card 461→488 tokens; 30 calls

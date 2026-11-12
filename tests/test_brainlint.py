@@ -148,11 +148,21 @@ class Checks(unittest.TestCase):
             "understanding_check": ("Run it twice. Does that make sense?", "Run it twice. Expect the second run to print OK."),
             "emoji": ("Done 🎉 Ship it 🚀", "Done. Ship it."),
             "boilerplate_warning": ("Use the flag. This is not financial advice.", "Use the flag. It deletes the cache, so back it up first."),
+            "invented_confidence": ("It's the cache (~80% sure).", "It's probably the cache; check the hit rate in the logs."),
         }
         for check, (bad, good) in cases.items():
             with self.subTest(check=check):
                 self.assertIn(check, checks(bad))
                 self.assertNotIn(check, checks(good))
+
+    def test_grounded_numbers_are_not_invented_confidence(self):
+        for ok in ["The trial reported a 95% confidence interval of 2–4%.", "About 64% of runs will fail (1 − 0.98^50)."]:
+            self.assertNotIn("invented_confidence", checks(ok))
+        self.assertIn("invented_confidence", checks("원인은 StrictMode예요 (~90% 확신)."))
+
+    def test_inline_code_is_quoted_not_said(self):
+        self.assertNotIn("invented_confidence", checks("Never write `~80% sure` without a source."))
+        self.assertNotIn("minimizer", checks("The linter flags `simply` and `just run`."))
 
     def test_check_marks_are_not_emoji(self):
         self.assertNotIn("emoji", checks("✓ Do this. ✗ Not that. ✓ Then this."))

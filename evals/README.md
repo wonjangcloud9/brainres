@@ -30,7 +30,17 @@ While writing quiz questions, we noticed brainres answers stating confidence num
 | baseline | 0 / 36 |
 | brainres | **6 / 36** |
 
-The cause is card rule 8, "uncertainty … as a number". Our own catalog warns against exactly this: spurious precision signals false confidence (JD-33, Jerez-Fernandez 2014). We count it as a real harm introduced by brainres. The fix is C14, at the top of the backlog.
+The cause is card rule 8, "uncertainty … as a number". Our own catalog warns against exactly this: spurious precision signals false confidence (JD-33, Jerez-Fernandez 2014). We count it as a real harm introduced by brainres.
+
+**Fixed (C14).** Rule 8 now reads: "say what is unsure and how to check it. Use a number only if grounded (a measured rate, a calculation, a source); never invent a confidence %". `brainlint` gained an `invented_confidence` check.
+
+| Card | Answers flagged by `invented_confidence` |
+|---|---:|
+| baseline | 0 / 36 |
+| v2.1 (old rule 8) | 7 / 36 |
+| **v2.2 (fixed)** | **0 / 24** |
+
+On card v2.2 the length gain held: per prompt, words −54 (95% CI −88 to −20) and Brain Score +5.3 (CI +0.4 to +10.2) ([`results/combined-c14.md`](results/combined-c14.md)). The card cost rose from 461 to 488 tokens.
 
 ## First run (2026-11-12)
 

@@ -22,11 +22,11 @@ What it does in practice:
 
 - The answer comes in sentence 1. A yes/no question starts with "Yes" or "No".
 - Groups have at most 4 items. Reasoning stays in prose, and lists are only for parallel items.
-- Uncertainty is stated once, inside the claim, as a number. Citations appear only when they're verified (random citations raise trust, Ding 2025).
+- Uncertainty is stated once, inside the claim. Numbers appear only when grounded; an early version made Claude invent "~80% sure" figures, which we measured and fixed. Citations appear only when they're verified (random citations raise trust, Ding 2025).
 - It doesn't agree with you without evidence. Sycophantic AI raises trust and harms judgment (Cheng 2026, Science).
 - It adapts to the reader: experts get terse answers, novices get definitions and one worked example (expertise reversal).
 
-The always-on card is 461 tokens (measured with Claude's tokenizer; script in the repo). Situation-specific rules (debugging, decisions, risk numbers, emotional support, accessibility, Korean) live in reference files the model reads only when needed.
+The always-on card is 488 tokens (measured with Claude's tokenizer; script in the repo). Situation-specific rules (debugging, decisions, risk numbers, emotional support, accessibility, Korean) live in reference files the model reads only when needed.
 
 There's also `brainlint`, a stdlib Python scorer that maps each check to a finding. A typical answer that opens with "Great question!", uses 7 bold bullets and ends with "Hope this helps!" scores 50/100. The rewrite scores 100.
 

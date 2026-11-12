@@ -76,6 +76,9 @@ BOILERPLATE = re.compile(
     r"(this is not (financial|legal|medical|professional) advice|use (it )?at your own risk|"
     r"(it is|it's) always (best|a good idea|recommended) to consult|please (be careful|exercise caution)|"
     r"전문가와 상담하시기 바랍니다)", re.I)
+INVENTED_CONF = re.compile(
+    r"(?<![\w.])~?\d{1,3}\s?% (sure|confident|certain|likely)\b(?! interval)|\(~?\d{1,3}\s?% (확신|확률로 확신)\)|"
+    r"\b(i'?m|i am) ~?\d{1,3}\s?% (sure|confident|certain)\b|~?\d{1,3}\s?% 정도 확신", re.I)
 TERM_SWAPS = [("folder", "directory"), ("routine", "function"), ("app", "application"),
               ("폴더", "디렉터리"), ("폴더", "디렉토리"), ("앱", "애플리케이션")]
 BOLD_LEAD = re.compile(r"^\s*([-*+]|\d+[.)])\s+(\*\*|__)")
@@ -109,9 +112,13 @@ class Report:
 HTML_COMMENT = re.compile(r"<!--.*?-->", re.S)
 
 
+INLINE_CODE = re.compile(r"`[^`\n]+`")
+
+
 def strip_code(text: str) -> str:
-    # Code blocks and HTML comments are not prose the reader reads.
-    return HTML_COMMENT.sub(" ", CODE_FENCE.sub(" ", text))
+    # Code blocks, inline code and HTML comments are not the author's prose: inline code is a quoted
+    # literal (a command, or a quoted anti-pattern like `~80% sure`), so it must not trigger style checks.
+    return INLINE_CODE.sub("CODE", HTML_COMMENT.sub(" ", CODE_FENCE.sub(" ", text)))
 
 
 def sentences_of(prose: str) -> list[str]:
@@ -223,6 +230,9 @@ def lint(text: str) -> Report:
     emojis = len([e for e in EMOJI.findall(prose) if e not in "✓✔✗✘"])  # check marks are meaningful (AN-25)
     if emojis >= 2:
         add("emoji", "Emoji competence penalty (EM-95) / screen readers (HC-110)", f"{emojis} emoji; use words", 4)
+    if INVENTED_CONF.search(prose):
+        add("invented_confidence", "Spurious precision signals false certainty (JD-33)",
+            f"'{INVENTED_CONF.search(prose).group(0)}': a self-rated confidence % is rarely grounded; say what is unsure and how to check", 4)
     if BOILERPLATE.search(prose):
         add("boilerplate_warning", "Warning habituation (JD-91)", "generic disclaimer; make the caveat specific or cut it", 3)
 
