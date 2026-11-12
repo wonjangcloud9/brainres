@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Card ablation, part 1 (V3a, 30 calls): `run.py --card` swaps in an ablated card, and `evals/ablation/` holds four cards, each with one group of lines removed. The new `evals/ablation_report.py` compares each against the full card on the 15-prompt V1a subset.
+  - **Noise, measured from 36 repeat-sample pairs:** the standard error of a 15-prompt difference is about 1.2 points and 7 words.
+  - **Results:** removing G1 (sentence-1 answer, agree only with evidence) changed the score by +0.9 and words by −7. Removing G2 (fit expertise, be concrete) changed them by +1.3 and +1. Both are inside the noise on general prompts.
+  - **Pending:** G3 and G4 run next. The pruning decision will also weigh the targeted evals these rules were built from, such as C17 math and C14 invented confidence.
+
 - **The emergency line stays (F6, 25 calls):** on 10 new stress prompts (`evals/prompts-stress2.jsonl`), sentence 1 was the next action in 10/10 answers with the plugin, against 8/10 with the card alone. Key-fact coverage was 73.8% against 75.7% (−1.9 pp). That passes the pre-stated rule (≥ 20 pp gain, ≤ 5 pp loss). Pooled over B41, F3 and F6, action-first rises from 65% to 89% at a cost of about 4 pp of coverage.
 - `coverage_judge.py` gained the `--prompts`/`--keys` options for new prompt sets and a `pair` phase that compares any two conditions.
 

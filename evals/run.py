@@ -39,17 +39,19 @@ BUDGET = {"yes/no": 100, "misconception": 100}
 DEFAULT_BUDGET = 300
 
 
+CARD = ROOT / "hooks/core-card.md"  # V3: --card swaps in an ablated card
+
+
 def card_sha() -> str:
     import hashlib
-    return hashlib.sha256((ROOT / "hooks/core-card.md").read_bytes()).hexdigest()[:12]
+    return hashlib.sha256(CARD.read_bytes()).hexdigest()[:12]
 
 
 def brainres_prompt() -> str:
-    card = (ROOT / "hooks/core-card.md").read_text(encoding="utf-8")
     # The proxy is the card alone. Since B46 the per-turn hook emits nothing without a situation signal
     # (situation lines need the real hook: --conditions plugin). Runs before 2026-11-12 B46 also appended
     # the 84-token base reminder.
-    return card
+    return CARD.read_text(encoding="utf-8")
 
 
 def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = None, plugin: bool = False) -> dict:
@@ -81,8 +83,12 @@ def main() -> int:
     ap.add_argument("--samples", type=int, default=1, help="answers per prompt and condition")
     ap.add_argument("--tag", default="", help="suffix for the results folder")
     ap.add_argument("--prompts", default="prompts.jsonl", help="prompt set in evals/ (prompts.jsonl, prompts-ko.jsonl)")
+    ap.add_argument("--card", help="V3: use this card file instead of hooks/core-card.md (brainres condition only)")
     ap.add_argument("--style", help="built-in output style to combine with every condition (e.g. Concise, Explanatory)")
     a = ap.parse_args()
+    global CARD
+    if a.card:
+        CARD = (ROOT / a.card) if not Path(a.card).is_absolute() else Path(a.card)
     prompts = [json.loads(l) for l in (ROOT / "evals" / a.prompts).read_text().splitlines() if l.strip()]
     if a.ids:
         wanted = set(a.ids.split(","))
