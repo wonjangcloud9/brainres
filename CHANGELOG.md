@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- The backlog was empty, so new items came from the measurements.
+  - **No output problems are left.** The formal-doc and refusal losses are one-off: 3 prompts, each with different checks. All 4 Yes/No openers on prompts not tagged yes/no were legitimate (two refusals, and two questions that contain a yes/no part).
+  - **G1 (score 6), growth:** lead the README and social image with the 80-prompt result. No growth item had run in a long time, though LOOP.md asks for one every 3–4 iterations.
+  - **L1 (score 2.5):** measure how much the card's extra thinking delays the first visible token.
+
 - Thinking-token cost checked from saved suite data (K3, no calls), and nothing was changed.
   - **The cost is real:** with the card, Sonnet thinks before answering in 32 of 78 prompts, against 4 of 78 without it. That adds 99 thinking tokens per prompt (CI +59 to +139), against a repeat-sample noise SD of 86.
   - **It pays for itself:** visible output shrinks more, so total output still falls 91 tokens per prompt (CI −135 to −48), and no answer type shows a reliable net cost.

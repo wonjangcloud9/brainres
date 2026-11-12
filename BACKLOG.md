@@ -6,6 +6,8 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| G1 | **Growth: lead with the measured result.** The first screen and social image still show a hand-written example (56 → 100) and catalog counts, but the strongest evidence now is the 80-prompt suite: −29% words, Brain Score +4.6 (CI +3.2 to +6.1), ahead in 14 of 16 types, and coverage −1.8 pp stated honestly. Add a 3-line "measured on 80 prompts" strip under the README title (EN and KO), swap the image's example stat for "−29% words · 80 prompts", re-render, and keep both READMEs at their scores. No new claims beyond evals/README | G | 6 | 1 | 0.5 | 0.5 | **6** | todo |
+| L1 | Latency: the card makes Sonnet think in 32/78 answers (K3), which delays the first visible token, and readers act on sentence 1 first (ST-01). Measure time-to-first-text with `--output-format stream-json` on the V1a 15 prompts, baseline vs card (30 calls). Report the median delay and say whether the extra wait could matter | Q | 10 | 0.5 | 0.5 | 1 | 2.5 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
