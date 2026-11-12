@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s015-debug",
@@ -43,7 +44,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s025-concept",
@@ -65,7 +67,8 @@
         "scope_ambiguity"
       ],
       "tool_markup": false,
-      "score_before_f1": 97
+      "score_before_f1": 97,
+      "score_before_k1": 97
     },
     {
       "id": "s025-concept",
@@ -85,7 +88,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s035-decision",
@@ -107,7 +111,8 @@
         "fragmented_reasoning"
       ],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 94
     },
     {
       "id": "s035-decision",
@@ -127,7 +132,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s045-yesno",
@@ -151,7 +157,8 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 96
     },
     {
       "id": "s045-yesno",
@@ -173,7 +180,8 @@
         "double_negation"
       ],
       "tool_markup": false,
-      "score_before_f1": 96
+      "score_before_f1": 96,
+      "score_before_k1": 96
     },
     {
       "id": "s055-numbers",
@@ -195,7 +203,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s055-numbers",
@@ -215,7 +224,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s065-procedure",
@@ -237,7 +247,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s065-procedure",
@@ -259,7 +270,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s075-myth",
@@ -267,24 +279,24 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 86,
+      "score": 92,
       "words": 233,
       "output_tokens": 554,
       "thinking_tokens": 0,
       "visible_output_tokens": 554,
       "turns": 1,
       "within_budget": false,
-      "score_q": 80,
+      "score_q": 86,
       "question_checks": [
         "yesno_not_first"
       ],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
-        "wall_of_text"
+        "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 86
     },
     {
       "id": "s075-myth",
@@ -292,24 +304,24 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 91,
+      "score": 97,
       "words": 232,
       "output_tokens": 478,
       "thinking_tokens": 0,
       "visible_output_tokens": 478,
       "turns": 1,
       "within_budget": false,
-      "score_q": 85,
+      "score_q": 91,
       "question_checks": [
         "yesno_not_first"
       ],
       "answer_first": true,
       "checks": [
-        "minimizer",
-        "wall_of_text"
+        "minimizer"
       ],
       "tool_markup": false,
-      "score_before_f1": 85
+      "score_before_f1": 85,
+      "score_before_k1": 91
     },
     {
       "id": "s085-stress",
@@ -317,22 +329,22 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 86,
+      "score": 92,
       "words": 368,
       "output_tokens": 905,
       "thinking_tokens": 124,
       "visible_output_tokens": 781,
       "turns": 1,
       "within_budget": false,
-      "score_q": 86,
+      "score_q": 92,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
-        "wall_of_text"
+        "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 86
     },
     {
       "id": "s085-stress",
@@ -340,22 +352,22 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 90,
+      "score": 96,
       "words": 273,
       "output_tokens": 684,
       "thinking_tokens": 178,
       "visible_output_tokens": 506,
       "turns": 1,
       "within_budget": true,
-      "score_q": 90,
+      "score_q": 96,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins",
-        "wall_of_text"
+        "bold_lead_ins"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 90
     },
     {
       "id": "s095-refusal",
@@ -363,24 +375,24 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 78,
+      "score": 84,
       "words": 186,
       "output_tokens": 367,
       "thinking_tokens": 0,
       "visible_output_tokens": 367,
       "turns": 2,
       "within_budget": true,
-      "score_q": 78,
+      "score_q": 84,
       "question_checks": [],
       "answer_first": true,
       "checks": [
         "bold_lead_ins",
         "long_sentences",
-        "outro",
-        "wall_of_text"
+        "outro"
       ],
       "tool_markup": false,
-      "score_before_f1": 76
+      "score_before_f1": 76,
+      "score_before_k1": 78
     },
     {
       "id": "s095-refusal",
@@ -400,7 +412,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 100
     },
     {
       "id": "s105-doc",
@@ -422,7 +435,8 @@
         "emoji"
       ],
       "tool_markup": false,
-      "score_before_f1": 96
+      "score_before_f1": 96,
+      "score_before_k1": 96
     },
     {
       "id": "s105-doc",
@@ -444,7 +458,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 92
     },
     {
       "id": "s115-novice",
@@ -466,7 +481,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_f1": 96
+      "score_before_f1": 96,
+      "score_before_k1": 96
     },
     {
       "id": "s115-novice",
@@ -486,7 +502,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s134-codex",
@@ -508,7 +525,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s134-codex",
@@ -528,7 +546,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s144-write",
@@ -548,7 +567,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s144-write",
@@ -568,7 +588,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s154-multi",
@@ -591,7 +612,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 88
     },
     {
       "id": "s154-multi",
@@ -613,7 +635,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s164-advice",
@@ -633,7 +656,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s164-advice",
@@ -653,9 +677,13 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     }
   ],
   "failed": [],
-  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)"
+  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
+  "rescored_by": [
+    "k1"
+  ]
 }

@@ -245,7 +245,19 @@ def lint(text: str, question: str | None = None) -> Report:
 
     # 4. Wall of text (segmenting principle)
     paras = [p for p in re.split(r"\n\s*\n", prose) if p.strip()]
-    walls = [p for p in paras if len(p.split()) > (70 if ko else 110)]
+    # K1 (2026-11-13): a list item is its own segment. A numbered step list with no blank lines between items is
+    # already segmented, so it isn't a wall; only long prose, or a single over-long item, is.
+    segs = []
+    for p in paras:
+        cur: list[str] = []
+        for line in p.splitlines():
+            if LIST_ITEM.match(line) and cur:
+                segs.append("\n".join(cur))
+                cur = []
+            cur.append(line)
+        if cur:
+            segs.append("\n".join(cur))
+    walls = [s for s in segs if len(s.split()) > (70 if ko else 110)]
     if walls:
         add("wall_of_text", "Segmenting principle", f"{len(walls)} paragraph(s) too long to hold in working memory", min(6 * len(walls), 15))
 

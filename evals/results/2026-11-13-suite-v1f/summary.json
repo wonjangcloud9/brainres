@@ -25,7 +25,8 @@
         "nominalization"
       ],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 94
     },
     {
       "id": "s125-compare",
@@ -45,7 +46,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s135-codex",
@@ -65,7 +67,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s135-codex",
@@ -85,7 +88,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s145-write",
@@ -107,7 +111,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s145-write",
@@ -127,7 +132,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s155-multi",
@@ -149,7 +155,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s155-multi",
@@ -169,7 +176,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s165-advice",
@@ -192,7 +200,8 @@
         "fragmented_reasoning"
       ],
       "tool_markup": false,
-      "score_before_f1": 86
+      "score_before_f1": 86,
+      "score_before_k1": 86
     },
     {
       "id": "s165-advice",
@@ -212,9 +221,13 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 100
     }
   ],
   "failed": [],
-  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)"
+  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
+  "rescored_by": [
+    "k1"
+  ]
 }

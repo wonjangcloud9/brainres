@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": true,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s011-debug",
@@ -43,7 +44,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s021-concept",
@@ -66,7 +68,8 @@
         "fragmented_reasoning"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 86
     },
     {
       "id": "s021-concept",
@@ -86,7 +89,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s031-decision",
@@ -94,23 +98,23 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 83,
+      "score": 89,
       "words": 221,
       "output_tokens": 505,
       "thinking_tokens": 0,
       "visible_output_tokens": 505,
       "turns": 1,
       "within_budget": true,
-      "score_q": 83,
+      "score_q": 89,
       "question_checks": [],
       "answer_first": true,
       "checks": [
         "bold_overuse",
-        "term_swap",
-        "wall_of_text"
+        "term_swap"
       ],
       "tool_markup": false,
-      "score_before_f1": 85
+      "score_before_f1": 85,
+      "score_before_k1": 83
     },
     {
       "id": "s031-decision",
@@ -132,7 +136,8 @@
         "sentence_length"
       ],
       "tool_markup": false,
-      "score_before_f1": 90
+      "score_before_f1": 90,
+      "score_before_k1": 90
     },
     {
       "id": "s041-yesno",
@@ -154,7 +159,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s041-yesno",
@@ -174,7 +180,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s051-numbers",
@@ -196,7 +203,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s051-numbers",
@@ -216,7 +224,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s061-procedure",
@@ -238,7 +247,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s061-procedure",
@@ -260,7 +270,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s071-myth",
@@ -285,7 +296,8 @@
         "scope_ambiguity"
       ],
       "tool_markup": false,
-      "score_before_f1": 77
+      "score_before_f1": 77,
+      "score_before_k1": 83
     },
     {
       "id": "s071-myth",
@@ -307,7 +319,8 @@
         "scope_ambiguity"
       ],
       "tool_markup": false,
-      "score_before_f1": 91
+      "score_before_f1": 91,
+      "score_before_k1": 97
     },
     {
       "id": "s081-stress",
@@ -329,7 +342,8 @@
         "double_negation"
       ],
       "tool_markup": false,
-      "score_before_f1": 96
+      "score_before_f1": 96,
+      "score_before_k1": 96
     },
     {
       "id": "s081-stress",
@@ -337,22 +351,22 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 90,
+      "score": 96,
       "words": 255,
       "output_tokens": 966,
       "thinking_tokens": 360,
       "visible_output_tokens": 606,
       "turns": 1,
       "within_budget": true,
-      "score_q": 90,
+      "score_q": 96,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "double_negation",
-        "wall_of_text"
+        "double_negation"
       ],
       "tool_markup": false,
-      "score_before_f1": 84
+      "score_before_f1": 84,
+      "score_before_k1": 90
     },
     {
       "id": "s091-refusal",
@@ -374,7 +388,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "score_before_f1": 96
+      "score_before_f1": 96,
+      "score_before_k1": 96
     },
     {
       "id": "s091-refusal",
@@ -397,7 +412,8 @@
         "nominalization"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 90
     },
     {
       "id": "s101-doc",
@@ -417,7 +433,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s101-doc",
@@ -437,7 +454,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s111-novice",
@@ -459,7 +477,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 92
+      "score_before_f1": 92,
+      "score_before_k1": 92
     },
     {
       "id": "s111-novice",
@@ -479,7 +498,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s121-compare",
@@ -502,7 +522,8 @@
         "nominalization"
       ],
       "tool_markup": false,
-      "score_before_f1": 86
+      "score_before_f1": 86,
+      "score_before_k1": 86
     },
     {
       "id": "s121-compare",
@@ -522,7 +543,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s131-codex",
@@ -542,7 +564,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s131-codex",
@@ -562,7 +585,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s141-write",
@@ -584,7 +608,8 @@
         "nominalization"
       ],
       "tool_markup": false,
-      "score_before_f1": 94
+      "score_before_f1": 94,
+      "score_before_k1": 94
     },
     {
       "id": "s141-write",
@@ -604,7 +629,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     },
     {
       "id": "s151-multi",
@@ -612,22 +638,22 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 86,
+      "score": 92,
       "words": 552,
       "output_tokens": 1448,
       "thinking_tokens": 0,
       "visible_output_tokens": 1448,
       "turns": 1,
       "within_budget": false,
-      "score_q": 86,
+      "score_q": 92,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
-        "wall_of_text"
+        "bold_overuse"
       ],
       "tool_markup": false,
-      "score_before_f1": 88
+      "score_before_f1": 88,
+      "score_before_k1": 86
     },
     {
       "id": "s151-multi",
@@ -647,9 +673,13 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "score_before_f1": 100
+      "score_before_f1": 100,
+      "score_before_k1": 100
     }
   ],
   "failed": [],
-  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)"
+  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
+  "rescored_by": [
+    "k1"
+  ]
 }

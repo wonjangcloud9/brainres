@@ -14,12 +14,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def current_card_sha() -> str:
+    import hashlib
+    return hashlib.sha256((ROOT / "hooks/core-card.md").read_bytes()).hexdigest()[:12]
+
+
 def load() -> dict:
+    # Only single-sample suite runs; brainres rows only from the current card (ablation runs use other cards, K1 fix).
     rows = []
+    sha = current_card_sha()
     for p in sorted((ROOT / "evals/results").glob("*/summary.json")):
         d = json.loads(p.read_text())
-        if d.get("prompt_set") == "suite.jsonl":
-            rows += [r for r in d["rows"] if not r.get("tool_markup")]
+        if d.get("prompt_set") == "suite.jsonl" and d.get("samples", 1) == 1:
+            rows += [r for r in d["rows"] if not r.get("tool_markup")
+                     and (r["condition"] == "baseline" or (r["condition"] == "brainres" and d.get("card_sha") == sha))]
     pairs = defaultdict(dict)
     for r in rows:
         pairs[r["id"]][r["condition"]] = r

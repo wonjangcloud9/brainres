@@ -80,7 +80,7 @@ Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/pl
 
 Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the situation lines.
 
-Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. On Sonnet an always-on per-message reminder added nothing, so it is off by default. On Haiku it raised scores 7–10 points, so it switches on automatically there from the 2nd message ([B46, B48, B50](evals/README.md)). Set `BRAINRES_REMINDER=on` to include the first.
+Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. On Sonnet an always-on per-message reminder added nothing, so it is off by default. On Haiku it raised scores 6–8 points, so it switches on automatically there from the 2nd message ([B46, B48, B50](evals/README.md)). Set `BRAINRES_REMINDER=on` to include the first.
 
 **Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the situation lines.
 
@@ -189,14 +189,14 @@ We compared 78 pairs. Two prompts were dropped because an answer was raw tool-ca
 | Visible output tokens | 670 | **480** | **−28%** (−190; −230 to −150) |
 | Output tokens incl. hidden reasoning | 674 | **582** | −14% (−91; −136 to −47) |
 | Within length budget | 57/78 | **71/78** | |
-| Brain Score | 91.7 | **96.9** | **+5.1** (+3.4 to +6.8) |
+| Brain Score | 92.6 | **97.4** | **+4.8** (+3.3 to +6.4) |
 
 An earlier 12-prompt × 3-sample run pointed the same way: −27% words and +5.0 Brain Score.
 
 What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
-- **brainres was ahead in 13 of 16 answer types.** It was about even or slightly behind in debugging (−1.0), stress (−0.8) and formal documents (−0.2). The stress gap comes from long step lists ([weakness report](evals/results/suite-weakness.md)).
+- **brainres was ahead in 14 of 16 answer types.** It was about even in formal documents (−0.2) and refusals ([weakness report](evals/results/suite-weakness.md)).
 - **The real plugin matches the eval proxy** (12-prompt set): −54 words and +5.0 Brain Score per prompt. The always-on card does the work, and the full skill was auto-invoked in only 1 of 24 answers.
 
 Caveats:

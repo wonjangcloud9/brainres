@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **`wall_of_text` no longer counts step lists as walls (K1).** List items now count as separate segments, with tests.
+  - **Re-score, no calls:** the new `evals/rescore.py` re-scored the suite, F3/F5/F6 and multi-turn runs, which changed the checks on 52 answers.
+  - **Suite result:** the Brain Score gain is now +4.8 (CI +3.3 to +6.4), because baseline lists were also affected. brainres leads in 14 of 16 types. Stress moved from −0.8 to +2.8 and debugging to +0.5, and every stress run now has 0 walls, so the "stress answers are walls of text" findings are withdrawn.
+  - **Haiku reminder:** the gain is now 6–8 points, not 7–10.
+  - **Also fixed:** `suite_report.py` and `coverage_judge.py` had been reading the V3 ablation runs, whose cards differ, as suite results. Both now read only brainres rows made with the current card. This had affected only today's weakness report.
+  - **Updated:** both READMEs, the launch drafts and the eval tables.
+
 - The backlog was empty, so new items came from the measurements (LOOP direction) rather than new research.
   - **K1 (8):** `wall_of_text` fires on numbered step lists that have no blank lines between items. Every stress answer we checked that was flagged as a wall was a 5-item list. This needs a check fix and re-scores.
   - **K2 (4):** Korean bold density appears over-penalised. Korean is 12 of the 16 brainres bold flags, and the bold threshold ignores the eojeol-vs-word ratio that brainlint's other thresholds already apply.

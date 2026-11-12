@@ -82,6 +82,15 @@ class Checks(unittest.TestCase):
         long = "Causes:\n\n" + "\n".join(f"- **The cache keeps the old copy {i} for ten minutes**: detail" for i in range(4))
         self.assertIn("bold_lead_ins", checks(long))
 
+    def test_wall_of_text_counts_list_items_separately(self):
+        # K1: a 5-step list with no blank lines is segmented by its items, not one 150-word wall
+        steps = "Do this:\n\n" + "\n".join(f"{i}. " + " ".join(["step"] * 30) for i in range(1, 6))
+        self.assertNotIn("wall_of_text", checks(steps))
+        prose = " ".join(["word"] * 120) + "."
+        self.assertIn("wall_of_text", checks(prose))
+        one_long_item = "Do this:\n\n1. " + " ".join(["step"] * 120) + "\n2. short"
+        self.assertIn("wall_of_text", checks(one_long_item))
+
     def test_generic_heading(self):
         self.assertIn("generic_heading", checks("## Overview\n\nThe answer is 42."))
         self.assertIn("generic_heading", checks("## 개요\n\n답은 42입니다."))

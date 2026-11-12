@@ -13,7 +13,8 @@
         "nominalization"
       ],
       "sample": 1,
-      "score_before_b47_fix": 94
+      "score_before_b47_fix": 94,
+      "score_before_k1": 94
     },
     {
       "lang": "en",
@@ -25,7 +26,8 @@
       "words": 282,
       "checks": [],
       "sample": 2,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -37,7 +39,8 @@
       "words": 184,
       "checks": [],
       "sample": 1,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -49,7 +52,8 @@
       "words": 179,
       "checks": [],
       "sample": 2,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -63,7 +67,8 @@
         "nominalization"
       ],
       "sample": 1,
-      "score_before_b47_fix": 94
+      "score_before_b47_fix": 94,
+      "score_before_k1": 94
     },
     {
       "lang": "en",
@@ -77,7 +82,8 @@
         "bare_this"
       ],
       "sample": 2,
-      "score_before_b47_fix": 96
+      "score_before_b47_fix": 96,
+      "score_before_k1": 96
     },
     {
       "lang": "en",
@@ -87,7 +93,8 @@
       "score": 100,
       "words": 252,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -97,7 +104,8 @@
       "score": 100,
       "words": 179,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -107,7 +115,8 @@
       "score": 100,
       "words": 196,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -117,7 +126,8 @@
       "score": 100,
       "words": 165,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -128,7 +138,8 @@
       "score": 100,
       "words": 249,
       "checks": [],
-      "score_before_b47_fix": 92
+      "score_before_b47_fix": 92,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -139,7 +150,8 @@
       "score": 100,
       "words": 207,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "en",
@@ -150,7 +162,8 @@
       "score": 100,
       "words": 159,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -162,7 +175,8 @@
       "words": 155,
       "checks": [],
       "sample": 1,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -176,7 +190,8 @@
         "bold_overuse"
       ],
       "sample": 2,
-      "score_before_b47_fix": 92
+      "score_before_b47_fix": 92,
+      "score_before_k1": 92
     },
     {
       "lang": "ko",
@@ -188,7 +203,8 @@
       "words": 151,
       "checks": [],
       "sample": 1,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -200,7 +216,8 @@
       "words": 144,
       "checks": [],
       "sample": 2,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -212,7 +229,8 @@
       "words": 76,
       "checks": [],
       "sample": 1,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -224,7 +242,8 @@
       "words": 116,
       "checks": [],
       "sample": 2,
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -234,7 +253,8 @@
       "score": 100,
       "words": 164,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -244,7 +264,8 @@
       "score": 100,
       "words": 114,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -254,7 +275,8 @@
       "score": 100,
       "words": 161,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -264,7 +286,8 @@
       "score": 100,
       "words": 81,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -275,7 +298,8 @@
       "score": 100,
       "words": 176,
       "checks": [],
-      "score_before_b47_fix": 92
+      "score_before_b47_fix": 92,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -286,7 +310,8 @@
       "score": 100,
       "words": 160,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     },
     {
       "lang": "ko",
@@ -297,8 +322,12 @@
       "score": 100,
       "words": 116,
       "checks": [],
-      "score_before_b47_fix": 100
+      "score_before_b47_fix": 100,
+      "score_before_k1": 100
     }
   ],
-  "rescored": "2026-11-12 after brainlint accepted 'neither…' and '더 나은 선택' as recommendations (B47)"
+  "rescored": "2026-11-12 after brainlint accepted 'neither…' and '더 나은 선택' as recommendations (B47)",
+  "rescored_by": [
+    "k1"
+  ]
 }

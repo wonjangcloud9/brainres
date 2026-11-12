@@ -40,6 +40,11 @@ def first_json(text: str):
     return json.loads(m.group(0))
 
 
+def _card_sha() -> str:
+    import hashlib
+    return hashlib.sha256((ROOT / "hooks/core-card.md").read_bytes()).hexdigest()[:12]
+
+
 def suite() -> dict:
     return {json.loads(l)["id"]: json.loads(l) for l in (ROOT / "evals/suite.jsonl").read_text().splitlines() if l.strip()}
 
@@ -51,6 +56,8 @@ def pairs() -> dict:
         if d.get("prompt_set") != "suite.jsonl":
             continue
         if d.get("samples", 1) != 1:  # the V1 suite runs are single-sample; other suite runs (F3) are read separately
+            continue
+        if d.get("card_sha") and d["card_sha"] != _card_sha():  # skip ablation runs (other cards)
             continue
         for r in d["rows"]:
             if r.get("tool_markup") or r["condition"] not in ("baseline", "brainres"):

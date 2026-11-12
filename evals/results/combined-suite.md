@@ -6,7 +6,7 @@ Paired prompts: 78. Baseline rows are card-independent; brainres rows only from 
 
 | Metric | baseline mean (SD, n) | brainres mean (SD, n) | brainres − baseline per prompt (95% CI) |
 |---|---|---|---|
-| Brain Score | 91.7 (6.6, 78) | 96.9 (4.3, 78) | +5.1 (+3.4 to +6.8) |
+| Brain Score | 92.6 (6.0, 78) | 97.4 (4.0, 78) | +4.8 (+3.3 to +6.4) |
 | Words | 195.5 (105.6, 78) | 139.7 (65.3, 78) | -55.8 (-69.6 to -42.0) |
 | Output tokens (incl. hidden reasoning) | 673.7 (333.9, 78) | 582.3 (307.4, 78) | -91.4 (-136.0 to -46.9) |
 | Visible output tokens | 670.1 (333.9, 78) | 479.8 (200.6, 78) | -190.3 (-230.3 to -150.3) |
