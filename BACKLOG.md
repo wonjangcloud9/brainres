@@ -6,6 +6,8 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| B49 | **Refresh the README headline numbers.** The −27% words / +5.0 Brain Score result (n = 36) was measured with an older setup: card plus the 84-token reminder in the proxy, and the pre-C19 card. Since then rule 1 changed and the reminder was cut, so the proxy is now the card alone. Re-run `prompts.jsonl` brainres-only on Sonnet, 12 prompts × 3 samples (36 calls over 2 iterations: B49a 24, B49b 12). Combine with the existing same-day baselines and update every README number that changes | T | 10 | 1 | 0.8 | 1 | **8** | todo |
+| B48 | Reminder cut on Haiku: B46/B47 measured drift on Sonnet only. Run `multiturn.py --model haiku` (28 calls). If Haiku drifts without the reminder, restore it for weaker models via a documented opt-in (`BRAINRES_REMINDER=on`) | Q | 4 | 1 | 0.5 | 1 | 2 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |

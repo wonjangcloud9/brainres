@@ -1,4 +1,4 @@
-# Show HN: brainres – Claude answers built from 799 cognitive-science findings
+# Show HN: brainres – Claude answers built from 801 cognitive-science findings
 
 **URL:** https://github.com/wonjangcloud9/brainres
 
@@ -16,7 +16,7 @@ brainres is a Claude Code plugin that works on that question. I had agents surve
 - information design
 - conversational pragmatics
 
-That produced 799 findings. Each one is either turned into a concrete writing rule or excluded with a reason: not applicable to text, failed replication, neuromyth, or manipulative. A coverage script enforces this. Right now 657 of 657 applicable findings are cited by a rule, and CI blocks any commit that lowers the count.
+That produced 801 findings. Each one is either turned into a concrete writing rule or excluded with a reason: not applicable to text, failed replication, neuromyth, or manipulative. A coverage script enforces this. Right now 659 of 659 applicable findings are cited by a rule, and CI blocks any commit that lowers the count.
 
 What it does in practice:
 

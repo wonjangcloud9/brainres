@@ -8,7 +8,7 @@ Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file
 - [x] Human studies of LLM answer formatting 2024–2026 (round 3 → catalog-round3.md; no bullets-vs-prose comprehension study exists yet)
 - [x] Eye-tracking on LLM answers (round 3: OASST-ETC, Chang 2026; no position-of-attention finding verified)
 - [x] Program comprehension: classic findings in catalog HC §K; LLM-era code-help studies → catalog-round5.md (2026-11-12)
-- [ ] Risk & numeracy communication guides (Harding Center fact boxes, icon arrays) (first pass: JD-55, HC-24; deeper pass open)
+- [x] Risk & numeracy deeper pass → catalog-round8.md (2026-11-12): already covered except NNT (RN-01) and frequency-vs-percent parity (RN-02), both from Zipkin 2014
 - [ ] Monthly re-scan of trending output-style / humanizer / token skills (new entrants, new evals) — next due 2026-12
 - [x] Round 2: re-verify citations flagged unverified/weak (done 2026-11-12 → research/verification-2026-11.md) in catalog headers (Ashktorab 2019, Korean speech-level study, Wright & Reid 1973, Dixon 1982, Hales 2017, Langhout & Aniche 2021)
 - [x] Round 2 domains (done → catalog-round2.md): cross-cultural pragmatics (high/low-context), diagram cognition (Larkin & Simon 1987), argumentation (Toulmin), journalism inverted-pyramid studies, individual differences in numeracy

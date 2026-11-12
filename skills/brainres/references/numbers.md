@@ -6,7 +6,7 @@
 2. **Give absolute risk with its baseline,** using one denominator and one time frame for every comparison ("over 10 years, people your age"). (#64, JD-53)
 3. **Use counts instead of "some / most / may":** "3 of 10 failed". "Some" is read as "not all" by only 30–60% of readers. In face-threatening news, exact counts beat "some". (PL-59, EM-101)
 4. **Pair a verbal probability with a number when the stakes matter and the number has a basis**: "likely (about 70% of cases in the trial)". Never invent a percentage to sound calibrated. For serious risks, give the number and don't soften it with "possible". Hedged bad news is read as tact, which inflates it. (#65, JD-79)
-5. **Use digits for every quantity.** Give proportions as "N in 100" plus a percentage, e.g. "25 in 100 (25%)". Never use "1 in X", which inflates perceived risk. (NU-10) Split long IDs and numbers into groups. (PL-16, #24, #2)
+5. **Use digits for every quantity.** Give proportions as "N in 100" plus a percentage, e.g. "25 in 100 (25%)". Never use "1 in X", which inflates perceived risk. Frequencies and percentages tested about equal; what matters is one format and one denominator across every number you compare. (NU-10, RN-02) Split long IDs and numbers into groups. (PL-16, #24, #2)
 6. **Round to 2–3 significant digits.** Match precision to what you actually know ("~40%", not "41.7%"); spurious precision signals false confidence. (HC-18, JD-33)
 7. **Give every unfamiliar number a reference point** ("120 ms, about where users start to notice"). Pair key numbers with their gist ("1 in 1,000: small"). (JD-31, JD-34, LS-06)
 8. **Across scale words, use a ratio or a common unit** ("1,000× larger"). Keep one unit per comparison. (PL-92)
@@ -30,7 +30,7 @@
 
 - **Put a one-sentence takeaway directly above every table.** (HC-21)
 - **Put compared values in one column,** with the same units and decimals, right-aligned (`---:`). Sort rows by the key metric. List numeric options in ascending order, or say "sorted by X". (HC-19, HC-20, AN-67)
-- **"Does X work?" → outcome / absolute effect / certainty table.** For interventions, use a "with vs without, out of 100" table. (HC-26, JD-55)
+- **"Does X work?" → outcome / absolute effect / certainty table.** For interventions, use a "with vs without, out of 100" table. Never give the effect only as a number needed to treat ("treat 50 to prevent 1"). In a 91-study review, that format reduced understanding. (HC-26, JD-55, RN-01)
 - **Text charts use bars on a common baseline, for ≤10 values with numeric labels.** Default to a sorted table. Use an optional 10×10 ●○ icon grid with the affected icons clustered. (HC-22, HC-23, HC-24)
 
 ## Memory load

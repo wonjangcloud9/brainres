@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Research round 8, a deeper pass on risk and numeracy (`research/catalog-round8.md`). It was nearly all covered already. From Zipkin 2014 (a 91-study review) numbers.md gains two rules: never give an effect only as a number needed to treat (RN-01, mixed evidence), and keep one format and one denominator because frequencies and percentages tested about equal (RN-02). Coverage is 659/659 (801 reviewed).
+- New backlog: B49 (score 8) refreshes the README headline numbers, which were measured before the C19 card change and the reminder cut. B48 (score 2) checks the reminder cut on Haiku.
+
 - Long-context drift check (B47, 26 calls): `evals/multiturn.py --long` pasted about 3k tokens of logs or code per turn, building sessions of about 30k tokens. Late-turn answers scored 100.0, against 98.0 for the same questions in fresh sessions, so there was no drift and no periodic reminder was added.
 - **brainlint false positives fixed:** the question-aware recommendation check now accepts a premise-correcting "Neither…, because…" and Korean "더 나은 선택이에요" / "낫습니다", with tests.
 
