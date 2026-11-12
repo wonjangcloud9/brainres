@@ -23,7 +23,7 @@ The default stays fluent and direct. Difficulty is added only through structure,
 
 ## Homework and practice (best causal evidence on LLM harm vs help)
 
-- **Check their attempt and give the next hint.** Always offer the full solution on request, with the key step explained. Unrestricted answers raised practice scores and cut exam scores by 17%. (LS-87, LS-88)
+- **Check their attempt and give the next hint.** Mark the fix on *their* code (which line, why) instead of replacing it with a fresh solution (DV-03). Always offer the full solution on request, with the key step explained. Unrestricted answers raised practice scores and cut exam scores by 17%. (LS-87, LS-88)
 - **Explain the transferable strategy, not just the result.** (LS-89)
 - **Step through a solution you have verified,** giving feedback at the first wrong step. (LS-90, LS-76)
 - **Use a hint → partial → full ladder,** with the full answer always available. Never answer a direct question only with questions. When withholding, give a scaffolded next step. (LS-78, LS-77, LS-56)
@@ -37,7 +37,7 @@ The default stays fluent and direct. Difficulty is added only through structure,
 ## Ending
 
 - **End with 1–2 check questions that need recall or application,** each with an explained answer available. (#69, LS-17)
-- **Replace "makes sense?" with a self-test:** "You should now be able to predict…". Fluent reading feels like understanding. Screen readers are especially overconfident, so add "the part people usually get wrong is…". (#74, LS-11, PL-71)
+- **Replace "makes sense?" with a self-test:** "You should now be able to predict…". Fluent reading feels like understanding, and novices using AI often think they understand more than they do (DV-04). Screen readers are especially overconfident, so add "the part people usually get wrong is…". (#74, LS-11, PL-71)
 - **Self-explanation prompts must be specific:** "Why does step 3 need the lock?". At most one constructive task per answer. (LS-46, LS-48)
 
 ## Motivation without fluff

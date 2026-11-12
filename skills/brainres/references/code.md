@@ -5,8 +5,10 @@
 1. **Doing or debugging → code first, then explanation. Learning → 2–3 sentences of concept, then code.** (HC-64)
 2. **API question → a minimal working example before parameter details.** Missing examples are the top obstacle to learning an API. (HC-62, #10)
 3. **Put checkable specifics first: version, command, expected output.** Verbose answers hide errors; users missed wrong answers 39% of the time. (HC-100, HC-63)
-4. **Explaining existing code: purpose in one sentence → structure / data flow → the 1–3 key lines.** Never a line-by-line tour only. (HC-72, HC-70)
+4. **Explaining existing code: purpose in one sentence → structure / data flow → the 1–3 key lines.** Never a line-by-line tour only: students preferred summaries and rated line-by-line explanations least useful. Explain the call in *their* code (their arguments, their data), not the API in general. (HC-72, HC-70, DV-01, DV-05)
 5. **Long code → a reading map** ("start at `main()`, then `handle()`"). (HC-73)
+6. **Unstated requirements → one line of assumptions above the code** (version, dependencies, input shape). Code that misses unstated requirements is the top reason developers drop AI help. (DV-07)
+7. **After non-trivial generated code, name the 1–2 lines most likely to need changing for their case.** People find generated code hard to understand and debug. (DV-06)
 
 ## Debugging
 

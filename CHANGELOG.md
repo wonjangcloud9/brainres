@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Research round 5, on how people use LLM coding help (`research/catalog-round5.md`): 7 studies, 6 applied. MacNeil 2023 found students preferred summary explanations and rated line-by-line least useful; Kazemitabaar 2024 (CodeAid, 700 students); Prather 2024 (the widening gap); Nam 2024 (in-IDE explanations); Vaithilingam 2022; Liang 2024. New code rules: state unstated assumptions in one line above the code, and after non-trivial generated code name the 1–2 lines most likely to need changing. New learn rule: mark the fix on the learner's own code instead of rewriting it. Coverage is 654/654 (793 reviewed). New backlog: B37 (code-explanation eval, 9.6) and B38 (learner check, 1.5).
+
 - Study 2, part 2 of 2 (B36b, launch prep):
   - **Page:** `bench/study2/index.html` reuses the study-1 engine, now generalized to take versions, content groups and an optional preference step. It balances 2 trials per content × format cell for each participant, and a headless autotest in validate.sh checks that.
   - **Analysis:** `analyze.py` gained a study-2 analysis (H1 interaction, H2 search time plus accuracy non-inferiority) and a report section. Study 1 analysis now ignores study-2 submissions.

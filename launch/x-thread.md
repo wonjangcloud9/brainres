@@ -5,14 +5,14 @@ Claude's answers are long. Caveman makes them shorter. Humanizer makes them soun
 
 Neither asks the real question: does your brain understand the answer faster?
 
-So I built brainres from 786 cognitive-science findings. 🧵
+So I built brainres from 793 cognitive-science findings. 🧵
 
 2/
 How it works:
 
-7 research areas → 786 findings → each one is either a writing rule or excluded with a stated reason (failed replication, neuromyth, manipulative…).
+7 research areas → 793 findings → each one is either a writing rule or excluded with a stated reason (failed replication, neuromyth, manipulative…).
 
-648/648 applicable findings are applied, and CI blocks any commit that lowers that number.
+654/654 applicable findings are applied, and CI blocks any commit that lowers that number.
 
 3/
 Same question, two answers:

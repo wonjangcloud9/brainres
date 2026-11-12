@@ -6,6 +6,8 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| B37 | Code-explanation eval: 6 "explain this code" / "what does this do" prompts (EN + KO) × {baseline, brainres}; score whether sentence 1 is a purpose summary (DV-01, HC-72) vs a line-by-line tour, and whether assumptions are stated (DV-07). ≤24 calls | T | 6 | 1 | 0.8 | 0.5 | **9.6** | todo |
+| B38 | Learner check: 4 "I'm learning, here's my broken code" prompts; does brainres annotate their code (DV-03) and end with a self-test (DV-04) vs rewriting? | T | 3 | 1 | 0.5 | 1 | 1.5 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
