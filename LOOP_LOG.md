@@ -34,3 +34,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 09:59 · B10-3 · benchmark page (counterbalanced, timed, JSON export) + headless e2e autotest in validate.sh + issue template; B10-4/B10-5 added
 - 2026-11-12 10:18 · C15 · re-measured: card 488, reminder 84, skill 3,391 (12 calls); README asterisk removed
 - 2026-11-12 10:39 · B10-4 · bench/analyze.py (stdlib, gh issues) + simulation tests; found H2 underpowered → protocol v1.1 margin 5→10 pp before data
+- 2026-11-12 10:58 · B24 · output-style interplay measured (16+2 calls): Explanatory −27% words + Insight kept; Concise +23%; documented

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Interplay with Claude Code's built-in output styles is now measured and documented (B24). `evals/run.py --style` sets the style, using 4 prompts with 1 sample each. With Explanatory, brainres cut words 27%, raised the Brain Score from 92.8 to 98.5, and kept all ★ Insight blocks. With Concise, brainres added 23% words (decision support) at an equal score. Both READMEs recommend Concise alone or `scan` for the shortest answers. Style runs are kept out of `combine.py`.
+
 - Benchmark analysis (B10-4): `bench/analyze.py` is stdlib only. It reads local JSON files or `--from-issues` via `gh`, applies the pre-registered exclusions, and runs paired Wilcoxon and t-interval analyses for H1–H3, a sign test for E1, and the decision rule. 5 tests on simulated participants cover a planted effect, null data, an accuracy drop, exclusions, and an exact Wilcoxon value.
 - **Protocol amendment v1.1, before any data:** the same simulation showed the 5 pp non-inferiority margin had only 28–68% power at n = 60, so it is widened to 10 pp (84–99% power). The reason and the simulation table are in PROTOCOL.md.
 

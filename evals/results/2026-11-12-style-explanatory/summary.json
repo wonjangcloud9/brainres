@@ -1,0 +1,122 @@
+{
+  "model": "sonnet",
+  "samples": 1,
+  "card_sha": "0bd557e38b55",
+  "style": "Explanatory",
+  "rows": [
+    {
+      "id": "01-debug",
+      "type": "debug",
+      "lang": "en",
+      "condition": "baseline",
+      "sample": 1,
+      "score": 100,
+      "words": 233,
+      "output_tokens": 806,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "01-debug",
+      "type": "debug",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 198,
+      "output_tokens": 763,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "03-decision",
+      "type": "decision",
+      "lang": "en",
+      "condition": "baseline",
+      "sample": 1,
+      "score": 90,
+      "words": 291,
+      "output_tokens": 715,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "long_sentences"
+      ]
+    },
+    {
+      "id": "03-decision",
+      "type": "decision",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 248,
+      "output_tokens": 838,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    },
+    {
+      "id": "08-explain",
+      "type": "concept",
+      "lang": "en",
+      "condition": "baseline",
+      "sample": 1,
+      "score": 89,
+      "words": 499,
+      "output_tokens": 1286,
+      "within_budget": false,
+      "answer_first": true,
+      "checks": [
+        "bold_lead_ins",
+        "list_overload"
+      ]
+    },
+    {
+      "id": "08-explain",
+      "type": "concept",
+      "lang": "en",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 94,
+      "words": 299,
+      "output_tokens": 959,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "wall_of_text"
+      ]
+    },
+    {
+      "id": "10-ko-debug",
+      "type": "debug",
+      "lang": "ko",
+      "condition": "baseline",
+      "sample": 1,
+      "score": 92,
+      "words": 206,
+      "output_tokens": 1330,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "id": "10-ko-debug",
+      "type": "debug",
+      "lang": "ko",
+      "condition": "brainres",
+      "sample": 1,
+      "score": 100,
+      "words": 152,
+      "output_tokens": 1062,
+      "within_budget": true,
+      "answer_first": true,
+      "checks": []
+    }
+  ]
+}

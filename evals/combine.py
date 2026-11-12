@@ -37,7 +37,7 @@ def main() -> int:
     rows, used = [], []
     for f in sorted((ROOT / "evals/results").glob("*/summary.json")):
         d = json.loads(f.read_text())
-        if d.get("model") != a.model:
+        if d.get("model") != a.model or d.get("style"):  # style experiments are reported separately
             continue
         keep = [r for r in d["rows"] if r["condition"] == "baseline" or d.get("card_sha") == sha]
         for r in keep:

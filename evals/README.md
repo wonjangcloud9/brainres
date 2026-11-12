@@ -21,6 +21,17 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
+## Interplay with built-in output styles (B24)
+
+The style is passed with `--style` (`--settings {"outputStyle": ...}`). We used 4 prompts (01, 03, 08, 10), 1 sample each, comparing each style alone with the same style plus brainres. Results are in `results/2026-11-12-style-*`.
+
+| Style | Mean words: alone → + brainres | Mean Brain Score | Notes |
+|---|---|---|---|
+| Explanatory | 307 → 224 (−27%) | 92.8 → 98.5 | ★ Insight blocks kept in 4 of 4 answers |
+| Concise | 125 → 154 (+23%) | 95 → 95 | brainres adds decision support (when to switch, next step) |
+
+There were no invented confidence numbers in any condition. The Learning style was not tested. The sample is tiny, so this documents the direction only.
+
 ## Regression found while building the benchmark (C14)
 
 While writing quiz questions, we noticed brainres answers stating confidence numbers with no basis, such as "~80% likely on Homebrew Python", "Roughly 80% of small internal tools…" and "(~90% 확신)". A count across all answers:

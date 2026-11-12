@@ -84,6 +84,16 @@ Once installed, it's always on. A session-start hook adds the rule card once per
 
 **Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the per-message reminder.
 
+**With Claude Code's built-in output styles.** The hooks work alongside any style. We ran a small test (4 prompts, 1 sample each, so treat it as directional):
+
+| Style | Words: style alone → + brainres | Brain Score | Style features kept |
+|---|---|---|---|
+| Default | 202 → 147 (−27%) | 91.2 → 96.2 | n/a |
+| Explanatory | 307 → 224 (−27%) | 92.8 → 98.5 | ★ Insight blocks: 4 of 4 |
+| Concise | 125 → 154 (+23%) | 95 → 95 | n/a |
+
+With Concise, brainres puts back the "why / when to switch / next step" content that Concise strips out. If you want the shortest possible answers, Concise alone, or brainres `scan` mode, is shorter. Details are in [`evals/README.md`](evals/README.md).
+
 **Measured cost** ([`scripts/token_cost.sh`](scripts/token_cost.sh), Claude's own tokenizer, Sonnet, median of 3):
 
 | Part | Tokens | When |

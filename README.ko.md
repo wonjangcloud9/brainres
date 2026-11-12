@@ -83,6 +83,16 @@ Claude Code 안에서 설치하려면 `/plugin marketplace add wonjangcloud9/bra
 - 카드의 11줄은 전체 연구를 RICE로 다시 줄 세워 골랐습니다([순위표](research/core-card-ranking.md)).
 - 리마인더를 두는 이유는 긴 대화에서 지시가 점점 흐려지기 때문입니다.
 
+**Claude Code 내장 출력 스타일과 함께 쓰기.** brainres의 hook은 어떤 스타일과도 함께 동작합니다. 작은 측정 결과입니다. 질문 4개를 1번씩만 돌린 것이라 방향만 참고하세요.
+
+| 스타일 | 단어 수: 스타일만 → + brainres | Brain Score | 스타일 고유 기능 |
+|---|---|---|---|
+| 기본 | 202 → 147 (−27%) | 91.2 → 96.2 | — |
+| Explanatory | 307 → 224 (−27%) | 92.8 → 98.5 | ★ Insight 블록 4/4 유지 |
+| Concise | 125 → 154 (+23%) | 95 → 95 | — |
+
+Concise와 함께 쓰면 brainres가 "이유, 언제 바꿀지, 다음 할 일"을 다시 넣어서 답이 길어집니다. 가장 짧은 답을 원하면 Concise만 쓰거나 brainres `scan` 모드를 쓰세요.
+
 **끄기와 출력 스타일**
 
 - 끄려면 `export BRAINRES=off` 또는 `touch ~/.claude/brainres.off`를 실행하세요.

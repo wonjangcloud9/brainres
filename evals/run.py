@@ -50,9 +50,11 @@ def brainres_prompt() -> str:
     return card + "\n\n" + reminder["hookSpecificOutput"]["additionalContext"]
 
 
-def ask(q: str, model: str, system: str | None, cwd: str) -> dict:
+def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = None) -> dict:
     args = ["claude", "-p", q, "--model", model, "--output-format", "json", "--tools", "",
             "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}']
+    if style:
+        args += ["--settings", json.dumps({"outputStyle": style})]
     if system:
         args += ["--append-system-prompt", system]
     p = subprocess.run(args, capture_output=True, text=True, cwd=cwd, stdin=subprocess.DEVNULL, timeout=300)
@@ -68,6 +70,7 @@ def main() -> int:
     ap.add_argument("--conditions", default="baseline,brainres")
     ap.add_argument("--samples", type=int, default=1, help="answers per prompt and condition")
     ap.add_argument("--tag", default="", help="suffix for the results folder")
+    ap.add_argument("--style", help="built-in output style to combine with every condition (e.g. Concise, Explanatory)")
     a = ap.parse_args()
     prompts = [json.loads(l) for l in (ROOT / "evals/prompts.jsonl").read_text().splitlines() if l.strip()]
     if a.ids:
@@ -80,7 +83,7 @@ def main() -> int:
     jobs = [(p, c, k) for p in prompts for c in conds for k in range(a.samples)]
     rows = []
     with tempfile.TemporaryDirectory() as empty, cf.ThreadPoolExecutor(a.jobs) as ex:
-        futs = {ex.submit(ask, p["q"], a.model, system if c == "brainres" else None, empty): (p, c, k) for p, c, k in jobs}
+        futs = {ex.submit(ask, p["q"], a.model, system if c == "brainres" else None, empty, a.style): (p, c, k) for p, c, k in jobs}
         for f in cf.as_completed(futs):
             p, c, k = futs[f]
             r = f.result()
@@ -94,7 +97,7 @@ def main() -> int:
                          "answer_first": not (FRONT & set(checks)), "checks": checks})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)
     rows.sort(key=lambda r: (r["id"], r["condition"], r["sample"]))
-    (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "rows": rows},
+    (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "style": a.style, "rows": rows},
                                                      ensure_ascii=False, indent=2))
 
     def agg(cond, key, fn=statistics.mean, rs=None):
