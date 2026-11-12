@@ -5,7 +5,8 @@
 # when the skill loads (measured 1/24 general, 1/8 learner prompts), so one targeted line
 # is appended only when the prompt shows that situation's signal. Learner line (B40): predict-first
 # question 0/8 → 8/8, fix on their own line 6/8 → 8/8. Emergency line (B41): sentence 1 = the next
-# action 3/8 → 6/8, harmful habitual move flagged before the steps 4/8 → 6/8 (plugin, Sonnet).
+# action 3/8 → 6/8, harmful habitual move flagged before the steps 4/8 → 6/8 (plugin, Sonnet). Its cost (F3): stress
+# key-fact coverage 77% vs 83% card-only. A rewrite that kept all remaining steps (F5) didn't help (77%, walls 9/10).
 # Turn off: export BRAINRES=off   or   touch ~/.claude/brainres.off
 # Situation lines only: export BRAINRES_SITUATIONS=off
 [ "${BRAINRES:-on}" = "off" ] && exit 0

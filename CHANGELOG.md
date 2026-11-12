@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Emergency-line rewrite (F5, 14 calls): the new wording, which kept every remaining step on one short line each, left stress key-fact coverage at 77%, the same as the old line. Walls of text got worse (9/10), so it was reverted per the pre-stated rule. The trade-off is documented: the line raises action-first (pooled 54% → 83%) but costs 6 pp of coverage against the card alone. F6 (2) decides keep or remove on a larger sample with a rule set in advance.
+
 - Targeted fixes for concept and stress answers (F3, 27 calls, using the real plugin and the frozen key facts with blind marking):
   - **Dropped:** a candidate concept line did nothing (coverage 90% → 89%).
   - **Found a cost of the B41 emergency line:** stress answers covered 77% of key facts with it, against 92% for baseline. It cuts the steps after the first action, such as telling stakeholders, the post-mortem and "avoid risky repairs". F5 (3) rewrites the line.

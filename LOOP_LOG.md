@@ -86,3 +86,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 02:18 · F4 · Opus cross-check of V2 (9 calls): 94% fact-mark agreement, r=0.82; Δ −0.6 (Opus) vs −1.3 pp (Sonnet) on 26 prompts — direction holds, smaller
 - 2026-11-13 02:39 · F1 · bold lead-in check narrowed on evidence (Lorch 1995: heavy cueing = no better than none; NN/g front-loading): short labels not penalised, sentence-length bold −4; suite re-scored (29 answers): Δ +4.7 → +5.1, stress −3.2 → −0.8; example scores 01 56, 02 39, 03 48
 - 2026-11-13 02:59 · F3 · plugin on concept+stress (27 calls): concept line no effect (90% → 89%) → dropped; emergency line costs coverage (stress 77% vs 92% baseline; cuts later steps) → F5 (3)
+- 2026-11-13 03:18 · F5 · emergency-line rewrite (14 calls): coverage 77% (= old), walls 9/10 (worse) → reverted; trade-off action-first +29 pp vs coverage −6 pp → F6 (2)
