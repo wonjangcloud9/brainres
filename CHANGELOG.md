@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Suite chunk V1b (30 calls), now 29 valid pairs over 30 of 80 prompts. Per prompt, words fell 57 (−27%, CI −85 to −29) and visible tokens fell 162 (−28%). Brain Score rose 2.7 (CI −0.3 to +5.7). Bold lead-ins are about as common with brainres as without (6/30 vs 7/29), but bold overuse fell from 7 to 2. That is the first candidate for V4.
+
 - **New direction (owner, 2026-11-13): measure outputs, verify and prune.** `LOOP.md` now ranks suite runs, an information-coverage check, a per-category weakness report and pruning ahead of new research. Research rounds run only when the measurements give nothing new.
 - **New 80-prompt suite** (`evals/suite.jsonl`): 16 answer types × 5, 32 of them in Korean. `validate.sh` checks its shape.
 - **Chunk V1a** (30 calls): across 14 valid pairs, words fell 54 per prompt (95% CI −105 to −3), visible tokens fell 146, and Brain Score rose 4.2 (CI includes 0).

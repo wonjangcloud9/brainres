@@ -12,16 +12,25 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 From 2026-11-13 the main measurement is [`suite.jsonl`](suite.jsonl): 80 prompts, 16 answer types × 5, 32 of them in Korean. The types are debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal doc, novice, compare, code explanation, code writing, multi-part and advice. It runs baseline vs brainres (card proxy) on Sonnet in chunks of 15 prompts. [`combine.py --prompts suite.jsonl`](combine.py) pairs every chunk run with the current card. Answers that are raw tool-call markup, a tool-less harness artifact, are flagged (`tool_markup`) and excluded.
 
-**After chunk V1a** (14 valid pairs, the 1st prompt of 15 types; one baseline answer excluded as tool markup):
+**After chunks V1a–V1b** (29 valid pairs, 30 prompts run; one baseline answer excluded as tool markup):
 
 | Per prompt | brainres − baseline (95% CI) |
 |---|---|
-| Brain Score | +4.2 (−0.4 to +8.8) |
-| Words | −54 (−105 to −3) |
-| Visible output tokens | −146 (−264 to −27) |
-| Within length budget | 10/14 → 13/14 |
+| Brain Score | +2.7 (−0.3 to +5.7) |
+| Words | **−57** (−85 to −29), −27% |
+| Visible output tokens | **−162** (−229 to −96), −28% |
+| Within length budget | 19/29 → 26/29 |
 
-**Early signal for the weakness report (V4):** in the two prompts where brainres scored lower (stress, refusal), the deduction was bold lead-in labels on list items. That breaks card rule 10 ("bold only the token that harms if misread"). We'll check whether it recurs across the full suite before acting.
+**Which checks fire** (answers flagged out of all answers):
+
+| Check | baseline | brainres |
+|---|---:|---:|
+| bold lead-in labels on list items | 7 / 29 | 6 / 30 |
+| bold overuse | 7 / 29 | 2 / 30 |
+| wall of text | 4 / 29 | 3 / 30 |
+| long sentences | 3 / 29 | 2 / 30 |
+
+**Early signal for the weakness report (V4):** brainres scored lower on 3 of 15 prompts in V1b and on 2 of 15 in V1a. Bold lead-ins were the most common deduction there. The card's "bold only the token that harms if misread" barely moves them (7 → 6), while it does cut bold overuse (7 → 2). We'll act on this in V4, after the full suite.
 
 ## Final result (B09b): 3 samples per prompt per condition
 
