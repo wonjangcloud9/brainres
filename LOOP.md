@@ -3,6 +3,20 @@
 This file drives the 20-minute improvement loop. One run = one iteration.
 Keep each iteration small enough to finish, verify, commit and push in ~15 minutes.
 
+## Direction (owner, 2026-11-13): measure outputs, verify and prune
+
+Research coverage is saturated: 801 findings reviewed, and recent rounds added about 2 findings each. Improvement now comes from **measuring what brainres actually does to real outputs across many prompts**, then fixing or removing rules based on that.
+
+- **The main instrument is `evals/suite.jsonl`:** 80 prompts, 16 answer types × 5, 32 of them in Korean. Results accumulate across iterations by prompt id, and `combine.py --prompts suite.jsonl` pairs them.
+- **Priority order:**
+  1. Suite runs.
+  2. An information-coverage check, so shorter answers don't drop needed facts.
+  3. A per-category weakness report.
+  4. Targeted fixes.
+  5. Pruning rules that change nothing.
+- **Every change to the card or hooks is re-measured** on the affected suite categories, before and after, against a rule stated in advance.
+- **Human studies** stay available in `bench/` but are not on the loop's path.
+
 ## Iteration steps
 
 0. **Lock check.** If `.loop-lock` exists, another session is mid-build: end this iteration without changes.
@@ -30,10 +44,11 @@ A finding marked `No` must state why (not text-applicable, contested, neuromyth,
 
 ## When the backlog has no `todo` items
 
-Run a **research round** instead of an implementation round:
+First, **generate items from measurements.** Read the latest suite results (`combine.py --prompts suite.jsonl` and per-category tables). Find the categories where brainres is worse than baseline, or where both fail, on score, length, information coverage or answer-first. Turn each into a RICE-scored item. Commit + push.
 
-1. Pick 1–2 topics from `research/queue.md` (or find new ones: new trending output-style skills,
-   new cognitive-science findings, user feedback in GitHub issues via `gh issue list`).
+Only if the measurements give nothing new, run a **research round**:
+
+1. Pick 1–2 topics from `research/queue.md`, or one that a measured failure needs grounding for.
 2. Write findings into `research/` (new file or append), with sources and evidence strength.
 3. Turn findings into new backlog items, each scored with RICE (see below). Commit + push.
 

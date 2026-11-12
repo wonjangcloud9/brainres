@@ -114,7 +114,9 @@ def main() -> int:
                          "words": rep.words, "output_tokens": r["output_tokens"], "thinking_tokens": r["thinking_tokens"],
                          "visible_output_tokens": r["visible_output_tokens"], "turns": r["turns"], "within_budget": rep.words <= budget,
                          "score_q": rep_q.score, "question_checks": sorted({x.check for x in rep_q.findings} - {x.check for x in rep.findings}),
-                         "answer_first": not (FRONT & set(checks)), "checks": checks})
+                         "answer_first": not (FRONT & set(checks)), "checks": checks,
+                         # tool-less runs sometimes emit raw tool-call markup instead of an answer (B37, V1a): not a valid answer
+                         "tool_markup": "<invoke name=" in r["text"]})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)
     rows.sort(key=lambda r: (r["id"], r["condition"], r["sample"]))
     (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "style": a.style,

@@ -76,3 +76,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 23:20 · B46 · multi-turn (28 calls): no drift without the per-turn reminder (turns 5–7 98.7 vs 97.0) → base reminder cut (−84 tokens/turn), situation lines kept; B47 long-context drift scored 3
 - 2026-11-12 23:40 · B47 · long-context (~30k tokens, 26 calls): turns 5–7 100.0 vs fresh 98.0 → no drift, no periodic reminder; fixed 2 brainlint recommendation false positives
 - 2026-11-12 23:58 · research round 8 · risk & numeracy deeper pass: nearly all covered; RN-01 NNT, RN-02 freq≈percent (Zipkin 2014); B49 headline refresh (8) + B48 Haiku reminder check (2) scored
+- 2026-11-13 00:12 · direction + V1a · owner direction: measure outputs, verify and prune (LOOP.md, backlog V1–V4); 80-prompt suite; chunk V1a (30 calls): words −54/prompt, visible tokens −146, Brain Score +4.2 (n.s.); tool-markup answers excluded

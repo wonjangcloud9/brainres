@@ -91,6 +91,13 @@ python3 scripts/coverage.py --check >/dev/null && ok "coverage ratchet: $(python
 # 8b. Portable builds in dist/ match the sources (rebuild with scripts/build_dist.py)
 python3 scripts/build_dist.py --check >/dev/null && ok "dist/ up to date" || err "dist/ is stale — run python3 scripts/build_dist.py"
 
+# 8b2. Eval suite (owner direction 2026-11-13): 80 prompts, 16 types x 5, unique ids, Korean included
+python3 -c "
+import json; r=[json.loads(l) for l in open('evals/suite.jsonl') if l.strip()]
+from collections import Counter; t=Counter(x['type'] for x in r)
+assert len(r)==80 and len({x['id'] for x in r})==80 and len(t)==16 and set(t.values())=={5} and sum(x['lang']=='ko' for x in r)>=30
+" && ok "eval suite: 80 prompts, 16 types x 5" || err "evals/suite.jsonl malformed"
+
 # 8c. Benchmark page works end to end (headless Chrome autotest), when Chrome is available
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 if [ -x "$CHROME" ]; then

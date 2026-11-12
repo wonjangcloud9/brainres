@@ -7,6 +7,22 @@
 
 Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go to `results/<date>/`.
 
+
+## The 80-prompt suite (V1, in progress)
+
+From 2026-11-13 the main measurement is [`suite.jsonl`](suite.jsonl): 80 prompts, 16 answer types × 5, 32 of them in Korean. The types are debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal doc, novice, compare, code explanation, code writing, multi-part and advice. It runs baseline vs brainres (card proxy) on Sonnet in chunks of 15 prompts. [`combine.py --prompts suite.jsonl`](combine.py) pairs every chunk run with the current card. Answers that are raw tool-call markup, a tool-less harness artifact, are flagged (`tool_markup`) and excluded.
+
+**After chunk V1a** (14 valid pairs, the 1st prompt of 15 types; one baseline answer excluded as tool markup):
+
+| Per prompt | brainres − baseline (95% CI) |
+|---|---|
+| Brain Score | +4.2 (−0.4 to +8.8) |
+| Words | −54 (−105 to −3) |
+| Visible output tokens | −146 (−264 to −27) |
+| Within length budget | 10/14 → 13/14 |
+
+**Early signal for the weakness report (V4):** in the two prompts where brainres scored lower (stress, refusal), the deduction was bold lead-in labels on list items. That breaks card rule 10 ("bold only the token that harms if misread"). We'll check whether it recurs across the full suite before acting.
+
 ## Final result (B09b): 3 samples per prompt per condition
 
 [`combine.py`](combine.py) merges runs made with the same core card. Each run records `card_sha`, so answers from an older card are excluded automatically. The final report is [`results/combined-final.md`](results/combined-final.md), with baseline n=36 and brainres n=36:

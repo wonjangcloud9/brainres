@@ -1,0 +1,13 @@
+<!-- Q: Write a Python function that checks whether a string is a palindrome. -->
+
+```python
+def is_palindrome(s: str) -> bool:
+    cleaned = [c.lower() for c in s if c.isalnum()]
+    return cleaned == cleaned[::-1]
+```
+
+It ignores case, spaces and punctuation, so `is_palindrome("A man, a plan, a canal: Panama")` returns `True` and `is_palindrome("hello")` returns `False`. An empty string returns `True`.
+
+If you want a strict check (exact characters, no cleanup), use `return s == s[::-1]`.
+
+Want me to save this to a file with a few tests?

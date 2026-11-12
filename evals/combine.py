@@ -54,7 +54,14 @@ def main() -> int:
     for r in rows:
         by[(r["id"], r["condition"])].append(r)
     ids = sorted({r["id"] for r in rows})
+    # Drop answers that are raw tool-call markup (a tool-less harness artifact), then pair what's left.
+    invalid = sorted({r["id"] for r in rows if r.get("tool_markup")})
+    for k in list(by):
+        by[k] = [r for r in by[k] if not r.get("tool_markup")]
+    rows = [r for r in rows if not r.get("tool_markup")]
     paired = [i for i in ids if by[(i, "baseline")] and by[(i, "brainres")]]
+    if invalid:
+        print(f"excluded tool-markup answers in: {', '.join(invalid)}")
 
     def cond_stats(c, key, fn=st.mean):
         v = [r[key] for r in rows if r["condition"] == c and r["id"] in paired]

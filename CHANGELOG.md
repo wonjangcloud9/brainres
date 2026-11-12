@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **New direction (owner, 2026-11-13): measure outputs, verify and prune.** `LOOP.md` now ranks suite runs, an information-coverage check, a per-category weakness report and pruning ahead of new research. Research rounds run only when the measurements give nothing new.
+- **New 80-prompt suite** (`evals/suite.jsonl`): 16 answer types × 5, 32 of them in Korean. `validate.sh` checks its shape.
+- **Chunk V1a** (30 calls): across 14 valid pairs, words fell 54 per prompt (95% CI −105 to −3), visible tokens fell 146, and Brain Score rose 4.2 (CI includes 0).
+- **Tool-markup answers are now excluded.** `run.py` flags answers that are raw tool-call markup (`tool_markup`), and `combine.py` drops them.
+- **Backlog:** V1 (16) adds 5 more chunks, V4 (10) is the weakness report, V2 (6.7) is the information-coverage judge, and V3 (1.7) is card ablation. B49 is superseded by V1.
+
 - Research round 8, a deeper pass on risk and numeracy (`research/catalog-round8.md`). It was nearly all covered already. From Zipkin 2014 (a 91-study review) numbers.md gains two rules: never give an effect only as a number needed to treat (RN-01, mixed evidence), and keep one format and one denominator because frequencies and percentages tested about equal (RN-02). Coverage is 659/659 (801 reviewed).
 - New backlog: B49 (score 8) refreshes the README headline numbers, which were measured before the C19 card change and the reminder cut. B48 (score 2) checks the reminder cut on Haiku.
 
