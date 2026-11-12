@@ -60,8 +60,12 @@ def pairs() -> dict:
     return {i: v for i, v in found.items() if "baseline" in v and "brainres" in v}
 
 
-def phase_checklists() -> None:
-    S = suite()
+def load_prompts(name: str) -> dict:
+    return {json.loads(l)["id"]: json.loads(l) for l in (ROOT / "evals" / name).read_text().splitlines() if l.strip()}
+
+
+def phase_checklists(prompts: str = "suite.jsonl", keys_name: str = "checklists.json") -> None:
+    S = load_prompts(prompts)
     ids = sorted(S)
     out = {}
     batches = [ids[i:i + 20] for i in range(0, len(ids), 20)]
@@ -77,7 +81,7 @@ def phase_checklists() -> None:
             out.update(res)
     missing = [i for i in ids if i not in out]
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "checklists.json").write_text(json.dumps(out, ensure_ascii=False, indent=2))
+    (OUT / keys_name).write_text(json.dumps(out, ensure_ascii=False, indent=2))
     print(f"checklists: {len(out)} prompts, {sum(len(v) for v in out.values())} facts; missing {missing}")
 
 
@@ -163,6 +167,39 @@ def phase_mark_treatment(folder: str, cond: str, marks_name: str, limit: int | N
     print(f"marked {len(marks)}/{len(P)} answers")
 
 
+def phase_pair(prompts: str, keys_name: str, a_spec: str, b_spec: str, marks_name: str) -> None:
+    """F6: blind-mark two conditions (DIR:COND each, single-sample files) against question-only keys."""
+    S = load_prompts(prompts)
+    keys = json.loads((OUT / keys_name).read_text())
+    (da, ca), (db, cb) = a_spec.split(":"), b_spec.split(":")
+    read = lambda d, c, i: (ROOT / "evals/results" / d / f"{i}.{c}.md").read_text().split("-->", 1)[1].strip()
+    ids = [i for i in sorted(S) if i in keys]
+    rng = random.Random(6)
+    order = {i: rng.random() < 0.5 for i in ids}  # True → A shown first is condition A
+    def run(batch):
+        parts = []
+        for i in batch:
+            x, y = read(da, ca, i), read(db, cb, i)
+            first, second = (x, y) if order[i] else (y, x)
+            facts = "\n".join(f"{n + 1}. {f}" for n, f in enumerate(keys[i]))
+            parts.append(f"=== [{i}]\nQUESTION:\n{S[i]['q']}\n\nKEY FACTS:\n{facts}\n\nANSWER A:\n{first}\n\nANSWER B:\n{second}")
+        prompt = ("Grade information coverage. For each item, mark every key fact for Answer A and Answer B: 1 = clearly "
+                  "present and correct, 0.5 = partly present or vague, 0 = missing or wrong. Judge content only, not "
+                  "length or style. Reply with only a JSON object: {\"<id>\": {\"A\": [scores...], \"B\": [scores...]}}.\n\n"
+                  + "\n\n".join(parts))
+        return batch, first_json(ask(prompt))
+    marks = {}
+    with cf.ThreadPoolExecutor(6) as ex:
+        for batch, res in ex.map(run, [ids[k:k + 3] for k in range(0, len(ids), 3)]):
+            for i in batch:
+                if i in res:
+                    A, B = res[i]["A"], res[i]["B"]
+                    marks[i] = {ca: A if order[i] else B, cb: B if order[i] else A}
+    (OUT / marks_name).write_text(json.dumps(marks, ensure_ascii=False, indent=2))
+    cov = lambda v: sum(v) / len(v) if v else 0.0
+    print(f"{len(marks)} prompts · coverage {ca} {st.mean(cov(m[ca]) for m in marks.values()):.1%} · {cb} {st.mean(cov(m[cb]) for m in marks.values()):.1%}")
+
+
 def phase_agree(other: str) -> None:
     """F4: compare two judges' marks on the prompts both marked."""
     A = json.loads((OUT / "marks.json").read_text())
@@ -232,7 +269,11 @@ def phase_report() -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--phase", choices=["checklists", "mark", "report", "agree"], required=True)
+    ap.add_argument("--phase", choices=["checklists", "mark", "report", "agree", "pair"], required=True)
+    ap.add_argument("--prompts", default="suite.jsonl")
+    ap.add_argument("--keys", default="checklists.json")
+    ap.add_argument("--a", help="pair phase: DIR:COND")
+    ap.add_argument("--b", help="pair phase: DIR:COND")
     ap.add_argument("--limit", type=int, help="max judge calls in the mark phase (eval budget)")
     ap.add_argument("--judge", default="sonnet")
     ap.add_argument("--marks", default="marks.json", help="marks file name (F4: marks-opus.json)")
@@ -242,6 +283,10 @@ def main() -> int:
     a = ap.parse_args()
     global JUDGE
     JUDGE = a.judge
+    if a.phase == "checklists":
+        return phase_checklists(a.prompts, a.keys)
+    if a.phase == "pair":
+        return phase_pair(a.prompts, a.keys, a.a, a.b, a.marks)
     if a.phase == "mark" and a.treatment_dir:
         return phase_mark_treatment(a.treatment_dir, a.treatment, a.marks, a.limit)
     {"checklists": phase_checklists, "mark": lambda: phase_mark(a.limit, a.marks, a.subset), "report": phase_report,

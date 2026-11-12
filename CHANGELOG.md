@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **The emergency line stays (F6, 25 calls):** on 10 new stress prompts (`evals/prompts-stress2.jsonl`), sentence 1 was the next action in 10/10 answers with the plugin, against 8/10 with the card alone. Key-fact coverage was 73.8% against 75.7% (−1.9 pp). That passes the pre-stated rule (≥ 20 pp gain, ≤ 5 pp loss). Pooled over B41, F3 and F6, action-first rises from 65% to 89% at a cost of about 4 pp of coverage.
+- `coverage_judge.py` gained the `--prompts`/`--keys` options for new prompt sets and a `pair` phase that compares any two conditions.
+
 - Haiku auto-reminder end to end (B50, 15 calls): the transcripts show the line injected on turns 2–7. Turns 5–7 scored 98.7 in auto mode, against 100.0 forced on and 92.7 off. Turn 1 scored 92.0, because the SessionStart hook input has no model field, so the READMEs point Haiku users who want turn 1 covered to `BRAINRES_REMINDER=on`. `multiturn.py` gained the `--conditions` (`auto`, `off`, `reminder`) and `--tag` options.
 
 - **The reminder returns automatically for Haiku (B48, 28 calls).** In 7-turn sessions Haiku scored 100.0 at turns 5–7 with the always-on line and 92.7 without it. The gap was present from turn 1, so the card alone is weaker on Haiku rather than drifting.

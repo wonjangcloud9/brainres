@@ -1,0 +1,10 @@
+{"id": "e01-outage", "type": "stress", "lang": "en", "q": "URGENT: our checkout API is returning 503 for every request and we're losing orders. What do I do first?"}
+{"id": "e02-deleted", "type": "stress", "lang": "en", "q": "I accidentally deleted the uploads folder on our production server. About 2,000 user images are gone. What now?"}
+{"id": "e03-hacked", "type": "stress", "lang": "en", "q": "Emergency: I think our admin account was hacked. There are logins from another country and new users I didn't create."}
+{"id": "e04-forcepush", "type": "stress", "lang": "en", "q": "I accidentally force-pushed to main and overwrote my teammate's last 3 commits. Help!"}
+{"id": "e05-wrongfile", "type": "stress", "lang": "en", "q": "I'm panicking. I sent the wrong file to a client and it has another client's confidential prices in it."}
+{"id": "e06-ko-down", "type": "stress", "lang": "ko", "q": "급해요! 결제 서버가 다운됐어요. 에러 로그에 'connection refused'만 계속 찍혀요."}
+{"id": "e07-ko-update", "type": "stress", "lang": "ko", "q": "망했어요. 실수로 운영 DB에서 WHERE 없이 UPDATE를 돌려서 모든 회원 등급이 바뀌었어요."}
+{"id": "e08-ko-secret", "type": "stress", "lang": "ko", "q": "큰일이에요. 회사 슬랙 전체 채널에 실수로 데이터베이스 비밀번호를 올렸어요."}
+{"id": "e09-ko-passport", "type": "stress", "lang": "ko", "q": "급해요ㅠ 해외 출장 중인데 여권을 잃어버렸어요. 내일 귀국 비행기예요."}
+{"id": "e10-ko-bill", "type": "stress", "lang": "ko", "q": "큰일 났어요, AWS 요금이 하루 만에 300만 원이 나왔어요. 뭐부터 해야 해요?"}

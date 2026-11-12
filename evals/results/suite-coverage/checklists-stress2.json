@@ -1,0 +1,81 @@
+{
+  "e01-outage": [
+    "Triage immediately: confirm scope and impact (all requests failing, which endpoints/regions) and check status pages/monitoring and alerts",
+    "Check what changed recently (deploys, config, dependencies, certificates, traffic spike) and roll back the latest deploy/config if it correlates",
+    "Check the health of upstream dependencies and infrastructure: load balancer, app instances/pods, database, payment provider, resource exhaustion (CPU, memory, connections)",
+    "Restore service quickly via rollback, restart, scaling up, or failover before deep root-cause analysis",
+    "Communicate: notify stakeholders and customers (status page), assign an incident lead, and keep a timeline",
+    "After recovery, review lost orders (recover/retry failed checkouts) and do a post-mortem"
+  ],
+  "e02-deleted": [
+    "Stop writing to the affected disk/server immediately to avoid overwriting deleted data",
+    "Check for backups or snapshots (cloud volume snapshots, server backups, rsync/S3 copies, versioning) and restore from the most recent one",
+    "If object storage/CDN/replicas or user devices hold copies, check those as additional sources (CDN cache, other servers, DB references)",
+    "If no backup exists, attempt file recovery with tools (e.g., extundelete/testdisk/photorec) on the unmounted or snapshot copy of the disk, understanding success is not guaranteed",
+    "Recreate the folder with correct permissions/ownership so the app keeps working, and consider notifying affected users if images can't be recovered",
+    "Prevent recurrence: set up automated backups, restrict destructive permissions, and use safeguards for production access"
+  ],
+  "e03-hacked": [
+    "Contain immediately: change the admin password, revoke active sessions/tokens/API keys, and enable or reset MFA",
+    "Disable or remove the unauthorized users and suspicious accounts, and restrict access (e.g., IP block, temporarily lock admin)",
+    "Preserve evidence: keep logs (login IPs, timestamps, actions) and do not wipe systems before investigation",
+    "Investigate scope: review what the attacker accessed or changed, check for backdoors, rogue admin accounts, and altered settings, and rotate other credentials/secrets that may be exposed",
+    "Notify relevant parties (security team, hosting provider, and affected users/regulators if data was exposed, per legal obligations)",
+    "Harden afterwards: enforce MFA, strong unique passwords, least privilege, login alerting, and find how the compromise happened (phishing, reused password, vulnerability)"
+  ],
+  "e04-forcepush": [
+    "Stay calm and tell the teammate; do not push anything else to main until it's sorted out",
+    "Find the lost commits' SHAs: the teammate's local clone/reflog, the remote's reflog, GitHub PR/activity/events, CI logs, or git reflog on your machine",
+    "Restore main by resetting to the old commit SHA and force pushing with --force-with-lease (or have the teammate push their branch/commits back), or cherry-pick the three commits onto main",
+    "If you had your own commits, rebase or reapply them on top of the restored history so nothing is lost",
+    "Verify main matches the expected history (git log) and that everyone resyncs their local copies",
+    "Prevent recurrence: enable branch protection on main, disallow force pushes, and use --force-with-lease"
+  ],
+  "e05-wrongfile": [
+    "Act quickly: contact the client who received the file, explain it was sent in error, and ask them to delete it and not read, use or share it, and to confirm deletion",
+    "If possible, recall the message or revoke access (e.g., email recall, expire/disable a shared link)",
+    "Notify your manager/supervisor and the relevant internal teams (legal, compliance, privacy/security) right away rather than handling it alone",
+    "Assess what was exposed (which client's data, what prices) and check contractual/NDA and legal obligations to notify the affected client",
+    "Document what happened (what was sent, to whom, when, remediation steps)",
+    "Prevent recurrence: double-check attachments before sending, use file naming/process controls or DLP checks"
+  ],
+  "e06-ko-down": [
+    "결제 서버 프로세스가 실제로 실행 중인지 확인하고 죽어 있으면 재시작한다 (systemctl/docker/pod 상태 확인)",
+    "'connection refused'의 의미를 설명: 대상 호스트/포트에서 리스닝하는 서비스가 없거나 방화벽/보안그룹이 막고 있음 — 호스트, 포트, 리스닝 상태(netstat/ss/curl)를 확인한다",
+    "연결 대상(DB, 결제 PG사, 캐시, 내부 서비스)이 다운되었는지 확인하고 어느 쪽이 거부하는지 파악한다",
+    "최근 배포나 설정/네트워크/보안그룹 변경이 있었는지 확인하고 롤백을 고려한다",
+    "서버 자원(메모리 부족 OOM, 디스크 풀, 포트/커넥션 고갈)과 서비스 로그를 확인해 크래시 원인을 찾는다",
+    "장애를 관련자에게 공유하고 복구 후 원인 분석과 재발 방지를 한다"
+  ],
+  "e07-ko-update": [
+    "즉시 추가 쓰기를 중단하고 추가 피해를 막는다 (애플리케이션 점검 모드 또는 관련 작업 중지) 그리고 침착하게 상황을 공유한다",
+    "백업/스냅샷/PITR(시점 복구), binlog/WAL 등으로 복구 가능한지 확인한다",
+    "복구 방법: 백업을 별도 DB로 복원해 원래 등급 값을 추출한 뒤 운영 DB에 해당 컬럼만 다시 반영한다 (전체 덮어쓰기는 신중히)",
+    "트랜잭션 안에서 실행했고 아직 커밋 전이라면 ROLLBACK 하면 된다 (autocommit이었다면 불가)",
+    "복구 후 등급 데이터가 정확한지 검증하고, 그 사이 등급 변경이 반영된 서비스/혜택/알림 영향을 점검한다",
+    "재발 방지: 운영 DB 접근 권한 제한, 트랜잭션 사용, 실행 전 SELECT로 대상 확인, safe-updates 설정, 코드 리뷰"
+  ],
+  "e08-ko-secret": [
+    "슬랙 메시지를 즉시 삭제하되, 이미 노출된 것으로 간주한다 (캐시, 알림, 로그, 검색에 남을 수 있음)",
+    "데이터베이스 비밀번호를 즉시 변경(로테이션)하고 그 비밀번호를 쓰는 애플리케이션/서비스의 설정도 함께 갱신한다",
+    "DB 접근 로그를 확인해 노출 시간 동안 비정상 접속이나 의심스러운 쿼리가 없었는지 점검한다",
+    "보안팀/관리자에게 즉시 보고하고 필요 시 슬랙 관리자에게 메시지 영구 삭제 및 내보내기/보존 기록 확인을 요청한다",
+    "DB 네트워크 접근 제한(IP 화이트리스트 등)이 되어 있는지 확인하고, 외부 접근이 열려 있으면 차단한다",
+    "재발 방지: 시크릿 매니저 사용, 비밀번호를 채팅에 공유하지 않는 규칙, 시크릿 스캐닝 도입"
+  ],
+  "e09-ko-passport": [
+    "현지 경찰서에 분실 신고를 하고 분실(도난) 신고 확인서(police report)를 받는다",
+    "가장 가까운 한국 대사관/총영사관에 연락해 여행증명서(긴급 여권) 발급을 신청한다",
+    "필요 서류를 준비한다: 신분증 사본, 여권 사본이나 정보, 여권용 사진, 경찰 신고서, 항공권 일정 등",
+    "내일 비행기 일정을 알리고 긴급 발급 가능 여부와 영업시간을 확인하며, 필요하면 항공편 변경을 항공사에 문의한다",
+    "분실한 여권은 외교부 등에 분실 신고해 효력을 정지시키고 악용을 방지한다 (재발급 시 자동 처리될 수 있음)",
+    "출장 회사/동행자에게 상황을 알리고 현지 출국 및 한국 입국에 대한 대비를 한다"
+  ],
+  "e10-ko-bill": [
+    "먼저 AWS 콘솔의 Billing/Cost Explorer에서 어떤 서비스와 리전에서 비용이 급증했는지 확인한다",
+    "의도치 않은 리소스를 즉시 중지/삭제한다 (예: 폭주한 EC2/GPU 인스턴스, 데이터 전송, NAT Gateway, 스토리지, Lambda)",
+    "보안 침해 가능성을 점검한다: 유출된 액세스 키나 크립토마이닝을 확인하고, 키를 비활성화/교체하고 root 및 IAM 계정 비밀번호를 변경하며 MFA를 켠다 CloudTrail로 활동을 확인한다",
+    "AWS Support에 연락해 비용 조정/크레딧을 요청한다 (원인이 침해나 실수일 때 감면 사례가 있음)",
+    "재발 방지: Budgets와 비용 이상 탐지 알림 설정, 서비스 쿼터 제한, 최소 권한 IAM, 모든 리전의 리소스 정리"
+  ]
+}
