@@ -42,9 +42,14 @@ The same 12 prompts were run with and without brainres on the current card, 1 sa
 |---|---|---|---|---|
 | Sonnet (3 samples) | −27% (−54; −89 to −20) | +5.0 (+0.8 to +9.2) | −16% (CI excludes 0) | 0 / 24 after C14 |
 | **Haiku** (1 sample) | **−35%** (−71; −114 to −28) | **+3.9** (+0.1 to +7.7) | −14% (CI includes 0) | 0 / 12 |
-| **Opus** (1 sample) | **−34%** (−79; −117 to −41) | +2.9 (−1.5 to +7.3, CI includes 0) | +19% *including hidden reasoning* (CI includes 0) | 0 / 12 |
+| **Opus** (2 samples) | **−35%** (−80; −113 to −48) | +3.3 (−0.5 to +7.2, CI includes 0) | visible **−36%** (−308; −472 to −144); hidden reasoning +253 (CI −15 to +521) | 0 / 24 |
 
-**Output tokens on Opus.** The visible answers were a third shorter, but `output_tokens` rose because it includes hidden reasoning (`modelUsage.thinkingTokens`). One probe call showed 79 thinking tokens. The card plausibly prompts more deliberation, but this run didn't record the split, so that is unverified. `run.py` now records `thinking_tokens` and `visible_output_tokens`, and B28c re-runs Opus with the split. For visible length, words are the reliable measure.
+**Output tokens on Opus (resolved in B28c).** `output_tokens` includes hidden reasoning (`modelUsage.thinkingTokens`). A re-run that recorded the split shows Opus with brainres **thinks more and writes less**:
+
+- Visible output tokens fell by 308 per prompt (−36%, 95% CI −472 to −144).
+- Thinking tokens rose by 253 (about 2.6×; CI −15 to +521, borderline).
+
+Total output tokens therefore stay roughly flat on Opus (985 → 1,050, CI includes 0). The reader sees a third less, but the bill doesn't shrink on Opus.
 
 The question-aware check (`--question`) caught one real Haiku slip. In 12, the brainres answer opened with "다음 기준으로 고르면 됩니다." and put the recommendation in sentence 2 (`no_recommendation`).
 
