@@ -194,6 +194,17 @@ We re-read the 12 final messages from the run above. code.md asks that agentic w
 
 The one difference points in the expected direction. Two plugin messages flagged something outside the tests: "`\w+` splits on apostrophes, so *don't* becomes *don* and *t*", and "I also reject `page_size < 1`, which the tests don't require". With n = 6, that is not evidence. No end-of-task line was added. B44 would re-run with test commands allowed, to see the case where tests *can* run.
 
+**Re-run with the test runner allowed (B44).** `python3 evals/agentic.py --allow-tests` auto-approves only `python -m unittest`, and any other shell command is denied in `-p` mode. Results are in [`2026-11-12-agentic-sonnet-tests`](results/2026-11-12-agentic-sonnet-tests/judged-final-message.json).
+
+| | baseline | plugin |
+|---|---:|---:|
+| Tests pass (checked by the harness) | 6 / 6 | 6 / 6 |
+| Sentence 1 reports the test result it actually saw | 6 / 6 | 6 / 6 |
+| Names a behaviour or limit the tests don't cover | 3 / 6 | 2 / 6 |
+| Median words in final message | 71 | 68 |
+
+Once the tests can run, both conditions open with the observed result ("All 4 tests now pass") and claim nothing the harness contradicts. The beyond-the-tests difference seen without Bash (0/6 vs 2/6) disappears (3/6 vs 2/6), so it was noise. For agentic final messages, the plugin is at parity with default Claude Code.
+
 ## Does brainres hide reasoning on error-prone prompts? (B31, inconclusive)
 
 The LR-01 risk is that cutting length removes the reasoning a reader needs to catch a wrong answer (Friedman 2026). [`tricky.py`](tricky.py) asks 8 classic trap questions ([`tricky.jsonl`](tricky.jsonl)) on Haiku, with and without brainres. Results are in `results/2026-11-12-tricky-haiku/`.

@@ -1,0 +1,62 @@
+{
+  "t1-paginate.baseline": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": true
+  },
+  "t1-paginate.plugin": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  },
+  "t2-slugify.baseline": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": true
+  },
+  "t2-slugify.plugin": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": true
+  },
+  "t3-validate.baseline": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  },
+  "t3-validate.plugin": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  },
+  "t4-rounding.baseline": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": true
+  },
+  "t4-rounding.plugin": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": true
+  },
+  "t5-lru.baseline": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  },
+  "t5-lru.plugin": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  },
+  "t6-ko-wordcount.baseline": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  },
+  "t6-ko-wordcount.plugin": {
+    "observed_result_in_sentence_1": true,
+    "claim_matches_harness": true,
+    "beyond_tests": false
+  }
+}

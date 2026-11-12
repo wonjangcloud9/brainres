@@ -1,0 +1,126 @@
+{
+  "model": "sonnet",
+  "allow_tests": true,
+  "rows": [
+    {
+      "task": "t1-paginate",
+      "condition": "baseline",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 4,
+      "final_words": 71,
+      "turns": 3,
+      "final_message": "I fixed `pager.py`, and all 4 tests now pass. I didn't touch the test files.\n\nThere were two problems in `page`:\n- **Off-by-one:** the start index was `page_number * page_size`, which treated pages as 0-indexed. It's now `(page_number - 1) * page_size`.\n- **No validation:** the function now raises `ValueError` when `page_number` or `page_size` is below 1.\n\nI made `page_size < 1` an error as well, though no test checks it."
+    },
+    {
+      "task": "t1-paginate",
+      "condition": "plugin",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 4,
+      "final_words": 54,
+      "turns": 3,
+      "final_message": "All 4 tests now pass. I fixed `page()` in `pager.py`.\n\n- **Off-by-one:** the start index was `page_number * page_size`, which treats pages as 0-indexed. It is now `(page_number - 1) * page_size`.\n- **Validation:** `page()` now raises `ValueError` when `page_number` or `page_size` is below 1. `test_invalid` needs that.\n\nI didn't touch the test files."
+    },
+    {
+      "task": "t2-slugify",
+      "condition": "baseline",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 7,
+      "final_words": 74,
+      "turns": 3,
+      "final_message": "I implemented `slugify` in `slug.py`, and all 4 tests in `test_slug.py` now pass. I didn't touch the test file.\n\nThe function lowercases the title and removes apostrophes. It then turns every run of characters that aren't letters or digits into a single hyphen, and trims hyphens from both ends.\n\nIt only keeps ASCII letters and digits, so accented or non-Latin characters get dropped. The tests don't cover those, so I left it that way."
+    },
+    {
+      "task": "t2-slugify",
+      "condition": "plugin",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 6,
+      "final_words": 90,
+      "turns": 3,
+      "final_message": "All 4 tests in `test_slug.py` now pass, and I left the test files unchanged.\n\nI replaced the `NotImplementedError` stub in `slug.py` with a working `slugify`. It lowercases the title and deletes apostrophes, so \"What's\" becomes \"whats\". Then it turns every run of characters other than a–z and 0–9 into a single hyphen and trims hyphens from both ends.\n\nBecause it only keeps a–z and 0–9, accented or non-Latin letters are treated as separators and dropped. None of the current tests cover that, so say so if you need those kept."
+    },
+    {
+      "task": "t3-validate",
+      "condition": "baseline",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 5,
+      "final_words": 56,
+      "turns": 3,
+      "final_message": "I updated `parse_age` in `age.py` to raise `ValueError` for ages below 0 or above 150, and all 5 tests in `test_age.py` now pass.\n\nThe other cases already worked without changes: `int()` rejects non-numeric text like `\"forty\"` and float strings like `\"4.5\"`, and it strips the spaces around `\" 42 \"`. I didn't touch the test files."
+    },
+    {
+      "task": "t3-validate",
+      "condition": "plugin",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 5,
+      "final_words": 42,
+      "turns": 4,
+      "final_message": "All 5 tests now pass. I changed `parse_age` in `age.py` to strip whitespace and raise `ValueError` for ages below 0 or above 150. `int()` already rejects `\"forty\"` and `\"4.5\"`, so those cases needed no new code. I didn't touch the test file."
+    },
+    {
+      "task": "t4-rounding",
+      "condition": "baseline",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 5,
+      "final_words": 91,
+      "turns": 3,
+      "final_message": "I fixed `round_price` in `money.py`, and all 4 tests now pass. I didn't touch the test files.\n\nThe old version used Python's built-in `round()`. That function works on the float's binary value, so 2.675 (stored as 2.67499999…) rounded down. The new version converts the number to a `Decimal` through `str(x)` and rounds with `ROUND_HALF_UP`. Halves now round away from zero, including negatives such as -1.005, which gives -1.01.\n\nBecause it goes through `str(x)`, it rounds the number as printed, not its exact binary value. That is the behavior the tests expect."
+    },
+    {
+      "task": "t4-rounding",
+      "condition": "plugin",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 5,
+      "final_words": 103,
+      "turns": 3,
+      "final_message": "All 4 tests in `test_money.py` now pass. I only changed `money.py`.\n\nThe old code used `round(x, 2)`, which fails on values like `2.675` because floats can't store them exactly. It also rounds exact halves to the nearest even digit. The new `round_price` converts the float to a `Decimal` through `str(x)`, so it rounds the number as written. It then quantizes to two places with `ROUND_HALF_UP`, which rounds halves away from zero, so `-1.005` becomes `-1.01`.\n\nBecause it rounds the printed form, a float like `2.675` is treated as exactly 2.675. If you ever need money handled exactly, pass `Decimal` values instead of floats."
+    },
+    {
+      "task": "t5-lru",
+      "condition": "baseline",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 15,
+      "final_words": 64,
+      "turns": 4,
+      "final_message": "I implemented `LRUCache` in `lru.py` using an `OrderedDict`, and all 3 tests now pass. I didn't touch the test files.\n\n`get` returns `None` for a missing key and otherwise marks the key as most recently used. `put` also marks the key as most recently used, whether it's new or an update. Once the cache is over capacity, `put` evicts the least recently used entry."
+    },
+    {
+      "task": "t5-lru",
+      "condition": "plugin",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 15,
+      "final_words": 68,
+      "turns": 4,
+      "final_message": "All 3 tests in `test_lru.py` now pass. I implemented `LRUCache` in `lru.py` using an `OrderedDict`.\n\n- **`get`:** returns `None` for a missing key. Otherwise it marks the key as most recent and returns the value.\n- **`put`:** marks an existing key as most recent and sets its value. If the cache is then over capacity, it evicts the least recently used entry.\n\nI didn't change the test files."
+    },
+    {
+      "task": "t6-ko-wordcount",
+      "condition": "baseline",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 10,
+      "final_words": 66,
+      "turns": 4,
+      "final_message": "All three tests in `test_words.py` now pass. I left the test file alone and only changed `words.py`.\n\n`top_words` was splitting on whitespace only, so it counted punctuation and case as part of the word. It now lowercases the text, pulls out words with the regex `\\w+`, and sorts by count (highest first), then alphabetically for ties. That regex also matches Korean, so the Korean test passes."
+    },
+    {
+      "task": "t6-ko-wordcount",
+      "condition": "plugin",
+      "pass": true,
+      "tests_modified": false,
+      "lines_changed": 7,
+      "final_words": 58,
+      "turns": 4,
+      "final_message": "All 3 tests now pass. I only changed `words.py`.\n\n`top_words` failed for three reasons, and I fixed each:\n- **Case:** it now lowercases the text.\n- **Punctuation:** it now splits with `re.findall(r\"\\w+\", ...)`, which drops punctuation and also works for Korean.\n- **Ties:** the sort key is now `(-count, word)`, so tied words come out in alphabetical order."
+    }
+  ]
+}

@@ -35,14 +35,17 @@ def snapshot(d: Path) -> dict[str, str]:
     return {p.name: p.read_text(encoding="utf-8") for p in sorted(d.glob("*.py"))}
 
 
-def run_one(task: Path, cond: str, model: str) -> dict:
+def run_one(task: Path, cond: str, model: str, allow_tests: bool = False) -> dict:
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp) / task.name
         shutil.copytree(task, work)
         before = snapshot(work)
+        tools = "Read Edit Write Glob Grep" + (" Bash" if allow_tests else "")
         args = ["claude", "-p", PROMPT, "--model", model, "--output-format", "json",
-                "--tools", "Read Edit Write Glob Grep", "--permission-mode", "acceptEdits",
+                "--tools", tools, "--permission-mode", "acceptEdits",
                 "--strict-mcp-config", "--mcp-config", '{"mcpServers":{}}']
+        if allow_tests:  # B44: only the test runner is auto-approved; any other shell command is denied in -p mode
+            args += ["--allowedTools", "Bash(python3 -m unittest*)", "Bash(python -m unittest*)"]
         if cond == "plugin":
             args += ["--plugin-dir", str(ROOT)]
         p = subprocess.run(args, cwd=work, capture_output=True, text=True, stdin=subprocess.DEVNULL, timeout=600)
@@ -62,19 +65,20 @@ def run_one(task: Path, cond: str, model: str) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="sonnet")
+    ap.add_argument("--allow-tests", action="store_true", help="let Claude run the tests (unittest only) — B44")
     a = ap.parse_args()
     tasks = sorted(p for p in TASKS.iterdir() if p.is_dir())
     rows = []
     with cf.ThreadPoolExecutor(4) as ex:
-        futs = [ex.submit(run_one, t, c, a.model) for t in tasks for c in ("baseline", "plugin")]
+        futs = [ex.submit(run_one, t, c, a.model, a.allow_tests) for t in tasks for c in ("baseline", "plugin")]
         for f in cf.as_completed(futs):
             r = f.result(); rows.append(r)
             print(f"{r['task']:<18} {r['condition']:<8} pass={r['pass']} tests_modified={r['tests_modified']} "
                   f"lines={r['lines_changed']} final_words={r['final_words']} turns={r['turns']}", flush=True)
     rows.sort(key=lambda r: (r["task"], r["condition"]))
-    out = ROOT / "evals/results" / f"{dt.date.today().isoformat()}-agentic-{a.model}"
+    out = ROOT / "evals/results" / f"{dt.date.today().isoformat()}-agentic-{a.model}{'-tests' if a.allow_tests else ''}"
     out.mkdir(parents=True, exist_ok=True)
-    (out / "summary.json").write_text(json.dumps({"model": a.model, "rows": rows}, ensure_ascii=False, indent=2))
+    (out / "summary.json").write_text(json.dumps({"model": a.model, "allow_tests": a.allow_tests, "rows": rows}, ensure_ascii=False, indent=2))
     for c in ("baseline", "plugin"):
         rs = [r for r in rows if r["condition"] == c]
         fw = sorted(r["final_words"] for r in rs)

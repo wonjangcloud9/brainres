@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Agentic re-run with the test runner allowed (B44, 12 runs): `evals/agentic.py --allow-tests` auto-approves only `python -m unittest`. Both conditions passed 6/6, and every final message opened with the test result it actually saw. Notes on what the tests don't cover appeared in 3/6 baseline vs 2/6 plugin messages, so the 0/6 vs 2/6 gap seen in B43 was noise. On final messages the plugin is at parity with default Claude Code.
+
 - Card side effects on Haiku (C19, 30 calls):
   - **Reverted:** a "reply in the user's language" line in the per-turn reminder had no effect. The same code-heavy Korean SQL prompt still came back in English (0/8 before, 1/8 after), so that case moves to C20 (1.8).
   - **Kept:** card rule 1 now reads "*Only* a yes/no question starts with "Yes"/"No"". Yes/No openers on non-yes/no questions were 3 of 173 card answers across saved runs, and 1/12 before vs 0/12 after this change. That is too few to prove an effect, so it is recorded as a zero-cost precision fix.
