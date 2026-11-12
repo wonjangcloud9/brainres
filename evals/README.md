@@ -12,25 +12,25 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 From 2026-11-13 the main measurement is [`suite.jsonl`](suite.jsonl): 80 prompts, 16 answer types × 5, 32 of them in Korean. The types are debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal doc, novice, compare, code explanation, code writing, multi-part and advice. It runs baseline vs brainres (card proxy) on Sonnet in chunks of 15 prompts. [`combine.py --prompts suite.jsonl`](combine.py) pairs every chunk run with the current card. Answers that are raw tool-call markup, a tool-less harness artifact, are flagged (`tool_markup`) and excluded.
 
-**After chunks V1a–V1b** (29 valid pairs, 30 prompts run; one baseline answer excluded as tool markup):
+**After chunks V1a–V1c** (44 valid pairs, 45 of 80 prompts run; one baseline answer excluded as tool markup). Track progress with `python3 evals/suite_next.py --report`.
 
 | Per prompt | brainres − baseline (95% CI) |
 |---|---|
-| Brain Score | +2.7 (−0.3 to +5.7) |
-| Words | **−57** (−85 to −29), −27% |
-| Visible output tokens | **−162** (−229 to −96), −28% |
-| Within length budget | 19/29 → 26/29 |
+| Brain Score | **+4.2** (+1.8 to +6.6) |
+| Words | **−54** (−74 to −34), −28% |
+| Visible output tokens | **−178** (−233 to −123), −29% |
+| Within length budget | 32/44 → 40/44 |
 
 **Which checks fire** (answers flagged out of all answers):
 
 | Check | baseline | brainres |
 |---|---:|---:|
-| bold lead-in labels on list items | 7 / 29 | 6 / 30 |
-| bold overuse | 7 / 29 | 2 / 30 |
-| wall of text | 4 / 29 | 3 / 30 |
-| long sentences | 3 / 29 | 2 / 30 |
+| bold lead-in labels on list items | 13 / 44 | 8 / 45 |
+| bold overuse | 12 / 44 | 4 / 45 |
+| wall of text | 5 / 44 | 3 / 45 |
+| fragmented reasoning | 4 / 44 | 0 / 45 |
 
-**Early signal for the weakness report (V4):** brainres scored lower on 3 of 15 prompts in V1b and on 2 of 15 in V1a. Bold lead-ins were the most common deduction there. The card's "bold only the token that harms if misread" barely moves them (7 → 6), while it does cut bold overuse (7 → 2). We'll act on this in V4, after the full suite.
+**Early signal for the weakness report (V4):** brainres scored lower on 6 of 45 prompts so far, most often because of bold lead-ins. With more data, bold lead-ins fall somewhat (13 → 8), but they remain brainres's most common deduction. We'll act on this in V4, after the full suite.
 
 ## Final result (B09b): 3 samples per prompt per condition
 

@@ -78,3 +78,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 23:58 · research round 8 · risk & numeracy deeper pass: nearly all covered; RN-01 NNT, RN-02 freq≈percent (Zipkin 2014); B49 headline refresh (8) + B48 Haiku reminder check (2) scored
 - 2026-11-13 00:12 · direction + V1a · owner direction: measure outputs, verify and prune (LOOP.md, backlog V1–V4); 80-prompt suite; chunk V1a (30 calls): words −54/prompt, visible tokens −146, Brain Score +4.2 (n.s.); tool-markup answers excluded
 - 2026-11-13 00:18 · V1b · suite chunk 2 (30 calls): 29 pairs — words −57 (−27%), visible tokens −162, Brain Score +2.7 (n.s.); bold lead-ins 7/29 vs 6/30 (card doesn't fix), bold overuse 7 → 2
+- 2026-11-13 00:38 · V1c · suite chunk 3 (30 calls): 44 pairs — Brain Score +4.2 (CI +1.8 to +6.6, first significant), words −28%, visible tokens −29%; bold lead-ins 13/44 vs 8/45; added evals/suite_next.py
