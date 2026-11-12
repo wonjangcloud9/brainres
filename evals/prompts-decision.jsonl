@@ -1,0 +1,4 @@
+{"id": "03-decision", "type": "decision", "lang": "en", "q": "Should I use REST or GraphQL for a small internal API used by one frontend?"}
+{"id": "12-ko-decision", "type": "decision", "lang": "ko", "q": "파이썬에서 리스트랑 튜플 중에 뭘 써야 해?"}
+{"id": "k03-decision", "type": "decision", "lang": "ko", "q": "개인 프로젝트 배포할 건데 Vercel이랑 AWS 중에 뭐가 나아?"}
+{"id": "k12-compare", "type": "decision", "lang": "ko", "q": "웹 개발만 하는데 맥북 에어랑 프로 중에 뭐가 나아?"}

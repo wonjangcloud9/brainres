@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Haiku ceiling audit (B45, 24 calls): summary-first code explanations (8/8 vs 8/8) and the recommend-plus-alternative decision shape (4/4 vs 4/4) are at ceiling on Haiku too. Both READMEs now say these are default Claude behaviour, not brainres effects. On these prompts brainres made answers 20% (explanations) to 38% (decisions) shorter.
+- **Found C19 (score 9):** with the card, Haiku answered 1 of 16 Korean prompts in English, against 0 of 99 on Sonnet. It also opened one non-yes/no answer with "Yes,".
+
 - Decision answers without the skill (B42, no new calls): we re-read 16 saved Sonnet answers to the 4 decision prompts. A recommendation in sentence 1 and "when the other option wins" both appear in every answer under baseline, card and plugin, a ceiling result, so no decision line was added. New B45 (2.5) checks on Haiku whether the rules that hit a ceiling on Sonnet (B37, B42, B43) describe default behaviour.
 
 - Agentic final-message check (B43, no new calls): we re-read the 12 B32 final messages. All 12 already state what changed, what wasn't done and how to verify, in both conditions. That is a ceiling result, and it is confounded: the harness disallows Bash, so every run had to say it couldn't run the tests. Plugin messages more often named a limit the tests don't cover (2/6 vs 0/6, n too small to count). No end-of-task line was added. New B44 (2.4) re-runs with only test commands allowed. The first commit, 76a3401, held only the judgments; the docs followed in the next commit.

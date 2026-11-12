@@ -1,0 +1,114 @@
+{
+  "b45-explain-haiku/x01-explain-py.baseline.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x01-explain-py.baseline.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x01-explain-py.brainres.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x01-explain-py.brainres.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": true
+  },
+  "b45-explain-haiku/x02-explain-js.baseline.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x02-explain-js.baseline.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x02-explain-js.brainres.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x02-explain-js.brainres.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x03-explain-sql-ko.baseline.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x03-explain-sql-ko.baseline.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x03-explain-sql-ko.brainres.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x03-explain-sql-ko.brainres.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": true,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x04-explain-sh-ko.baseline.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x04-explain-sh-ko.baseline.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x04-explain-sh-ko.brainres.1.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-explain-haiku/x04-explain-sh-ko.brainres.2.md": {
+    "purpose_first": true,
+    "korean_prompt_answered_in_english": false,
+    "yes_on_non_yesno": false
+  },
+  "b45-decision-haiku/03-decision.baseline.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/03-decision.brainres.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/12-ko-decision.baseline.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/12-ko-decision.brainres.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/k03-decision.baseline.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/k03-decision.brainres.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/k12-compare.baseline.md": {
+    "rec_first": true,
+    "other_wins": true
+  },
+  "b45-decision-haiku/k12-compare.brainres.md": {
+    "rec_first": true,
+    "other_wins": true
+  }
+}

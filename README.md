@@ -190,6 +190,7 @@ What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
 - **The real plugin matches the eval proxy:** −54 words and +5.0 Brain Score per prompt. The always-on card does the work, and the full skill was auto-invoked in only 1 of 24 answers.
+- **Some rules describe default behaviour.** Opening a code explanation with a purpose summary, and opening a decision with a recommendation plus when the other option wins, were already 100% in baseline Sonnet and Haiku. brainres doesn't cause them ([B37, B42, B45](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
 Accuracy: across 48 trap and multi-step math problems on Haiku, brainres and baseline both scored 48/48. On 6 agentic coding tasks in Claude Code, both passed 6/6 with identical diff sizes. There is no detectable accuracy cost, but this is a ceiling result ([details](research/llm-side-effects.md)).

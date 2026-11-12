@@ -137,6 +137,22 @@ decide.md's core shape has two parts: recommend one option in sentence 1, and sa
 
 **Another ceiling.** Default Sonnet already opens with "Use REST" or "Vercel을 추천해요" and adds a "when GraphQL would be worth it" section. brainres changes the length and formatting (measured above), not this shape, so no decision line was added. Together with B37 (code explanations) and B43 (agentic final messages), this means several reference rules describe what Sonnet already does. B45 checks whether that holds on Haiku before anything is pruned.
 
+### The same ceilings on Haiku (B45)
+
+We re-ran the explain set (4 prompts × 2) and the decision set (4 prompts × 1) on Haiku, under baseline and card (24 calls). Judgments are in [`judged-b45.json`](results/2026-11-12-b45-decision-haiku/judged-b45.json).
+
+| | baseline | card |
+|---|---:|---:|
+| Code explanation, sentence 1 is a purpose summary | 8 / 8 | 8 / 8 |
+| Decision, sentence 1 recommends or gives the deciding rule | 4 / 4 | 4 / 4 |
+| Decision, says when the other option wins | 4 / 4 | 4 / 4 |
+| Mean words, explanations | 166 | 133 (−20%) |
+| Mean words, decisions | 165 | 102 (−38%) |
+
+Haiku is at ceiling too, so **summary-first code explanations and the recommend-plus-alternative decision shape are default Claude behaviour**. brainres doesn't cause them. The rules stay in the references for other models and contexts. What brainres changes here is length.
+
+**Two card side effects on Haiku.** One of 4 Korean answers with the card came back in English: "This query lists users who…" for "이 쿼리 뭐 하는 거야?". Across every saved run, that is 1 of 16 Haiku card answers to Korean prompts, against 0 of 16 Haiku baseline, 0 of 99 Sonnet card or plugin, and 0 of 8 Opus card answers. One answer to "What does this code do?" opened with "Yes," (1 of 8): card rule 1's yes/no clause was over-applied. Both are tracked as C19.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.
