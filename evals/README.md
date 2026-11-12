@@ -138,6 +138,22 @@ We tested a third line on 4 stress prompts ([`prompts-stress.jsonl`](prompts-str
 - **No change in coding outcomes:** same pass rate, same diff size, and the tests were left alone in both conditions.
 - **The final report wasn't shorter.** That contrasts with the 27% cut on chat answers. Claude Code's own agentic reporting conventions seem to dominate there. The sample is small (1 run per task).
 
+
+### Final-message structure (B43, no new calls)
+
+We re-read the 12 final messages from the run above. code.md asks that agentic work end with what changed, what wasn't done and how to verify (HC-35). Judgments are in [`judged-final-message.json`](results/2026-11-12-agentic-sonnet/judged-final-message.json).
+
+| | baseline | plugin |
+|---|---:|---:|
+| Says what changed | 6 / 6 | 6 / 6 |
+| Says what wasn't done, or its limits | 6 / 6 | 6 / 6 |
+| Says how to verify | 6 / 6 | 6 / 6 |
+| Names a behaviour or limit the tests don't cover | 0 / 6 | 2 / 6 |
+
+**A ceiling result, with a confound.** This harness disallows Bash, so every run *had* to say "I couldn't run the tests" and "run `python -m unittest` to confirm". The first two rows may just reflect that.
+
+The one difference points in the expected direction. Two plugin messages flagged something outside the tests: "`\w+` splits on apostrophes, so *don't* becomes *don* and *t*", and "I also reject `page_size < 1`, which the tests don't require". With n = 6, that is not evidence. No end-of-task line was added. B44 would re-run with test commands allowed, to see the case where tests *can* run.
+
 ## Does brainres hide reasoning on error-prone prompts? (B31, inconclusive)
 
 The LR-01 risk is that cutting length removes the reasoning a reader needs to catch a wrong answer (Friedman 2026). [`tricky.py`](tricky.py) asks 8 classic trap questions ([`tricky.jsonl`](tricky.jsonl)) on Haiku, with and without brainres. Results are in `results/2026-11-12-tricky-haiku/`.
