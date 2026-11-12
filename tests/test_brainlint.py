@@ -25,11 +25,11 @@ class GoldenExamples(unittest.TestCase):
     """Scores of the shipped examples are part of the README; changing them must be deliberate."""
 
     GOLDEN = {
-        "examples/01-react-rerender/before.md": 50,
+        "examples/01-react-rerender/before.md": 56,
         "examples/01-react-rerender/after.md": 100,
-        "examples/02-ko-cache/before.md": 41,
+        "examples/02-ko-cache/before.md": 39,
         "examples/02-ko-cache/after.md": 100,
-        "examples/03-concept-index/before.md": 50,
+        "examples/03-concept-index/before.md": 48,
         "examples/03-concept-index/after.md": 100,
         "examples/04-comparison-db/before.md": 78,
         "examples/04-comparison-db/after.md": 100,
@@ -76,8 +76,11 @@ class Checks(unittest.TestCase):
         self.assertIn("list_overload", checks("Options:\n\n" + six))
 
     def test_bold_lead_ins(self):
-        text = "Causes:\n\n" + "\n".join(f"- **Cause {i}**: detail text" for i in range(4))
-        self.assertIn("bold_lead_ins", checks(text))
+        # F1: short bold labels are front-loaded scan anchors, not flagged; sentence-length bold leads are heavy cueing
+        short = "Causes:\n\n" + "\n".join(f"- **Cause {i}**: detail text" for i in range(4))
+        self.assertNotIn("bold_lead_ins", checks(short))
+        long = "Causes:\n\n" + "\n".join(f"- **The cache keeps the old copy {i} for ten minutes**: detail" for i in range(4))
+        self.assertIn("bold_lead_ins", checks(long))
 
     def test_generic_heading(self):
         self.assertIn("generic_heading", checks("## Overview\n\nThe answer is 42."))

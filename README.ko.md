@@ -16,7 +16,7 @@
 > *"Redis랑 그냥 메모리 캐시 중에 뭐 써야 해? 서버는 한 대야."*
 
 <table>
-<tr><th>흔한 AI 답변 · Brain Score <b>41</b></th><th>brainres 적용 · Brain Score <b>100</b></th></tr>
+<tr><th>흔한 AI 답변 · Brain Score <b>39</b></th><th>brainres 적용 · Brain Score <b>100</b></th></tr>
 <tr valign="top"><td>
 
 좋은 질문입니다! 캐시 선택에 대한 고민은 많은 개발자들이 겪는 문제입니다. 자세히 설명해 드리겠습니다.
@@ -149,12 +149,12 @@ hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로
 python3 skills/brainres/scripts/brainlint.py answer.md
 ```
 ```
-Brain Score: 41/100 (D)  ·  lang=ko
+Brain Score: 39/100 (F)  ·  lang=ko
   -15  preamble         opens with filler: '좋은 질문입니다! ...'      [Primacy effect + BLUF]
   - 8  outro            ends with generic sign-off                   [Recency effect]
+  - 8  bold_overuse     9 bold spans in 126 words                    [Isolation effect]
+  - 6  meta_talk        first paragraph announces the answer          [Extraneous load]
   - 6  translationese   3 translationese patterns (~에 대한, ~을 통해)  [Processing fluency]
-  - 5  list_overload    list of 6 items; chunks of <=4               [Chunking (Cowan 4±1)]
-  - 4  long_sentences   1 sentence(s) over 20 eojeol                 [Working-memory load]
 ```
 
 검사 항목마다 연구 결과 하나에 대응합니다. 다만 휴리스틱일 뿐, 이해도 시험은 아닙니다.
@@ -192,14 +192,14 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 | 보이는 출력 토큰 | 670 | **480** | **−28%** (−230 ~ −150) |
 | 숨은 추론 포함 출력 토큰 | 674 | **582** | −14% (−136 ~ −47) |
 | 길이 예산 준수 | 57/78 | **71/78** | |
-| Brain Score | 91.8 | **96.4** | **+4.7** (+3.0 ~ +6.3) |
+| Brain Score | 91.7 | **96.9** | **+5.1** (+3.4 ~ +6.8) |
 
 앞서 질문 12개를 3번씩 돌린 측정도 같은 방향이었습니다(길이 −27%, Brain Score +5.0).
 
 **확인된 것**
 
 - 기본 Claude Code도 서두 인사는 이미 하지 않습니다. brainres의 효과는 더 짧고 규칙 위반이 적은 답입니다.
-- 답변 유형 16개 중 14개에서 brainres가 앞섰습니다. 긴급 상황(−3.2)과 디버깅(−2.5)에서는 뒤졌습니다. 주로 목록 앞의 굵은 머리말과 긴 단계 목록 때문입니다([약점 보고서](evals/results/suite-weakness.md)).
+- 답변 유형 16개 중 13개에서 brainres가 앞섰습니다. 디버깅(−1.0), 긴급 상황(−0.8), 격식 문서(−0.2)는 비슷하거나 조금 뒤졌습니다. 긴급 상황의 차이는 긴 단계 목록 때문입니다([약점 보고서](evals/results/suite-weakness.md)).
 - 실제 플러그인으로 측정해도 같았습니다(질문 12개 세트, 질문당 −54단어, Brain Score +5.0). 스킬 본문이 호출된 답은 24개 중 1개뿐이라, 효과는 상시 카드에서 나옵니다.
 
 **주의할 점**

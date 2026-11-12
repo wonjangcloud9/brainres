@@ -46,7 +46,7 @@ Compiled 2026-11-12. Every rule in `skills/brainres/` must trace to a row here.
 | 24 | Information scent / spotted pattern | Eyes jump to numbers, code, cue words | NN/g; Pirolli & Card 1999 | M | Bullet's first 2–3 words = key term; numerals | Yes | core |
 | 25 | Serial position | First/last remembered best | Murdock 1962; Glanzer & Cunitz 1966 | S† | Most important first, action last; nothing critical in the middle | Yes | core |
 | 26 | Isolation (von Restorff) | Distinct item stands out | Hunt 1995 | S | Emphasis only for the thing they must not miss | Yes | core |
-| 27 | Signal dilution | Overused cues stop working | Lorch 1989 | M | Bold ≤1 phrase/paragraph, ≤~5% of words; no all-caps | Yes | core |
+| 27 | Signal dilution | Overused cues stop working: light cueing improved recall, while heavy cueing was no better than none (not worse) | Lorch 1989; Lorch, Lorch & Klusewitz 1995 (abstract checked 2026-11-13) | M | Bold ≤1 phrase/paragraph, ≤~5% of words; no all-caps | Yes | core |
 | 28 | BLUF / inverted pyramid | Conclusion first for skimmers & early stoppers | AR 25-50; Kieras 1980 | M | Sentence 1 answers (yes/no, value, recommendation) | Yes | core |
 | 29 | Reading rate | ~238 wpm non-fiction | Brysbaert 2019 meta | S | Facts ≤100 words; explanations ≤300; >500 → headings + TL;DR | Yes | core |
 | 30 | Skimming trade-off | Skimming loses anything unsignaled | Rayner et al. 2016 | S | Critical info goes in a signaled spot | Yes | core |

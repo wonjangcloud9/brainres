@@ -16,7 +16,7 @@ English · [한국어](README.ko.md)
 > *"My React component keeps re-rendering forever. Why?"*
 
 <table>
-<tr><th>Default Claude-style answer · Brain Score <b>50</b> · 272 words</th><th>With brainres · Brain Score <b>100</b> · 134 words</th></tr>
+<tr><th>Default Claude-style answer · Brain Score <b>56</b> · 272 words</th><th>With brainres · Brain Score <b>100</b> · 134 words</th></tr>
 <tr valign="top"><td>
 
 Great question! Infinite re-renders are a common issue that many React developers encounter… Let me break down the most common causes.
@@ -144,10 +144,11 @@ A dependency-free scorer for any answer, doc or README, in English and Korean (�
 python3 skills/brainres/scripts/brainlint.py answer.md
 ```
 ```
-Brain Score: 50/100 (D)  ·  272 words · 18 sentences · lang=en
+Brain Score: 56/100 (D)  ·  272 words · 16 sentences · lang=en
   -15  preamble         opens with filler: 'Great question! ...'     [Primacy effect + BLUF]
   - 8  outro            ends with generic sign-off                     [Recency effect]
-  - 6  bold_lead_ins    7 list items start with bold                   [Signal dilution]
+  - 6  generic_heading  content-free headings: ## Solutions            [Layer-cake scanning]
+  - 6  hedging          4 hedges; state uncertainty once               [Trust calibration]
   - 5  list_overload    list of 7 items; group into chunks of <=4      [Chunking (Cowan 4±1)]
 ```
 
@@ -187,14 +188,14 @@ We compared 78 pairs. Two prompts were dropped because an answer was raw tool-ca
 | Visible output tokens | 670 | **480** | **−28%** (−190; −230 to −150) |
 | Output tokens incl. hidden reasoning | 674 | **582** | −14% (−91; −136 to −47) |
 | Within length budget | 57/78 | **71/78** | |
-| Brain Score | 91.8 | **96.4** | **+4.7** (+3.0 to +6.3) |
+| Brain Score | 91.7 | **96.9** | **+5.1** (+3.4 to +6.8) |
 
 An earlier 12-prompt × 3-sample run pointed the same way: −27% words and +5.0 Brain Score.
 
 What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
-- **brainres was ahead in 14 of 16 answer types.** It was behind in stress (−3.2) and debugging (−2.5), mostly because of bold lead-in labels and long step lists ([weakness report](evals/results/suite-weakness.md)).
+- **brainres was ahead in 13 of 16 answer types.** It was about even or slightly behind in debugging (−1.0), stress (−0.8) and formal documents (−0.2). The stress gap comes from long step lists ([weakness report](evals/results/suite-weakness.md)).
 - **The real plugin matches the eval proxy** (12-prompt set): −54 words and +5.0 Brain Score per prompt. The always-on card does the work, and the full skill was auto-invoked in only 1 of 24 answers.
 
 Caveats:

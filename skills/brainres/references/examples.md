@@ -4,7 +4,7 @@ Scores come from `scripts/brainlint.py`. Full files live in the repo's `examples
 
 ## 1. Debugging question: "My React component keeps re-rendering forever. Why?"
 
-**Before (50/100, 272 words).** It opens with "Great question!", then a "Let me break down" preamble. Headings like "Understanding the Problem" carry no content. A 7-item list of bold lead-ins leaves the reader to guess which cause applies. It closes with "I hope this helps!".
+**Before (56/100, 272 words).** It opens with "Great question!", then a "Let me break down" preamble. Headings like "Understanding the Problem" carry no content. A 7-item list of bold lead-ins leaves the reader to guess which cause applies. It closes with "I hope this helps!".
 
 **After (100/100, 134 words):**
 
@@ -30,7 +30,7 @@ What changed and why:
 
 ## 2. Decision question in Korean: "Redis랑 메모리 캐시 중 뭐 써야 해? 서버는 한 대야."
 
-**Before (41/100):**
+**Before (39/100):**
 
 - It opens with "좋은 질문입니다!".
 - Translationese like "~에 대한 이해를 통해" makes it hard to read.

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **The bold lead-in check is narrowed (F1).** Lorch, Lorch & Klusewitz 1995 found heavy cueing no better than none, not worse, and NN/g advises front-loading bullets with scan words. brainlint now flags only sentence-length bold leads (more than 5 words on average), and the penalty drops from 6 to 4. Short bold labels are no longer penalised, and #27 is updated.
+  - **Re-score, no calls:** the checks changed on 29 suite answers. The suite Brain Score gain went from +4.7 to +5.1 (CI +3.4 to +6.8). Stress went from −3.2 to −0.8, and what remains there is walls of text.
+  - **Example scores moved:** 01 from 50 to 56, 02 from 41 to 39 (the bold-overuse penalty the old check had masked now applies), and 03 from 50 to 48.
+  - **Updated to match:** tests, both READMEs, examples, launch drafts and the social image.
+
 - Cross-judge check of the coverage result (F4, 9 calls): we re-marked 26 prompts with Opus using the same frozen key facts and answer order. The two judges agreed on 94% of fact marks (r = 0.82 on coverage). The direction held, but Opus measured a smaller gap: −0.6 pp, against −1.3 pp from Sonnet on the same prompts. `coverage_judge.py` gained the `--judge`, `--marks`, `--subset` and `--phase agree` options, and both READMEs mention the check.
 
 - **Information coverage (V2, 30 calls), new `evals/coverage_judge.py`.**

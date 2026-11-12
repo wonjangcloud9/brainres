@@ -304,8 +304,13 @@ def lint(text: str, question: str | None = None) -> Report:
     bolds = len(BOLD.findall(prose))
     items = [l for l in lines if LIST_ITEM.match(l)]
     leads = [l for l in items if BOLD_LEAD.match(l)]
-    if len(leads) >= 4 and len(leads) >= 0.6 * len(items):
-        add("bold_lead_ins", "Signal dilution (Lorch 1989)", f"{len(leads)} list items start with bold; emphasis becomes decoration", 6)
+    # F1 (2026-11-13): short bold labels front-load the scan words (NN/g F-pattern guidance) and heavy cueing is
+    # "no better than none", not worse (Lorch, Lorch & Klusewitz 1995). So only sentence-like bold leads (> 5 words
+    # on average, i.e. heavy cueing) count, at a lower weight.
+    lead_words = [len((BOLD.search(l).group(0) if BOLD.search(l) else "").strip("*_").split()) for l in leads]
+    if len(leads) >= 4 and len(leads) >= 0.6 * len(items) and sum(lead_words) / len(lead_words) > 5:
+        add("bold_lead_ins", "Heavy cueing adds nothing (Lorch, Lorch & Klusewitz 1995)",
+            f"{len(leads)} list items start with sentence-length bold; keep bold labels to a few words", 4)
     elif bolds and bolds / n_words * 100 > 3:
         add("bold_overuse", "Isolation (von Restorff) effect", f"{bolds} bold spans in {n_words} words; emphasis stops working", 8)
 

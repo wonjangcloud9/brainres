@@ -24,7 +24,8 @@
       "checks": [
         "nominalization"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 94
     },
     {
       "id": "s125-compare",
@@ -43,7 +44,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 100
     },
     {
       "id": "s135-codex",
@@ -62,7 +64,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 100
     },
     {
       "id": "s135-codex",
@@ -81,7 +84,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 100
     },
     {
       "id": "s145-write",
@@ -102,7 +106,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 92
     },
     {
       "id": "s145-write",
@@ -121,7 +126,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 100
     },
     {
       "id": "s155-multi",
@@ -142,7 +148,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 92
     },
     {
       "id": "s155-multi",
@@ -161,7 +168,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 100
     },
     {
       "id": "s165-advice",
@@ -183,7 +191,8 @@
         "bold_overuse",
         "fragmented_reasoning"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_f1": 86
     },
     {
       "id": "s165-advice",
@@ -191,21 +200,21 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 192,
       "output_tokens": 415,
       "thinking_tokens": 77,
       "visible_output_tokens": 338,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_lead_ins"
-      ],
-      "tool_markup": false
+      "checks": [],
+      "tool_markup": false,
+      "score_before_f1": 94
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)"
 }
