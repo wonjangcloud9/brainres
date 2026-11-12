@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Reusable GitHub Action (`action.yml`, B20): `uses: wonjangcloud9/brainres@main` scores markdown on every PR, fails below `min-score`, and writes a Brain Score table to the job summary. This repo's CI (`.github/workflows/ci.yml`) runs `validate.sh` and dogfoods the action on both READMEs (min 90). The `build_dist --check` now compares zip entries rather than bytes, so CI on Linux doesn't fail on zlib differences.
+- Backlog: B23 (voice rules) is marked superseded, because `references/voice.md` already covers it.
+
 - Research round 2 (C09, `research/catalog-round2.md`): 50 new findings on cross-cultural pragmatics, diagrams, argumentation, news structure and numeracy. Hall's high/low-context framework is excluded for weak validation. The catalog now has 775 findings reviewed, and all 642 applicable ones are applied. New rules:
   - Sentence 1 must be correct on its own (Ecker 2014, Gabielkov 2016).
   - Directness follows the user's own signals, not their nationality.

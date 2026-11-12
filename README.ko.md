@@ -167,6 +167,15 @@ Brain Score: 41/100 (D)  ·  lang=ko
 python3 skills/brainres/scripts/brainlint.py --badge README.md
 ```
 
+**CI에서도 쓸 수 있습니다.** 재사용 가능한 GitHub Action이 PR마다 문서를 채점하고, 기준 점수 아래면 실패시킵니다.
+
+```yaml
+- uses: wonjangcloud9/brainres@main
+  with:
+    files: "README.md docs/**/*.md"
+    min-score: "80"
+```
+
 이 문서는 96점입니다. 맨 위 예시에 일부러 넣은 22어절짜리 나쁜 문장 때문입니다. 영어 README는 100점입니다.
 
 ## 측정 결과

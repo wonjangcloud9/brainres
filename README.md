@@ -162,6 +162,15 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 # [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 ```
 
+**Use it in CI.** A reusable GitHub Action scores your docs on every PR and fails below a threshold. It also writes a summary table:
+
+```yaml
+- uses: wonjangcloud9/brainres@main
+  with:
+    files: "README.md docs/**/*.md"
+    min-score: "80"
+```
+
 This README scores 100. The Korean one scores 96 because its hero quotes a deliberately bad 22-어절 sentence.
 
 ## Measurement

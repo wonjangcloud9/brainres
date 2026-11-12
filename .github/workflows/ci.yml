@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate (skill, hooks, coverage, tests, dist)
+        run: bash scripts/validate.sh
+      - name: Brain Score of our own READMEs (dogfooding the action)
+        uses: ./
+        with:
+          files: "README.md README.ko.md"
+          min-score: "90"

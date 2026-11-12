@@ -15,8 +15,6 @@ The loop always takes the highest-scoring `todo` item.
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
 | B10-5 | **Owner:** enable GitHub Pages (Settings → Pages → main, root) — unlocks /bench and /playground links — and recruit ~60 participants (README/launch posts link the benchmark) | G | 10 | 3 | 0.5 | 1 | **15** | needs owner |
-| B23 | Voice-mode rules (transient information effect, #9) | Q | 1 | 1 | 0.8 | 0.5 | **1.6** | todo |
-| B20 | GitHub Action: brainlint on docs in PRs | T | 2 | 1 | 0.5 | 1 | **1** | todo |
 | B07 | `README.ko.md` for Korean devs (GeekNews, Korean X) | G | 5 | 2 | 0.8 | 0.5 | 16 | done 2026-11-12 |
 | B14 | Launch drafts in `launch/`: Show HN, X thread, GeekNews, r/ClaudeAI. Owner posts them | G | 8 | 2 | 0.5 | 0.5 | 16 | done 2026-11-12 |
 | B25 | Measure and publish the token cost of the core card and reminder in the README (honest numbers) | G | 8 | 1 | 1.0 | 0.5 | 16 | done 2026-11-12 (card 631, reminder 79, skill 3,893 tokens) |
@@ -47,6 +45,8 @@ The loop always takes the highest-scoring `todo` item.
 | C13 | Stress prompt (eval 11) still bullet-heavy (82): check support.md stress mode reaches answers; consider a 1-line stress rule in the card | Q | 2 | 2 | 0.5 | 0.5 | 4 | done 2026-11-12 (partial: stress triggers in skill description; skill invoked 1/3, steps ≤5 3/3; brainlint list fixes) |
 | B21 | Web playground (GitHub Pages): paste text → Brain Score (brainlint port to JS) | G | 8 | 2 | 0.5 | 2 | 4 | done 2026-11-12 (Pyodide runs brainlint.py itself; parity verified) |
 | C09 | Research round 2: new domains (cross-cultural pragmatics, diagram cognition — Larkin & Simon, argumentation/Toulmin, journalism inverted-pyramid studies, numeracy individual differences) | Q | 5 | 1 | 0.5 | 1 | 2.5 | done 2026-11-12 (50 findings; coverage 642/642) |
+| B23 | Voice-mode rules (transient information effect, #9) | Q | 1 | 1 | 0.8 | 0.5 | 1.6 | superseded by C05 (references/voice.md: #9, AN-20, HC-115) |
+| B20 | GitHub Action: brainlint on docs in PRs | T | 2 | 1 | 0.5 | 1 | 1 | done 2026-11-12 (reusable action.yml + CI workflow) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

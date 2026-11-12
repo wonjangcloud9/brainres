@@ -110,10 +110,21 @@ def build_bench() -> bytes:
     return (ROOT / "bench/template.html").read_text(encoding="utf-8").replace("/*__DATA__*/null", data).encode()
 
 
+def same(path: Path, data: bytes) -> bool:
+    if not path.exists():
+        return False
+    if path.suffix == ".zip":  # compressed bytes differ across zlib builds; compare the entries instead
+        def entries(b: bytes) -> dict:
+            with zipfile.ZipFile(io.BytesIO(b)) as z:
+                return {n: z.read(n) for n in z.namelist()}
+        return entries(path.read_bytes()) == entries(data)
+    return path.read_bytes() == data
+
+
 def main() -> int:
     files = build()
     if "--check" in sys.argv:
-        stale = [p for p, data in files.items() if not (ROOT / p).exists() or (ROOT / p).read_bytes() != data]
+        stale = [p for p, data in files.items() if not same(ROOT / p, data)]
         if stale:
             print("stale: " + ", ".join(stale) + " — run python3 scripts/build_dist.py")
             return 1

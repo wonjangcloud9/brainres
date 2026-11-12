@@ -1,0 +1,43 @@
+name: "brainres Brain Score"
+description: "Score markdown docs for how easy they are to read (cognitive-science-based brainlint) and fail below a minimum."
+branding:
+  icon: "book-open"
+  color: "green"
+inputs:
+  files:
+    description: "Space-separated globs of markdown files to score"
+    default: "README.md"
+  min-score:
+    description: "Fail if any file scores below this (0–100)"
+    default: "70"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - shell: bash
+      env:
+        FILES: ${{ inputs.files }}
+        MIN: ${{ inputs.min-score }}
+        LINT: ${{ github.action_path }}/skills/brainres/scripts/brainlint.py
+      run: |
+        shopt -s globstar nullglob
+        fail=0
+        {
+          echo "### 🧠 Brain Score"
+          echo
+          echo "| File | Score | Top findings |"
+          echo "|---|---:|---|"
+        } >> "$GITHUB_STEP_SUMMARY"
+        for pattern in $FILES; do
+          for f in $pattern; do
+            json=$(PYTHONDONTWRITEBYTECODE=1 python3 "$LINT" --json "$f")
+            score=$(printf '%s' "$json" | python3 -c "import json,sys; print(json.load(sys.stdin)['score'])")
+            top=$(printf '%s' "$json" | python3 -c "import json,sys; f=sorted(json.load(sys.stdin)['findings'], key=lambda x:-x['penalty'])[:3]; print(', '.join(x['check'] for x in f) or 'none')")
+            echo "| \`$f\` | $score | $top |" >> "$GITHUB_STEP_SUMMARY"
+            echo "$f: $score ($top)"
+            if [ "$score" -lt "$MIN" ]; then echo "::error file=$f::Brain Score $score is below $MIN ($top)"; fail=1; fi
+          done
+        done
+        exit $fail
