@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Haiku auto-reminder end to end (B50, 15 calls): the transcripts show the line injected on turns 2–7. Turns 5–7 scored 98.7 in auto mode, against 100.0 forced on and 92.7 off. Turn 1 scored 92.0, because the SessionStart hook input has no model field, so the READMEs point Haiku users who want turn 1 covered to `BRAINRES_REMINDER=on`. `multiturn.py` gained the `--conditions` (`auto`, `off`, `reminder`) and `--tag` options.
+
 - **The reminder returns automatically for Haiku (B48, 28 calls).** In 7-turn sessions Haiku scored 100.0 at turns 5–7 with the always-on line and 92.7 without it. The gap was present from turn 1, so the card alone is weaker on Haiku rather than drifting.
   - The hook now reads the last model from the session transcript and adds the 84-token line only for Haiku sessions, from turn 2 onward.
   - `BRAINRES_REMINDER=on` forces the line for any model, and `off` disables it.

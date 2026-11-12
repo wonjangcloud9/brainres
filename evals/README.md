@@ -263,6 +263,15 @@ The gap is there from turn 1, so this is not drift. On Haiku the card alone is w
 
 The hook now switches the line back on automatically **when the session's last answer came from Haiku**. It reads the model name from the transcript tail (`"model":"claude-haiku-…"`). Turn 1 has no answer yet, so it starts on turn 2. `BRAINRES_REMINDER=on` forces it for any model and `off` disables it. `validate.sh` checks this routing, and the hook was tested against a real Haiku transcript.
 
+**Auto mode end to end (B50).** The same Haiku sessions with the default hook (14 calls). The transcripts show the line injected on turns 2–7 in both sessions (6 of 7 turns).
+
+| Haiku, mean Brain Score | forced on (B48) | **auto (B50)** | off (B48) |
+|---|---:|---:|---:|
+| Turn 1 | 98.0 (turns 1–2) | 92.0 | 88.5 (turns 1–2) |
+| Turns 5–7 | 100.0 | **98.7** | 92.7 |
+
+Auto mode recovers almost all of the gap from turn 2 on. Turn 1 stays lower because no hook can see the model then: the SessionStart input has `cwd`, `session_id`, `source` and `transcript_path`, but no model. Haiku users who want turn 1 covered too can set `BRAINRES_REMINDER=on`.
+
 **Long context (B47).** `python3 evals/multiturn.py --long` pastes about 3k tokens of logs or code in each of turns 1–4. The session reaches about 30k context tokens. Turns 5–7 are plain database questions, also asked in fresh sessions as the control (2 samples each). Card only, no per-turn reminder, Sonnet, EN + KO, 26 calls:
 
 | Mean per answer | long session | fresh session |

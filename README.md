@@ -80,7 +80,7 @@ Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/pl
 
 Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the situation lines.
 
-Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. On Sonnet an always-on per-message reminder added nothing, so it is off by default. On Haiku it raised scores 7–10 points, so it switches on automatically there ([B46, B48](evals/README.md)).
+Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. On Sonnet an always-on per-message reminder added nothing, so it is off by default. On Haiku it raised scores 7–10 points, so it switches on automatically there from the 2nd message ([B46, B48, B50](evals/README.md)). Set `BRAINRES_REMINDER=on` to include the first.
 
 **Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the situation lines.
 

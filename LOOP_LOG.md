@@ -88,3 +88,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 02:59 · F3 · plugin on concept+stress (27 calls): concept line no effect (90% → 89%) → dropped; emergency line costs coverage (stress 77% vs 92% baseline; cuts later steps) → F5 (3)
 - 2026-11-13 03:18 · F5 · emergency-line rewrite (14 calls): coverage 77% (= old), walls 9/10 (worse) → reverted; trade-off action-first +29 pp vs coverage −6 pp → F6 (2)
 - 2026-11-13 03:39 · B48 · Haiku multi-turn (28 calls): reminder on 100.0 vs off 92.7 at turns 5–7 (gap from turn 1) → always-on line auto-enables for Haiku sessions (transcript model); B50 end-to-end check (4.8)
+- 2026-11-13 03:58 · B50 · Haiku auto-reminder end to end (15 calls): injected turns 2–7; turns 5–7 98.7 (on 100.0, off 92.7); turn 1 92.0 — SessionStart has no model field → BRAINRES_REMINDER=on for turn 1

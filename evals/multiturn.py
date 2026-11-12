@@ -94,7 +94,9 @@ def conversation(lang: str, cond: str, model: str, convs: dict | None = None) ->
     env = dict(os.environ)
     if cond == "reminder":  # since B46 the always-on line is opt-in
         env["BRAINRES_REMINDER"] = "on"
-    elif cond == "no-reminder":
+    elif cond == "off":
+        env["BRAINRES_REMINDER"] = "off"
+    else:  # "no-reminder" (B46–B48 runs) and "auto" (B50): the default hook, which auto-enables the line on Haiku
         env.pop("BRAINRES_REMINDER", None)
     rows, session = [], None
     with tempfile.TemporaryDirectory() as cwd:
@@ -141,18 +143,21 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="sonnet")
     ap.add_argument("--long", action="store_true", help="B47: long-context sessions vs fresh-session control")
+    ap.add_argument("--conditions", default="reminder,no-reminder", help="B50: e.g. auto")
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
     if a.long:
         return long_main(a.model)
-    out = ROOT / "evals/results" / f"{dt.date.today().isoformat()}-multiturn-{a.model}"
+    conds = a.conditions.split(",")
+    out = ROOT / "evals/results" / f"{dt.date.today().isoformat()}-multiturn-{a.model}{'-' + a.tag if a.tag else ''}"
     out.mkdir(parents=True, exist_ok=True)
     with cf.ThreadPoolExecutor(4) as ex:
-        rows = [r for f in [ex.submit(conversation, l, c, a.model) for l in CONVERSATIONS for c in ("reminder", "no-reminder")]
+        rows = [r for f in [ex.submit(conversation, l, c, a.model) for l in CONVERSATIONS for c in conds]
                 for r in f.result()]
     rows.sort(key=lambda r: (r["lang"], r["condition"], r["turn"]))
     (out / "summary.json").write_text(json.dumps({"model": a.model, "rows": rows}, ensure_ascii=False, indent=2))
-    for c in ("reminder", "no-reminder"):
-        for span, lo, hi in (("turns 1-2", 1, 2), ("turns 3-4", 3, 4), ("turns 5-7", 5, 7)):
+    for c in conds:
+        for span, lo, hi in (("turn 1", 1, 1), ("turns 2-4", 2, 4), ("turns 1-2", 1, 2), ("turns 3-4", 3, 4), ("turns 5-7", 5, 7)):
             rs = [r for r in rows if r["condition"] == c and lo <= r["turn"] <= hi and "score" in r]
             if rs:
                 print(f"{c:<12} {span}: mean score {sum(r['score'] for r in rs)/len(rs):.1f} · mean words {sum(r['words'] for r in rs)/len(rs):.0f} (n={len(rs)})")
