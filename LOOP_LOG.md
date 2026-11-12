@@ -91,3 +91,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 03:58 · B50 · Haiku auto-reminder end to end (15 calls): injected turns 2–7; turns 5–7 98.7 (on 100.0, off 92.7); turn 1 92.0 — SessionStart has no model field → BRAINRES_REMINDER=on for turn 1
 - 2026-11-13 04:19 · F6 · emergency line keep/remove (25 calls): 10 new stress prompts — action-first 8/10 → 10/10, coverage −1.9 pp → kept (pre-stated rule met); pooled 65% → 89%
 - 2026-11-13 04:39 · V3a · card ablation G1, G2 (30 calls): Δ score +0.9 / +1.3, words −7 / +1 — inside measured noise (SE 1.2 pts, 7 words); added run.py --card, evals/ablation/, ablation_report.py
+- 2026-11-13 04:58 · V3b · card ablation G3, G4 (30 calls): G3 removed −2.3 + 6 checks rising, G4 removed bold overuse 1→3 / long sentences 0→3 → keep every line; thinking G4 −40, G3 −21; backlog now has no todo

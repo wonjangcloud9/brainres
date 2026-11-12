@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Card ablation complete (V3b, 30 calls): every card line stays.**
+  - **G3 (structure):** removing it scored −2.3 and raised walls of text, list overload, outros, hedging and long sentences.
+  - **G4 (precision and style):** removing it raised bold overuse from 1 to 3 and long sentences from 0 to 3.
+  - **G1 and G2:** removing them showed no effect on general prompts, but they are situation rules backed by targeted evals (C17, V2 novice).
+  - **Hidden reasoning:** no single group explains the card's roughly +100 thinking tokens; G4 had the largest share (−40 when removed).
+  - The full write-up is in `evals/ablation/RESULTS.md`.
+
 - Card ablation, part 1 (V3a, 30 calls): `run.py --card` swaps in an ablated card, and `evals/ablation/` holds four cards, each with one group of lines removed. The new `evals/ablation_report.py` compares each against the full card on the 15-prompt V1a subset.
   - **Noise, measured from 36 repeat-sample pairs:** the standard error of a 15-prompt difference is about 1.2 points and 7 words.
   - **Results:** removing G1 (sentence-1 answer, agree only with evidence) changed the score by +0.9 and words by −7. Removing G2 (fit expertise, be concrete) changed them by +1.3 and +1. Both are inside the noise on general prompts.
