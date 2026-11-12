@@ -177,19 +177,29 @@ This README scores 100. The Korean one scores 96 because its hero quotes a delib
 
 ## Measurement
 
-We asked the same 12 questions with and without brainres, 3 times each, for 72 answers on Sonnet with tools off. Full details are in [`evals/`](evals/).
+We ran an 80-prompt suite with and without brainres on Sonnet with tools off. It covers 16 answer types, 5 prompts each, and 32 of the prompts are in Korean.
+
+We compared 78 pairs. Two prompts were dropped because an answer was raw tool-call markup. Details are in [`evals/`](evals/).
 
 | | baseline | brainres | per-prompt difference (95% CI) |
 |---|---:|---:|---|
-| Words per answer | 202 | **147** | **−27%** (−54 words; −89 to −20) |
-| Output tokens | 662 | **556** | **−16%** (−106; −179 to −33) |
-| Within length budget | 29/36 | **32/36** | |
-| Brain Score | 91.2 | **96.2** | +5.0 (+0.8 to +9.2) |
+| Words per answer | 196 | **140** | **−29%** (−56 words; −70 to −42) |
+| Visible output tokens | 670 | **480** | **−28%** (−190; −230 to −150) |
+| Output tokens incl. hidden reasoning | 674 | **582** | −14% (−91; −136 to −47) |
+| Within length budget | 57/78 | **71/78** | |
+| Brain Score | 91.8 | **96.4** | **+4.7** (+3.0 to +6.3) |
+
+An earlier 12-prompt × 3-sample run pointed the same way: −27% words and +5.0 Brain Score.
 
 What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
-- **The real plugin matches the eval proxy:** −54 words and +5.0 Brain Score per prompt. The always-on card does the work, and the full skill was auto-invoked in only 1 of 24 answers.
+- **brainres was ahead in 14 of 16 answer types.** It was behind in stress (−3.2) and debugging (−2.5), mostly because of bold lead-in labels and long step lists ([weakness report](evals/results/suite-weakness.md)).
+- **The real plugin matches the eval proxy** (12-prompt set): −54 words and +5.0 Brain Score per prompt. The always-on card does the work, and the full skill was auto-invoked in only 1 of 24 answers.
+
+Caveats:
+
+- **Hidden reasoning rose by about 100 tokens per answer,** so total output tokens fell 14% while visible tokens fell 28%.
 - **Some rules describe default behaviour.** Opening a code explanation with a purpose summary, and opening a decision with a recommendation plus when the other option wins, were already 100% in baseline Sonnet and Haiku. brainres doesn't cause them ([B37, B42, B45](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 

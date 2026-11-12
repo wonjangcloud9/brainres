@@ -30,7 +30,7 @@ The always-on card is 500 tokens (measured with Claude's tokenizer; script in th
 
 There's also `brainlint`, a stdlib Python scorer that maps each check to a finding. A typical answer that opens with "Great question!", uses 7 bold bullets and ends with "Hope this helps!" scores 50/100. The rewrite scores 100.
 
-Measurement (12 prompts × with/without × 3 samples = 72 answers, Sonnet, tools off): answers 27% shorter (95% CI −20 to −89 words per prompt), output tokens −16%, Brain Score 91.2 → 96.2. Claude Code already avoided preambles, so the gain is length and readability violations. A single-sample run first showed −33%, and the larger sample shrank it. Both are in evals/README.md.
+Measurement (an 80-prompt suite, 16 answer types including 32 Korean prompts, with/without, Sonnet, tools off, 78 valid pairs): answers 29% shorter (95% CI −42 to −70 words per prompt), visible output tokens −28%, Brain Score +4.7 (CI +3.0 to +6.3); brainres was behind in 2 of 16 types (stress, debugging), which we publish. Earlier 12-prompt run: Brain Score 91.2 → 96.2. Claude Code already avoided preambles, so the gain is length and readability violations. A single-sample run first showed −33%, and the larger sample shrank it. Both are in evals/README.md.
 
 Honest limits: nobody, including me, has run controlled studies of formatting rules on LLM chat answers. "Applied" currently means "cited by a rule", not "shown to improve comprehension". A human comprehension benchmark is the next big item.
 

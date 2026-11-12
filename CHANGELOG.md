@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Suite complete (V1f, 10 calls): 78 valid pairs across 80 prompts.** Per prompt, Brain Score rose 4.7 (CI +3.0 to +6.3), words fell 56 (−29%), visible output tokens fell 28%, and total output tokens including hidden reasoning fell 14%. This replaces the 12-prompt result as the headline in both READMEs and the Show HN, Reddit and GeekNews drafts.
+- **Weakness report (V4, no calls)** from the new `evals/suite_report.py`, written to `results/suite-weakness.md`:
+  - brainres was ahead in 14 of 16 types and behind in stress (−3.2) and debugging (−2.5).
+  - No check fired more often with brainres.
+  - Hidden reasoning rose about 100 tokens per answer.
+  - New items: F1 (2.5) checks whether the bold-lead-in penalty that drives the stress losses is evidence-based, and F2 (2) tests stress prompts with the plugin's emergency line. V3 now also tracks thinking tokens.
+
 - Suite chunk V1e (30 calls), now 73 valid pairs over 75 of 80 prompts. Per prompt, Brain Score rose 4.6 (CI +2.8 to +6.3), words fell 55 (−28%) and visible tokens fell 187 (−28%). Long sentences went from 10 to 2 and fragmented reasoning from 7 to 0. Stress prompts remain the weak category: brainres was lower on 2 of 5 and tied on 3.
 
 - Suite chunk V1d (30 calls), now 58 valid pairs over 60 of 80 prompts. Per prompt, Brain Score rose 4.9 (CI +2.9 to +7.0), words fell 56 (−30%) and visible tokens fell 192 (−29%). One more answer was excluded as tool markup. Stress prompts emerge as the weak category: brainres was lower on 2 of 4 and tied on 2, with bold lead-ins and walls of text in step lists.

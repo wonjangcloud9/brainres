@@ -1,14 +1,14 @@
 # Combined eval (card 48809c2654f3, model=sonnet, treatment=brainres)
 
-Runs: 2026-11-13-suite-v1a (30 answers); 2026-11-13-suite-v1b (30 answers); 2026-11-13-suite-v1c (30 answers); 2026-11-13-suite-v1d (30 answers); 2026-11-13-suite-v1e (30 answers)
+Runs: 2026-11-13-suite-v1a (30 answers); 2026-11-13-suite-v1b (30 answers); 2026-11-13-suite-v1c (30 answers); 2026-11-13-suite-v1d (30 answers); 2026-11-13-suite-v1e (30 answers); 2026-11-13-suite-v1f (10 answers)
 
-Paired prompts: 73. Baseline rows are card-independent; brainres rows only from card 48809c2654f3.
+Paired prompts: 78. Baseline rows are card-independent; brainres rows only from card 48809c2654f3.
 
 | Metric | baseline mean (SD, n) | brainres mean (SD, n) | brainres − baseline per prompt (95% CI) |
 |---|---|---|---|
-| Brain Score | 91.7 (6.5, 73) | 96.3 (4.8, 73) | +4.6 (+2.8 to +6.3) |
-| Words | 194.7 (105.4, 73) | 139.6 (66.0, 73) | -55.2 (-69.5 to -40.9) |
-| Output tokens (incl. hidden reasoning) | 674.3 (338.9, 73) | 578.8 (289.9, 73) | -95.5 (-134.3 to -56.6) |
-| Visible output tokens | 670.4 (338.9, 73) | 483.3 (203.3, 73) | -187.2 (-228.7 to -145.6) |
-| Within length budget | 54/73 | 66/73 | |
-| No preamble / buried answer | 73/73 | 73/73 | |
+| Brain Score | 91.8 (6.4, 78) | 96.4 (4.8, 78) | +4.7 (+3.0 to +6.3) |
+| Words | 195.5 (105.6, 78) | 139.7 (65.3, 78) | -55.8 (-69.6 to -42.0) |
+| Output tokens (incl. hidden reasoning) | 673.7 (333.9, 78) | 582.3 (307.4, 78) | -91.4 (-136.0 to -46.9) |
+| Visible output tokens | 670.1 (333.9, 78) | 479.8 (200.6, 78) | -190.3 (-230.3 to -150.3) |
+| Within length budget | 57/78 | 71/78 | |
+| No preamble / buried answer | 78/78 | 78/78 | |
