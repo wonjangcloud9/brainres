@@ -59,7 +59,11 @@ def ask(q: str, model: str, system: str | None, cwd: str, style: str | None = No
         args += ["--append-system-prompt", system]
     p = subprocess.run(args, capture_output=True, text=True, cwd=cwd, stdin=subprocess.DEVNULL, timeout=300)
     d = json.loads(p.stdout)
-    return {"text": d.get("result", ""), "output_tokens": d.get("usage", {}).get("output_tokens", 0)}
+    # output_tokens includes hidden reasoning; record thinking separately (modelUsage[*].thinkingTokens)
+    thinking = sum(m.get("thinkingTokens", 0) for m in (d.get("modelUsage") or {}).values())
+    out = d.get("usage", {}).get("output_tokens", 0)
+    return {"text": d.get("result", ""), "output_tokens": out, "thinking_tokens": thinking,
+            "visible_output_tokens": max(0, out - thinking)}
 
 
 def main() -> int:
@@ -94,7 +98,8 @@ def main() -> int:
             (out_dir / f"{p['id']}.{c}{suffix}.md").write_text(f"<!-- Q: {p['q']} -->\n\n{r['text']}\n", encoding="utf-8")
             budget = BUDGET.get(p["type"], DEFAULT_BUDGET)
             rows.append({"id": p["id"], "type": p["type"], "lang": p["lang"], "condition": c, "sample": k + 1, "score": rep.score,
-                         "words": rep.words, "output_tokens": r["output_tokens"], "within_budget": rep.words <= budget,
+                         "words": rep.words, "output_tokens": r["output_tokens"], "thinking_tokens": r["thinking_tokens"],
+                         "visible_output_tokens": r["visible_output_tokens"], "within_budget": rep.words <= budget,
                          "score_q": rep_q.score, "question_checks": sorted({x.check for x in rep_q.findings} - {x.check for x in rep.findings}),
                          "answer_first": not (FRONT & set(checks)), "checks": checks})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)

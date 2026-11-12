@@ -189,7 +189,7 @@ We asked the same 12 questions with and without brainres, 3 times each, for 72 a
 What this shows:
 
 - Claude Code already avoids preambles, so brainres's measurable effect is **shorter answers with fewer readability violations**.
-- **It holds on a smaller model.** On Haiku, answers were 35% shorter (−71 words per prompt, 95% CI −114 to −28) and the Brain Score rose by 3.9.
+- **It holds across models.** Answers came out 35% shorter on Haiku and 34% shorter on Opus, with 95% CIs excluding zero. On Opus the Brain Score gain (+2.9) is not significant, and total output tokens include hidden reasoning ([per-model table](evals/README.md)).
 - Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
 
 What went wrong along the way ([details](evals/README.md)):

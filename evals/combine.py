@@ -65,7 +65,10 @@ def main() -> int:
              f"Paired prompts: {len(paired)}. Baseline rows are card-independent; brainres rows only from card {sha}.", "",
              "| Metric | baseline mean (SD, n) | brainres mean (SD, n) | brainres − baseline per prompt (95% CI) |",
              "|---|---|---|---|"]
-    for key, label in [("score", "Brain Score"), ("words", "Words"), ("output_tokens", "Output tokens")]:
+    metrics = [("score", "Brain Score"), ("words", "Words"), ("output_tokens", "Output tokens (incl. hidden reasoning)")]
+    if all("visible_output_tokens" in r for r in rows if r["id"] in paired):
+        metrics.append(("visible_output_tokens", "Visible output tokens"))
+    for key, label in metrics:
         b, x, (m, lo, hi) = cond_stats("baseline", key), cond_stats("brainres", key), diff_ci(key)
         lines.append(f"| {label} | {b[0]:.1f} ({b[1]:.1f}, {b[2]}) | {x[0]:.1f} ({x[1]:.1f}, {x[2]}) | {m:+.1f} ({lo:+.1f} to {hi:+.1f}) |")
     for key, label in [("within_budget", "Within length budget"), ("answer_first", "No preamble / buried answer")]:

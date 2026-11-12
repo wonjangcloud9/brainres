@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Generalization to Opus (B28b; 24 calls): per prompt, words −79 (−34%, 95% CI −117 to −41) and Brain Score +2.9 (CI −1.5 to +7.3, not significant). `output_tokens` rose 19% (CI includes 0) because they include hidden reasoning; one probe showed `thinkingTokens` in `modelUsage`. `run.py` now records `thinking_tokens` and `visible_output_tokens`, and `combine.py` reports visible tokens when available. B28c re-runs Opus with the split.
+
 - Generalization to Haiku (B28a; 24 calls, 12 prompts × 2 conditions): per prompt, words −71 (−35%, 95% CI −114 to −28), Brain Score +3.9 (CI +0.1 to +7.7), output tokens −14% (CI includes 0), and 0 invented confidence numbers. `--question` caught one real slip, an answer that framed before recommending. Opus follows in B28b.
 
 - `brainlint --question` (B27) adds question-aware checks. `yesno_not_first` fires when a yes/no question, including tag questions like "…, right?", doesn't get Yes or No as the first word. `no_recommendation` fires when sentence 1 of a choice question neither names an option nor recommends one. This closes the blind spot documented in `examples/README.md`: 04 "before" now scores 70 and 02 "before" 33, while every "after" stays at 100. Scores without `--question` are unchanged, and the goldens hold. Evals record `score_q` separately, and the playground has an optional question field. 9 new tests bring the total to 43.
