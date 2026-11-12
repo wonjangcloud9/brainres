@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **The reminder returns automatically for Haiku (B48, 28 calls).** In 7-turn sessions Haiku scored 100.0 at turns 5–7 with the always-on line and 92.7 without it. The gap was present from turn 1, so the card alone is weaker on Haiku rather than drifting.
+  - The hook now reads the last model from the session transcript and adds the 84-token line only for Haiku sessions, from turn 2 onward.
+  - `BRAINRES_REMINDER=on` forces the line for any model, and `off` disables it.
+  - `multiturn.py` uses the opt-in for its reminder condition.
+  - `validate.sh` checks the routing, and both READMEs and the cost tables are updated.
+  - Next: B50 (4.8), an end-to-end check of auto mode.
+
 - Emergency-line rewrite (F5, 14 calls): the new wording, which kept every remaining step on one short line each, left stress key-fact coverage at 77%, the same as the old line. Walls of text got worse (9/10), so it was reverted per the pre-stated rule. The trade-off is documented: the line raises action-first (pooled 54% → 83%) but costs 6 pp of coverage against the card alone. F6 (2) decides keep or remove on a larger sample with a rule set in advance.
 
 - Targeted fixes for concept and stress answers (F3, 27 calls, using the real plugin and the frozen key facts with blind marking):

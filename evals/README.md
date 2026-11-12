@@ -251,6 +251,18 @@ There was no drift without the reminder, so per the pre-stated rule the always-o
 
 **Limit:** 7 short turns is a small context. Long Claude Code sessions full of tool output are not covered. B47 tests that case.
 
+**On Haiku the reminder does help (B48).** We ran the same 7-turn sessions on Haiku, with the always-on line forced on (`BRAINRES_REMINDER=on`) vs off (28 calls):
+
+| Haiku, mean Brain Score | reminder on | reminder off |
+|---|---:|---:|
+| Turns 1–2 | 98.0 | 88.5 |
+| Turns 3–4 | 98.5 | 94.5 |
+| Turns 5–7 | **100.0** | **92.7** |
+
+The gap is there from turn 1, so this is not drift. On Haiku the card alone is weaker. Without the reminder, Haiku showed bold overuse (5 answers), long sentences (3) and walls of text (2); with it, those almost vanished. That passes the pre-stated rule (turns 5–7 down 3 points or more without it).
+
+The hook now switches the line back on automatically **when the session's last answer came from Haiku**. It reads the model name from the transcript tail (`"model":"claude-haiku-…"`). Turn 1 has no answer yet, so it starts on turn 2. `BRAINRES_REMINDER=on` forces it for any model and `off` disables it. `validate.sh` checks this routing, and the hook was tested against a real Haiku transcript.
+
 **Long context (B47).** `python3 evals/multiturn.py --long` pastes about 3k tokens of logs or code in each of turns 1–4. The session reaches about 30k context tokens. Turns 5–7 are plain database questions, also asked in fresh sessions as the control (2 samples each). Card only, no per-turn reminder, Sonnet, EN + KO, 26 calls:
 
 | Mean per answer | long session | fresh session |

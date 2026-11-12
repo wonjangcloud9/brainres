@@ -87,3 +87,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 02:39 · F1 · bold lead-in check narrowed on evidence (Lorch 1995: heavy cueing = no better than none; NN/g front-loading): short labels not penalised, sentence-length bold −4; suite re-scored (29 answers): Δ +4.7 → +5.1, stress −3.2 → −0.8; example scores 01 56, 02 39, 03 48
 - 2026-11-13 02:59 · F3 · plugin on concept+stress (27 calls): concept line no effect (90% → 89%) → dropped; emergency line costs coverage (stress 77% vs 92% baseline; cuts later steps) → F5 (3)
 - 2026-11-13 03:18 · F5 · emergency-line rewrite (14 calls): coverage 77% (= old), walls 9/10 (worse) → reverted; trade-off action-first +29 pp vs coverage −6 pp → F6 (2)
+- 2026-11-13 03:39 · B48 · Haiku multi-turn (28 calls): reminder on 100.0 vs off 92.7 at turns 5–7 (gap from turn 1) → always-on line auto-enables for Haiku sessions (transcript model); B50 end-to-end check (4.8)

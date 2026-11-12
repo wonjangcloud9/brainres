@@ -18,6 +18,16 @@ prompt=$(printf '%s' "$input" | python3 -c 'import sys,json; print(json.load(sys
 # B46: the always-on base line (84 tokens/turn) was cut: 7-turn sessions showed no drift without it.
 # Only situation lines remain, and nothing is emitted on turns without a signal.
 extra=""
+# Always-on line (B48): Sonnet didn't need it (B46/B47), but Haiku scored 7–10 points higher with it at every turn
+# (7-turn sessions, turns 5–7: 100.0 vs 92.7). So it comes back automatically when the last answer in this session
+# came from Haiku (read from the transcript tail; turn 1 has no answer yet). BRAINRES_REMINDER=on forces it for any model.
+tp=$(printf '%s' "$input" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("transcript_path",""))' 2>/dev/null) || tp=""
+auto_on=0
+if [ -z "${BRAINRES_REMINDER:-}" ] && [ -n "$tp" ] && [ -f "$tp" ]; then
+  case "$(tail -c 65536 "$tp" 2>/dev/null | grep -o '"model":"[^"]*"' | tail -1)" in *haiku*) auto_on=1 ;; esac
+fi
+base=""
+if [ "${BRAINRES_REMINDER:-}" = "on" ] || [ "$auto_on" = 1 ]; then base=" answer in sentence 1 · ≤4 items per group · prose for reasoning · concrete, their values · uncertainty once, numbers only if grounded · agree only with evidence · fit their expertise · end on the next action."; fi
 if [ "${BRAINRES_SITUATIONS:-on}" != "off" ]; then
   if printf '%s' "$prompt" | grep -qiE "i'?m (learning|new to|a beginner)|i am (learning|new to|a beginner)|beginner|newbie|homework|assignment|공부 ?중|배우는 ?중|배우고 있|초보|과제|숙제"; then
     extra="$extra Learner: fix their own line first (not a rewrite); end with one predict-first question."
@@ -28,5 +38,5 @@ if [ "${BRAINRES_SITUATIONS:-on}" != "off" ]; then
   # A concept line ("one sentence on where it's used + one example") was tested in F3 and dropped: coverage 90% → 89%.
   # A math/trace line was tested too (B40) and dropped: sentence 1 was already right in 6/6 without it.
 fi
-[ -z "$extra" ] && exit 0
-printf '{"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":"%s"}}\n' "brainres (skip if the user turned it off):$extra"
+[ -z "$base$extra" ] && exit 0
+printf '{"hookSpecificOutput":{"hookEventName":"UserPromptSubmit","additionalContext":"%s"}}\n' "brainres (skip if the user turned it off):$base$extra"

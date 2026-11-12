@@ -92,8 +92,10 @@ def turn(q: str, model: str, session: str | None, cwd: str, env: dict) -> dict:
 def conversation(lang: str, cond: str, model: str, convs: dict | None = None) -> list[dict]:
     convs = convs or CONVERSATIONS
     env = dict(os.environ)
-    if cond == "no-reminder":
-        env["BRAINRES_REMINDER"] = "off"
+    if cond == "reminder":  # since B46 the always-on line is opt-in
+        env["BRAINRES_REMINDER"] = "on"
+    elif cond == "no-reminder":
+        env.pop("BRAINRES_REMINDER", None)
     rows, session = [], None
     with tempfile.TemporaryDirectory() as cwd:
         for i, q in enumerate(convs[lang], 1):

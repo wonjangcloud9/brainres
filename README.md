@@ -80,7 +80,7 @@ Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/pl
 
 Only the plugin install adds the hooks. With the other routes you get the rule card or the skill, not the situation lines.
 
-Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. We dropped an always-on per-message reminder after 7-turn sessions scored just as well with it turned off ([B46](evals/README.md)).
+Once installed, it's always on. A session-start hook adds the rule card once per session. A per-message hook adds one short line only when your message shows a learner or emergency signal. On Sonnet an always-on per-message reminder added nothing, so it is off by default. On Haiku it raised scores 7–10 points, so it switches on automatically there ([B46, B48](evals/README.md)).
 
 **Prefer an output style?** The plugin also ships one. Run `/output-style` and pick **brainres**. It applies the same rules and keeps Claude Code's coding instructions. If you use it, set `BRAINRES=off` so the card isn't loaded twice. That also turns off the situation lines.
 
@@ -100,6 +100,7 @@ With Concise, brainres puts back the "why / when to switch / next step" content 
 |---|---:|---|
 | Rule card | 500 | once per session |
 | Situation line | about 20–28 | only on learner or emergency messages |
+| Reminder | 84 | each message, Haiku sessions only (auto) |
 | Full skill body | 3,391 | only when the skill is invoked |
 
 A 20-message session costs about 500 extra input tokens before prompt caching, plus about 25 for each learner or emergency message. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
