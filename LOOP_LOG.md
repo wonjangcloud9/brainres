@@ -80,3 +80,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 00:18 · V1b · suite chunk 2 (30 calls): 29 pairs — words −57 (−27%), visible tokens −162, Brain Score +2.7 (n.s.); bold lead-ins 7/29 vs 6/30 (card doesn't fix), bold overuse 7 → 2
 - 2026-11-13 00:38 · V1c · suite chunk 3 (30 calls): 44 pairs — Brain Score +4.2 (CI +1.8 to +6.6, first significant), words −28%, visible tokens −29%; bold lead-ins 13/44 vs 8/45; added evals/suite_next.py
 - 2026-11-13 00:58 · V1d · suite chunk 4 (30 calls): 58 pairs — Brain Score +4.9 (CI +2.9 to +7.0), words −30%, visible tokens −29%; stress = weak category (2 lower, 2 tied of 4)
+- 2026-11-13 01:18 · V1e · suite chunk 5 (30 calls): 73 pairs — Brain Score +4.6 (CI +2.8 to +6.3), words −28%, visible tokens −28%; stress still weak (2 lower, 3 tied of 5)

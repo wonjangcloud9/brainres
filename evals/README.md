@@ -12,27 +12,28 @@ Each answer is scored by `brainlint`. Answers, `summary.json` and `REPORT.md` go
 
 From 2026-11-13 the main measurement is [`suite.jsonl`](suite.jsonl): 80 prompts, 16 answer types × 5, 32 of them in Korean. The types are debug, concept, decision, yes/no, numbers, procedure, myth, stress, refusal, formal doc, novice, compare, code explanation, code writing, multi-part and advice. It runs baseline vs brainres (card proxy) on Sonnet in chunks of 15 prompts. [`combine.py --prompts suite.jsonl`](combine.py) pairs every chunk run with the current card. Answers that are raw tool-call markup, a tool-less harness artifact, are flagged (`tool_markup`) and excluded.
 
-**After chunks V1a–V1d** (58 valid pairs, 60 of 80 prompts run; 3 answers on 2 prompts excluded as tool markup: one baseline debug answer, and both answers to the bash-script prompt s143). Track progress with `python3 evals/suite_next.py --report`.
+**After chunks V1a–V1e** (73 valid pairs, 75 of 80 prompts run; 3 answers on 2 prompts excluded as tool markup: one baseline debug answer, and both answers to the bash-script prompt s143). Track progress with `python3 evals/suite_next.py --report`.
 
 | Per prompt | brainres − baseline (95% CI) |
 |---|---|
-| Brain Score | **+4.9** (+2.9 to +7.0) |
-| Words | **−56** (−73 to −39), −30% |
-| Visible output tokens | **−192** (−240 to −143), −29% |
-| Within length budget | 43/58 → 53/58 |
+| Brain Score | **+4.6** (+2.8 to +6.3) |
+| Words | **−55** (−70 to −41), −28% |
+| Visible output tokens | **−187** (−229 to −146), −28% |
+| Within length budget | 54/73 → 66/73 |
 
 **Which checks fire** (answers flagged out of all answers):
 
 | Check | baseline | brainres |
 |---|---:|---:|
-| bold overuse | 20 / 58 | 8 / 59 |
-| bold lead-in labels on list items | 15 / 58 | 10 / 59 |
-| wall of text | 7 / 58 | 5 / 59 |
-| fragmented reasoning | 6 / 58 | 1 / 59 |
+| bold overuse | 24 / 73 | 10 / 74 |
+| bold lead-in labels on list items | 19 / 73 | 14 / 74 |
+| wall of text | 10 / 73 | 7 / 74 |
+| long sentences | 10 / 73 | 2 / 74 |
+| fragmented reasoning | 7 / 73 | 0 / 74 |
 
 **Early signals for the weakness report (V4):**
-- **Stress prompts are the weak category so far.** brainres scored lower on 2 of the 4 run and tied on the other 2. The deductions were bold lead-ins and walls of text in step lists. These runs use the card proxy, which doesn't include the emergency line, so the plugin may do better here (B41).
-- **Bold lead-ins are still brainres's most common deduction** (10/59).
+- **Stress prompts are still the weak category.** brainres scored lower on 2 of 5 and tied on 3, never higher. The deductions were bold lead-ins and walls of text in step lists. These runs use the card proxy, which doesn't include the plugin's emergency line.
+- **Bold lead-ins are still brainres's most common deduction** (14/74).
 
 ## Final result (B09b): 3 samples per prompt per condition
 

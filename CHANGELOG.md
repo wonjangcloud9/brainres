@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Suite chunk V1e (30 calls), now 73 valid pairs over 75 of 80 prompts. Per prompt, Brain Score rose 4.6 (CI +2.8 to +6.3), words fell 55 (−28%) and visible tokens fell 187 (−28%). Long sentences went from 10 to 2 and fragmented reasoning from 7 to 0. Stress prompts remain the weak category: brainres was lower on 2 of 5 and tied on 3.
+
 - Suite chunk V1d (30 calls), now 58 valid pairs over 60 of 80 prompts. Per prompt, Brain Score rose 4.9 (CI +2.9 to +7.0), words fell 56 (−30%) and visible tokens fell 192 (−29%). One more answer was excluded as tool markup. Stress prompts emerge as the weak category: brainres was lower on 2 of 4 and tied on 2, with bold lead-ins and walls of text in step lists.
 
 - Suite chunk V1c (30 calls), now 44 valid pairs over 45 of 80 prompts. Brain Score rose 4.2 per prompt (CI +1.8 to +6.6), the first significant result on the suite. Words fell 54 (−28%) and visible tokens fell 178 (−29%). Bold lead-ins fell from 13/44 to 8/45 and bold overuse from 12 to 4. New `evals/suite_next.py` picks the next unrun prompts and prints a running report.
