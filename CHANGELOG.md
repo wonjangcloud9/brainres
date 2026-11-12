@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Decision answers without the skill (B42, no new calls): we re-read 16 saved Sonnet answers to the 4 decision prompts. A recommendation in sentence 1 and "when the other option wins" both appear in every answer under baseline, card and plugin, a ceiling result, so no decision line was added. New B45 (2.5) checks on Haiku whether the rules that hit a ceiling on Sonnet (B37, B42, B43) describe default behaviour.
+
 - Agentic final-message check (B43, no new calls): we re-read the 12 B32 final messages. All 12 already state what changed, what wasn't done and how to verify, in both conditions. That is a ceiling result, and it is confounded: the harness disallows Bash, so every run had to say it couldn't run the tests. Plugin messages more often named a limit the tests don't cover (2/6 vs 0/6, n too small to count). No end-of-task line was added. New B44 (2.4) re-runs with only test commands allowed. The first commit, 76a3401, held only the judgments; the docs followed in the next commit.
 
 - Research round 6, a deeper pass on plain language (`research/catalog-round6.md`). Most of it was already covered, by #18 (personalization), HC-88 (plain language for experts) and #57 (nominalizations). #18 now carries verified effect sizes: retention d = 0.30, transfer d = 0.54, no reliable effect beyond 35 minutes. Two findings are new: PN-01, the politeness effect in tutoring (mixed evidence, added to learn.md as "correct collaboratively but plainly"), and PN-02, Trudeau 2012 (supports HC-88). Coverage is 656/656 (795 reviewed). New backlog: B43 (agentic final-message check, 4) and B42 (decision answers without the skill, 2.5). Both re-read existing outputs, so they cost no new calls.

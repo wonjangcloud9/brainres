@@ -126,6 +126,17 @@ We tested a third line on 4 stress prompts ([`prompts-stress.jsonl`](prompts-str
 
 **Trigger precision:** the line fires on the 4 test prompts and on the 2 stress prompts in the other sets. Among the other 52 prompts it also fired on 1 mild case ("깃에서 실수로 main에 커밋했어", via "실수로"). The line is harmless there. It costs about 28 tokens, an estimate from its length, and only on matching turns.
 
+## Decision answers without the skill (B42, no new calls)
+
+decide.md's core shape has two parts: recommend one option in sentence 1, and say when the other option wins (#78, JD-44). It reaches the model only when the skill loads. We re-read 16 saved Sonnet answers to the 4 decision prompts: REST vs GraphQL, list vs tuple in Korean, Vercel vs AWS in Korean, and MacBook Air vs Pro in Korean. Judgments are in [`results/2026-11-12-b42/judged.json`](results/2026-11-12-b42/judged.json).
+
+| | baseline | card | plugin |
+|---|---:|---:|---:|
+| Sentence 1 recommends one option, or gives the deciding rule | 4 / 4 | 8 / 8 | 4 / 4 |
+| Says when the other option is the better choice | 4 / 4 | 8 / 8 | 4 / 4 |
+
+**Another ceiling.** Default Sonnet already opens with "Use REST" or "Vercel을 추천해요" and adds a "when GraphQL would be worth it" section. brainres changes the length and formatting (measured above), not this shape, so no decision line was added. Together with B37 (code explanations) and B43 (agentic final messages), this means several reference rules describe what Sonnet already does. B45 checks whether that holds on Haiku before anything is pruned.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

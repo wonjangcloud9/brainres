@@ -1,0 +1,82 @@
+{
+  "2026-11-12/03-decision.baseline.md": {
+    "condition": "baseline",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12/12-ko-decision.baseline.md": {
+    "condition": "baseline",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-ko12/k03-decision.baseline.md": {
+    "condition": "baseline",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-ko12/k12-compare.baseline.md": {
+    "condition": "baseline",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12/03-decision.brainres.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12/12-ko-decision.brainres.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-ko12/k03-decision.brainres.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-ko12/k12-compare.brainres.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-c14/03-decision.brainres.1.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-c14/03-decision.brainres.2.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-c14/12-ko-decision.brainres.1.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-c14/12-ko-decision.brainres.2.md": {
+    "condition": "card",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-b39-general/03-decision.plugin.md": {
+    "condition": "plugin",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-b39-general/12-ko-decision.plugin.md": {
+    "condition": "plugin",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-plugin/03-decision.plugin.1.md": {
+    "condition": "plugin",
+    "rec_first": true,
+    "other_wins": true
+  },
+  "2026-11-12-plugin/12-ko-decision.plugin.1.md": {
+    "condition": "plugin",
+    "rec_first": true,
+    "other_wins": true
+  }
+}

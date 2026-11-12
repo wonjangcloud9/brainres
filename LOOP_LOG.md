@@ -67,3 +67,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 20:21 · B41 · emergency line kept: action-first 3/8 → 6/8, harm up top 4/8 → 6/8, DROP TABLE warning lost 2/2 → 0/2; 16 calls
 - 2026-11-12 20:40 · research round 6 · plain language deeper pass: mostly covered; #18 effect sizes verified; PN-01 (politeness, mixed) + PN-02 (Trudeau) added; B43/B42 scored (no-call re-reads)
 - 2026-11-12 20:57 · B43 · agentic final messages (no calls): changed/not-done/verify 12/12 both — ceiling, confounded by no-Bash; beyond-tests 0/6 vs 2/6; B44 scored 2.4
+- 2026-11-12 21:18 · B42 · decision answers (no calls): rec-first + other-wins 16/16 across baseline/card/plugin — ceiling; B45 Haiku ceiling audit scored 2.5
