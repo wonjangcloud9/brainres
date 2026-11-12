@@ -9,6 +9,8 @@ English · [한국어](README.ko.md)
 
 [![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-659%2F659-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-801-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
+**Measured on 80 prompts** (16 answer types, 32 in Korean, Sonnet): answers came out 29% shorter, Brain Score rose 4.6 points (95% CI +3.2 to +6.1), and brainres led in 14 of 16 types. The cost: blinded key-fact checks found 1.8 pp less detail. [How we measured](evals/README.md).
+
 ---
 
 ## Same question, two answers

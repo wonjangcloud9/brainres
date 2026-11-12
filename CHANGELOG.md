@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Growth (G1): both READMEs now open with a "Measured on 80 prompts" paragraph under the badges. It reports answers 29% shorter, Brain Score +4.6 (CI +3.2 to +6.1) and a lead in 14 of 16 types, and it states the cost (1.8 pp less detail) with a link to the method. In the social image, the hand-written example (56 → 100) and the coverage count give way to −29% and +4.6, and the tagline now reads "Not just shorter". README scores are unchanged (100 / 96).
+
 - The backlog was empty, so new items came from the measurements.
   - **No output problems are left.** The formal-doc and refusal losses are one-off: 3 prompts, each with different checks. All 4 Yes/No openers on prompts not tagged yes/no were legitimate (two refusals, and two questions that contain a yes/no part).
   - **G1 (score 6), growth:** lead the README and social image with the 80-prompt result. No growth item had run in a long time, though LOOP.md asks for one every 3–4 iterations.

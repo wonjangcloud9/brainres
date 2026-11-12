@@ -9,6 +9,8 @@
 
 [![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-659%2F659-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-801-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
+**질문 80개로 측정했습니다** (답변 유형 16가지, 한국어 32개, Sonnet). 답은 29% 짧아졌고, Brain Score는 4.6점 올랐습니다(95% 신뢰구간 +3.2 ~ +6.1). 16개 유형 중 14개에서 brainres가 앞섰습니다. 대신 필수 사실을 블라인드로 채점하면 세부 내용이 1.8%p 줄었습니다. [측정 방법](evals/README.md)
+
 ---
 
 ## 같은 질문, 두 가지 답

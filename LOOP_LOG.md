@@ -97,3 +97,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 05:58 · K2 · Korean bold limit scaled (≈4.7/100 eojeol); re-score: KO brainres bold 12/32 → 0/32, baseline 21 → 7; suite Δ +4.6; Haiku reminder gap now 3.7 (narrow pass); B50 turn-1 claim dropped
 - 2026-11-13 06:17 · K3 · thinking cost (no calls): +99/prompt (CI +59 to +139), card triggers thinking 32/78 vs 4/78; total output still −91 (CI −135 to −48); no reliable per-type net cost → no change
 - 2026-11-13 06:38 · items from measurements · no output issues left (formal-doc/refusal losses one-off; 4 Yes/No openers all legitimate); G1 growth (6), L1 latency (2.5)
+- 2026-11-13 06:57 · G1 · growth: README first screen leads with the 80-prompt result (incl. the detail cost); social image stats −29% / +4.6; tagline 'Not just shorter'
