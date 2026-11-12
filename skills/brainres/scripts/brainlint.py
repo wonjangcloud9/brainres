@@ -10,6 +10,7 @@ Usage:
   cat answer.md | python3 scripts/brainlint.py -
   python3 scripts/brainlint.py --badge README.md   # markdown badge for your README
   python3 scripts/brainlint.py --compare original.md rewritten.md   # did a rewrite drop payload?
+  python3 scripts/brainlint.py --question "Is X safe?" answer.md   # adds question-aware checks
 """
 from __future__ import annotations
 
@@ -79,6 +80,59 @@ BOILERPLATE = re.compile(
 INVENTED_CONF = re.compile(
     r"(?<![\w.])~?\d{1,3}\s?% (sure|confident|certain|likely)\b(?! interval)|\(~?\d{1,3}\s?% (확신|확률로 확신)\)|"
     r"\b(i'?m|i am) ~?\d{1,3}\s?% (sure|confident|certain)\b|~?\d{1,3}\s?% 정도 확신", re.I)
+# --- question-aware checks (only when the question is given) ---
+YESNO_EN = re.compile(r"^\s*(is|are|was|were|do|does|did|can|could|should|will|would|has|have|had|must|may|isn't|aren't|doesn't|don't|can't)\b", re.I)
+WH_KO = re.compile(r"(뭐|뭘|무엇|무슨|왜|어떻게|언제|어디|누구|몇|어느|어떤|얼마)")
+CHOICE_EN = re.compile(r"\b(or|vs\.?|versus|which)\b", re.I)
+CHOICE_KO = re.compile(r"(중에|중에서|아니면|vs|어느 쪽|뭐가 (나아|좋아|낫)|뭘 써|뭐 써|뭐를 써)")
+YES_NO_START = re.compile(r"^\W*(yes|no|yeah|yep|nope|not|네|예|아니|아뇨|맞아|맞습니다|맞아요|그래요|안 돼|안돼|돼요|됩니다|가능해요|불가능)", re.I)
+RECOMMEND = re.compile(r"\b(use|go with|pick|choose|start with|stick with|i'?d|recommend|prefer|switch to)\b|쓰세요|추천|시작하세요|고르세요|쓰면 돼요|맞아요|좋아요|나아요|사용하세요", re.I)
+KO_PARTICLE = re.compile(r"(이랑|랑|하고|와|과|중에서|중에|을|를|이|가|은|는|에서|에|으로|로|도)$")
+
+
+def question_kind(q: str) -> str | None:
+    q = q.strip()
+    if HANGUL.search(q):
+        if CHOICE_KO.search(q):
+            return "choice"
+        if q.endswith("?") and not WH_KO.search(q):
+            return "yesno"
+        return None
+    if CHOICE_EN.search(q) and "?" in q:
+        return "choice"
+    if YESNO_EN.match(q) or re.search(r",?\s*(right|correct|isn't it|don't they|true)\?\s*$", q, re.I):
+        return "yesno"
+    return None
+
+
+def option_tokens(q: str) -> set[str]:
+    toks = {t for t in re.findall(r"[A-Za-z][\w.+#-]+", q) if t[0].isupper() or any(c.isdigit() for c in t)}
+    toks |= {m for pair in re.findall(r"(\w+)\s*,?\s+(?:or|vs\.?)\s+(\w+)", q, re.I) for m in pair}
+    for w in re.findall(r"[가-힣]{2,}", q):
+        w = KO_PARTICLE.sub("", w)
+        if len(w) >= 2 and not WH_KO.search(w):
+            toks.add(w)
+    return {t for t in toks if t.lower() not in {"which", "should", "what", "for", "the", "use", "i"}}
+
+
+def question_findings(text: str, q: str) -> list:
+    kind = question_kind(q)
+    if not kind:
+        return []
+    first = next((l for l in strip_code(text).splitlines() if l.strip()), "")
+    first_sentence = re.split(r"(?<=[.!?。])\s+", first.strip())[0]
+    out = []
+    if kind == "yesno" and not YES_NO_START.search(first_sentence):
+        out.append(("yesno_not_first", "Type-conforming answers (EM-102, PL-57, HC-55)",
+                    "yes/no question: make 'Yes' or 'No' the first word", 6))
+    if kind == "choice":
+        opts = option_tokens(q)
+        if not (RECOMMEND.search(first_sentence) or any(o.lower() in first_sentence.lower() for o in opts)):
+            out.append(("no_recommendation", "Defaults / one recommendation (#78, JD-44, AR-04)",
+                        "choice question, but sentence 1 names no option and recommends nothing", 8))
+    return out
+
+
 TERM_SWAPS = [("folder", "directory"), ("routine", "function"), ("app", "application"),
               ("폴더", "디렉터리"), ("폴더", "디렉토리"), ("앱", "애플리케이션")]
 BOLD_LEAD = re.compile(r"^\s*([-*+]|\d+[.)])\s+(\*\*|__)")
@@ -136,7 +190,7 @@ def sentences_of(prose: str) -> list[str]:
 TABLE_ROW = re.compile(r"^\s*\|")
 
 
-def lint(text: str) -> Report:
+def lint(text: str, question: str | None = None) -> Report:
     # Code blocks and table rows are structure, not prose: they aren't paragraphs or sentences.
     prose = "\n".join(l for l in strip_code(text).splitlines() if not TABLE_ROW.match(l))
     lines = prose.splitlines()
@@ -274,6 +328,10 @@ def lint(text: str) -> Report:
     if dn:
         add("double_negation", "Negation processing cost", f"{dn} double-negative construction(s)", min(4 * dn, 8))
 
+    if question:
+        for f in question_findings(text, question):
+            add(*f)
+
     score = max(0, 100 - sum(f.penalty for f in findings))
     return Report(score, len(words), len(sents), round(avg, 1), lang, findings)
 
@@ -327,6 +385,7 @@ def main() -> int:
     ap.add_argument("file", help="markdown/text file, or - for stdin")
     ap.add_argument("rewritten", nargs="?", help="with --compare: the rewritten file")
     ap.add_argument("--compare", action="store_true", help="check that a rewrite kept every number, code span, URL and negation")
+    ap.add_argument("--question", help="the question being answered: enables yes/no-first and recommendation checks")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--badge", action="store_true", help="print a shields.io markdown badge for the score")
     a = ap.parse_args()
@@ -339,7 +398,7 @@ def main() -> int:
         for p in problems:
             print(f"  - {p}")
         return 1 if problems else 0
-    r = lint(text)
+    r = lint(text, a.question)
     if a.json:
         print(json.dumps(asdict(r), ensure_ascii=False, indent=2))
         return 0

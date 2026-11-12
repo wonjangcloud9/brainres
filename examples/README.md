@@ -11,4 +11,4 @@ Each folder holds a `question.md`, a typical verbose `before.md`, and a brainres
 | 05 | Risk numbers | 50 tests at 2% flakiness each | 66 | 100 | cumulative probability, natural frequencies |
 | 06 | Misconception | Does incognito hide browsing from my ISP? | 71 | 100 | "No" first, refutation, who-sees-what table |
 
-**Known blind spot:** brainlint can't see the question, so it can't tell that a "before" answer never recommends anything. Example 04 still scores 78 for that reason. That is why brainlint is a heuristic, not a comprehension test.
+**Blind spot, now closable:** without the question, brainlint can't tell that a "before" answer never recommends anything, so example 04 scores 78. Run it with `--question` and `no_recommendation` fires: 04 drops to 70 and 02 to 33. brainlint is still a heuristic, not a comprehension test.

@@ -153,6 +153,8 @@ Brain Score: 50/100 (D)  ·  272 words · 18 sentences · lang=en
 
 Each check maps to a named finding. It's a heuristic, not a comprehension test. See *Honest limits* below.
 
+**Give it the question** with `--question "Is X safe?"` to add two checks. A yes/no question must start with Yes or No, and a choice question must recommend an option in sentence 1.
+
 **Try it in your browser** with the [Brain Score playground](playground/). Paste any answer or doc and get its score. It runs this exact `brainlint.py` through Pyodide, and nothing is uploaded. Once the owner enables Pages it lives at `https://wonjangcloud9.github.io/brainres/playground/`; until then, use a static preview such as htmlpreview.
 
 **Score your own README** and show it off:

@@ -184,6 +184,39 @@ class Checks(unittest.TestCase):
         self.assertEqual(checks(text), set())
 
 
+class QuestionAware(unittest.TestCase):
+    def kinds(self):
+        return brainlint.question_kind
+
+    def test_question_kinds(self):
+        k = brainlint.question_kind
+        self.assertEqual(k("Is 0.1 + 0.2 === 0.3 true in JavaScript?"), "yesno")
+        self.assertEqual(k("Incognito mode hides my browsing from my ISP, right?"), "yesno")
+        self.assertEqual(k("Should I use REST or GraphQL?"), "choice")
+        self.assertEqual(k("파이썬에서 리스트랑 튜플 중에 뭘 써야 해?"), "choice")
+        self.assertEqual(k("이 설정 그대로 배포해도 돼?"), "yesno")
+        self.assertIsNone(k("What is a race condition?"))
+        self.assertIsNone(k("도커랑 가상머신 차이가 뭐야?"))
+
+    def test_yesno_first_word(self):
+        q = "Is 0.1 + 0.2 === 0.3 true in JavaScript?"
+        self.assertIn("yesno_not_first", {f.check for f in brainlint.lint("JavaScript uses floats. So no.", q).findings})
+        self.assertNotIn("yesno_not_first", {f.check for f in brainlint.lint("No, it is false.", q).findings})
+        self.assertNotIn("yesno_not_first", {f.check for f in brainlint.lint("네, 배포해도 돼요.", "이 설정 그대로 배포해도 돼?").findings})
+
+    def test_no_recommendation_closes_the_blind_spot(self):
+        for ex, flagged in (("04-comparison-db", True), ("02-ko-cache", True)):
+            q = (ROOT / f"examples/{ex}/question.md").read_text().strip()
+            before = {f.check for f in brainlint.lint((ROOT / f"examples/{ex}/before.md").read_text(), q).findings}
+            after = {f.check for f in brainlint.lint((ROOT / f"examples/{ex}/after.md").read_text(), q).findings}
+            self.assertEqual("no_recommendation" in before, flagged, ex)
+            self.assertNotIn("no_recommendation", after, ex)
+
+    def test_without_question_scores_are_unchanged(self):
+        text = (ROOT / "examples/04-comparison-db/before.md").read_text()
+        self.assertEqual(brainlint.lint(text).score, 78)
+
+
 class RewriteSafety(unittest.TestCase):
     def test_keeps_everything(self):
         orig = "Set `timeout=30` before 9 am. Do not restart the DB. See https://example.com/docs."

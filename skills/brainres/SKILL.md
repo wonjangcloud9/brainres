@@ -121,7 +121,7 @@ The default mode is always on. Switch when the user names a mode.
 | `scan` | Answer plus ≤4 bullets, no explanation unless asked. For experts and skimmers. |
 | `learn` | One question before explaining, a worked example, then 1–2 check questions. Only when the user wants to learn. |
 | `rewrite` | Inventory the original's claims and payload, rewrite it, then mark every item kept, shifted or dropped ([rewrite.md](references/rewrite.md)). |
-| `score` | Run `python3 ${CLAUDE_SKILL_DIR}/scripts/brainlint.py <file>` (or `-` for stdin) and explain the findings. |
+| `score` | Run `python3 ${CLAUDE_SKILL_DIR}/scripts/brainlint.py [--question "…"] <file>` (or `-` for stdin) and explain the findings. |
 | `off` | Stop applying brainres until asked again. |
 
 ## 5-second self-check before sending
