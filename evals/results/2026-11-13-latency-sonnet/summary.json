@@ -1,0 +1,246 @@
+{
+  "model": "sonnet",
+  "card_sha": "48809c2654f3",
+  "rows": [
+    {
+      "id": "s111-novice",
+      "condition": "brainres",
+      "first_text_s": 2.38,
+      "first_any_s": 1.9,
+      "total_s": 5.37,
+      "thought": true
+    },
+    {
+      "id": "s031-decision",
+      "condition": "brainres",
+      "first_text_s": 2.15,
+      "first_any_s": 2.15,
+      "total_s": 6.53,
+      "thought": false
+    },
+    {
+      "id": "s081-stress",
+      "condition": "brainres",
+      "first_text_s": 1.97,
+      "first_any_s": 1.97,
+      "total_s": 7.22,
+      "thought": false
+    },
+    {
+      "id": "s041-yesno",
+      "condition": "brainres",
+      "first_text_s": 3.74,
+      "first_any_s": 2.02,
+      "total_s": 6.93,
+      "thought": true
+    },
+    {
+      "id": "s051-numbers",
+      "condition": "brainres",
+      "first_text_s": 1.78,
+      "first_any_s": 1.78,
+      "total_s": 3.48,
+      "thought": false
+    },
+    {
+      "id": "s151-multi",
+      "condition": "brainres",
+      "first_text_s": 7.48,
+      "first_any_s": 3.17,
+      "total_s": 13.41,
+      "thought": true
+    },
+    {
+      "id": "s151-multi",
+      "condition": "baseline",
+      "first_text_s": 1.86,
+      "first_any_s": 1.86,
+      "total_s": 12.46,
+      "thought": false
+    },
+    {
+      "id": "s011-debug",
+      "condition": "baseline",
+      "first_text_s": 2.0,
+      "first_any_s": 1.59,
+      "total_s": 3.84,
+      "thought": true
+    },
+    {
+      "id": "s051-numbers",
+      "condition": "baseline",
+      "first_text_s": 1.8,
+      "first_any_s": 1.8,
+      "total_s": 3.19,
+      "thought": false
+    },
+    {
+      "id": "s071-myth",
+      "condition": "brainres",
+      "first_text_s": 1.7,
+      "first_any_s": 1.7,
+      "total_s": 5.83,
+      "thought": false
+    },
+    {
+      "id": "s141-write",
+      "condition": "brainres",
+      "first_text_s": 2.71,
+      "first_any_s": 2.71,
+      "total_s": 4.84,
+      "thought": false
+    },
+    {
+      "id": "s141-write",
+      "condition": "baseline",
+      "first_text_s": 1.71,
+      "first_any_s": 1.71,
+      "total_s": 3.84,
+      "thought": false
+    },
+    {
+      "id": "s121-compare",
+      "condition": "baseline",
+      "first_text_s": 1.56,
+      "first_any_s": 1.56,
+      "total_s": 5.94,
+      "thought": false
+    },
+    {
+      "id": "s131-codex",
+      "condition": "baseline",
+      "first_text_s": 1.7,
+      "first_any_s": 1.7,
+      "total_s": 4.27,
+      "thought": false
+    },
+    {
+      "id": "s121-compare",
+      "condition": "brainres",
+      "first_text_s": 1.56,
+      "first_any_s": 1.56,
+      "total_s": 4.97,
+      "thought": false
+    },
+    {
+      "id": "s081-stress",
+      "condition": "baseline",
+      "first_text_s": 1.79,
+      "first_any_s": 1.79,
+      "total_s": 8.93,
+      "thought": false
+    },
+    {
+      "id": "s101-doc",
+      "condition": "brainres",
+      "first_text_s": 1.6,
+      "first_any_s": 1.6,
+      "total_s": 4.62,
+      "thought": false
+    },
+    {
+      "id": "s041-yesno",
+      "condition": "baseline",
+      "first_text_s": 1.63,
+      "first_any_s": 1.63,
+      "total_s": 5.3,
+      "thought": false
+    },
+    {
+      "id": "s131-codex",
+      "condition": "brainres",
+      "first_text_s": 1.94,
+      "first_any_s": 1.94,
+      "total_s": 4.9,
+      "thought": false
+    },
+    {
+      "id": "s101-doc",
+      "condition": "baseline",
+      "first_text_s": 1.66,
+      "first_any_s": 1.66,
+      "total_s": 4.26,
+      "thought": false
+    },
+    {
+      "id": "s091-refusal",
+      "condition": "baseline",
+      "first_text_s": 4.16,
+      "first_any_s": 4.16,
+      "total_s": 9.94,
+      "thought": false
+    },
+    {
+      "id": "s021-concept",
+      "condition": "brainres",
+      "first_text_s": 2.49,
+      "first_any_s": 1.72,
+      "total_s": 5.94,
+      "thought": true
+    },
+    {
+      "id": "s061-procedure",
+      "condition": "brainres",
+      "first_text_s": 4.72,
+      "first_any_s": 1.74,
+      "total_s": 8.8,
+      "thought": true
+    },
+    {
+      "id": "s091-refusal",
+      "condition": "brainres",
+      "first_text_s": 3.64,
+      "first_any_s": 3.64,
+      "total_s": 8.69,
+      "thought": false
+    },
+    {
+      "id": "s021-concept",
+      "condition": "baseline",
+      "first_text_s": 1.74,
+      "first_any_s": 1.74,
+      "total_s": 7.59,
+      "thought": false
+    },
+    {
+      "id": "s011-debug",
+      "condition": "brainres",
+      "first_text_s": 3.05,
+      "first_any_s": 2.44,
+      "total_s": 5.17,
+      "thought": true
+    },
+    {
+      "id": "s111-novice",
+      "condition": "baseline",
+      "first_text_s": 1.65,
+      "first_any_s": 1.65,
+      "total_s": 5.94,
+      "thought": false
+    },
+    {
+      "id": "s031-decision",
+      "condition": "baseline",
+      "first_text_s": 1.7,
+      "first_any_s": 1.7,
+      "total_s": 6.14,
+      "thought": false
+    },
+    {
+      "id": "s071-myth",
+      "condition": "baseline",
+      "first_text_s": 1.74,
+      "first_any_s": 1.74,
+      "total_s": 6.18,
+      "thought": false
+    },
+    {
+      "id": "s061-procedure",
+      "condition": "baseline",
+      "first_text_s": 1.57,
+      "first_any_s": 1.57,
+      "total_s": 8.12,
+      "thought": false
+    }
+  ]
+}
