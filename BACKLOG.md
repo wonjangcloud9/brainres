@@ -6,6 +6,9 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| M1 | **Suite on Haiku.** The 80-prompt headline is Sonnet-only; the README's "Across models" lines (Haiku and Opus −35%) come from the old 12-prompt set. Run the V1a 15-prompt subset on Haiku, baseline vs card proxy, 1 sample (30 calls). Single-turn is turn 1, where Haiku has no auto-reminder (B50), so the card proxy is the real condition. Report words, Brain Score and per-type direction against Sonnet's V1a | T | 4 | 1 | 0.8 | 1 | **3.2** | todo |
+| M3 | Coverage on Haiku: blind-mark M1's 15 pairs against the frozen suite key facts (5 calls). Does Haiku lose more detail than Sonnet (−1.8 pp)? Blocked on M1 | T | 4 | 1 | 0.5 | 0.5 | 4 | blocked on M1 |
+| M2 | Suite on Opus: the same V1a subset on Opus (30 calls, costlier). Re-check the 12-prompt finding that Opus's Brain Score gain isn't significant and that its thinking rises about 2.6× | T | 3 | 1 | 0.8 | 1 | 2.4 | todo |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
 | B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |

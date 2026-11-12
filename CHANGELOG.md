@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- The backlog was empty, so new items came from a gap in the measurements: the 80-prompt suite has run only on Sonnet, and the README's cross-model lines still come from the old 12-prompt set.
+  - **M1 (score 3.2):** run the suite subset on Haiku.
+  - **M3 (score 4):** check Haiku's key-fact coverage. It is blocked until M1 is done.
+  - **M2 (score 2.4):** run the suite subset on Opus.
+
 - Latency (L1, 30 calls), measured with the new `evals/latency.py`, which streams answers and times the first text delta. With the card, the first visible text arrives about 0.45 s later (paired median; baseline median 1.71 s, card 2.38 s), and a median 1.6 s later (5.6 s at most, on one multi-part prompt) where the card triggers thinking. The answer finishes at about the same time (5.94 s vs 5.83 s) because it is shorter. No change was made.
 
 - Growth (G1): both READMEs now open with a "Measured on 80 prompts" paragraph under the badges. It reports answers 29% shorter, Brain Score +4.6 (CI +3.2 to +6.1) and a lead in 14 of 16 types, and it states the cost (1.8 pp less detail) with a link to the method. In the social image, the hand-written example (56 → 100) and the coverage count give way to −29% and +4.6, and the tagline now reads "Not just shorter". README scores are unchanged (100 / 96).
