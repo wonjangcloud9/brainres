@@ -102,3 +102,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 07:37 · items from measurements · suite is Sonnet-only; README cross-model lines from the 12-prompt set → M1 Haiku suite subset (3.2), M3 Haiku coverage (4, blocked), M2 Opus subset (2.4)
 - 2026-11-13 08:02 · M1 · Haiku suite subset (30 calls): 14 pairs — words −31% (CI excl. 0), Brain Score +3.0 (n.s.); README cross-model lines updated; M3 unblocked
 - 2026-11-13 08:28 · direction · owner: distribution & usability first; loop every 30 min; D-series added (D1 80, D3 25.6, D4 20, D5a 16, D7 8, D9 6, D10 5, D11 3, D12 3; D2/D5/D6/D8 owner)
+- 2026-11-13 08:29 · D1 · repo About text refreshed (801 findings, 80-prompt result) + topics korean, plain-language (owner-approved)
