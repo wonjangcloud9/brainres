@@ -50,8 +50,10 @@ def pairs() -> dict:
         d = json.loads(p.read_text())
         if d.get("prompt_set") != "suite.jsonl":
             continue
+        if d.get("samples", 1) != 1:  # the V1 suite runs are single-sample; other suite runs (F3) are read separately
+            continue
         for r in d["rows"]:
-            if r.get("tool_markup"):
+            if r.get("tool_markup") or r["condition"] not in ("baseline", "brainres"):
                 continue
             text = (p.parent / f"{r['id']}.{r['condition']}.md").read_text().split("-->", 1)[1].strip()
             found.setdefault(r["id"], {})[r["condition"]] = text
@@ -114,6 +116,51 @@ def phase_mark(limit: int | None, marks_name: str = "marks.json", subset: int | 
                 marks[i] = {"brainres": bres, "baseline": base, "a_is_brainres": order[i]}
     marks_path.write_text(json.dumps(marks, ensure_ascii=False, indent=2))
     print(f"marked {len(marks)}/{len(P)} prompts")
+
+
+def treatment_pairs(folder: str, cond: str) -> dict:
+    """F3: answers of one condition from one results folder (any sample), each paired with the suite baseline."""
+    base = pairs()
+    out = {}
+    for f in sorted((ROOT / "evals/results" / folder).glob(f"*.{cond}*.md")):
+        stem = f.name[:-3]
+        iid, _, k = stem.partition(f".{cond}")
+        if iid in base:
+            out[f"{iid}#{k.strip('.') or '1'}"] = {"baseline": base[iid]["baseline"], "brainres": f.read_text().split("-->", 1)[1].strip()}
+    return out
+
+
+def phase_mark_treatment(folder: str, cond: str, marks_name: str, limit: int | None) -> None:
+    S = suite()
+    keys = json.loads((OUT / "checklists.json").read_text())
+    P = treatment_pairs(folder, cond)
+    marks_path = OUT / marks_name
+    marks = json.loads(marks_path.read_text()) if marks_path.exists() else {}
+    rng = random.Random(3)
+    todo = [k for k in sorted(P) if k not in marks]
+    order = {k: rng.random() < 0.5 for k in sorted(P)}
+    batches = [todo[i:i + 3] for i in range(0, len(todo), 3)][: limit or None]
+    def run(batch):
+        parts = []
+        for k in batch:
+            iid = k.split("#")[0]
+            a, b = (P[k]["brainres"], P[k]["baseline"]) if order[k] else (P[k]["baseline"], P[k]["brainres"])
+            facts = "\n".join(f"{n + 1}. {x}" for n, x in enumerate(keys[iid]))
+            parts.append(f"=== [{k}]\nQUESTION:\n{S[iid]['q']}\n\nKEY FACTS:\n{facts}\n\nANSWER A:\n{a}\n\nANSWER B:\n{b}")
+        prompt = ("Grade information coverage. For each item, mark every key fact for Answer A and Answer B: 1 = clearly "
+                  "present and correct, 0.5 = partly present or vague, 0 = missing or wrong. Judge content only, not "
+                  "length or style. Reply with only a JSON object: {\"<id>\": {\"A\": [scores...], \"B\": [scores...]}}.\n\n"
+                  + "\n\n".join(parts))
+        return batch, first_json(ask(prompt))
+    with cf.ThreadPoolExecutor(6) as ex:
+        for batch, res in ex.map(run, batches):
+            for k in batch:
+                if k in res:
+                    A, B = res[k]["A"], res[k]["B"]
+                    t, b = (A, B) if order[k] else (B, A)
+                    marks[k] = {"brainres": t, "baseline": b, "a_is_brainres": order[k]}
+    marks_path.write_text(json.dumps(marks, ensure_ascii=False, indent=2))
+    print(f"marked {len(marks)}/{len(P)} answers")
 
 
 def phase_agree(other: str) -> None:
@@ -190,9 +237,13 @@ def main() -> int:
     ap.add_argument("--judge", default="sonnet")
     ap.add_argument("--marks", default="marks.json", help="marks file name (F4: marks-opus.json)")
     ap.add_argument("--subset", type=int, help="mark a fixed random subset of N prompts")
+    ap.add_argument("--treatment-dir", help="F3: mark this results folder's answers (condition --treatment) vs the suite baseline")
+    ap.add_argument("--treatment", default="plugin")
     a = ap.parse_args()
     global JUDGE
     JUDGE = a.judge
+    if a.phase == "mark" and a.treatment_dir:
+        return phase_mark_treatment(a.treatment_dir, a.treatment, a.marks, a.limit)
     {"checklists": phase_checklists, "mark": lambda: phase_mark(a.limit, a.marks, a.subset), "report": phase_report,
      "agree": lambda: phase_agree(a.marks)}[a.phase]()
     return 0

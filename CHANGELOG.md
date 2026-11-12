@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Targeted fixes for concept and stress answers (F3, 27 calls, using the real plugin and the frozen key facts with blind marking):
+  - **Dropped:** a candidate concept line did nothing (coverage 90% → 89%).
+  - **Found a cost of the B41 emergency line:** stress answers covered 77% of key facts with it, against 92% for baseline. It cuts the steps after the first action, such as telling stakeholders, the post-mortem and "avoid risky repairs". F5 (3) rewrites the line.
+  - `coverage_judge.py` can now mark any results folder against the suite baseline (`--treatment-dir`). F2 is superseded.
+
 - **The bold lead-in check is narrowed (F1).** Lorch, Lorch & Klusewitz 1995 found heavy cueing no better than none, not worse, and NN/g advises front-loading bullets with scan words. brainlint now flags only sentence-length bold leads (more than 5 words on average), and the penalty drops from 6 to 4. Short bold labels are no longer penalised, and #27 is updated.
   - **Re-score, no calls:** the checks changed on 29 suite answers. The suite Brain Score gain went from +4.7 to +5.1 (CI +3.4 to +6.8). Stress went from −3.2 to −0.8, and what remains there is walls of text.
   - **Example scores moved:** 01 from 50 to 56, 02 from 41 to 39 (the bold-overuse penalty the old check had masked now applies), and 03 from 50 to 48.

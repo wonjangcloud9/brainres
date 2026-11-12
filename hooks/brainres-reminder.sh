@@ -24,6 +24,7 @@ if [ "${BRAINRES_SITUATIONS:-on}" != "off" ]; then
   if printf '%s' "$prompt" | grep -qiE "urgent|asap|emergency|panick?ing|outage|(site|server|prod|production|app|db|database) (is|went|has been) down|by accident|accidentally|drop table|lost (all|everything|my work)|급해|급합니다|망했|큰일|날아갔|실수로|다운됐|장애"; then
     extra="$extra Emergency: the single next action first; if the habitual move is harmful, say so up top; ≤5 steps, then why."
   fi
+  # A concept line ("one sentence on where it's used + one example") was tested in F3 and dropped: coverage 90% → 89%.
   # A math/trace line was tested too (B40) and dropped: sentence 1 was already right in 6/6 without it.
 fi
 [ -z "$extra" ] && exit 0
