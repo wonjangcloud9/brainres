@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- Learner eval (B38): 4 broken-code prompts from self-described learners, run under baseline, card and plugin with 2 samples each, 24 calls, judged by hand.
+  - All three conditions fixed the user's own line in 6 of 8 answers.
+  - brainres answers ended with a concrete run-it check in 7/8 (card) and 8/8 (plugin), against 0/8 for the baseline.
+  - No condition asked a real self-test question.
+  - **The skill was invoked in 0 of 8 plugin runs,** so the learner rules in `learn.md` never apply in practice. B39 adds learner triggers to the skill description.
+  - **New failure (C18):** a card answer stated the wrong program output in sentence 1 and corrected it later.
+
 - Code-explanation eval (B37): 6 prompts × 2 samples × 2 conditions on Sonnet, 24 calls, judged by hand.
   - Sentence 1 was a purpose summary in 8/8 answers in both conditions, a ceiling result, so the card needs no change. brainres explanations were 18% shorter.
   - Assumptions stated before the code: brainres 2/2, baseline 0/2. That is too small to count as evidence.

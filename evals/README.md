@@ -64,6 +64,24 @@ The assumptions difference is in the expected direction. For example: "This Pyth
 
 **Harness limit found.** The Korean "write me a script" prompt (x06) made the model try to create a file in all 4 runs. These runs use `--tools ""`, so no file could actually be written. The baseline emitted raw tool-call markup, brainres said "만들었어요" (I made it) about a file that was never written, and one call failed outright. These are artifacts of a tool-less run of Claude Code, which still believes it can act, so x06 is excluded. `run.py` now records a failed call in `summary.json` (`failed`) instead of crashing and losing the whole run.
 
+## Learners with broken code (B38)
+
+We used 4 prompts ([`prompts-learn.jsonl`](prompts-learn.jsonl)) in which a self-described learner shares broken code: Python, JS, Python in Korean and C in Korean. Each ran in 3 conditions × 2 samples on Sonnet (24 calls), and every answer was judged by hand ([`results/2026-11-12-learn/judged.json`](results/2026-11-12-learn/judged.json)).
+
+| | baseline | card (proxy) | plugin |
+|---|---:|---:|---:|
+| Primary fix is a change to *their* line (DV-03) | 6 / 8 | 6 / 8 | 6 / 8 |
+| Ends with a specific "run / try this" check | 0 / 8 | 7 / 8 | 8 / 8 |
+| Ends with a predict-first self-test question (DV-04) | 0 / 8 | 0 / 8 | 0 / 8 |
+| "Makes sense?" | 0 / 8 | 0 / 8 | 0 / 8 |
+| Mean words | 104 | 105 | 107 |
+| **The brainres skill was invoked** | n/a | n/a | **0 / 8** |
+
+- **Their own code:** every condition fixed the user's own line for 3 of 4 prompts. The exception was removing items while looping, where all 6 answers led with a list-comprehension rewrite instead of the one-character fix, `for n in nums[:]:`.
+- **Endings:** brainres answers end with a concrete check ("change `var` to `let` and run it"), which the baseline never did. No condition asked a real self-test question.
+- **The skill never loaded,** so the learner rules in `learn.md` (DV-03, DV-04) never reached the model. Earlier, the skill auto-invoked in 1 of 24 answers. Rules that live only in references apply only when someone asks for the skill. B39 tests adding learner triggers to the skill description.
+- **One failure (C18):** a brainres answer opened with the wrong program output (`[1, 5, 2, 4]`), traced the loop, and corrected itself (`[3, 2, 4]`). This is the same premature-value pattern as C17, now for *traced output* rather than arithmetic. It happened in 1 of 8 card answers, 0 of 8 baseline answers and 0 of 8 plugin answers.
+
 ## Agentic coding: does the plugin change outcomes? (B32)
 
 [`agentic.py`](agentic.py) copies each of 6 small tasks ([`agentic/`](agentic/): pagination off-by-one, slugify, input validation, half-up rounding, LRU cache, Korean word count) into a temp dir. Claude Code, on Sonnet, gets "Make the tests pass. Do not change the test files", with tools Read/Edit/Write/Glob/Grep (no Bash) and `acceptEdits`. It runs with and without `--plugin-dir`, and the harness runs the tests itself. Results are in `results/2026-11-12-agentic-sonnet/`.

@@ -1,0 +1,170 @@
+{
+  "l01-learner-py.baseline.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l01-learner-py.baseline.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l01-learner-py.brainres.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l01-learner-py.brainres.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l01-learner-py.plugin.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l01-learner-py.plugin.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l02-learner-js.baseline.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l02-learner-js.baseline.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l02-learner-js.brainres.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l02-learner-js.brainres.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l02-learner-js.plugin.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l02-learner-js.plugin.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l03-learner-py-ko.baseline.1": {
+    "fix_on_their_code": false,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l03-learner-py-ko.baseline.2": {
+    "fix_on_their_code": false,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l03-learner-py-ko.brainres.1": {
+    "fix_on_their_code": false,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": true
+  },
+  "l03-learner-py-ko.brainres.2": {
+    "fix_on_their_code": false,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l03-learner-py-ko.plugin.1": {
+    "fix_on_their_code": false,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l03-learner-py-ko.plugin.2": {
+    "fix_on_their_code": false,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l04-learner-c-ko.baseline.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l04-learner-c-ko.baseline.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l04-learner-c-ko.brainres.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": false,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l04-learner-c-ko.brainres.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l04-learner-c-ko.plugin.1": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  },
+  "l04-learner-c-ko.plugin.2": {
+    "fix_on_their_code": true,
+    "ends_with_check": true,
+    "self_test": false,
+    "makes_sense": false,
+    "wrong_value_then_corrected": false
+  }
+}
