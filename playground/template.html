@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brain Score Playground</title>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<style>
+  :root { --bg:#fbfaf8; --fg:#1d1c1a; --muted:#6b6862; --card:#fff; --line:#e4e1db; --accent:#2f6f4f; --a:#2ea44f; --b:#97ca00; --c:#dfb317; --d:#fe7d37; --f:#e05d44; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#14151a; --fg:#e9e7e3; --muted:#a19d96; --card:#1c1e25; --line:#2c2f39; --accent:#7ee2a8; } }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 -apple-system,"Segoe UI","Apple SD Gothic Neo",sans-serif }
+  main { max-width:860px; margin:0 auto; padding:24px 16px 64px }
+  h1 { margin:0 0 4px; font-size:28px } .muted { color:var(--muted) }
+  textarea { width:100%; min-height:220px; font:14px/1.5 ui-monospace,monospace; background:var(--card); color:var(--fg); border:1px solid var(--line); border-radius:10px; padding:12px }
+  button { font:inherit; padding:9px 14px; border-radius:8px; border:1px solid var(--line); background:var(--card); color:var(--fg); cursor:pointer }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent) } @media (prefers-color-scheme: dark){ button.primary{ color:#0f1117 } }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 }
+  .score { display:flex; align-items:baseline; gap:12px; margin:18px 0 6px } .score b { font-size:48px } .grade { font-size:22px; font-weight:700 }
+  table { width:100%; border-collapse:collapse; font-size:14px; display:block; overflow-x:auto }
+  th, td { text-align:left; border-bottom:1px solid var(--line); padding:8px 6px; vertical-align:top }
+  code { font-size:13px } .ok { color:var(--accent) }
+</style>
+</head>
+<body><main>
+  <h1>🧠 Brain Score</h1>
+  <div class="muted">Paste any AI answer, doc or README to see how easy it is to read. The same scorer as <code>brainlint.py</code> runs in your browser, and nothing is uploaded.</div>
+  <div class="row"><button id="exEn">Example: typical AI answer</button><button id="exKo">예시: 흔한 한국어 AI 답변</button><button id="exGood">Example: brainres answer</button></div>
+  <textarea id="txt" placeholder="Paste text here… / 여기에 붙여 넣으세요…"></textarea>
+  <div class="row"><button class="primary" id="go" disabled>Loading scorer…</button><button id="badge" disabled>Copy README badge</button></div>
+  <div id="out"></div>
+  <p class="muted">Each check maps to a cognitive-science finding. It is a heuristic, not a comprehension test. <a href="https://github.com/wonjangcloud9/brainres">brainres on GitHub</a></p>
+</main>
+<script>
+const BRAINLINT_SOURCE = /*__BRAINLINT__*/"";
+const EXAMPLES = /*__EXAMPLES__*/{};
+const $ = id => document.getElementById(id);
+const COLORS = { A:"var(--a)", B:"var(--b)", C:"var(--c)", D:"var(--d)", F:"var(--f)" };
+const esc = s => s.replace(/[&<>]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;" }[c]));
+let py, lastBadge = "";
+async function boot() {
+  py = await loadPyodide();
+  py.FS.writeFile("/brainlint.py", BRAINLINT_SOURCE);
+  py.runPython("import sys; sys.path.insert(0, '/'); import brainlint, json\n"
+             + "def _score(t):\n  r = brainlint.lint(t)\n  return json.dumps({'score': r.score, 'grade': brainlint.grade(r.score), 'words': r.words, 'lang': r.lang, 'badge': brainlint.badge(r.score), 'findings': [f.__dict__ for f in r.findings]}, ensure_ascii=False)");
+  $("go").disabled = false; $("go").textContent = "Score it";
+  if (location.hash === "#autotest") { $("txt").value = EXAMPLES.en; run(); }
+}
+function run() {
+  const r = JSON.parse(py.globals.get("_score")($("txt").value));
+  lastBadge = r.badge; $("badge").disabled = false;
+  const rows = r.findings.sort((a, b) => b.penalty - a.penalty).map(f =>
+    `<tr><td>−${f.penalty}</td><td><code>${esc(f.check)}</code></td><td>${esc(f.detail)}</td><td class="muted">${esc(f.principle)}</td></tr>`).join("");
+  $("out").innerHTML = `<div class="score"><b id="scoreval">${r.score}</b><span>/ 100</span><span class="grade" style="color:${COLORS[r.grade]}">${r.grade}</span><span class="muted">${r.words} words · ${r.lang}</span></div>`
+    + (rows ? `<table><tr><th></th><th>Check</th><th>What we found</th><th>Why it matters</th></tr>${rows}</table>` : `<p class="ok">No issues found.</p>`);
+}
+$("go").onclick = run;
+$("badge").onclick = () => { try { navigator.clipboard.writeText(lastBadge); $("badge").textContent = "Copied ✓"; } catch (e) {} };
+$("exEn").onclick = () => { $("txt").value = EXAMPLES.en; run(); };
+$("exKo").onclick = () => { $("txt").value = EXAMPLES.ko; run(); };
+$("exGood").onclick = () => { $("txt").value = EXAMPLES.good; run(); };
+boot();
+</script>
+</body>
+</html>

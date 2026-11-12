@@ -15,8 +15,7 @@ The loop always takes the highest-scoring `todo` item.
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
-| B10-5 | **Owner:** enable GitHub Pages (Settings → Pages → main, root) and recruit ~60 participants (README/launch posts link the benchmark) | G | 10 | 3 | 0.5 | 1 | **15** | needs owner |
-| B21 | Web playground (GitHub Pages): paste text → Brain Score (brainlint port to JS) | G | 8 | 2 | 0.5 | 2 | **4** | todo |
+| B10-5 | **Owner:** enable GitHub Pages (Settings → Pages → main, root) — unlocks /bench and /playground links — and recruit ~60 participants (README/launch posts link the benchmark) | G | 10 | 3 | 0.5 | 1 | **15** | needs owner |
 | B23 | Voice-mode rules (transient information effect, #9) | Q | 1 | 1 | 0.8 | 0.5 | **1.6** | todo |
 | B20 | GitHub Action: brainlint on docs in PRs | T | 2 | 1 | 0.5 | 1 | **1** | todo |
 | B07 | `README.ko.md` for Korean devs (GeekNews, Korean X) | G | 5 | 2 | 0.8 | 0.5 | 16 | done 2026-11-12 |
@@ -47,6 +46,7 @@ The loop always takes the highest-scoring `todo` item.
 | B10-4 | Benchmark analysis script (bench/analyze.py): read submitted JSONs, apply exclusions, H1 mixed model (fallback Wilcoxon), H2 non-inferiority, H3 Brier; publish report | T | 10 | 3 | 0.5 | 2 | 7.5 | done 2026-11-12 (stdlib fallback analysis; simulation-validated; protocol v1.1 margin 5→10 pp) |
 | B24 | Document interplay with Claude Code's built-in Concise/Explanatory styles | Q | 5 | 0.5 | 0.8 | 0.5 | 4 | done 2026-11-12 (measured: Explanatory −27% words, Insight kept; Concise +23%) |
 | C13 | Stress prompt (eval 11) still bullet-heavy (82): check support.md stress mode reaches answers; consider a 1-line stress rule in the card | Q | 2 | 2 | 0.5 | 0.5 | 4 | done 2026-11-12 (partial: stress triggers in skill description; skill invoked 1/3, steps ≤5 3/3; brainlint list fixes) |
+| B21 | Web playground (GitHub Pages): paste text → Brain Score (brainlint port to JS) | G | 8 | 2 | 0.5 | 2 | 4 | done 2026-11-12 (Pyodide runs brainlint.py itself; parity verified) |
 | B05 | Per-turn micro-reminder hook (UserPromptSubmit, ≤300 chars) | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |
 | B01 | Core 10 rules in SKILL.md, each tied to evidence | Q | 10 | 3 | 0.8 | 1 | 24 | done 2026-11-12 |
 | B02 | SessionStart hook so rules apply to every answer | Q | 10 | 2 | 0.8 | 0.5 | 32 | done 2026-11-12 |

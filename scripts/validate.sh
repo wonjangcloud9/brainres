@@ -92,6 +92,11 @@ assert len(v)==8 and v.count('brainres')==4 and d['attention'] is not None and l
 " && ok "benchmark page autotest (8 trials, 4/4 counterbalanced)" || err "benchmark page autotest failed"
 fi
 
+# 8d. Playground parity with brainlint.py (needs network for Pyodide; opt-in)
+if [ "${BRAINRES_NET_CHECKS:-0}" = "1" ]; then
+  bash scripts/check_playground.sh >/dev/null && ok "playground parity with brainlint.py" || err "playground score differs from brainlint.py"
+fi
+
 # 9. Official plugin validator, when the CLI is available
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate . >/dev/null 2>&1 && ok "claude plugin validate" || err "claude plugin validate failed"

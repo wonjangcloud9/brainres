@@ -7,6 +7,7 @@
   dist/brainres-skill.zip    upload to claude.ai / Claude desktop (Customize → Skills)
   output-styles/brainres.md  opt-in Claude Code output style shipped with the plugin (/output-style)
   bench/index.html           human comprehension benchmark page (items embedded from bench/items/)
+  playground/index.html      Brain Score playground (runs brainlint.py itself in the browser via Pyodide)
 
 Usage: python3 scripts/build_dist.py [--check]
   --check  rebuild in memory and exit 1 if any generated file is stale (used by validate.sh)
@@ -75,7 +76,20 @@ def build() -> dict[str, bytes]:
         "---\n\n" + (ROOT / "hooks" / "core-card.md").read_text(encoding="utf-8").replace("brainres is active. ", "").strip() + "\n"
     ).encode()
     out["bench/index.html"] = build_bench()
+    out["playground/index.html"] = build_playground()
     return out
+
+
+def build_playground() -> bytes:
+    import json
+    src = (SKILL_DIR / "scripts/brainlint.py").read_text(encoding="utf-8")
+    ex = {"en": (ROOT / "examples/01-react-rerender/before.md").read_text(encoding="utf-8"),
+          "ko": (ROOT / "examples/02-ko-cache/before.md").read_text(encoding="utf-8"),
+          "good": (ROOT / "examples/01-react-rerender/after.md").read_text(encoding="utf-8")}
+    page = (ROOT / "playground/template.html").read_text(encoding="utf-8")
+    page = page.replace('/*__BRAINLINT__*/""', json.dumps(src).replace("</", "<\\/"))
+    page = page.replace("/*__EXAMPLES__*/{}", json.dumps(ex, ensure_ascii=False).replace("</", "<\\/"))
+    return page.encode()
 
 
 def build_bench() -> bytes:

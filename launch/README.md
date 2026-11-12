@@ -11,6 +11,8 @@ Drafts for the owner to post. The loop never posts anywhere.
 
 Before posting:
 
+- The playground (`/playground/`) and benchmark (`/bench/`) only work as links once GitHub Pages is on. Enable it first (B10-5).
+
 0. **Set the GitHub social preview once:** Settings → General → Social preview → upload [`assets/social-preview.png`](../assets/social-preview.png), which is 1280×640. Its source is `assets/social-preview.html`; re-render it with headless Chrome after the numbers change. The same image works as the first X tweet's picture.
 
 1. Re-run `python3 scripts/coverage.py` and `brainlint` on the examples, and update any number that changed.
