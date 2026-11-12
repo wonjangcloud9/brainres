@@ -26,3 +26,8 @@
 - **Visual appeal matters only for diagrams and artifacts.** It is no licence for emotive text. (EM-25)
 - **Late in long sessions, or when the user seems tired, re-summarize the current state in 3 lines or fewer** before new content. (AN-31)
 - **Check the length:** at ~238 words per minute, 1,000 words takes over 4 minutes. (#29)
+
+## Round 2
+
+- **An argument with ≥3 premises the user must remember** gets an indented claim ← reason ← evidence outline. (AR-07)
+- **Status updates** use a dated timeline or a "by the numbers" list. (NW-07)

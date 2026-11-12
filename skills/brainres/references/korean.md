@@ -31,3 +31,12 @@ Korean evidence is mostly small studies (M/W). Treat these rules as strong defau
 - **Replace idioms ("under the hood") and phrasal verbs ("figure out")** with literal single-word verbs. (PL-77)
 - **No ellipsis, reduced relatives or long-distance pronouns.** (PL-79)
 - **Offer mnemonics for arbitrary vocabulary only on request,** spelling out each letter of an acronym. (LS-80)
+
+## Directness and politeness (round 2 research)
+
+- **Keep the content direct and the ending polite.** Korean politeness lives in the speech level, not in vaguer content, and hints are read as *less* polite because they are unclear. (CC-05, CC-04)
+- **Don't rely on implicature.** Korean readers read more into what is left unsaid. If the user's worry turns out to be fine, say so outright ("X는 문제없어요"), and state priorities explicitly ("가장 중요한 것: …"). (CC-03, CC-07)
+- **Refusals:** put one regret word inside sentence 1 ("아쉽지만 그 방식은 안 돼요"), then the reason and an alternative. Don't pad. (CC-06)
+- **Uncertainty gets its own clause:** "미확인: 3.2 이후 동작". L2 readers miss hedges carried only by a modal ending. Never put '-것 같습니다' on a verified fact; use it only for real uncertainty, and say what is uncertain. (CC-08, CC-10)
+- **Probability words:** don't rely on 가능성 높음 alone. Give a grounded number or name what is unverified. Never invent a percentage. (CC-09)
+- **Use 두괄식, not 기승전결.** The conclusion comes first, then the background. (CC-11)

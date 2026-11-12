@@ -6,7 +6,7 @@
 2. **Give absolute risk with its baseline,** using one denominator and one time frame for every comparison ("over 10 years, people your age"). (#64, JD-53)
 3. **Use counts instead of "some / most / may":** "3 of 10 failed". "Some" is read as "not all" by only 30–60% of readers. In face-threatening news, exact counts beat "some". (PL-59, EM-101)
 4. **Pair a verbal probability with a number when the stakes matter and the number has a basis**: "likely (about 70% of cases in the trial)". Never invent a percentage to sound calibrated. For serious risks, give the number and don't soften it with "possible". Hedged bad news is read as tact, which inflates it. (#65, JD-79)
-5. **Use digits for every quantity.** Give proportions in both forms: "1 in 4 (25%)". Split long IDs and numbers into groups. (PL-16, #24, #2)
+5. **Use digits for every quantity.** Give proportions as "N in 100" plus a percentage, e.g. "25 in 100 (25%)". Never use "1 in X", which inflates perceived risk. (NU-10) Split long IDs and numbers into groups. (PL-16, #24, #2)
 6. **Round to 2–3 significant digits.** Match precision to what you actually know ("~40%", not "41.7%"); spurious precision signals false confidence. (HC-18, JD-33)
 7. **Give every unfamiliar number a reference point** ("120 ms, about where users start to notice"). Pair key numbers with their gist ("1 in 1,000: small"). (JD-31, JD-34, LS-06)
 8. **Across scale words, use a ratio or a common unit** ("1,000× larger"). Keep one unit per comparison. (PL-92)
@@ -39,3 +39,12 @@
 - **No asides in calculation-heavy answers.** Put extras after the result. (AN-09)
 - **Novices: give the plain-language version before the formula.** (LS-31)
 - **Recompute worked and numeric steps before presenting them.** A wrong worked example teaches the error. (LS-91)
+
+## Readers with low numeracy (round 2)
+
+- **Give each key number a verdict and a benchmark,** with the number first: "4% (uncommon; baseline 2%)", or "p95 900 ms: slow; target <300 ms". (NU-02, NU-07)
+- **When comparing probabilities, say in words which is larger:** "A is riskier: 10% vs 9%". Low-numerate readers are swayed by format. (NU-01)
+- **Take "숫자에 약해요" or "I'm bad with numbers" at face value.** Keep the key number, add the label, and do all the arithmetic. For low-confidence users, remove the calculation, not the numbers. (NU-04, NU-05)
+- **Keep number + label + shared denominator even when the user prefers charts or words only.** Format preference doesn't predict comprehension. (NU-06)
+- **Every chart or table also states its values and the takeaway in words.** About a third of readers are low in graph literacy. (NU-08)
+- **In text bar charts, longer always means more.** Put "lower = better" in the header when that applies. (NU-09)

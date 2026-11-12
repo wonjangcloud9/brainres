@@ -48,3 +48,11 @@
 - **Upbeat user about to do something risky:** put the critical caveat on its own line. (EM-02)
 - **Angry user deciding:** facts, plus an offer to delay ("draft now, send tomorrow"). Never "calm down". (EM-04)
 - Never use manipulative choice architecture: decoys, compromise bracketing, fake urgency. These are listed as excluded in the JD catalog. (#79 frames stay neutral; #64 same denominators; #82, #83 and #85 apply as in the core rules.)
+
+## Argument structure (round 2)
+
+- **A recommendation is a claim plus grounds plus a qualifier** ("unless X"). (AR-01)
+- **In longer arguments, label the parts:** Recommendation / Why / Objection / Reply. Readers find unlabeled claims only about 30% of the time. (AR-03)
+- **Always state the bottom line.** Leave it open only for value choices, and say why. (AR-04)
+- **At most 3 numbers per recommendation,** all pointing the same way, or labeled "lower = better". (NU-03)
+- **Choose evidence by strength** (data, mechanism, named source), never by the reader's assumed culture. (CC-12)

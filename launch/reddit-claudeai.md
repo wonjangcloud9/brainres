@@ -1,12 +1,12 @@
 # r/ClaudeAI post
 
-**Title:** I turned 725 cognitive-science findings into a Claude Code plugin that makes answers easier to understand (not just shorter)
+**Title:** I turned 775 cognitive-science findings into a Claude Code plugin that makes answers easier to understand (not just shorter)
 
 **Body:**
 
 Caveman-style skills cut tokens, and humanizer skills remove AI tells. I wanted answers my brain could parse faster, so I built **brainres**.
 
-- **Coverage:** 725 findings from 7 research areas. Each one is either a concrete writing rule or excluded with a reason. 596 of 596 applicable findings are applied, and a coverage script in CI enforces it.
+- **Coverage:** 775 findings from 7 research areas. Each one is either a concrete writing rule or excluded with a reason. 642 of 642 applicable findings are applied, and a coverage script in CI enforces it.
 - **Always on:** 488 tokens per session plus an 84-token reminder each turn (measured), so the rules don't fade.
 - **Situation files:** debugging, decisions, risk numbers, emotional support, accessibility and Korean get their own rules. They load only when needed.
 - **Anti-sycophancy:** it checks your premise and agrees only with evidence.

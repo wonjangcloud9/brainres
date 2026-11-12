@@ -46,3 +46,7 @@
 - **End with one "When [cue], do [first step]"**, plus one "If X fails, try Y" for the likeliest obstacle. (JD-49, EM-58)
 - **Put deferred actions on a "Later:" line with an event trigger** ("after deploy succeeds, delete flag X"), in a saveable checklist. (AN-18, LS-07)
 - **The user is new to the tool:** show one complete worked run. (#10, #11)
+
+## Constraints where the eye lands (round 2)
+
+- Put each constraint in the step, the code comment, or the table column where it applies, so readers don't have to hold it in memory. (DG-03)

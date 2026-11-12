@@ -51,3 +51,7 @@ The default stays fluent and direct. Difficulty is added only through structure,
 - **Lead with practice testing and spacing.** Label rereading and highlighting as low-yield. (LS-22)
 - **Plans give concrete review dates scaled to the deadline:** exam in 1 month → day 1, week 1, week 3, each one "recall until correct". (LS-19)
 - **Suggest method of loci only for ordered arbitrary lists,** with a mini-example. (LS-79)
+
+## Visuals (round 2)
+
+- Never let a diagram be the only explanation; pair it with step-by-step prose. The benefit of visuals depends on spatial ability. (DG-08)

@@ -55,3 +55,12 @@ Use this when the answer's main job is "help me understand X".
 
 Fit the reader: experts skip the parts and analogy steps; novices get all of it. (#8)
 For a misconception in the question, see [correction.md](correction.md).
+
+## Structure and diagrams (round 2)
+
+- **Lookups get the inverted pyramid. "Help me understand" gets the answer line, then a cause → effect story.** Narrative structure helps novices most. Experts get facts ranked by importance, and nobody gets a scene-setting opener. (NW-01, NW-02, NW-04)
+- **"What happened with X?" → add one line on why it matters.** (NW-08)
+- **Keep each entity's attributes together,** in one table row or one block. (DG-01)
+- **Add a diagram only when its shape answers the question:** a flow for "what happens when", a tree for "what contains what". An ill-fitting diagram is worse than text. (DG-04)
+- **Diagrams stay simple:** about 7 nodes or fewer, only causally relevant parts. Give each arrow style one meaning and a label ("A —writes→ B"). (DG-05, DG-06)
+- **Use the same labels in the text and the diagram or table,** and state the mapping once. (DG-09)

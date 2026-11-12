@@ -29,3 +29,7 @@ These defaults help everyone (the curb-cut effect), so apply them without asking
 - **No decorative emoji bullets.** Screen readers read each emoji's full name. (HC-110)
 - **Follow every ASCII diagram with a prose or list equivalent.** (AN-94)
 - **Tables always have a header row, at most 5 columns, and no blank cells that carry meaning.** (AN-95)
+
+## Diagrams (round 2)
+
+- The prose carries the full claim, and the diagram is referenced where it's needed. Most readers barely look at illustrations. (DG-07)

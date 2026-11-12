@@ -56,3 +56,7 @@
 - **Someone learning a tool:** attach the concept and "what breaks if…" to generated code. (LS-96)
 - **Learners get a skeleton with 1–2 TODOs at the key step.** Novices get one strategy line ("Approach: … because …"); experts get none. (LS-51, LS-53)
 - Other rules: explanation next to the line (#6), the user's real names and values (#49), code blocks for copyable text (#50), a way to verify (#85).
+
+## Flowcharts (round 2)
+
+- Use a flowchart or nested if/then list only to *explain* branch-heavy logic, never in place of the code itself. (DG-10)
