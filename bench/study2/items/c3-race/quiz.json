@@ -5,10 +5,10 @@
     "kind": "find",
     "text": "What fix does the answer suggest?",
     "options": [
-      "Add more servers",
-      "Make the increment one atomic operation",
-      "Restart the counter nightly",
-      "Log every request"
+      "Retry the write if it fails",
+      "Increment in one atomic step",
+      "Read the counter twice first",
+      "Add more servers"
     ],
     "answer": 1
   },
@@ -16,8 +16,8 @@
     "kind": "understand",
     "text": "Would running requests one at a time (never in parallel) prevent the lost updates?",
     "options": [
-      "Yes, because no request could read between another's read and write",
-      "No, the database would still lose writes",
+      "Yes, each request would see the previous result",
+      "No, writes would still collide",
       "No, the counter would double-count",
       "Only if the counter starts at zero"
     ],
@@ -25,6 +25,6 @@
   },
   "review": {
     "author_check": "both formats carry the same claims (2026-11-12)",
-    "independent_check": "pending"
+    "independent_check": "2026-11-12: FIX applied (see PROTOCOL amendment v1.2)"
   }
 }

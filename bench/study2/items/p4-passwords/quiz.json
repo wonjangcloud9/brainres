@@ -17,14 +17,14 @@
     "text": "One site you use is breached. Which habit limits the damage to only that site?",
     "options": [
       "Installing updates",
-      "A different password for every site",
-      "Two-factor on email",
-      "Logging out"
+      "Using a password manager",
+      "Clearing browser history",
+      "Logging out after each visit"
     ],
     "answer": 1
   },
   "review": {
     "author_check": "both formats carry the same claims (2026-11-12)",
-    "independent_check": "pending"
+    "independent_check": "2026-11-12: FIX applied (see PROTOCOL amendment v1.2)"
   }
 }

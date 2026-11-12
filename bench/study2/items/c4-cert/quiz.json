@@ -5,26 +5,26 @@
     "kind": "find",
     "text": "What does the certificate prove?",
     "options": [
-      "That traffic is compressed",
-      "That the server is who it claims to be",
-      "That your password is strong",
+      "That the traffic is encrypted",
+      "That the site really is who it claims",
+      "That the site has no malware",
       "That the connection is fast"
     ],
     "answer": 1
   },
   "q2": {
     "kind": "understand",
-    "text": "An attacker's server encrypts traffic but has no valid certificate for your bank's domain. What protects you?",
+    "text": "An attacker sets up an encrypted connection and claims to be your bank. What would they need to pass as the bank?",
     "options": [
-      "The encryption alone",
-      "The browser's check that the certificate matches the domain",
-      "Your antivirus",
-      "Nothing protects you"
+      "A stronger encryption key than the bank's",
+      "A trusted signature for the bank's domain",
+      "Your account password",
+      "A faster server than the bank's"
     ],
     "answer": 1
   },
   "review": {
     "author_check": "both formats carry the same claims (2026-11-12)",
-    "independent_check": "pending"
+    "independent_check": "2026-11-12: FIX applied (see PROTOCOL amendment v1.2)"
   }
 }

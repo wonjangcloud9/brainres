@@ -177,7 +177,8 @@ def analyze_study2(subs: list[dict], contents: dict[str, str]) -> dict:
         a = [acc("causal", "prose"), acc("causal", "bullets"), acc("parallel", "prose"), acc("parallel", "bullets")]
         if None not in a:
             did.append((a[0] - a[1]) - (a[2] - a[3]))
-        lt = {v: [math.log(t["q1"]["ms"]) for t in cell.get(("parallel", v), []) if t["q1"]["correct"] and t["q1"]["ms"] > 0]
+        q1t = lambda t: t["q1"].get("pick_ms") or t["q1"]["ms"]  # v1.2: time to the final option pick, not the button
+        lt = {v: [math.log(q1t(t)) for t in cell.get(("parallel", v), []) if t["q1"]["correct"] and q1t(t) > 0]
               for v in ("prose", "bullets")}
         if lt["prose"] and lt["bullets"]:
             h2t.append(st.mean(lt["bullets"]) - st.mean(lt["prose"]))

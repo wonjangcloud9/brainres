@@ -14,17 +14,17 @@
   },
   "q2": {
     "kind": "understand",
-    "text": "You shorten the cache time to 1 minute but change nothing else. What happens after an update?",
+    "text": "A script updates the database directly and skips the code that deletes the cache entry. What do reads of that record return?",
     "options": [
-      "Old data never appears",
-      "Old data can still appear, but for at most about 1 minute",
-      "The database stops updating",
-      "The cache updates instantly"
+      "New data right away",
+      "Old data until it expires",
+      "An error message",
+      "Old data permanently"
     ],
     "answer": 1
   },
   "review": {
     "author_check": "both formats carry the same claims (2026-11-12)",
-    "independent_check": "pending"
+    "independent_check": "2026-11-12: FIX applied (see PROTOCOL amendment v1.2)"
   }
 }

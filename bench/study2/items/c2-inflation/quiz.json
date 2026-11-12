@@ -3,14 +3,14 @@
   "content": "causal",
   "q1": {
     "kind": "find",
-    "text": "By roughly how much does purchasing power fall each year?",
+    "text": "According to the answer, what does 3% inflation mean?",
     "options": [
-      "1%",
-      "2%",
-      "3%",
-      "4%"
+      "The same goods cost 3% more each year",
+      "Wages rise 3% each year",
+      "The bank charges a 3% fee",
+      "The balance shrinks 3% each year"
     ],
-    "answer": 1
+    "answer": 0
   },
   "q2": {
     "kind": "understand",
@@ -25,6 +25,6 @@
   },
   "review": {
     "author_check": "both formats carry the same claims (2026-11-12)",
-    "independent_check": "pending"
+    "independent_check": "2026-11-12: FIX applied (see PROTOCOL amendment v1.2)"
   }
 }

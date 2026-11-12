@@ -6,4 +6,5 @@
 - The cache still holds the old copy
 - Reads return stale data until expiry
 - The cache doesn't know the database changed
+- Only expiry or invalidation replaces the copy
 - Fix: delete the cache entry when you write that record

@@ -58,3 +58,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-12 17:39 · C17 · card: 'for math, sentence 1 = calculation + result' → 9/9 right (vs 0/3 'compute first'); card 498 tokens; 30 calls
 - 2026-11-12 17:58 · B36a · study 2 protocol (2×2 content × format) + 8 frozen prose/bullet item pairs with quizzes
 - 2026-11-12 18:19 · B36b · study 2 page + analysis + power sim (n 80→150, amendment v1.1); independent item review running
+- 2026-11-12 18:21 · B36b · independent review: 4 items fixed (amendment v1.2), Q1 timing → pick_ms, parallel prose trimmed; B36b done

@@ -23,3 +23,7 @@ The last screen shows a JSON result. [Open a "Benchmark result" issue](https://g
 - **Analysis:** `python3 bench/analyze.py --from-issues --out bench/REPORT.md` fetches submitted issues with `gh` and applies the pre-registered exclusions. It runs the paired tests for H1–H3, then applies the decision rule. Local JSON files in `bench/results/` work too, without the flag.
 - `tests/test_bench_analysis.py` checks the analysis on simulated participants. A planted speed-up must be found, null data must not allow the claim, an accuracy drop must block it, and exclusions must apply.
 - **Amendment v1.1:** this simulation showed that the original 5 pp non-inferiority margin had 28–68% power at n = 60. The margin was widened to 10 pp before any data existed.
+
+## Study 2: prose vs bullets
+
+[`study2/index.html`](study2/index.html) tests brainres rule 5 with people: is reasoning easier to understand as prose, and are parallel items faster to scan as bullets? The protocol, hypotheses and the pre-data amendments (sample n = 150, independent item review) are in [`study2/PROTOCOL.md`](study2/PROTOCOL.md). It takes about 8 minutes, and results go in the same GitHub issue form.

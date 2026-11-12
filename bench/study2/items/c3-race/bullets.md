@@ -3,6 +3,8 @@
 - Each request reads the counter
 - It adds 1
 - It writes the value back
+- The read and the write are separate steps
+- Another request can run between them
 - Two requests can read the same value at once
 - Both write the same result
 - One increment is lost

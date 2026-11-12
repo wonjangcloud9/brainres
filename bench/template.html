@@ -86,8 +86,9 @@ function trial() {
   view(`${progress()}<div class="card"><div class="muted">${L.read}</div><div class="q">${it.question}</div></div>
   <div class="card answer">${md(it[p.version])}</div>
   <div class="card"><div class="q">${quiz.q1.text}</div><div class="muted">${L.q1}</div>${radio("q1", opts1.map(o => o[0]))}<p>${L.conf}</p>${scale("c1")}<p><button class="primary" id="b1">${L.next}</button></p></div>`);
-  const t0 = performance.now(); waitFor(["q1", "c1"], "b1");
-  document.getElementById("b1").onclick = () => { const choice = opts1[picked("q1")][1]; const rec = { id: p.id, content: p.content, version: p.version, q1: { correct: choice === quiz.q1.answer, ms: Math.round(performance.now() - t0), conf: picked("c1") } }; q2(it, rec); };
+  const t0 = performance.now(); let pick = t0; waitFor(["q1", "c1"], "b1");
+  document.querySelectorAll('input[name="q1"]').forEach(i => i.addEventListener("change", () => { pick = performance.now(); }));
+  document.getElementById("b1").onclick = () => { const choice = opts1[picked("q1")][1]; const rec = { id: p.id, content: p.content, version: p.version, q1: { correct: choice === quiz.q1.answer, ms: Math.round(performance.now() - t0), pick_ms: Math.round(pick - t0), conf: picked("c1") } }; q2(it, rec); };
 }
 function q2(it, rec) {
   const quiz = it.quiz, opts2 = shuffle(quiz.q2.options.map((o, i) => [o, i]));
