@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **Item from measurements (no calls).** The only answers over the length budget are yes/no and myth answers (≤100 words): brainres 7 of 10 and baseline 9 of 10. Two brainres answers read by hand carried needed content, and our own refutation rules (#47, JD-14) treat a myth correction as an explanation. New item Y1 (score 3.2) classifies all 16 overages by hand under a rule stated in advance. No reports yet; 1 star.
+
 - **The Haiku auto-reminder is removed (H1, 28 calls).** After the S1 re-score, the B48 turns 5–7 gap fell from 3.7 to 2.7 points. We re-ran the same Haiku 7-turn sessions, reminder on vs off, and pooled both runs under a rule stated before the run: keep it only if the pooled gap is 3 or more.
   - **Turns 5–7 (12 answers each):** 99.9 with the reminder vs 97.7 without, a gap of +2.2, below the rule.
   - **Turns 1–4:** +0.2. In the second run, the answers without the reminder scored higher.
