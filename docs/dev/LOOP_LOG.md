@@ -116,3 +116,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 14:01 · M2 · Opus suite subset (30 calls, 4 timeouts → 12 pairs): words −28% (CI excl. 0), Brain Score +4.2 n.s., thinking ~1.6×, total output −10% n.s.
 - 2026-11-13 14:25 · D13 · install size measured (≈1.5 MB download, 13 MB disk; runtime reads only hooks/skills/commands/output-styles) → no restructure; validate.sh caps tracked files at 15 MB
 - 2026-11-13 14:57 · research round 9 · user complaints 2026: UC-01 undefined terms (700+ upvotes), UC-02 closing offers, UC-03 contrasts, UC-04 section dumps; rough counts show brainres doesn't reduce acronyms/offers → U1 (4), U2 (2)
+- 2026-11-13 15:26 · U1 · hand check (20 brainres answers): 2 likely-unknown undefined terms < 4 → no card change; coined phrases 0/79 vs 2/78; plans/specs → U1b (1.8)

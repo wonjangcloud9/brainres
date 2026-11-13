@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Undefined terms checked by hand (U1, no calls).**
+  - **Method:** we read every 4th brainres suite answer (20 in total) for terms the asker likely wouldn't know.
+  - **Result:** only 2 turned up: BOM in a CSV KeyError answer and GIL in a beginner's closing line. That is below the pre-stated threshold of 4, so the card is unchanged.
+  - **Coined phrases** like "blast radius" or "happy path" appeared in 0/79 brainres answers and 2/78 baseline answers.
+  - **The earlier rough heuristic over-counted.** For example, it missed "소염진통제(NSAIDs)" and counted RDS for a database operator.
+  - **Not covered yet:** the user complaint was about long plans and specs, which the single-turn suite doesn't test. That is new item U1b (score 1.8).
+
 - **Research round 9: what users actually complain about in 2026** (`research/catalog-round9.md`). The backlog was empty, and the measurements and community reports gave nothing new.
   - **UC-01, undefined or invented terms:** the most-upvoted complaint about Claude's writing (r/ClaudeAI, 700+ upvotes).
   - **UC-02, repeated closing offers:** named in a 2026 review of verbal tics.

@@ -1,0 +1,30 @@
+{
+  "sample": "every 4th brainres suite answer by id (20)",
+  "undefined_terms_likely_unknown_to_asker": [
+    {
+      "id": "s011-debug",
+      "term": "BOM",
+      "why": "a CSV byte-order mark, not explained to a Python user hitting KeyError"
+    },
+    {
+      "id": "s122-compare",
+      "term": "GIL",
+      "why": "named in the closing line to someone asking process vs thread"
+    }
+  ],
+  "judged_fine": [
+    "PUT/DELETE (s015, fetch user)",
+    "RDS (s082, prod DB operator)",
+    "DM (s091, in the question)",
+    "CFAA (s095, framed as 'laws like')",
+    ".NET/ASCII (s135, regex asker)",
+    "SWR (s154, a library name next to TanStack Query)",
+    "NSAIDs (s073, defined as 소염진통제(NSAIDs); heuristic missed the plural)"
+  ],
+  "coined_phrases_all_suite": {
+    "brainres": "0/79",
+    "baseline": "2/78 (happy path, gotchas)"
+  },
+  "rule": "test a card change only if >= 4/20",
+  "result": "2/20 -> no card change"
+}
