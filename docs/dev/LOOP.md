@@ -65,6 +65,8 @@ Only if the measurements give nothing new, run a **research round**:
 2. Write findings into `research/` (new file or append), with sources and evidence strength.
 3. Turn findings into new backlog items, each scored with RICE (see below). Commit + push.
 
+**Idle.** If the last research round found nothing new, and nothing has changed since, don't start another round. "Changed" means a new `[hard-to-read]` issue, a new eval result, or a due date in `research/queue.md` passing. In that case, say "idle" in the chat and stop without committing. Rounds 6–10 added 0–2 findings each, so repeating them every 30 minutes only adds noise.
+
 ## RICE scoring (used in BACKLOG.md)
 
 `score = Reach × Impact × Confidence ÷ Effort`

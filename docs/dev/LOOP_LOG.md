@@ -126,3 +126,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 18:57 · H1 · Haiku reminder re-run (28 calls): pooled t5–7 gap +2.2 < 3 → auto-reminder removed; hook reads prompt only
 - 2026-11-13 19:25 · items · over-budget answers are all yes/no + myth (brainres 7/10, baseline 9/10); myth budget may contradict #47/JD-14 → Y1 (3.2)
 - 2026-11-13 19:56 · Y1 · 16 over-budget answers by hand: myths 8/10 needed → ≤300; yes/no padding 0/6 → unchanged; within budget 62/78 → 76/78; combine.py fixes
+- 2026-11-13 20:26 · research 10 · measurements nothing new (6/387 facts missed by both, judgment items); ISO 24495-1 clause map → no new findings, gap = reader testing (owner); idle rule added

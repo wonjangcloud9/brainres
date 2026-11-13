@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Research round 10: the ISO 24495-1 clause check** (`research/catalog-round10.md`).
+  - **Measurements first:** they gave nothing new. Only 6 of 387 key facts were missed by both conditions, and those were judgment items such as reassurance and analogies.
+  - **Method:** the standard's table of contents was read from a free DIN preview. The guideline texts are paywalled.
+  - **Result:** every verified clause title (5.1.6, 5.2.2, 5.3.2–5.3.8, 5.4.3–5.4.4) maps to an existing rule or check. The one gap is testing with readers (5.4.3), already known. `bench/` needs Pages and participants, both owner items. No new findings, and the queue item is closed.
+  - **New idle rule in LOOP.md:** when research has just come up empty and nothing has changed, the loop stops without committing.
+
 - **Myth answers now use the explanation budget (Y1, no calls).** We hand-classified all 16 yes/no and myth answers over the 100-word budget.
   - **Myths:** the overage was needed content in 8 of 10 answers: evidence, the myth's origin, the real mechanism. That matches our refutation rules (#47, JD-14) and the rule stated in advance, so myths now use the ≤300 budget.
   - **Yes/no:** the overage was padding in 0 of 6 answers. 3 baseline answers mixed in extra sections. Both brainres answers carried needed next steps, such as rotating keys first or the options when `git pull` aborts. Yes/no stays at ≤100, with no card test.
