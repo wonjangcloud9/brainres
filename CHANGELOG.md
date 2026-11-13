@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.2.0 — 2026-11-13
+
+- **Release prep (D8a):** plugin.json version 0.1.0 → 0.2.0. `claude plugin tag --dry-run` agrees (the tag will be `brainres--v0.2.0`).
+  - Both `claude plugin validate` warnings are fixed: the marketplace now has a description, and the plugin has an icon, `.claude-plugin/icon.png`. The icon is an original 1024 px monogram rendered from `assets/icon.html`. The directory takes the icon only on first submission, so it had to exist before D5.
+  - Release notes for the owner are in `launch/release-v0.2.0.md`.
+
 - Curated-list submissions drafted (D5a) in `launch/submissions.md`, based on each list's own rules:
   - **claudemarketplaces.com:** crawls GitHub daily and also has a `/submit` page.
   - **Anthropic community marketplace:** submissions go through clau.de/plugin-directory-submission with a security scan, so the draft describes the hooks plainly.

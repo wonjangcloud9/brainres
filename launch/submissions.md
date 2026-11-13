@@ -34,7 +34,7 @@ Submit at **clau.de/plugin-directory-submission**. PRs to `anthropics/claude-plu
   - **Skill** `skills/brainres` and **output style** `output-styles/brainres.md`.
 - **Network, files, secrets:** none. The hooks make no network calls and write no files.
 - **Off switch:** `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
-- **Before submitting:** do D8a (plugin.json 0.1.0 → 0.2.0) and the v0.2.0 release (D8), so the reviewed version matches a tag.
+- **Before submitting:** do the 0.2.0 release (D8), so the reviewed version matches a tag. D8a, the version bump, is done. The icon `.claude-plugin/icon.png` is in place, and the directory takes the icon only on the first submission.
 
 ## 3. awesome-claude-code (from 2026-11-26)
 

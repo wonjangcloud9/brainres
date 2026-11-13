@@ -106,3 +106,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 08:55 · D3 · npx skills add wonjangcloud9/brainres added to both READMEs (layout matches skills CLI discovery; skill-only limit stated); validate checks layout
 - 2026-11-13 09:26 · D4 · clean-config install from GitHub verified (hooks + card in fresh session; real ~/.claude untouched); scripts/check_install.sh opt-in; new D8a version bump (9.6), D13 slim install (1.25)
 - 2026-11-13 09:56 · D5a · launch/submissions.md: 4 curated lists drafted from their own rules (awesome-claude-code from 2026-11-26, human form only; Anthropic via clau.de form; claudemarketplaces /submit; Composio optional after D13)
+- 2026-11-13 10:26 · D8a · plugin.json 0.2.0; tag dry-run ok (brainres--v0.2.0); validator warnings fixed (marketplace description, original icon); CHANGELOG 0.2.0 section; release notes drafted

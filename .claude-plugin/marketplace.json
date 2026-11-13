@@ -1,11 +1,16 @@
 {
   "name": "brainres",
-  "owner": { "name": "wonjangcloud9" },
+  "owner": {
+    "name": "wonjangcloud9"
+  },
   "plugins": [
     {
       "name": "brainres",
       "source": "./",
       "description": "Brain-friendly answers: Claude formats every reply for how human working memory, attention and reading actually work."
     }
-  ]
+  ],
+  "metadata": {
+    "description": "brainres: Claude Code plugin that shapes answers for how people read, with a readability scorer (brainlint)."
+  }
 }
