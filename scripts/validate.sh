@@ -109,6 +109,12 @@ fm = found[0].read_text().split('---')[1]
 assert re.search(r'^name: brainres$', fm, re.M) and re.search(r'^description: .+', fm, re.M)
 " && ok "skills.sh discovery: skills/brainres/SKILL.md (name = folder)" || err "skills.sh layout broken (SKILL.md location or frontmatter)"
 
+# 8b1b. The paste-in card must fit ChatGPT's 1,500-character custom-instructions field (D9)
+python3 -c "
+n=len(open('dist/system-prompt.md', encoding='utf-8').read()); assert n <= 1500, n
+import re; doc=open('docs/use-elsewhere.md', encoding='utf-8').read(); assert f'{n:,} characters' in doc, (n, 'docs/use-elsewhere.md states a stale size')
+" && ok "dist/system-prompt.md fits 1,500 characters and docs state its size" || err "system prompt too long, or docs/use-elsewhere.md size stale"
+
 # 8b2. Eval suite (owner direction 2026-11-13): 80 prompts, 16 types x 5, unique ids, Korean included
 python3 -c "
 import json; r=[json.loads(l) for l in open('evals/suite.jsonl') if l.strip()]

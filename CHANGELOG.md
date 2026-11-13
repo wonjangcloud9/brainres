@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- **Guide for claude.ai, ChatGPT and Gemini (D9):** new `docs/use-elsewhere.md`, linked from both READMEs. It recommends a claude.ai **Project** for always-on use, because a Skill upload loads only when Claude judges it relevant (1 in 24 answers in our tests). It also covers ChatGPT custom instructions or a GPT, a Gemini Gem, and a table of what's lost outside the plugin: the learner and emergency lines and the Haiku reminder.
+- **Stale README number fixed:** `dist/system-prompt.md` is now 1,188 characters, not 1,011 bytes. `validate.sh` checks that it stays under 1,500 and that the guide states its current size.
+
 - **First-screen demo (D7):** `assets/demo.gif` (80 KB) is built from real saved suite answers, with no new calls, by `assets/demo/build_demo.py` (headless Chrome + ffmpeg). It shows the question "What is a CDN, and does my small personal blog need one?" answered by default Claude (288 words, Brain Score 84) and then by brainres (138 words, 100). The cut-off default answer is marked "… continues", and the caption gives the suite totals (78 pairs). It sits under the measured strip in both READMEs.
 
 ## 0.2.0 — 2026-11-13

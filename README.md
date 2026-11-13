@@ -72,12 +72,12 @@ claude plugin install brainres --marketplace wonjangcloud9/brainres
 
 Or inside Claude Code: `/plugin marketplace add wonjangcloud9/brainres` → `/plugin install brainres@brainres`.
 
-**Use it anywhere** (built by [`scripts/build_dist.py`](scripts/build_dist.py) from the same sources):
+**Use it anywhere** (built by [`scripts/build_dist.py`](scripts/build_dist.py) from the same sources; step-by-step guide for claude.ai, ChatGPT and Gemini in [`docs/use-elsewhere.md`](docs/use-elsewhere.md)):
 
 | Where | File | How |
 |---|---|---|
 | claude.ai / Claude desktop | [`dist/brainres-skill.zip`](dist/brainres-skill.zip) | Customize → Skills → upload |
-| ChatGPT, Gemini, any LLM | [`dist/system-prompt.md`](dist/system-prompt.md) | Paste into custom instructions (1,011 bytes, fits ChatGPT's 1,500-character field) |
+| ChatGPT, Gemini, any LLM | [`dist/system-prompt.md`](dist/system-prompt.md) | Paste into custom instructions (1,188 characters, fits ChatGPT's 1,500-character field) |
 | Codex and other AGENTS.md readers | [`dist/AGENTS.md`](dist/AGENTS.md) | Copy to your repo root, or append to an existing AGENTS.md |
 | Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | Copy to `.cursor/rules/brainres.mdc` |
 | Claude Code, without the plugin | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres`, then `/brainres` |

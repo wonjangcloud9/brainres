@@ -104,12 +104,12 @@ Concise와 함께 쓰면 brainres가 "이유, 언제 바꿀지, 다음 할 일"�
 - 출력 스타일로 쓰려면 `/output-style`에서 **brainres**를 고르세요. 규칙은 같고, 코딩 지침도 유지됩니다.
 - 출력 스타일을 쓸 때는 `BRAINRES=off`로 두면 카드가 두 번 들어가지 않습니다. 다만 상황별 한 줄도 함께 꺼집니다.
 
-**다른 곳에서 쓰기** (모두 같은 원본에서 [`scripts/build_dist.py`](scripts/build_dist.py)로 생성):
+**다른 곳에서 쓰기** (모두 같은 원본에서 [`scripts/build_dist.py`](scripts/build_dist.py)로 생성. claude.ai, ChatGPT, Gemini 단계별 안내는 [`docs/use-elsewhere.md`](docs/use-elsewhere.md)):
 
 | 어디서 | 파일 | 방법 |
 |---|---|---|
 | claude.ai / Claude 데스크톱 | [`dist/brainres-skill.zip`](dist/brainres-skill.zip) | 설정 → 스킬 → 업로드 |
-| ChatGPT, Gemini 등 모든 LLM | [`dist/system-prompt.md`](dist/system-prompt.md) | 맞춤 지침에 붙여 넣기(1,011바이트, ChatGPT 1,500자 칸에 들어감) |
+| ChatGPT, Gemini 등 모든 LLM | [`dist/system-prompt.md`](dist/system-prompt.md) | 맞춤 지침에 붙여 넣기(1,188자, ChatGPT 1,500자 칸에 들어감) |
 | Codex 등 AGENTS.md를 읽는 에이전트 | [`dist/AGENTS.md`](dist/AGENTS.md) | 레포 루트에 복사하거나 기존 AGENTS.md 뒤에 붙이기 |
 | Cursor | [`dist/cursor/brainres.mdc`](dist/cursor/brainres.mdc) | `.cursor/rules/brainres.mdc`로 복사 |
 | 플러그인 없이 Claude Code | `skills/brainres/` | `cp -R skills/brainres ~/.claude/skills/brainres` 후 `/brainres` |
