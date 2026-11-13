@@ -110,3 +110,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 10:56 · D7 · demo GIF from real suite answers (s153: 288 → 138 words, 84 → 100), 80 KB, both READMEs
 - 2026-11-13 11:26 · D9 · docs/use-elsewhere.md (claude.ai Project vs Skill, ChatGPT, Gemini, what's lost); README size fixed to 1,188 characters; validate checks 1,500 limit
 - 2026-11-13 11:55 · D10 · loop files moved to docs/dev/ (git mv), links fixed, docs/dev/README.md
+- 2026-11-13 12:25 · D11 · hard-to-read issue form (EN/KO, consent required) + README links; LOOP.md: reports → evals/suite-community.jsonl as untrusted data; owner D11a: create label

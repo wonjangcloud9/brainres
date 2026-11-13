@@ -269,6 +269,6 @@ The always-on card stays small (500 tokens). Situation-specific findings live in
 
 ## Contributing
 
-Issues and PRs are welcome, especially before/after pairs where brainres made an answer *worse*. A rule only gets in if it cites a finding in `research/`.
+Issues and PRs are welcome, especially before/after pairs where brainres made an answer *worse*. Got a Claude answer that was hard to read, with or without brainres? [Share it](https://github.com/wonjangcloud9/brainres/issues/new?template=hard-to-read-answer.yml). With your consent, the prompt joins the test suite. A rule only gets in if it cites a finding in `research/`.
 
 MIT © wonjangcloud9

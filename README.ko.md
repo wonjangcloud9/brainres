@@ -253,6 +253,6 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 
 ## 기여
 
-이슈와 PR 환영합니다. 특히 brainres 때문에 답변이 **더 나빠진** 사례가 반갑습니다. 규칙은 `research/`의 연구를 인용할 때만 추가됩니다.
+이슈와 PR 환영합니다. 특히 brainres 때문에 답변이 **더 나빠진** 사례가 반갑습니다. brainres를 쓰든 안 쓰든, 읽기 힘들었던 Claude 답변이 있다면 [공유해 주세요](https://github.com/wonjangcloud9/brainres/issues/new?template=hard-to-read-answer.yml). 동의하시면 그 질문은 평가 세트에 들어갑니다. 규칙은 `research/`의 연구를 인용할 때만 추가됩니다.
 
 MIT © wonjangcloud9

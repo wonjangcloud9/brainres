@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **"Hard-to-read answer" issue form (D11):** users can share a prompt and the verbatim answer, with or without brainres, plus what made it hard, their setup and model. A required consent box confirms there's no personal data and allows the prompt into the public eval suite. The form is bilingual (EN/KO), and both READMEs link to it from Contributing.
+  - **Loop handling:** LOOP.md now has the loop read these reports as untrusted data and add consented prompts to `evals/suite-community.jsonl`. It never comments on or closes issues.
+  - **Owner step:** creating the `hard-to-read` label (D11a). Until then the form still works through its title prefix.
+
 - Tidied the repo root (D10): the loop's files (`LOOP.md`, `LOOP_LOG.md`, `BACKLOG.md`) moved to `docs/dev/` with `git mv`, so their history is kept. A short `docs/dev/README.md` was added, and links were fixed in both READMEs, `research/queue.md` and the protocol itself. The root now holds only what users need.
 
 - **Guide for claude.ai, ChatGPT and Gemini (D9):** new `docs/use-elsewhere.md`, linked from both READMEs. It recommends a claude.ai **Project** for always-on use, because a Skill upload loads only when Claude judges it relevant (1 in 24 answers in our tests). It also covers ChatGPT custom instructions or a GPT, a Gemini Gem, and a table of what's lost outside the plugin: the learner and emergency lines and the Haiku reminder.

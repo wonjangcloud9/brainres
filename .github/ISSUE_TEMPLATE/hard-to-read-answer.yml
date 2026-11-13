@@ -1,0 +1,60 @@
+name: Hard-to-read answer
+description: Share a Claude answer that was hard to read, with or without brainres. Consented prompts become test prompts.
+title: "[hard-to-read] "
+labels: ["hard-to-read"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Real prompts make the measurements better than prompts we write ourselves.
+        **Remove anything personal or confidential first**: names, emails, keys, company code.
+        읽기 힘들었던 Claude 답변을 공유해 주세요. 개인 정보와 기밀은 지운 뒤에 올려 주세요.
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Your prompt / 질문
+      description: Exactly what you asked.
+    validations:
+      required: true
+  - type: textarea
+    id: answer
+    attributes:
+      label: The answer / 답변
+      description: Paste the whole answer. It's kept verbatim as Markdown.
+      render: markdown
+    validations:
+      required: true
+  - type: checkboxes
+    id: problems
+    attributes:
+      label: What made it hard? / 무엇이 읽기 힘들었나요?
+      options:
+        - label: Too long / 너무 길다
+        - label: The answer was buried / 답이 늦게 나온다
+        - label: Too much structure or bold / 목록·굵은 글씨가 과하다
+        - label: Jargon or undefined terms / 용어가 어렵다
+        - label: Missing something I needed / 필요한 내용이 빠졌다
+        - label: Wrong language or tone / 언어나 말투가 맞지 않는다
+  - type: dropdown
+    id: setup
+    attributes:
+      label: Setup / 사용 환경
+      options:
+        - brainres plugin in Claude Code
+        - brainres pasted elsewhere (claude.ai, ChatGPT, …)
+        - Without brainres
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model (if known) / 모델
+      placeholder: e.g. Sonnet, Haiku, Opus
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent / 동의
+      options:
+        - label: This contains no personal or confidential data, and the prompt may be added to brainres's public eval suite (MIT). / 개인 정보와 기밀이 없으며, 질문을 공개 평가 세트(MIT)에 넣어도 됩니다.
+          required: true
