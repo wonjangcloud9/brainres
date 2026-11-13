@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Install size measured, no restructure (D13).**
+  - **What an install costs:** a shallow clone of about 1.5 MB to download. On disk that's a 7.4 MB marketplace tree plus a 5.9 MB cache copy, and 4.4 MB of it is `evals/results`.
+  - **Why it doesn't matter yet:** the runtime reads only `hooks/`, `skills/`, `commands/` and `output-styles/`, so size costs disk, not tokens. Moving the plugin into a subfolder would cut only the cache copy and would change many paths.
+  - **Guard instead:** `validate.sh` now fails if tracked files pass 15 MB.
+
 - Opus on the suite (M2, 30 calls; 4 Opus calls ran past the 300 s timeout, leaving 12 pairs). Answers were 28% shorter (CI −109 to −9 words per prompt) and visible tokens fell by 153. The Brain Score gain was +4.2, not significant, as on the 12-prompt set. Thinking rose about 1.6×, from 130 to 210 tokens, so total output fell 10% (not significant). Both READMEs' cross-model lines now include this.
 
 - **Haiku key-fact coverage (M3, 5 calls):** on 13 pairs, coverage was 93.3% for baseline and 88.8% with brainres (−4.5 pp, CI −12.7 to +3.7, not significant). Sonnet lost 2.6 pp on the same prompts.

@@ -160,6 +160,16 @@ for c in cmds:
         assert pathlib.Path(ref).exists(), (c, ref)
 " && ok "slash commands /brainres:score and /brainres:rewrite reference real files" || err "slash command files broken"
 
+# 8f. Install footprint (D13): a plugin install copies the tracked tree (shallow clone + cache copy). The runtime
+# reads only hooks/, skills/, commands/ and output-styles/, so size costs disk, not tokens. Keep it bounded.
+python3 -c "
+import subprocess, os
+files = subprocess.run(['git', 'ls-files'], capture_output=True, text=True).stdout.split()
+mb = sum(os.path.getsize(f) for f in files if os.path.exists(f)) / 1e6
+assert mb < 15, f'{mb:.1f} MB tracked'
+print(f'{mb:.1f}')
+" > /tmp/brainres-size.txt && ok "install footprint $(cat /tmp/brainres-size.txt) MB tracked (< 15 MB)" || err "tracked files over 15 MB, slim evals/results or move the plugin into a subfolder (D13)"
+
 # 9. Official plugin validator, when the CLI is available
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate . >/dev/null 2>&1 && ok "claude plugin validate" || err "claude plugin validate failed"
