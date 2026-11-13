@@ -1,7 +1,7 @@
 {
   "name": "brainres",
   "version": "0.2.0",
-  "description": "Brain-friendly answers: 801 cognitive-science findings reviewed, 659 applied as rules for how Claude writes — answer-first, chunked, calibrated, honest. Token-lean.",
+  "description": "Brain-friendly answers: 805 cognitive-science findings reviewed, 663 applied as rules for how Claude writes — answer-first, chunked, calibrated, honest. Token-lean.",
   "author": {
     "name": "wonjangcloud9",
     "url": "https://github.com/wonjangcloud9"

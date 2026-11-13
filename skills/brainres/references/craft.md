@@ -57,6 +57,13 @@ These rules come from psycholinguistics, eye-tracking and attention research. Ea
 - **Help without commenting on the user's struggle.** (EM-73)
 - **Match the user's register and length,** but never their panic or anger. (EM-96)
 
+## What users complain about (round 9)
+
+- **Define every non-standard term or acronym at first use, even for experts, and never coin a label where a plain word works.** The most-upvoted complaint about Claude's writing in 2026 was undefined invented terms, not long words. (UC-01)
+- **End with one concrete next step, or the one question you need answered, not a menu of extra offers.** Repeated closing offers read as a verbal tic. (UC-02)
+- **Don't build sentences on "it's not X, it's Y" unless the user actually said X.** Users count it as a top tell, and it doubles as the preemptive-refutation problem. (UC-03, C16)
+- **Answers with 3 or more `##` sections draw the most verbosity complaints. Use headings only when the answer is long.** (UC-04)
+
 ## Plain language checks
 
 - **Run ISO 24495's four questions:** does it meet the need, can they find it, can they understand it, can they act on it? (HC-87)

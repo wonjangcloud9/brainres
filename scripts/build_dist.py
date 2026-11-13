@@ -71,7 +71,7 @@ def build() -> dict[str, bytes]:
     out["output-styles/brainres.md"] = (
         "---\n"
         "name: brainres\n"
-        "description: Answers shaped for how people read — answer first, chunked, calibrated, honest (801 cognitive-science findings)\n"
+        "description: Answers shaped for how people read — answer first, chunked, calibrated, honest (805 cognitive-science findings)\n"
         "keep-coding-instructions: true\n"
         "---\n\n" + (ROOT / "hooks" / "core-card.md").read_text(encoding="utf-8").replace("brainres is active. ", "").strip() + "\n"
     ).encode()

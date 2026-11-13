@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **Research round 9: what users actually complain about in 2026** (`research/catalog-round9.md`). The backlog was empty, and the measurements and community reports gave nothing new.
+  - **UC-01, undefined or invented terms:** the most-upvoted complaint about Claude's writing (r/ClaudeAI, 700+ upvotes).
+  - **UC-02, repeated closing offers:** named in a 2026 review of verbal tics.
+  - **UC-03, "not X, but Y" contrasts:** already covered by C16.
+  - **UC-04, multi-section dumps:** already covered by the heading checks.
+  - **Where they're applied:** all four are cited in craft.md.
+  - **Saved suite answers:** brainres doesn't reduce unexpanded acronyms (33/79 vs 37/78) or closing offers (31/79 vs 33/78) on a rough count. The new U1 (score 4) and U2 (score 2) check them by hand before changing the card.
+
 - **Install size measured, no restructure (D13).**
   - **What an install costs:** a shallow clone of about 1.5 MB to download. On disk that's a 7.4 MB marketplace tree plus a 5.9 MB cache copy, and 4.4 MB of it is `evals/results`.
   - **Why it doesn't matter yet:** the runtime reads only `hooks/`, `skills/`, `commands/` and `output-styles/`, so size costs disk, not tokens. Moving the plugin into a subfolder would cut only the cache copy and would change many paths.

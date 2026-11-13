@@ -16,3 +16,4 @@ Topics for research rounds (see [docs/dev/LOOP.md](../docs/dev/LOOP.md)). Move a
 - [x] LLM-side effects of style rules (format restrictions, brevity vs accuracy) → research/llm-side-effects.md (2026-11-12)
 - [x] Streaming LLM answers → catalog-round7.md (2026-11-12): no comprehension or trust study found; ST-01 (practitioner, W) supports sentence-1-stands-alone
 - [x] LLM instruction drift in multi-turn dialog → llm-side-effects.md (Li 2024, Laban 2025); our reminder is unmeasured → B46
+- [x] What users actually complain about (2026) → catalog-round9.md (2026-11-13): undefined terms, closing offers, familiar contrasts, multi-section dumps; U1/U2 check our answers by hand

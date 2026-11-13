@@ -6,6 +6,8 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| U1 | **Undefined terms (UC-01).** A rough heuristic found an uncommon acronym never expanded in 33/79 brainres and 37/78 baseline suite answers. Judge 20 brainres answers by hand: count genuinely undefined coined terms or acronyms that the reader likely doesn't know. If ≥ 4/20, test a card wording ("define any non-standard term or acronym at first use", trimming bytes elsewhere) on those prompts, before vs after, with the rule stated in advance | Q | 8 | 1 | 0.5 | 1 | **4** | todo |
+| U2 | **Closing offers (UC-02).** About 40% of suite answers in both conditions end with an offer. Classify 20 brainres endings by hand: (a) a concrete next step, (b) the one question needed to proceed, (c) a generic offer or menu. If (c) ≥ 5/20, tighten card rule 11 ("End on the next action") and re-measure; otherwise record that rule 11 already works | Q | 8 | 0.5 | 0.5 | 1 | 2 | todo |
 | D11a | Create the `hard-to-read` label (Issues → Labels) so the new form's reports get labelled; the form works without it, using the title prefix | G | 2 | 0.5 | 1 | 0.1 | 10 | owner |
 | D2 | Post the launch drafts (HN, Reddit, GeekNews, X); they carry the current numbers | G | 10 | 3 | 0.5 | 0.5 | 30 | owner |
 | D5 | Submit the entries in `launch/submissions.md`: claudemarketplaces.com now, the Anthropic community marketplace after D8/D8a, awesome-claude-code **from 2026-11-26** (14-day rule; human web form only), Composio optional | G | 8 | 2 | 0.5 | 0.5 | 16 | owner (ready) |
