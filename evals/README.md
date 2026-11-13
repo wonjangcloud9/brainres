@@ -72,7 +72,7 @@ The gain is +20 pp and the loss is −1.9 pp, which passes the rule, so the line
 
 **Card ablation (V3): no dead weight found.** We removed each group of card lines and re-ran the 15-prompt V1a subset (60 calls). Results are in [`ablation/RESULTS.md`](ablation/RESULTS.md). Removing the structure group (G3) or the precision and style group (G4) raised exactly the violations those lines target. The answer-first and fit groups (G1, G2) are situation rules: their effects show in targeted evals (C17 math, V2 novice), not in general prompts. Every line stays.
 
-**Haiku on the suite (M1, M3).** We ran the V1a 15-prompt subset on Haiku, baseline vs card proxy (30 calls). Single-turn answers are turn 1, where the auto-reminder isn't on yet, so the card alone is the real condition. Two prompts were excluded: one debug prompt timed out in both conditions, and on one refusal prompt the brainres call returned an **API safeguard error instead of an answer**. That error was scored as an answer at first; `run.py` now flags such replies (`api_error`) and `combine.py` drops them. 13 pairs remain ([`results/combined-suite-haiku.md`](results/combined-suite-haiku.md)).
+**Haiku on the suite (M1, M3).** We ran the V1a 15-prompt subset on Haiku, baseline vs card proxy (30 calls). Single-turn answers are turn 1, where the plugin adds only the card, so the card alone is the real condition. Two prompts were excluded: one debug prompt timed out in both conditions, and on one refusal prompt the brainres call returned an **API safeguard error instead of an answer**. That error was scored as an answer at first; `run.py` now flags such replies (`api_error`) and `combine.py` drops them. 13 pairs remain ([`results/combined-suite-haiku.md`](results/combined-suite-haiku.md)).
 
 | Same 13 prompts | Sonnet | Haiku |
 |---|---:|---:|
@@ -302,9 +302,9 @@ There was no drift without the reminder, so per the pre-stated rule the always-o
 
 These are scores after the K1, K2 and S1 re-scores. Off was originally 88.5 and 92.7, then 96.3 after K1 and K2. **After S1 the turns 5–7 gap is 2.7 points, below the pre-stated 3-point rule.** Two of the off answers had lost 10 points each to the old average-sentence cliff. With 6 answers per condition this is within noise either way, so H1 re-runs it with a rule stated in advance before the auto-reminder is kept or removed.
 
-The gap is there from turn 1, so this is not drift. On Haiku the card alone is weaker. After both re-scores, the remaining difference without the reminder is long sentences (3 answers) and a too-long average sentence (3; mild after S1). The earlier walls of text and Korean bold flags were check artifacts (K1, K2). That passes the pre-stated rule (turns 5–7 down 3 points or more without it).
+The gap is there from turn 1, so this is not drift. On Haiku the card alone is weaker. After both re-scores, the remaining difference without the reminder is long sentences (3 answers) and a too-long average sentence (3; mild after S1). The earlier walls of text and Korean bold flags were check artifacts (K1, K2). That passed the pre-stated rule (turns 5–7 down 3 points or more without it) until the S1 re-score; see H1 below.
 
-The hook now switches the line back on automatically **when the session's last answer came from Haiku**. It reads the model name from the transcript tail (`"model":"claude-haiku-…"`). Turn 1 has no answer yet, so it starts on turn 2. `BRAINRES_REMINDER=on` forces it for any model and `off` disables it. `validate.sh` checks this routing, and the hook was tested against a real Haiku transcript.
+From B48 until H1, the hook switched the line back on automatically **when the session's last answer came from Haiku**. It reads the model name from the transcript tail (`"model":"claude-haiku-…"`). Turn 1 has no answer yet, so it starts on turn 2. `BRAINRES_REMINDER=on` forces it for any model and `off` disables it. `validate.sh` checks this routing, and the hook was tested against a real Haiku transcript.
 
 **Auto mode end to end (B50).** The same Haiku sessions with the default hook (14 calls). The transcripts show the line injected on turns 2–7 in both sessions (6 of 7 turns).
 
@@ -314,6 +314,17 @@ The hook now switches the line back on automatically **when the session's last a
 | Turns 5–7 | 100.0 | **100.0** | 96.3 |
 
 Auto mode matches forced-on from turn 2. After the re-scores, auto turn 1 also scores 96.0, but with n = 2 that is within noise. No hook can see the model on turn 1: the SessionStart input has `cwd`, `session_id`, `source` and `transcript_path`, but no model. Haiku users who want turn 1 covered too can set `BRAINRES_REMINDER=on`.
+
+**Replicate run: the Haiku gain doesn't hold (H1).** After S1 the gap was below the rule, so we re-ran the same B48 sessions (28 calls) and pooled both runs. The rule was stated in advance: keep the auto-reminder only if the pooled turns 5–7 gap is 3 points or more.
+
+| Haiku, mean Brain Score | reminder on | off | gap |
+|---|---:|---:|---:|
+| Run 1 (B48, after S1), turns 5–7 | 100.0 | 97.3 | +2.7 |
+| Run 2 (H1), turns 5–7 | 99.8 | 98.0 | +1.8 |
+| Pooled, turns 5–7 (12 answers each) | 99.9 | 97.7 | **+2.2** |
+| Pooled, turns 1–4 (16 answers each) | 97.9 | 97.8 | +0.2 |
+
+The pooled gap is below the rule, so **the hook no longer switches the reminder on for Haiku**; Haiku sessions save 84 tokens per message. `BRAINRES_REMINDER=on` still forces it for any model. In run 2, turns 1–4 scored higher *without* the reminder, and its effect on length flipped between runs (turns 5–7: 118 vs 96 words in run 1, 110 vs 118 in run 2).
 
 **Long context (B47).** `python3 evals/multiturn.py --long` pastes about 3k tokens of logs or code in each of turns 1–4. The session reaches about 30k context tokens. Turns 5–7 are plain database questions, also asked in fresh sessions as the control (2 samples each). Card only, no per-turn reminder, Sonnet, EN + KO, 26 calls:
 

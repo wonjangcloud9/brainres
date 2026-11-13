@@ -41,7 +41,6 @@ Create a Gem and paste `dist/system-prompt.md` into its instructions.
 | Rule card at session start | Same text, pasted once |
 | Learner line ("fix their own line, end with a predict-first question") | Missing |
 | Emergency line ("next action first") | Missing |
-| Haiku auto-reminder | Missing |
 | Skill modes (scan, learn, rewrite, score) | Only with the claude.ai Skill upload |
 | Scoring answers | Use the [playground](../playground/) or `python3 skills/brainres/scripts/brainlint.py` |
 
@@ -55,4 +54,4 @@ Create a Gem and paste `dist/system-prompt.md` into its instructions.
   - 스킬 업로드(Customize → Skills, 유료 요금제 + 코드 실행 필요)는 Claude가 필요하다고 판단할 때만 불러옵니다. 우리 측정에서는 24번 중 1번이었습니다.
 - **ChatGPT:** Settings → Personalization → 맞춤 지침에 `dist/system-prompt.md`를 붙여 넣으세요. 1,188자라서 1,500자 칸에 들어갑니다.
 - **Gemini:** Gem을 만들고 지침에 붙여 넣으세요.
-- **빠지는 것:** 학습자 줄, 긴급 상황 줄, Haiku 자동 리마인더는 플러그인에서만 동작합니다.
+- **빠지는 것:** 학습자 줄과 긴급 상황 줄은 플러그인에서만 동작합니다.

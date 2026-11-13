@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **The Haiku auto-reminder is removed (H1, 28 calls).** After the S1 re-score, the B48 turns 5–7 gap fell from 3.7 to 2.7 points. We re-ran the same Haiku 7-turn sessions, reminder on vs off, and pooled both runs under a rule stated before the run: keep it only if the pooled gap is 3 or more.
+  - **Turns 5–7 (12 answers each):** 99.9 with the reminder vs 97.7 without, a gap of +2.2, below the rule.
+  - **Turns 1–4:** +0.2. In the second run, the answers without the reminder scored higher.
+  - **Length:** the effect flipped between runs.
+  - **What changed:** the hook no longer reads the transcript to detect Haiku. It now reads only the prompt. Haiku sessions save 84 tokens per message, and `BRAINRES_REMINDER=on` still forces the line for any model.
+  - **Updated:** validate.sh, both READMEs, evals/README (with the H1 table), docs/use-elsewhere.md, the hook description in launch/submissions.md, the release notes and both articles.
+
 - **`sentence_length` is now graded (S1, no calls).** It used to cost a flat −10 as soon as the average passed the limit (KO 12 eojeol, EN 25 words), the same as a buried answer. All 4 suite hits were just over the limit. The penalty now rises from 1 just past the limit to 10 at the long-sentence mark (KO 20, EN 35), with a new test. The playground and dist were rebuilt.
   - **Re-score:** every saved run was re-scored, and `score_before_s1` keeps the old values.
   - **Suite:** baseline 94.2 and brainres 98.9. The Δ stays at **+4.6**, with the CI moving from +3.2–+6.1 to +3.3–+6.0. READMEs, launch drafts and the social preview image were updated.

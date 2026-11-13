@@ -68,13 +68,12 @@ BRAINRES_SITUATIONS=off rem "I'm learning Python" | grep -q "Learner:" && learne
 for p in "URGENT: our production site is down" "급해요 ㅠㅠ 작업한 거 다 날아갔어요" "I ran DROP TABLE users by accident"; do rem "$p" | grep -q "Emergency:" || learner_ok=0; done
 for p in "CORS가 뭐야?" "How do I rename a git branch?" "What should I check before deploying to production?"; do rem "$p" | grep -q "Emergency:" && learner_ok=0; done
 [ $learner_ok = 1 ] && ok "reminder adds learner / emergency lines only on matching prompts" || err "reminder situation-line routing wrong"
-# B48: the always-on line returns automatically for Haiku sessions (transcript's last model), never for others
-tmpd=$(mktemp -d); printf '{"message":{"model":"claude-haiku-5-5"}}\n' > "$tmpd/h.jsonl"; printf '{"message":{"model":"claude-sonnet-5-5"}}\n' > "$tmpd/s.jsonl"
+# H1: no automatic reminder for any model (not even a Haiku transcript); BRAINRES_REMINDER=on forces it
+tmpd=$(mktemp -d); printf '{"message":{"model":"claude-haiku-5-5"}}\n' > "$tmpd/h.jsonl"
 hk=$(printf '{"prompt":"What is CORS?","transcript_path":"%s"}' "$tmpd/h.jsonl" | bash hooks/brainres-reminder.sh)
-sn=$(printf '{"prompt":"What is CORS?","transcript_path":"%s"}' "$tmpd/s.jsonl" | bash hooks/brainres-reminder.sh)
-hoff=$(printf '{"prompt":"What is CORS?","transcript_path":"%s"}' "$tmpd/h.jsonl" | BRAINRES_REMINDER=off bash hooks/brainres-reminder.sh)
-printf '%s' "$hk" | grep -q "answer in sentence 1" && [ -z "$sn" ] && [ -z "$hoff" ] && ok "always-on line auto-enables for Haiku only (B48)" || err "Haiku auto-reminder routing wrong"
-printf '%s' "$hk" | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert len(c) <= 300" && ok "Haiku reminder <=300 chars" || err "Haiku reminder too long"
+fon=$(printf '{"prompt":"What is CORS?"}' | BRAINRES_REMINDER=on bash hooks/brainres-reminder.sh)
+[ -z "$hk" ] && printf '%s' "$fon" | grep -q "answer in sentence 1" && ok "no automatic reminder; BRAINRES_REMINDER=on forces it (H1)" || err "reminder routing wrong"
+printf '%s' "$fon" | python3 -c "import json,sys; c=json.load(sys.stdin)['hookSpecificOutput']['additionalContext']; assert len(c) <= 300" && ok "forced reminder <=300 chars" || err "forced reminder too long"
 rm -rf "$tmpd"
 [ -z "$(BRAINRES=off bash hooks/brainres-reminder.sh < /dev/null)" ] && ok "BRAINRES=off silences reminder" || err "BRAINRES=off did not silence reminder"
 [ -z "$(BRAINRES=off bash hooks/brainres-context.sh)" ] && ok "BRAINRES=off silences hook" || err "BRAINRES=off did not silence hook"

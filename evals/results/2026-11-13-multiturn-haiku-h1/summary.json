@@ -1,0 +1,300 @@
+{
+  "model": "haiku",
+  "rows": [
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 1,
+      "q": "My Flask app returns 500 on /login after I added a database. Where do I start?",
+      "text": "Start with the traceback in your terminal. Flask prints the full Python exception there, and the last line usually names the cause.\n\n1. **Run with debug on** so Flask shows the error in the browser and reloads on changes:\n   ```bash\n   export FLASK_DEBUG=1   # or app.run(debug=True)\n   flask run\n   ```\n   Don't leave debug mode on in production, since it exposes the traceback to anyone who visits the page.\n\n2. **Reproduce the request** and read the bottom of the traceback. Common causes after adding a database:\n   - `OperationalError: no such table: users`: the schema was never created. Run your table creation (`db.create_all()`) or your migrations.\n   - `OperationalError: unable to open database file` or a wrong connection string: the path or URL in your config is wrong, or the file isn't where you think.\n   - `ModuleNotFoundError` or a driver error (e.g., `psycopg2`): the driver isn't installed in the active virtualenv.\n   - `AttributeError` on a query result: the query returns `None` (e.g., `.first()` with no matching row) and the code uses it without checking.\n\n3. **Check the database directly.** Open the DB with `sqlite3 yourfile.db` (or `psql`) and confirm the tables and rows exist. If the table is missing, the problem is setup, not the login code.\n\n4. **Check the database setup order.** The `db` object must be created and attached to the app (`db.init_app(app)`) before any query runs, and the app context must be active when you query outside a request.\n\nIf you paste the full traceback and the code for the `/login` route plus your database setup, I can point to the exact line.",
+      "score": 100,
+      "words": 251,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 2,
+      "q": "What's the difference between a session cookie and a JWT?",
+      "text": "A session cookie stores an ID that points to data kept on the server, while a JWT carries the data itself, signed so the server can verify it without a lookup.\n\n| | Session cookie | JWT |\n|---|---|---|\n| What the browser holds | Random session ID | Signed token with claims (user ID, expiry) |\n| Where the data lives | Server (memory, DB, or Redis) | Inside the token |\n| Logout | Delete the server session; takes effect immediately | Token stays valid until it expires, unless you add a denylist |\n| Server state | Required | None needed to verify |\n| Size | Small | Larger, sent on every request |\n\nFor a Flask login, a session cookie is usually the simpler choice. Flask's built-in `session` stores the data in a cookie signed with `SECRET_KEY`, so the browser can't read or change it. Logout and revocation work right away, and you don't need extra code.\n\nJWTs fit better when several separate services must verify the same user without calling a shared session store, or when you're building an API for mobile apps or third-party clients.\n\nIf you're using Flask-Login with your database, you're already on the session-cookie model. Tell me which auth approach your `/login` route uses and I can check whether it's set up correctly.",
+      "score": 100,
+      "words": 136,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 3,
+      "q": "Should I store the JWT in localStorage or an httpOnly cookie?",
+      "text": "Use an httpOnly cookie. JavaScript on the page can read anything in localStorage, so a single cross-site scripting (XSS) bug lets an attacker steal the token. An httpOnly cookie can't be read from JavaScript, which blocks that theft.\n\nThe cookie still needs two flags:\n\n- **`Secure`** sends it only over HTTPS.\n- **`SameSite=Lax`** (or `Strict`) limits cross-site requests, which reduces CSRF risk.\n\nBecause the browser attaches cookies automatically, state-changing routes need CSRF protection too. Flask-WTF's `CSRFProtect` covers this.\n\nIn Flask, the setup looks like this:\n\n```python\nresp = make_response(redirect(\"/\"))\nresp.set_cookie(\n    \"access_token\", token,\n    httponly=True, secure=True, samesite=\"Lax\",\n    max_age=3600,\n)\n```\n\nKeep `secure=True` only while you test over HTTPS. On `http://localhost`, browsers may refuse to store a `Secure` cookie, so you'd need to turn it off in development.\n\nIf you're using Flask's built-in `session` instead of a JWT, this question mostly goes away: it already sets an httpOnly cookie for you.\n\nDo you want me to check how your `/login` route sets the token?",
+      "score": 100,
+      "words": 148,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 4,
+      "q": "Is bcrypt still OK for hashing passwords in 2026?",
+      "text": "Yes, bcrypt is still acceptable in 2026, but argon2id is the stronger choice for a new project. OWASP's password storage guidance lists argon2id first, with scrypt, bcrypt, and PBKDF2 as alternatives.\n\nTwo things matter for bcrypt:\n\n- **Cost factor:** Use at least 10 (OWASP's minimum). Raise it until a hash takes roughly 250 to 500 ms on your server.\n- **72-byte limit:** bcrypt ignores input past 72 bytes. Long passphrases lose their tail, so either enforce a shorter maximum or pre-hash with SHA-256 before passing the value to bcrypt.\n\nIn Flask, you can use `flask-bcrypt` or call `bcrypt` directly. If you switch to argon2id, use `argon2-cffi` with its default parameters, which are tuned to current guidance.\n\nExisting bcrypt hashes don't need to be migrated immediately. Rehash each one with the new algorithm when the user next logs in successfully.\n\nDo you want me to check how your `/login` route verifies passwords?",
+      "score": 100,
+      "words": 151,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 5,
+      "q": "How do I add rate limiting to the login route?",
+      "text": "Add Flask-Limiter and put a limit on the login route. It counts requests per client IP and returns HTTP 429 once the limit is hit.\n\n```bash\npip install Flask-Limiter\n```\n\n```python\nfrom flask import Flask\nfrom flask_limiter import Limiter\nfrom flask_limiter.util import get_remote_address\n\napp = Flask(__name__)\nlimiter = Limiter(\n    get_remote_address,\n    app=app,\n    default_limits=[],          # no global limit; only the routes you mark\n    storage_uri=\"memory://\",    # fine for one process; see below\n)\n\n@app.route(\"/login\", methods=[\"POST\"])\n@limiter.limit(\"5 per minute; 50 per hour\")\ndef login():\n    ...\n```\n\nSome points to check:\n\n- **Storage:** `memory://` resets on restart and isn't shared across worker processes, so with Gunicorn's multiple workers each one has its own count. For production, use Redis: `storage_uri=\"redis://localhost:6379\"`.\n- **Proxies:** `get_remote_address` sees your proxy's IP if the app runs behind Nginx or a load balancer. Then every user shares one limit. Fix this with `ProxyFix` and trusted proxy settings, and only after you confirm the proxy is yours.\n- **Per-account limits:** An IP limit alone lets an attacker spread guesses across many IPs. Add a second counter keyed on the submitted username, for example with a `key_func` that reads it from the form.\n\nDo you want me to add the limiter to your `/login` route? If you share the route and your deployment setup (single process or Gunicorn, behind a proxy or not), I can pick the right storage and key.",
+      "score": 100,
+      "words": 170,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 6,
+      "q": "If 3% of 40,000 monthly logins fail, how many failures is that per day?",
+      "text": "3% of 40,000 is 1,200 failures per month, which is about **40 per day** over a 30-day month. Over a 31-day month, it's about 39.",
+      "score": 92,
+      "words": 25,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "lang": "en",
+      "condition": "no-reminder",
+      "turn": 7,
+      "q": "Explain what this does: `@app.after_request\ndef h(r): r.headers['X-Frame-Options'] = 'DENY'; return r`",
+      "text": "This adds a security header to every response from your app. `@app.after_request` runs after each request, and the function sets `X-Frame-Options: DENY` on the response, then returns it.\n\nThat header tells browsers not to display your page inside an `<iframe>`, including on other websites. It blocks clickjacking, where an attacker overlays your login form in a hidden frame and tricks a user into clicking buttons on it.\n\nTwo details:\n\n- **Modern alternative:** The Content-Security-Policy header `frame-ancestors 'none'` does the same job. If a response has `frame-ancestors`, browsers ignore `X-Frame-Options`. Setting both is harmless and covers older browsers.\n- **Naming:** `h` works, but a name like `add_security_headers` makes the code easier to read later.\n\nDo you want me to add this to your app alongside a CSP header?",
+      "score": 100,
+      "words": 125,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 1,
+      "q": "My Flask app returns 500 on /login after I added a database. Where do I start?",
+      "text": "Start with the traceback. Flask prints it in the terminal where you run the server, and its last line names the actual error.\n\n1. **Turn on debug mode** so the error shows in the browser too. Run `export FLASK_DEBUG=1` before `flask run`, or pass `debug=True` to `app.run()`. Don't leave this on in production.\n2. **Reproduce it** by submitting the login form again, then find the last line of the traceback, such as `sqlite3.OperationalError: no such table: users`.\n3. **Match the error to a likely cause:**\n   - **\"no such table\"**: the schema was never created. Run your `db.create_all()` or migration step.\n   - **\"unable to open database file\"**: the DB path is wrong or relative to a different folder.\n   - **`ModuleNotFoundError`**: the DB driver or ORM isn't installed in the active environment.\n   - **`KeyError` or `AttributeError` in the login view**: the query or the user object doesn't match your model.\n\nPaste the traceback and your `/login` view here, and I'll pinpoint the cause.",
+      "score": 92,
+      "words": 155,
+      "checks": [
+        "bold_overuse"
+      ]
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 2,
+      "q": "What's the difference between a session cookie and a JWT?",
+      "text": "A session cookie holds an ID that points to data stored on the server, while a JWT holds the data itself, signed so the server can verify it without a lookup.\n\n| | Session cookie (server-side) | JWT |\n|---|---|---|\n| What the browser stores | Random session ID | Token with claims (user ID, expiry) |\n| Where user state lives | Server (memory, DB, or Redis) | In the token |\n| Revoking a login | Delete the server record | Hard. The token stays valid until it expires, unless you keep a denylist |\n| Server lookup per request | Yes | No, only a signature check |\n| Typical fit | Traditional web apps with server-rendered pages | APIs and mobile clients |\n\nFlask's built-in `session` is a third case: it stores the data in the cookie itself, signed with `SECRET_KEY` using itsdangerous. The client can read the contents but can't change them. It works like a JWT in that respect, but it isn't a JWT.\n\nFor your `/login` route, Flask-Login or the built-in session is usually the simpler choice. Check whether `SECRET_KEY` is set, because the session code fails without it.",
+      "score": 100,
+      "words": 100,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 3,
+      "q": "Should I store the JWT in localStorage or an httpOnly cookie?",
+      "text": "Use an httpOnly cookie. JavaScript can read anything in `localStorage`, so one XSS bug lets an attacker copy the token, while an httpOnly cookie stays out of reach of page scripts.\n\nCookies bring one risk that `localStorage` avoids: the browser sends them automatically, so another site can trigger requests (CSRF). Two settings handle most of this:\n\n1. **`SameSite=Lax` or `Strict`** stops most cross-site requests from carrying the cookie.\n2. **`Secure`** keeps the cookie off plain HTTP.\n\nIn Flask, set these when you issue the token:\n\n```python\nresponse.set_cookie(\n    \"access_token\",\n    token,\n    httponly=True,\n    secure=True,\n    samesite=\"Lax\",\n    max_age=3600,\n)\n```\n\nIf you use `SameSite=None` for a cross-domain frontend, add a CSRF token on state-changing requests.\n\nNext, tell me whether your frontend and API share a domain. That decides whether you need the CSRF token.",
+      "score": 100,
+      "words": 119,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 4,
+      "q": "Is bcrypt still OK for hashing passwords in 2026?",
+      "text": "Yes, bcrypt is still acceptable. OWASP still lists it alongside Argon2id, scrypt, and PBKDF2, and no practical attack has broken it. For a new project, Argon2id is the current first choice, but switching isn't urgent if bcrypt is already in place.\n\nTwo bcrypt details matter in practice:\n\n- **Input limit:** bcrypt only uses the first 72 bytes of a password. Longer passwords are silently truncated, so either reject them or pre-hash with SHA-256 first.\n- **Cost factor:** Use a work factor high enough that one hash takes about 250 ms or more on your server. Libraries default to values that are often too low for current hardware.\n\nI'm working from my knowledge cutoff, so check OWASP's password storage cheat sheet for the latest parameter guidance.\n\nNext, check which library your `/login` code uses and what cost factor it sets. Paste that line and I'll tell you whether it's enough.",
+      "score": 100,
+      "words": 149,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 5,
+      "q": "How do I add rate limiting to the login route?",
+      "text": "Install Flask-Limiter and add a per-IP limit to the route. Run `pip install Flask-Limiter`, then:\n\n```python\nfrom flask_limiter import Limiter\nfrom flask_limiter.util import get_remote_address\n\nlimiter = Limiter(\n    key_func=get_remote_address,\n    app=app,\n    storage_uri=\"memory://\",\n)\n\n@app.route(\"/login\", methods=[\"POST\"])\n@limiter.limit(\"5 per minute\")\ndef login():\n    ...\n```\n\nThree details change how this behaves:\n\n- **Proxy setups:** If you run behind nginx or a load balancer, `get_remote_address` sees the proxy's IP, so every user shares one limit. Wrap `app.wsgi_app` with Werkzeug's `ProxyFix` so Flask reads the real client IP from the forwarded headers, and only do this when your proxy sets those headers.\n- **Storage:** `memory://` keeps counters per process. With several Gunicorn workers, each one counts separately, so the real limit is higher than you set. Use Redis (`storage_uri=\"redis://...\"`) in production.\n- **Per-IP alone isn't enough:** An attacker can rotate IPs against one account. Add a second limit keyed on the submitted username, for example with a `key_func` that reads the form field.\n\nNext, tell me how you deploy the app (single process or multiple workers, and whether a proxy sits in front). That decides which of these you need.",
+      "score": 100,
+      "words": 156,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 6,
+      "q": "If 3% of 40,000 monthly logins fail, how many failures is that per day?",
+      "text": "3% of 40,000 is 1,200 failures per month, which is about 40 per day, assuming a 30-day month.\n\nFor a 31-day month it's about 39 per day. To check your real rate, count failures from your logs over one week and divide by 7.\n\nNext, pull last week's failed `/login` attempts from your logs and tell me the count. If it's well above 40 a day, that supports the per-account limit from the last answer.",
+      "score": 100,
+      "words": 75,
+      "checks": []
+    },
+    {
+      "lang": "en",
+      "condition": "reminder",
+      "turn": 7,
+      "q": "Explain what this does: `@app.after_request\ndef h(r): r.headers['X-Frame-Options'] = 'DENY'; return r`",
+      "text": "This function adds an `X-Frame-Options: DENY` header to every response from your app. Flask calls `@app.after_request` after each request, so the function receives the response `r`, sets the header, and returns it.\n\nThe header tells browsers never to display your pages inside an `<iframe>`, `<frame>`, or `<object>`. That blocks clickjacking, where an attacker hides your login form under a fake page and tricks users into clicking it.\n\nTwo details:\n\n- **Newer alternative:** The CSP directive `frame-ancestors 'none'` does the same job and is the one current guidance recommends. Browsers that support it ignore `X-Frame-Options`, so you can send both for older browsers.\n- **Scope:** The header applies to all responses, including JSON APIs. It has no effect on those, so leaving it on is harmless.\n\nNext, add this to your app and check it with `curl -I http://127.0.0.1:5000/login`. You should see `X-Frame-Options: DENY` in the output.",
+      "score": 100,
+      "words": 141,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 1,
+      "q": "Next.js 앱에서 빌드는 되는데 배포하면 흰 화면만 나와요. 어디부터 봐야 해요?",
+      "text": "**브라우저 개발자 도구의 Console과 Network 탭부터 보세요.** 흰 화면은 대부분 클라이언트 JavaScript가 실행되다 멈추거나, 필요한 파일을 못 불러와서 생깁니다. 빌드가 성공해도 배포 환경에서 이 두 가지가 실패할 수 있습니다.\n\n1. **Console에서 에러 확인**\n   - `Uncaught ReferenceError`, `undefined`, `Hydration failed` 같은 메시지가 있으면 코드나 환경 변수 문제입니다.\n   - 에러 메시지와 스택 트레이스를 복사해 두세요.\n\n2. **Network에서 실패한 요청 확인**\n   - `/_next/static/...` 파일이 404이거나 CORS/MIME 에러가 나면 **경로 설정 문제**입니다. `next.config`의 `basePath`, `assetPrefix`를 확인하세요. 배포 URL이 서브경로(예: `/app`)라면 특히 중요합니다.\n   - 모든 요청이 정상이면 JS 실행 단계 문제입니다.\n\n3. **환경 변수 확인**\n   - `NEXT_PUBLIC_*` 값은 **빌드 시점**에 코드에 박힙니다. 빌드 환경에 값이 없었다면 배포 후 `undefined`가 됩니다. 배포 플랫폼의 빌드 설정에 변수가 있는지 확인하세요.\n   - 모듈 최상위에서 env 값을 읽고 `throw`하는 코드가 있다면 흰 화면의 흔한 원인입니다.\n\n4. **서버 로그와 HTML 소스 확인**\n   - 페이지 소스(`View Source`)에 `<div id=\"__next\"></div>`만 있고 비어 있으면, 서버 렌더링 단계에서 실패했을 가능성이 큽니다. 배포 플랫폼의 런타임 로그를 보세요.\n\n5. **오래된 캐시 의심**\n   - 재배포 후에도 같은 증상이면 CDN이 예전 HTML을 가리키고 있을 수 있습니다. 하드 리프레시나 캐시 퍼지를 해보세요.\n\n**로컬에서 재현하는 방법:** `NODE_ENV=production next build && next start`로 띄워서 같은 증상이 나는지 보면, 코드 문제인지 배포 설정 문제인지 빨리 나눌 수 있습니다.\n\nConsole 에러 메시지와 Network에서 실패한 요청 URL을 알려 주시면 원인을 더 좁혀 드릴게요. 배포 플랫폼(Vercel, Docker, 직접 서버 등)도 함께 알려 주세요.",
+      "score": 100,
+      "words": 208,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 2,
+      "q": "SSR이랑 SSG 차이가 뭐예요?",
+      "text": "SSR과 SSG의 차이는 **HTML을 언제 만드는가**입니다. SSG는 빌드할 때 한 번 만들고, SSR은 요청이 올 때마다 서버에서 만듭니다.\n\n| 구분 | SSG (Static Site Generation) | SSR (Server-Side Rendering) |\n|---|---|---|\n| HTML 생성 시점 | 빌드 시점 | 요청 시점 |\n| 응답 속도 | 매우 빠름 (파일을 그대로 전달) | 서버 렌더링 시간만큼 느림 |\n| 데이터 최신성 | 빌드 때 데이터 고정 (재빌드 또는 ISR로 갱신) | 요청마다 최신 데이터 |\n| 서버 필요 여부 | 정적 호스팅으로 충분 | Node 서버 또는 서버리스 함수 필요 |\n| 적합한 페이지 | 블로그, 문서, 마케팅 페이지 | 로그인 후 대시보드, 사용자별 페이지 |\n\nNext.js에서는 `getStaticProps`(Pages Router) 또는 기본 `fetch`/정적 렌더링(App Router)이 SSG에 해당하고, `getServerSideProps` 또는 `cache: 'no-store'`, `dynamic = 'force-dynamic'` 같은 설정이 SSR에 해당합니다. 최근 App Router에서는 대부분의 페이지가 기본적으로 정적으로 렌더링되고, 동적 함수(`cookies()`, `headers()`)를 쓰면 SSR로 바뀝니다.\n\n앞서 말씀하신 흰 화면 문제와도 관련이 있습니다. SSG 페이지는 빌드 때 만든 HTML이 배포되므로, 빌드 시점에 `NEXT_PUBLIC_*` 값이 없으면 그 결과가 HTML에 굳어 버립니다. 어떤 페이지가 SSG인지 SSR인지 알려 주시면, 그 페이지의 렌더링 방식을 함께 확인해 드릴게요.",
+      "score": 99,
+      "words": 87,
+      "checks": [
+        "sentence_length"
+      ]
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 3,
+      "q": "블로그면 SSR이랑 SSG 중에 뭐가 나아요?",
+      "text": "SSG가 낫습니다. 블로그는 글이 자주 바뀌지 않고, 모든 독자에게 같은 내용을 보여주기 때문입니다.\n\n이유는 세 가지입니다.\n\n- **속도**: SSG는 미리 만든 HTML을 CDN에서 바로 내려줍니다. SSR은 요청마다 서버가 렌더링하므로 느리고, 트래픽이 몰리면 서버 비용도 늘어납니다.\n- **안정성**: 정적 파일은 서버가 죽어도 응답합니다. 배포 환경 문제(앞서 말한 흰 화면 같은)도 줄어듭니다.\n- **비용**: 정적 호스팅은 대개 무료이거나 저렴합니다. SSR은 서버나 서버리스 함수 비용이 듭니다.\n\n글을 새로 올릴 때만 다시 빌드하면 됩니다. 글이 많아지면 빌드 시간이 길어질 수 있는데, 이때는 ISR(Incremental Static Regeneration)을 쓰면 일정 주기마다 해당 페이지만 갱신할 수 있습니다.\n\nSSR이 필요한 경우는 댓글 실시간 반영이나 로그인한 사용자별 화면처럼 요청마다 다른 내용이 나와야 할 때뿐입니다. 블로그의 조회수를 실시간으로 보여주는 정도라면 SSG 페이지에서 클라이언트 쪽 fetch로 따로 가져오는 방법이 더 간단합니다.\n\n블로그를 어떤 방식으로 만들 계획인지 알려 주세요. 직접 Markdown 파일로 글을 관리할지, CMS를 쓸지에 따라 설정이 달라집니다.",
+      "score": 100,
+      "words": 136,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 4,
+      "q": "이미지 최적화에 next/image 꼭 써야 해요?",
+      "text": "아니요, 꼭 써야 하는 건 아닙니다. 다만 블로그처럼 이미지가 많은 사이트에서는 쓰는 편이 대부분 이득입니다.\n\n`next/image`가 자동으로 해 주는 일은 다음과 같습니다.\n\n- **포맷 변환**: 브라우저가 지원하면 WebP나 AVIF로 바꿔 줍니다.\n- **크기 조절**: `sizes`에 맞춰 여러 크기를 만들고, 화면 너비에 맞는 것을 내려줍니다.\n- **지연 로딩**: 화면에 보이기 전까지 이미지를 불러오지 않습니다.\n- **레이아웃 밀림 방지**: `width`와 `height`를 주면 이미지가 뜰 때 글이 밀리지 않습니다.\n\n직접 `<img>` 태그를 쓰거나, `next/image`의 `unoptimized` 옵션을 켜면 이 기능들은 빠집니다. 이미지를 빌드 전에 직접 최적화해 두었다면 그대로 써도 괜찮습니다.\n\n한 가지 주의할 점이 있습니다. `next/image`의 최적화는 서버 쪽에서 일어나므로, `output: 'export'`로 정적 내보내기를 하면 기본 로더를 쓸 수 없습니다. 이때는 `unoptimized`를 켜거나 별도 로더를 설정해야 합니다. 블로그를 정적으로 배포하신다면 이 부분을 먼저 정해 두세요.\n\n배포 방식(Vercel, 정적 호스팅, 직접 서버 중 무엇인지)을 알려 주시면, 이미지 설정을 어떻게 잡을지 구체적으로 알려 드릴게요.",
+      "score": 100,
+      "words": 137,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 5,
+      "q": "환경 변수를 클라이언트에서 쓰려면 어떻게 해요?",
+      "text": "환경 변수 이름 앞에 `NEXT_PUBLIC_`을 붙이면 클라이언트 코드에서 쓸 수 있습니다.\n\n```bash\n# .env.local\nNEXT_PUBLIC_SITE_URL=https://example.com\nDATABASE_URL=postgres://...   # 서버 전용, 접두사 없음\n```\n\n```tsx\n// 클라이언트 컴포넌트\nconst siteUrl = process.env.NEXT_PUBLIC_SITE_URL;\n```\n\n중요한 점은 두 가지입니다.\n\n- **빌드 시점에 값이 고정됩니다.** Next.js는 빌드할 때 `process.env.NEXT_PUBLIC_SITE_URL`을 실제 문자열로 바꿔 넣습니다. 그래서 배포 후에 플랫폼에서 값을 바꿔도 반영되지 않고, 다시 빌드해야 합니다. 앞서 말씀드린 흰 화면 문제도 이 때문에 생길 수 있습니다.\n- **비밀 값에는 쓰면 안 됩니다.** `NEXT_PUBLIC_`이 붙은 값은 번들에 들어가서 누구나 브라우저에서 볼 수 있습니다. API 키나 DB 주소는 접두사 없이 서버에서만 쓰세요.\n\n클라이언트 컴포넌트에서 `process.env.DATABASE_URL`처럼 접두사 없는 변수를 쓰면 값이 `undefined`가 됩니다. 이 경우 에러 없이 조용히 실패하니 주의하세요.\n\n배포 플랫폼의 환경 변수 설정 화면에서도 빌드 시점에 쓰이는 변수인지 확인해 두세요. 블로그 사이트 URL 같은 값을 넣고 싶다면 어떤 플랫폼에 배포할 예정인지 알려 주시면 설정 위치를 짚어 드릴게요.",
+      "score": 100,
+      "words": 119,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 6,
+      "q": "월 방문자 12만 명이고 평균 3페이지를 보면 하루 페이지뷰가 몇이에요?",
+      "text": "하루 페이지뷰는 약 12,000입니다. 월 방문자 12만 명에 평균 3페이지를 곱하면 월 36만 페이지뷰이고, 이를 30일로 나누면 하루 약 12,000 페이지뷰가 됩니다.\n\n계산은 다음과 같습니다.\n\n- 월 페이지뷰: 120,000 × 3 = 360,000\n- 하루 페이지뷰: 360,000 ÷ 30 = 12,000\n\n이 값은 평균입니다. 블로그는 특정 글이 공유되면 하루 방문이 평소의 몇 배로 뛰는 경우가 많아서, 피크 시간대 부하는 이 평균보다 훨씬 높을 수 있습니다.\n\n이 숫자가 중요한 이유는 렌더링 방식 때문입니다. 하루 12,000 페이지뷰를 SSR로 처리하면 요청마다 서버가 HTML을 만들어야 합니다. 반면 SSG로 만들면 같은 트래픽을 CDN이 파일을 전달하는 것으로 처리하므로 서버 부담이 거의 없습니다. 앞서 블로그에는 SSG가 낫다고 말씀드린 이유도 이것입니다.\n\n실제 트래픽 패턴을 알려면 호스팅의 분석 도구나 Google Analytics에서 시간대별 페이지뷰를 확인해 보세요. 그 데이터를 공유해 주시면 피크 부하를 더 정확히 계산해 드릴게요.",
+      "score": 96,
+      "words": 126,
+      "checks": [
+        "long_sentences"
+      ]
+    },
+    {
+      "lang": "ko",
+      "condition": "no-reminder",
+      "turn": 7,
+      "q": "이 코드 뭐 하는 거예요? `export const revalidate = 60`",
+      "text": "`export const revalidate = 60`은 이 페이지를 **60초마다 한 번씩 다시 생성**하라는 뜻입니다. 앞서 말씀드린 ISR(Incremental Static Regeneration) 설정입니다.\n\n동작 순서는 다음과 같습니다.\n\n1. 빌드 때 페이지 HTML을 만들어 두고, SSG처럼 CDN에서 바로 응답합니다.\n2. 60초가 지난 뒤 처음 들어온 요청에는 **이전 HTML을 그대로 보여주고**, 백그라운드에서 새 HTML을 다시 만듭니다.\n3. 다음 요청부터는 새로 만들어진 HTML이 나갑니다.\n\n그래서 방문자는 항상 빠른 응답을 받고, 데이터는 최대 약 60초 정도 늦게 반영됩니다. 블로그 목록이나 조회수처럼 실시간일 필요는 없지만 자주 바뀌는 내용에 잘 맞습니다.\n\n몇 가지만 알아두세요.\n\n- **위치**: 페이지 파일(예: `app/blog/page.tsx`)의 최상단에 둡니다. App Router 기준입니다.\n- **값 의미**: `0`이면 매 요청마다 다시 만드는 SSR에 가까워지고, `false`면 재생성하지 않는 순수 SSG가 됩니다.\n- **서버 필요**: ISR은 Next.js 서버나 Vercel 같은 환경이 필요합니다. `output: 'export'`로 정적 내보내기를 하면 이 설정은 동작하지 않습니다.\n\n앞서 정적 내보내기를 쓰는지 아직 정하지 않으셨죠. 배포 방식을 알려 주시면, 이 설정이 실제로 적용되는지 확인하는 방법까지 같이 정리해 드릴게요.",
+      "score": 100,
+      "words": 144,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 1,
+      "q": "Next.js 앱에서 빌드는 되는데 배포하면 흰 화면만 나와요. 어디부터 봐야 해요?",
+      "text": "**브라우저 개발자 도구의 Console 탭부터 보세요.** 빌드는 성공해도 브라우저에서 JS 에러가 나면 흰 화면이 되고, 콘솔 첫 줄에 원인이 보통 나와요.\n\n확인 순서는 이래요.\n\n1. **Console의 첫 번째 빨간 에러를 복사하세요.** 메시지에 따라 방향이 갈려요.\n   - `Application error: a client-side exception has occurred`: 렌더링 중 에러예요. `window` 접근, 환경변수 누락, 잘못된 import를 의심하세요.\n   - `Hydration failed` 또는 `Text content does not match`: 서버와 클라이언트의 렌더 결과가 달라요. `Date`, `Math.random()`, `window` 조건 분기를 찾아보세요.\n2. **Network 탭에서 `/_next/static/...` 요청을 확인하세요.** 404가 뜨면 `basePath`, `assetPrefix`, 또는 호스팅의 출력 폴더 설정이 틀린 거예요.\n3. **환경변수를 확인하세요.** `NEXT_PUBLIC_*` 값은 빌드할 때 번들에 고정돼요. 배포 환경(CI나 호스팅 대시보드)에 값이 없으면 빌드는 통과하지만 런타임에 `undefined`가 되어 흰 화면이 나올 수 있어요.\n4. **로컬에서 프로덕션 모드로 재현하세요.** `next build && next start`를 실행해 보세요. 로컬에서도 흰 화면이면 코드 문제이고, 로컬은 정상이면 배포 설정 문제예요.\n\n| 증상 | 가능성 높은 원인 |\n|---|---|\n| 특정 경로 새로고침 시만 흰 화면 | 서버 rewrite/SPA fallback 누락 |\n| `_next/static` 404 | `basePath`/`assetPrefix` 또는 출력 경로 오류 |\n| 콘솔에 hydration 에러 | 서버와 클라이언트 렌더 결과 불일치 |\n\n콘솔의 에러 메시지와 배포 플랫폼(Vercel, Netlify, Docker, S3 등)을 알려주시면 원인을 더 좁혀 볼게요.",
+      "score": 100,
+      "words": 136,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 2,
+      "q": "SSR이랑 SSG 차이가 뭐예요?",
+      "text": "**SSR은 요청마다 서버에서 HTML을 만들고, SSG는 빌드할 때 HTML을 미리 만들어 둬요.**\n\n| 구분 | SSG (Static Site Generation) | SSR (Server-Side Rendering) |\n|---|---|---|\n| HTML 생성 시점 | 빌드할 때 한 번 | 요청이 올 때마다 |\n| 응답 속도 | 매우 빠름 (파일을 그대로 전송) | 서버 연산만큼 느림 |\n| 최신 데이터 | 빌드 시점 데이터 (재생성 전까지) | 항상 최신 |\n| 서버 필요 여부 | 정적 호스팅으로 충분 | Node 서버 등 런타임 필요 |\n| Next.js 함수 | `getStaticProps`, 또는 App Router에서 기본 동작 | `getServerSideProps`, 또는 `dynamic = 'force-dynamic'` |\n\n블로그나 문서처럼 내용이 자주 안 바뀌면 SSG가 맞아요. 대시보드나 로그인 후 개인화 페이지처럼 요청마다 데이터가 달라지면 SSR이 맞아요. 둘 사이에 ISR(Incremental Static Regeneration)도 있어서, 정적 페이지를 일정 주기로 다시 만들 수 있어요.\n\n앞에서 말한 흰 화면과 관련하면, SSG로 `next export`를 쓴 경우 `basePath`나 라우팅 설정이 호스팅과 맞지 않아 흰 화면이 자주 나와요. 어떤 방식으로 빌드하고 배포하셨는지 알려주시면 그 설정부터 같이 확인해 볼게요.",
+      "score": 99,
+      "words": 73,
+      "checks": [
+        "sentence_length"
+      ]
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 3,
+      "q": "블로그면 SSR이랑 SSG 중에 뭐가 나아요?",
+      "text": "SSG가 블로그에 더 나아요. 글은 자주 안 바뀌고, 빌드된 HTML을 그대로 보내면 빠르고 호스팅도 저렴하거나 무료로 할 수 있어요.\n\n이유는 이래요. 블로그 글은 발행할 때만 바뀌니까 요청마다 서버에서 HTML을 만들 이유가 없어요. SSR로 하면 매 요청마다 서버 연산이 들고, Node 서버 같은 런타임도 계속 돌려야 해요. 반면 SSG는 `next build` 때 글 페이지를 전부 만들어 두니 CDN에서 바로 응답해요.\n\n다만 SSG에도 주의할 점이 있어요. 글을 수정하거나 새로 올리면 다시 빌드하고 배포해야 해요. 글이 자주 올라오면 ISR(`revalidate` 옵션)을 붙이면 배포 없이 일정 주기로 갱신할 수 있어요.\n\n지금 블로그가 마크다운 파일로 글을 관리하는지, CMS를 쓰는지 알려주시면 빌드 설정을 어떻게 잡을지 구체적으로 정할게요.",
+      "score": 100,
+      "words": 99,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 4,
+      "q": "이미지 최적화에 next/image 꼭 써야 해요?",
+      "text": "**꼭 써야 하는 건 아니에요.** 일반 `<img>`로도 동작하지만, `next/image`를 쓰면 자동으로 크기 조절, WebP/AVIF 변환, 지연 로딩을 해 줘서 이미지 용량과 로딩 속도를 줄이기 쉬워요.\n\n다만 정적 배포에서는 주의가 필요해요. `output: 'export'`로 빌드하면 기본 이미지 최적화 서버를 쓸 수 없어서, 아래 둘 중 하나를 설정해야 해요.\n\n1. `next.config.js`에 `images: { unoptimized: true }`를 넣어 최적화를 끄세요. 대신 이미지 파일은 미리 줄여서 넣어야 해요.\n2. 외부 이미지 서비스(Cloudinary, imgix 등)를 쓰는 커스텀 `loader`를 설정하세요.\n\n블로그라면 글 이미지를 빌드 전에 압축해 두고 `unoptimized`를 쓰는 방식이 간단해요. 배포 방식이 `output: 'export'`인지, Vercel 같은 서버 배포인지 알려주시면 어떤 설정이 맞는지 정할게요.",
+      "score": 90,
+      "words": 91,
+      "checks": [
+        "long_sentences",
+        "yesno_not_first"
+      ]
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 5,
+      "q": "환경 변수를 클라이언트에서 쓰려면 어떻게 해요?",
+      "text": "**환경 변수 이름 앞에 `NEXT_PUBLIC_`을 붙이면 클라이언트에서 쓸 수 있어요.**\n\n```bash\n# .env.local\nNEXT_PUBLIC_SITE_URL=https://example.com\nDB_PASSWORD=secret   # 접두사 없음 → 서버 전용\n```\n\n```tsx\n// 클라이언트 컴포넌트에서\nconst siteUrl = process.env.NEXT_PUBLIC_SITE_URL;\n```\n\n중요한 점은 `NEXT_PUBLIC_*` 값이 **빌드할 때 코드에 그대로 박힌다**는 거예요. 그래서 이전에 말씀드린 흰 화면 원인과 연결돼요. 배포 환경(Vercel 대시보드, CI 설정)에 값을 넣지 않고 빌드하면 `undefined`가 들어가요. 값을 바꾸려면 다시 빌드해야 해요.\n\n또 `NEXT_PUBLIC_` 값은 브라우저에서 누구나 볼 수 있으니 API 키나 비밀번호에는 쓰지 마세요. 비밀 값은 접두사 없이 서버 컴포넌트, Route Handler, `getServerSideProps` 안에서만 읽어야 해요.\n\n배포 플랫폼에 이 값들이 실제로 등록돼 있는지 확인해 보시겠어요? 그 목록을 알려주시면 빠진 값이 있는지 같이 볼게요.",
+      "score": 100,
+      "words": 85,
+      "checks": []
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 6,
+      "q": "월 방문자 12만 명이고 평균 3페이지를 보면 하루 페이지뷰가 몇이에요?",
+      "text": "**하루 약 12,000 페이지뷰예요.** 월 36만 페이지뷰(12만 × 3)를 30일로 나눈 값이에요.\n\n월이 31일이면 약 11,600이고, 방문자가 같은 날 여러 번 와도 \"방문자\"로 세면 실제 요청 수는 더 많을 수 있어요. 평균 시간당 트래픽이 필요하면 12,000을 24로 나눈 약 500 페이지뷰/시간으로 볼 수 있어요. 다만 피크 시간대는 평균보다 몇 배 높을 수 있어서, 서버 용량을 잡을 때는 피크 값을 기준으로 보세요.\n\n이 블로그가 SSG로 배포되면 페이지뷰 대부분은 CDN이 처리하니 서버 부담은 작아요. 호스팅 플랜의 대역폭이나 요청 한도를 확인하고 싶으시면 사용 중인 플랫폼 이름을 알려주세요.",
+      "score": 99,
+      "words": 84,
+      "checks": [
+        "sentence_length"
+      ]
+    },
+    {
+      "lang": "ko",
+      "condition": "reminder",
+      "turn": 7,
+      "q": "이 코드 뭐 하는 거예요? `export const revalidate = 60`",
+      "text": "**이 페이지를 정적으로 만들어 두되, 60초가 지나면 다음 요청 때 백그라운드에서 다시 만들라는 뜻이에요.** 이걸 ISR(Incremental Static Regeneration)이라고 해요.\n\n동작 순서는 이래요.\n\n1. 빌드 때 페이지 HTML을 만들어 둬요.\n2. 60초 안에 들어온 요청은 캐시된 HTML을 그대로 줘요.\n3. 60초가 지난 뒤 첫 요청에는 옛 HTML을 먼저 주고, 서버가 새 HTML을 백그라운드에서 만들어 캐시를 갱신해요.\n4. 그 다음 요청부터 새 글이 보여요.\n\n블로그에 적용하면 글을 고쳐도 다시 배포하지 않고 1분 안에 반영돼요. 다만 방금 고친 글이 처음 몇 초 동안은 옛 내용으로 보일 수 있어요.\n\n이 옵션은 서버가 살아 있어야 동작해요. 앞에서 말한 `output: 'export'`로 정적 파일만 올리면 이 설정은 무시되니, 배포 방식을 확인하고 `revalidate`를 쓸지 정하세요. 지금 프로젝트가 App Router인지 Pages Router인지 알려주시면, 이 설정을 어느 파일에 넣어야 하는지 바로 알려드릴게요.",
+      "score": 100,
+      "words": 121,
+      "checks": []
+    }
+  ]
+}

@@ -23,7 +23,7 @@ Claude answers your brain can actually read, now measured on 80 prompts.
 **New:**
 
 - **Situation lines:** a learner signal gets "fix their own line, end with a predict-first question", which moved learner endings from 0/8 to 8/8. An emergency signal gets "next action first", which raised action-first answers from 65% to 89% at about 4 pp of detail.
-- **The always-on per-message reminder is now Haiku-only.** On Sonnet it changed nothing over 7 turns or about 30k tokens, so it was removed there. On Haiku it adds 4–6 points.
+- **The always-on per-message reminder is now off by default.** On Sonnet it changed nothing over 7 turns or about 30k tokens. On Haiku a first run showed a gain, but after a scorer fix and a second run the gain fell below the 3-point bar set in advance. `BRAINRES_REMINDER=on` still turns it on.
 - **One-line install for Codex, Cursor and other agents:** `npx skills add wonjangcloud9/brainres`.
 - **brainlint fixes, each backed by evidence:** short bold labels are no longer penalised, step lists no longer count as walls of text, and the Korean bold limit is scaled like the other Korean limits.
 - **Eval tooling:** an 80-prompt suite, a blinded key-fact coverage judge, card ablation, multi-turn and latency harnesses, and a clean-install check.

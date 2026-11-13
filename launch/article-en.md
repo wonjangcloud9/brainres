@@ -47,7 +47,7 @@ brainres led in 14 of 16 answer types. The length effect held on Haiku (−27%) 
 
 A rule only stays if it changes behaviour. These didn't:
 - **"Do any math first":** on a savings calculation, sentence 1 was still wrong in 3 of 3 answers. Rewording it as "for math, sentence 1 is the one-line calculation and its result" fixed it, at 9 of 9.
-- **An always-on per-message reminder (84 tokens):** Sonnet kept to the rules for 7 turns and about 30k tokens without it, so it's gone. Haiku did need it, so it now switches on only for Haiku.
+- **An always-on per-message reminder (84 tokens):** Sonnet kept to the rules for 7 turns and about 30k tokens without it. Haiku seemed to need it: a 3.7-point gap, just past the 3-point bar I'd set. A scorer fix cut that to 2.7, and a second run pooled it to 2.2. So it's off for every model now.
 - **A concept line, a stricter "no offer menus" rule and a "reply in the user's language" line:** I measured each one. None helped, so I reverted them.
 
 ## The scorer was wrong, three times

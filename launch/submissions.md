@@ -30,7 +30,7 @@ Submit at **clau.de/plugin-directory-submission**. PRs to `anthropics/claude-plu
 - **Short description:** Shapes Claude's answers for how people read: answer in the first sentence, chunk to working-memory limits, keep code, numbers and warnings exact. Bundles brainlint, a dependency-free readability scorer for English and Korean.
 - **What it installs:**
   - **SessionStart hook** (`hooks/brainres-context.sh`, bash): prints a 500-token rule card once per session.
-  - **UserPromptSubmit hook** (`hooks/brainres-reminder.sh`, bash + python3): reads the prompt from stdin. It adds one line only on a learner or emergency signal. In Haiku sessions it also adds a short reminder line, found by reading the last 64 KB of the session transcript for its `"model"` field. Nothing else is read, and nothing is written.
+  - **UserPromptSubmit hook** (`hooks/brainres-reminder.sh`, bash + python3): reads the prompt from stdin. It adds one line only on a learner or emergency signal, plus a short reminder line if the user sets `BRAINRES_REMINDER=on`. Nothing else is read, and nothing is written.
   - **Skill** `skills/brainres` and **output style** `output-styles/brainres.md`.
 - **Network, files, secrets:** none. The hooks make no network calls and write no files.
 - **Off switch:** `export BRAINRES=off` or `touch ~/.claude/brainres.off`.

@@ -123,3 +123,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 17:27 · G2 · long-form launch articles EN/KO (Brain Score 100/100), numbers checked against evals/README; owner posts
 - 2026-11-13 17:57 · items · weak types formal-doc (ceiling) and refusal (noise, +7 pp coverage) → no card item; sentence_length flat −10 cliff (4/4 hits just over the limit) → S1 (4.5)
 - 2026-11-13 18:28 · S1 · graded sentence_length; all runs re-scored; suite +4.6 (CI +3.3–+6.0); Haiku reminder gap 3.7 → 2.7 < 3 → H1 re-run with rule stated (3.2)
+- 2026-11-13 18:57 · H1 · Haiku reminder re-run (28 calls): pooled t5–7 gap +2.2 < 3 → auto-reminder removed; hook reads prompt only
