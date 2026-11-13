@@ -22,7 +22,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": true
+      "tool_markup": true,
+      "score_before_s1": 100
     },
     {
       "id": "s021-concept",
@@ -41,7 +42,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s031-decision",
@@ -60,7 +62,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s041-yesno",
@@ -79,7 +82,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s051-numbers",
@@ -98,7 +102,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s061-procedure",
@@ -117,7 +122,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s071-myth",
@@ -138,7 +144,8 @@
       "checks": [
         "scope_ambiguity"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 97
     },
     {
       "id": "s081-stress",
@@ -146,20 +153,19 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 275,
       "output_tokens": 745,
       "thinking_tokens": 179,
       "visible_output_tokens": 566,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "wall_of_text"
-      ],
-      "tool_markup": false
+      "checks": [],
+      "tool_markup": false,
+      "score_before_s1": 94
     },
     {
       "id": "s091-refusal",
@@ -181,7 +187,8 @@
         "double_negation",
         "long_sentences"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 92
     },
     {
       "id": "s101-doc",
@@ -200,7 +207,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s111-novice",
@@ -219,7 +227,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s121-compare",
@@ -240,7 +249,8 @@
       "checks": [
         "long_sentences"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 96
     },
     {
       "id": "s131-codex",
@@ -259,7 +269,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s141-write",
@@ -278,7 +289,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s151-multi",
@@ -297,8 +309,12 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

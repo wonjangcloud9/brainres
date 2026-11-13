@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "t01-alias",
@@ -39,7 +40,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "t02-sort",
@@ -57,7 +59,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "t02-sort",
@@ -75,7 +78,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "t03-remove-ko",
@@ -93,7 +97,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "t03-remove-ko",
@@ -111,8 +116,12 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

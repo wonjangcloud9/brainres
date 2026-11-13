@@ -25,7 +25,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s015-debug",
@@ -47,7 +48,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s025-concept",
@@ -71,7 +73,8 @@
       "tool_markup": false,
       "score_before_f1": 97,
       "score_before_k1": 97,
-      "score_before_k2": 97
+      "score_before_k2": 97,
+      "score_before_s1": 97
     },
     {
       "id": "s025-concept",
@@ -93,7 +96,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s035-decision",
@@ -117,7 +121,8 @@
       "tool_markup": false,
       "score_before_f1": 94,
       "score_before_k1": 94,
-      "score_before_k2": 94
+      "score_before_k2": 94,
+      "score_before_s1": 94
     },
     {
       "id": "s035-decision",
@@ -139,7 +144,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s045-yesno",
@@ -165,7 +171,8 @@
       "tool_markup": false,
       "score_before_f1": 94,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s045-yesno",
@@ -189,7 +196,8 @@
       "tool_markup": false,
       "score_before_f1": 96,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s055-numbers",
@@ -213,7 +221,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s055-numbers",
@@ -235,7 +244,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s065-procedure",
@@ -259,7 +269,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s065-procedure",
@@ -283,7 +294,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s075-myth",
@@ -309,7 +321,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 86,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s075-myth",
@@ -335,7 +348,8 @@
       "tool_markup": false,
       "score_before_f1": 85,
       "score_before_k1": 91,
-      "score_before_k2": 97
+      "score_before_k2": 97,
+      "score_before_s1": 97
     },
     {
       "id": "s085-stress",
@@ -359,7 +373,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 86,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s085-stress",
@@ -383,7 +398,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 90,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s095-refusal",
@@ -409,7 +425,8 @@
       "tool_markup": false,
       "score_before_f1": 76,
       "score_before_k1": 78,
-      "score_before_k2": 84
+      "score_before_k2": 84,
+      "score_before_s1": 84
     },
     {
       "id": "s095-refusal",
@@ -431,7 +448,8 @@
       "tool_markup": false,
       "score_before_f1": 94,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s105-doc",
@@ -455,7 +473,8 @@
       "tool_markup": false,
       "score_before_f1": 96,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s105-doc",
@@ -479,7 +498,8 @@
       "tool_markup": false,
       "score_before_f1": 94,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s115-novice",
@@ -503,7 +523,8 @@
       "tool_markup": false,
       "score_before_f1": 96,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s115-novice",
@@ -525,7 +546,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s134-codex",
@@ -547,7 +569,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "id": "s134-codex",
@@ -569,7 +592,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s144-write",
@@ -591,7 +615,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s144-write",
@@ -613,7 +638,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s154-multi",
@@ -637,7 +663,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 88,
-      "score_before_k2": 88
+      "score_before_k2": 88,
+      "score_before_s1": 96
     },
     {
       "id": "s154-multi",
@@ -659,7 +686,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "id": "s164-advice",
@@ -681,7 +709,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s164-advice",
@@ -703,13 +732,15 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     }
   ],
   "failed": [],
   "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
   "rescored_by": [
     "k1",
-    "k2"
+    "k2",
+    "s1"
   ]
 }

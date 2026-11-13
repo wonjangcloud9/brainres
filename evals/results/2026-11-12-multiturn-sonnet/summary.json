@@ -13,7 +13,8 @@
         "term_swap"
       ],
       "score_before_k1": 97,
-      "score_before_k2": 97
+      "score_before_k2": 97,
+      "score_before_s1": 97
     },
     {
       "lang": "en",
@@ -27,7 +28,8 @@
         "long_sentences"
       ],
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "lang": "en",
@@ -39,7 +41,8 @@
       "words": 164,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -51,7 +54,8 @@
       "words": 258,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -63,7 +67,8 @@
       "words": 168,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -75,7 +80,8 @@
       "words": 113,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -87,7 +93,8 @@
       "words": 194,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -99,7 +106,8 @@
       "words": 159,
       "checks": [],
       "score_before_k1": 94,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -113,7 +121,8 @@
         "long_sentences"
       ],
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "lang": "en",
@@ -125,7 +134,8 @@
       "words": 195,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -137,7 +147,8 @@
       "words": 221,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -149,7 +160,8 @@
       "words": 212,
       "checks": [],
       "score_before_k1": 94,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -161,7 +173,8 @@
       "words": 111,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -173,7 +186,8 @@
       "words": 172,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -187,7 +201,8 @@
         "bold_overuse"
       ],
       "score_before_k1": 94,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "lang": "ko",
@@ -199,7 +214,8 @@
       "words": 73,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -211,7 +227,8 @@
       "words": 95,
       "checks": [],
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -223,7 +240,8 @@
       "words": 99,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -235,7 +253,8 @@
       "words": 88,
       "checks": [],
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -247,7 +266,8 @@
       "words": 66,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -259,7 +279,8 @@
       "words": 107,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -271,7 +292,8 @@
       "words": 144,
       "checks": [],
       "score_before_k1": 88,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -283,7 +305,8 @@
       "words": 100,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -295,7 +318,8 @@
       "words": 116,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -307,7 +331,8 @@
       "words": 96,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -321,7 +346,8 @@
         "long_sentences"
       ],
       "score_before_k1": 88,
-      "score_before_k2": 88
+      "score_before_k2": 88,
+      "score_before_s1": 96
     },
     {
       "lang": "ko",
@@ -333,7 +359,8 @@
       "words": 82,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -345,11 +372,13 @@
       "words": 135,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     }
   ],
   "rescored_by": [
     "k1",
-    "k2"
+    "k2",
+    "s1"
   ]
 }

@@ -11,19 +11,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 94,
+      "score": 92,
       "words": 77,
       "output_tokens": 930,
       "thinking_tokens": 561,
       "visible_output_tokens": 369,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 92,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "y03-sql-ko",
@@ -41,7 +42,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -59,7 +61,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -77,7 +80,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -95,7 +99,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -103,19 +108,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 6,
-      "score": 94,
+      "score": 92,
       "words": 111,
       "output_tokens": 1087,
       "thinking_tokens": 481,
       "visible_output_tokens": 606,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 92,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "y03-sql-ko",
@@ -133,7 +139,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -151,7 +158,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -169,7 +177,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -187,8 +196,12 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

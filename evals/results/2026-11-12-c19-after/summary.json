@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y01-explain-py",
@@ -39,7 +40,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y02-debug-en",
@@ -57,7 +59,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y02-debug-en",
@@ -75,7 +78,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -83,19 +87,18 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 92,
       "output_tokens": 467,
       "thinking_tokens": 0,
       "visible_output_tokens": 467,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_lead_ins"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     },
     {
       "id": "y03-sql-ko",
@@ -113,7 +116,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y04-regex-ko",
@@ -134,7 +138,8 @@
       "checks": [
         "list_overload",
         "minimizer"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "y04-regex-ko",
@@ -152,7 +157,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y05-error-ko",
@@ -160,19 +166,18 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 114,
       "output_tokens": 1125,
       "thinking_tokens": 517,
       "visible_output_tokens": 608,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_lead_ins"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     },
     {
       "id": "y05-error-ko",
@@ -180,19 +185,18 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 92,
+      "score": 100,
       "words": 84,
       "output_tokens": 904,
       "thinking_tokens": 463,
       "visible_output_tokens": 441,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "y06-refusal-ko",
@@ -200,20 +204,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 82,
+      "score": 98,
       "words": 97,
       "output_tokens": 573,
       "thinking_tokens": 163,
       "visible_output_tokens": 410,
       "turns": 1,
       "within_budget": true,
-      "score_q": 82,
+      "score_q": 98,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "sentence_length"
-      ]
+      ],
+      "score_before_s1": 82
     },
     {
       "id": "y06-refusal-ko",
@@ -221,21 +225,22 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 88,
+      "score": 100,
       "words": 118,
       "output_tokens": 719,
       "thinking_tokens": 200,
       "visible_output_tokens": 519,
       "turns": 1,
       "within_budget": true,
-      "score_q": 88,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_lead_ins",
-        "wall_of_text"
-      ]
+      "checks": [],
+      "score_before_s1": 88
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

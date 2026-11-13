@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l01-learner-py",
@@ -39,7 +40,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l01-learner-py",
@@ -57,7 +59,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l01-learner-py",
@@ -75,7 +78,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l01-learner-py",
@@ -93,7 +97,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l01-learner-py",
@@ -111,7 +116,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -129,7 +135,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -147,7 +154,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -165,7 +173,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -183,7 +192,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -201,7 +211,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -219,7 +230,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l03-learner-py-ko",
@@ -227,20 +239,20 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 86,
+      "score": 94,
       "words": 86,
       "output_tokens": 720,
       "thinking_tokens": 0,
       "visible_output_tokens": 720,
       "turns": 1,
       "within_budget": true,
-      "score_q": 86,
+      "score_q": 94,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "heading_short"
-      ]
+      ],
+      "score_before_s1": 86
     },
     {
       "id": "l03-learner-py-ko",
@@ -248,20 +260,20 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 2,
-      "score": 86,
+      "score": 94,
       "words": 91,
       "output_tokens": 737,
       "thinking_tokens": 0,
       "visible_output_tokens": 737,
       "turns": 1,
       "within_budget": true,
-      "score_q": 86,
+      "score_q": 94,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "heading_short"
-      ]
+      ],
+      "score_before_s1": 86
     },
     {
       "id": "l03-learner-py-ko",
@@ -279,7 +291,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l03-learner-py-ko",
@@ -297,7 +310,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l03-learner-py-ko",
@@ -315,7 +329,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l03-learner-py-ko",
@@ -333,7 +348,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l04-learner-c-ko",
@@ -353,7 +369,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "l04-learner-c-ko",
@@ -373,7 +390,8 @@
       "answer_first": true,
       "checks": [
         "heading_short"
-      ]
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "l04-learner-c-ko",
@@ -391,7 +409,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l04-learner-c-ko",
@@ -409,7 +428,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l04-learner-c-ko",
@@ -427,7 +447,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l04-learner-c-ko",
@@ -445,8 +466,12 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

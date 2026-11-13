@@ -15,7 +15,8 @@
       "sample": 1,
       "score_before_b47_fix": 94,
       "score_before_k1": 94,
-      "score_before_k2": 94
+      "score_before_k2": 94,
+      "score_before_s1": 94
     },
     {
       "lang": "en",
@@ -29,7 +30,8 @@
       "sample": 2,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -43,7 +45,8 @@
       "sample": 1,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -57,7 +60,8 @@
       "sample": 2,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -73,7 +77,8 @@
       "sample": 1,
       "score_before_b47_fix": 94,
       "score_before_k1": 94,
-      "score_before_k2": 94
+      "score_before_k2": 94,
+      "score_before_s1": 94
     },
     {
       "lang": "en",
@@ -89,7 +94,8 @@
       "sample": 2,
       "score_before_b47_fix": 96,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "lang": "en",
@@ -101,7 +107,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -113,7 +120,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -125,7 +133,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -137,7 +146,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -150,7 +160,8 @@
       "checks": [],
       "score_before_b47_fix": 92,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -163,7 +174,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -176,7 +188,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -190,7 +203,8 @@
       "sample": 1,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -204,7 +218,8 @@
       "sample": 2,
       "score_before_b47_fix": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -218,7 +233,8 @@
       "sample": 1,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -232,7 +248,8 @@
       "sample": 2,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -246,7 +263,8 @@
       "sample": 1,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -260,7 +278,8 @@
       "sample": 2,
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -272,7 +291,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -284,7 +304,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -296,7 +317,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -308,7 +330,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -321,7 +344,8 @@
       "checks": [],
       "score_before_b47_fix": 92,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -334,7 +358,8 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -347,12 +372,14 @@
       "checks": [],
       "score_before_b47_fix": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     }
   ],
   "rescored": "2026-11-12 after brainlint accepted 'neither…' and '더 나은 선택' as recommendations (B47)",
   "rescored_by": [
     "k1",
-    "k2"
+    "k2",
+    "s1"
   ]
 }

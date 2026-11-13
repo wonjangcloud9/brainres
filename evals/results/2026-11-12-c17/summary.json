@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "c01-savings-ko",
@@ -43,7 +44,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "c01-savings-ko",
@@ -63,7 +65,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "c01-savings-ko",
@@ -81,7 +84,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c01-savings-ko",
@@ -99,7 +103,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c01-savings-ko",
@@ -117,7 +122,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c02-savings-en",
@@ -135,7 +141,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c02-savings-en",
@@ -153,7 +160,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c02-savings-en",
@@ -171,7 +179,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c02-savings-en",
@@ -189,7 +198,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c02-savings-en",
@@ -207,7 +217,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c02-savings-en",
@@ -225,7 +236,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c03-savings-ko2",
@@ -243,7 +255,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c03-savings-ko2",
@@ -251,19 +264,18 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 2,
-      "score": 92,
+      "score": 100,
       "words": 31,
       "output_tokens": 140,
       "thinking_tokens": 0,
       "visible_output_tokens": 140,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "c03-savings-ko2",
@@ -281,7 +293,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c03-savings-ko2",
@@ -299,7 +312,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "c03-savings-ko2",
@@ -319,7 +333,8 @@
       "answer_first": true,
       "checks": [
         "long_sentences"
-      ]
+      ],
+      "score_before_s1": 96
     },
     {
       "id": "c03-savings-ko2",
@@ -337,7 +352,11 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
+  ],
+  "rescored_by": [
+    "s1"
   ]
 }

@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l01-learner-py",
@@ -39,7 +40,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -57,7 +59,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l02-learner-js",
@@ -75,7 +78,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l03-learner-py-ko",
@@ -93,7 +97,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l03-learner-py-ko",
@@ -101,19 +106,18 @@
       "lang": "ko",
       "condition": "plugin",
       "sample": 2,
-      "score": 92,
+      "score": 100,
       "words": 96,
       "output_tokens": 833,
       "thinking_tokens": 270,
       "visible_output_tokens": 563,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "l04-learner-c-ko",
@@ -131,7 +135,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "l04-learner-c-ko",
@@ -149,8 +154,12 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

@@ -9,7 +9,7 @@
 
 [![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#설치) [![coverage](https://img.shields.io/badge/findings_applied-663%2F663-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-805-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Brain Score](https://img.shields.io/badge/Brain_Score-96%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
-**질문 80개로 측정했습니다** (답변 유형 16가지, 한국어 32개, Sonnet). 답은 29% 짧아졌고, Brain Score는 4.6점 올랐습니다(95% 신뢰구간 +3.2 ~ +6.1). 16개 유형 중 14개에서 brainres가 앞섰습니다. 대신 필수 사실을 블라인드로 채점하면 세부 내용이 1.8%p 줄었습니다. [측정 방법](evals/README.md)
+**질문 80개로 측정했습니다** (답변 유형 16가지, 한국어 32개, Sonnet). 답은 29% 짧아졌고, Brain Score는 4.6점 올랐습니다(95% 신뢰구간 +3.3 ~ +6.0). 16개 유형 중 14개에서 brainres가 앞섰습니다. 대신 필수 사실을 블라인드로 채점하면 세부 내용이 1.8%p 줄었습니다. [측정 방법](evals/README.md)
 
 ![같은 질문에 대한 실제 답: 기본 Claude는 288단어에 Brain Score 84, brainres는 138단어에 100점](assets/demo.gif)
 
@@ -202,7 +202,7 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 | 보이는 출력 토큰 | 670 | **480** | **−28%** (−230 ~ −150) |
 | 숨은 추론 포함 출력 토큰 | 674 | **582** | −14% (−136 ~ −47) |
 | 길이 예산 준수 | 57/78 | **71/78** | |
-| Brain Score | 94.0 | **98.6** | **+4.6** (+3.2 ~ +6.1) |
+| Brain Score | 94.2 | **98.9** | **+4.6** (+3.3 ~ +6.0) |
 
 앞서 질문 12개를 3번씩 돌린 측정도 같은 방향이었습니다(길이 −27%, Brain Score +5.0).
 

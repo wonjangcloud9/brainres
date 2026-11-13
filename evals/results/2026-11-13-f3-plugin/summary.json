@@ -24,7 +24,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s021-concept",
@@ -45,7 +46,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s022-concept",
@@ -66,7 +68,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s022-concept",
@@ -87,7 +90,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s023-concept",
@@ -108,7 +112,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s023-concept",
@@ -129,7 +134,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s024-concept",
@@ -152,7 +158,8 @@
       ],
       "tool_markup": false,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s024-concept",
@@ -173,7 +180,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "id": "s025-concept",
@@ -194,7 +202,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s025-concept",
@@ -215,7 +224,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s081-stress",
@@ -236,7 +246,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 94,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s081-stress",
@@ -259,7 +270,8 @@
       ],
       "tool_markup": false,
       "score_before_k1": 90,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s082-stress",
@@ -282,7 +294,8 @@
       ],
       "tool_markup": false,
       "score_before_k1": 90,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s082-stress",
@@ -305,7 +318,8 @@
       ],
       "tool_markup": false,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s083-stress",
@@ -326,7 +340,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s083-stress",
@@ -349,7 +364,8 @@
       ],
       "tool_markup": false,
       "score_before_k1": 94,
-      "score_before_k2": 94
+      "score_before_k2": 94,
+      "score_before_s1": 94
     },
     {
       "id": "s084-stress",
@@ -370,7 +386,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 86,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "id": "s084-stress",
@@ -391,7 +408,8 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 86,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 100
     },
     {
       "id": "s085-stress",
@@ -414,7 +432,8 @@
       ],
       "tool_markup": false,
       "score_before_k1": 90,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s085-stress",
@@ -435,12 +454,14 @@
       "checks": [],
       "tool_markup": false,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     }
   ],
   "failed": [],
   "rescored_by": [
     "k1",
-    "k2"
+    "k2",
+    "s1"
   ]
 }

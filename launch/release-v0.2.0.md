@@ -16,7 +16,7 @@ Claude answers your brain can actually read, now measured on 80 prompts.
 
 - Answers are 29% shorter.
 - Visible output tokens fall 28%.
-- Brain Score rises 4.6 points (95% CI +3.2 to +6.1).
+- Brain Score rises 4.6 points (95% CI +3.3 to +6.0).
 - brainres leads in 14 of 16 answer types.
 - **The cost:** blinded key-fact checks found 1.8 pp less detail; facts are rarely dropped. Haiku shows the same length effect (−27%).
 

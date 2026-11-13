@@ -237,8 +237,11 @@ def lint(text: str, question: str | None = None) -> Report:
     limit, long_at = (12, 20) if ko else (25, 35)
     long_s = [s for s in sents if len(s.split()) > long_at]
     if avg > limit:
+        # Graded (S1): 1 just past the limit, rising to 10 at the long-sentence mark.
+        # A flat -10 cost a 41-word answer at 13.0 eojeol as much as a buried answer.
+        pen = max(1, min(10, round(10 * (avg - limit) / (long_at - limit))))
         add("sentence_length", "Working-memory load / processing fluency",
-            f"average sentence {avg:.1f} {'eojeol' if ko else 'words'} (target <= {limit})", 10)
+            f"average sentence {avg:.1f} {'eojeol' if ko else 'words'} (target <= {limit})", pen)
     if long_s:
         add("long_sentences", "Working-memory load",
             f"{len(long_s)} sentence(s) over {long_at} {'eojeol' if ko else 'words'}", min(4 * len(long_s), 12))

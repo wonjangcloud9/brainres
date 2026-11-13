@@ -122,3 +122,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 16:55 · items · no reports/stars/Pages/release; measurements done → G2 long-form launch article EN/KO (8)
 - 2026-11-13 17:27 · G2 · long-form launch articles EN/KO (Brain Score 100/100), numbers checked against evals/README; owner posts
 - 2026-11-13 17:57 · items · weak types formal-doc (ceiling) and refusal (noise, +7 pp coverage) → no card item; sentence_length flat −10 cliff (4/4 hits just over the limit) → S1 (4.5)
+- 2026-11-13 18:28 · S1 · graded sentence_length; all runs re-scored; suite +4.6 (CI +3.3–+6.0); Haiku reminder gap 3.7 → 2.7 < 3 → H1 re-run with rule stated (3.2)

@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- **`sentence_length` is now graded (S1, no calls).** It used to cost a flat −10 as soon as the average passed the limit (KO 12 eojeol, EN 25 words), the same as a buried answer. All 4 suite hits were just over the limit. The penalty now rises from 1 just past the limit to 10 at the long-sentence mark (KO 20, EN 35), with a new test. The playground and dist were rebuilt.
+  - **Re-score:** every saved run was re-scored, and `score_before_s1` keeps the old values.
+  - **Suite:** baseline 94.2 and brainres 98.9. The Δ stays at **+4.6**, with the CI moving from +3.2–+6.1 to +3.3–+6.0. READMEs, launch drafts and the social preview image were updated.
+  - **Refusals:** Δ +0.8 → +2.6, but the split is still lower 2 / tied 1 / higher 2.
+  - **Ablation (V3):** the numbers moved slightly, for example G3 −2.3 → −2.1. G3's wall-of-text rise was a K1 artifact. No decision changed.
+  - **Haiku reminder:** the turns 5–7 gap fell from 3.7 to 2.7, below its pre-stated 3-point rule. With 6 answers per condition this is noise-sized, so it gets a re-run with a rule stated now (H1, score 3.2) instead of a silent keep or drop.
+  - **Stale numbers fixed:** evals/README and the new articles said stress was +2.8 and debugging +0.5. Current values are +4.4 and +2.5.
+
 - **Items from measurements (no calls).** The weakness report lists formal docs and refusals as the only types where brainres isn't ahead. Neither is a card problem:
   - **Formal docs are at the ceiling.** Both conditions score 100 on 3 of 5 prompts, so the scorer can't separate them.
   - **Refusals are noise.** They split 2 lower / 1 tied / 2 higher, and blinded key-fact coverage for refusals is +7 pp.

@@ -25,7 +25,8 @@
       "tool_markup": true,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s011-debug",
@@ -47,7 +48,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s021-concept",
@@ -72,7 +74,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 86,
-      "score_before_k2": 86
+      "score_before_k2": 86,
+      "score_before_s1": 86
     },
     {
       "id": "s021-concept",
@@ -94,7 +97,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s031-decision",
@@ -119,7 +123,8 @@
       "tool_markup": false,
       "score_before_f1": 85,
       "score_before_k1": 83,
-      "score_before_k2": 89
+      "score_before_k2": 89,
+      "score_before_s1": 89
     },
     {
       "id": "s031-decision",
@@ -127,14 +132,14 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 90,
+      "score": 99,
       "words": 155,
       "output_tokens": 322,
       "thinking_tokens": 0,
       "visible_output_tokens": 322,
       "turns": 1,
       "within_budget": true,
-      "score_q": 90,
+      "score_q": 99,
       "question_checks": [],
       "answer_first": true,
       "checks": [
@@ -143,7 +148,8 @@
       "tool_markup": false,
       "score_before_f1": 90,
       "score_before_k1": 90,
-      "score_before_k2": 90
+      "score_before_k2": 90,
+      "score_before_s1": 90
     },
     {
       "id": "s041-yesno",
@@ -167,7 +173,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s041-yesno",
@@ -189,7 +196,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s051-numbers",
@@ -213,7 +221,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s051-numbers",
@@ -235,7 +244,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s061-procedure",
@@ -259,7 +269,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s061-procedure",
@@ -283,7 +294,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s071-myth",
@@ -310,7 +322,8 @@
       "tool_markup": false,
       "score_before_f1": 77,
       "score_before_k1": 83,
-      "score_before_k2": 83
+      "score_before_k2": 83,
+      "score_before_s1": 83
     },
     {
       "id": "s071-myth",
@@ -334,7 +347,8 @@
       "tool_markup": false,
       "score_before_f1": 91,
       "score_before_k1": 97,
-      "score_before_k2": 97
+      "score_before_k2": 97,
+      "score_before_s1": 97
     },
     {
       "id": "s081-stress",
@@ -358,7 +372,8 @@
       "tool_markup": false,
       "score_before_f1": 96,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s081-stress",
@@ -382,7 +397,8 @@
       "tool_markup": false,
       "score_before_f1": 84,
       "score_before_k1": 90,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s091-refusal",
@@ -406,7 +422,8 @@
       "tool_markup": false,
       "score_before_f1": 96,
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "id": "s091-refusal",
@@ -431,7 +448,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 90,
-      "score_before_k2": 90
+      "score_before_k2": 90,
+      "score_before_s1": 90
     },
     {
       "id": "s101-doc",
@@ -453,7 +471,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s101-doc",
@@ -475,7 +494,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s111-novice",
@@ -499,7 +519,8 @@
       "tool_markup": false,
       "score_before_f1": 92,
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s111-novice",
@@ -521,7 +542,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s121-compare",
@@ -546,7 +568,8 @@
       "tool_markup": false,
       "score_before_f1": 86,
       "score_before_k1": 86,
-      "score_before_k2": 86
+      "score_before_k2": 86,
+      "score_before_s1": 86
     },
     {
       "id": "s121-compare",
@@ -568,7 +591,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -590,7 +614,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -612,7 +637,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s141-write",
@@ -636,7 +662,8 @@
       "tool_markup": false,
       "score_before_f1": 94,
       "score_before_k1": 94,
-      "score_before_k2": 94
+      "score_before_k2": 94,
+      "score_before_s1": 94
     },
     {
       "id": "s141-write",
@@ -658,7 +685,8 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "id": "s151-multi",
@@ -682,7 +710,8 @@
       "tool_markup": false,
       "score_before_f1": 88,
       "score_before_k1": 86,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "id": "s151-multi",
@@ -704,13 +733,15 @@
       "tool_markup": false,
       "score_before_f1": 100,
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     }
   ],
   "failed": [],
   "rescored": "2026-11-13 F1: bold_lead_ins narrowed to sentence-length bold leads (weight 6 → 4)",
   "rescored_by": [
     "k1",
-    "k2"
+    "k2",
+    "s1"
   ]
 }

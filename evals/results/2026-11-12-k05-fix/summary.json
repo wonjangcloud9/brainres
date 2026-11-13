@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "k05-numbers",
@@ -43,7 +44,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "k05-numbers",
@@ -63,7 +65,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "k05-numbers",
@@ -81,7 +84,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "k05-numbers",
@@ -99,7 +103,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "k05-numbers",
@@ -117,7 +122,11 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
+  ],
+  "rescored_by": [
+    "s1"
   ]
 }

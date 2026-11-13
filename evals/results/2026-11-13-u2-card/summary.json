@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": true,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s015-debug",
@@ -43,7 +44,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s024-concept",
@@ -65,7 +67,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 96
     },
     {
       "id": "s033-decision",
@@ -85,7 +88,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s042-yesno",
@@ -105,7 +109,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s051-numbers",
@@ -125,7 +130,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s055-numbers",
@@ -145,7 +151,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s064-procedure",
@@ -165,7 +172,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s073-myth",
@@ -185,7 +193,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s082-stress",
@@ -205,7 +214,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s091-refusal",
@@ -228,7 +238,8 @@
         "long_sentences"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s095-refusal",
@@ -251,7 +262,8 @@
         "sentence_length"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 86
     },
     {
       "id": "s104-doc",
@@ -271,7 +283,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s113-novice",
@@ -293,7 +306,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s122-compare",
@@ -313,7 +327,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -333,7 +348,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s135-codex",
@@ -353,7 +369,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s145-write",
@@ -375,7 +392,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s154-multi",
@@ -395,7 +413,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s163-advice",
@@ -417,8 +436,12 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 96
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

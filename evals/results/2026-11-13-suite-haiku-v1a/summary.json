@@ -25,7 +25,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s021-concept",
@@ -45,7 +46,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s031-decision",
@@ -70,7 +72,8 @@
         "term_swap"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 79
     },
     {
       "id": "s031-decision",
@@ -93,7 +96,8 @@
         "term_swap"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 94
     },
     {
       "id": "s041-yesno",
@@ -113,7 +117,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s041-yesno",
@@ -133,7 +138,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s051-numbers",
@@ -155,7 +161,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s051-numbers",
@@ -175,7 +182,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s061-procedure",
@@ -197,7 +205,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s061-procedure",
@@ -219,7 +228,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s071-myth",
@@ -241,7 +251,8 @@
         "scope_ambiguity"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 97
     },
     {
       "id": "s071-myth",
@@ -263,7 +274,8 @@
         "double_negation"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 96
     },
     {
       "id": "s081-stress",
@@ -283,7 +295,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s081-stress",
@@ -305,7 +318,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s091-refusal",
@@ -327,7 +341,8 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 96
     },
     {
       "id": "s091-refusal",
@@ -347,7 +362,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": true
+      "api_error": true,
+      "score_before_s1": 100
     },
     {
       "id": "s101-doc",
@@ -367,7 +383,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s101-doc",
@@ -387,7 +404,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s111-novice",
@@ -409,7 +427,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s111-novice",
@@ -429,7 +448,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s121-compare",
@@ -451,7 +471,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s121-compare",
@@ -473,7 +494,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s131-codex",
@@ -493,7 +515,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -513,7 +536,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s141-write",
@@ -533,7 +557,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s141-write",
@@ -553,7 +578,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s151-multi",
@@ -575,7 +601,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s151-multi",
@@ -595,7 +622,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     }
   ],
   "failed": [
@@ -611,5 +639,8 @@
       "sample": 1,
       "error": "TimeoutExpired: Command '['claude', '-p', \"My Python script crashes with KeyError: 'email' when I read user records. What's wrong?\", '--model', 'haiku', '--output-format', 'json', '--tools', '', '--st"
     }
+  ],
+  "rescored_by": [
+    "s1"
   ]
 }

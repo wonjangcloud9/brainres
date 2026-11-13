@@ -25,7 +25,8 @@
         "list_overload"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 95
     },
     {
       "id": "p1-offline-en",
@@ -45,7 +46,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "p2-ratelimit-en",
@@ -65,7 +67,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "p2-ratelimit-en",
@@ -87,7 +90,8 @@
         "scope_ambiguity"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 97
     },
     {
       "id": "p3-rbac-ko",
@@ -107,7 +111,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "p3-rbac-ko",
@@ -127,7 +132,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "p4-retry-ko",
@@ -147,7 +153,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": true,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "p4-retry-ko",
@@ -169,8 +176,12 @@
         "list_overload"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 95
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

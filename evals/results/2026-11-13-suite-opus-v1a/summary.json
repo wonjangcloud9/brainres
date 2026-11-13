@@ -23,7 +23,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s021-concept",
@@ -43,7 +44,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s031-decision",
@@ -69,7 +71,8 @@
         "term_swap"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 72
     },
     {
       "id": "s031-decision",
@@ -91,7 +94,8 @@
         "nominalization"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 94
     },
     {
       "id": "s041-yesno",
@@ -113,7 +117,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s041-yesno",
@@ -135,7 +140,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s051-numbers",
@@ -157,7 +163,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s051-numbers",
@@ -177,7 +184,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s061-procedure",
@@ -197,7 +205,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s061-procedure",
@@ -219,7 +228,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s071-myth",
@@ -242,7 +252,8 @@
         "scope_ambiguity"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 93
     },
     {
       "id": "s071-myth",
@@ -262,7 +273,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s081-stress",
@@ -284,7 +296,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s081-stress",
@@ -304,7 +317,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s091-refusal",
@@ -324,7 +338,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s091-refusal",
@@ -346,7 +361,8 @@
         "bold_lead_ins"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 96
     },
     {
       "id": "s101-doc",
@@ -366,7 +382,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s101-doc",
@@ -386,7 +403,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s111-novice",
@@ -408,7 +426,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s121-compare",
@@ -432,7 +451,8 @@
         "list_overload"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 83
     },
     {
       "id": "s121-compare",
@@ -452,7 +472,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -472,7 +493,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -492,7 +514,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s141-write",
@@ -514,7 +537,8 @@
         "bold_overuse"
       ],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 92
     },
     {
       "id": "s141-write",
@@ -534,7 +558,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     },
     {
       "id": "s151-multi",
@@ -554,7 +579,8 @@
       "answer_first": true,
       "checks": [],
       "tool_markup": false,
-      "api_error": false
+      "api_error": false,
+      "score_before_s1": 100
     }
   ],
   "failed": [
@@ -582,5 +608,8 @@
       "sample": 1,
       "error": "TimeoutExpired: Command '['claude', '-p', \"Three questions: what's a race condition, how do I detect one, and how do I fix it in Python?\", '--model', 'opus', '--output-format', 'json', '--tools', '', "
     }
+  ],
+  "rescored_by": [
+    "s1"
   ]
 }

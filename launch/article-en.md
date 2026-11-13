@@ -3,7 +3,7 @@
 *Draft for dev.to / Medium. Every number below comes from [evals/README](https://github.com/wonjangcloud9/brainres/blob/main/evals/README.md).*
 
 **TL;DR**
-- On an 80-prompt suite, brainres made Claude's answers 29% shorter and raised a readability score by 4.6 points (95% CI +3.2 to +6.1).
+- On an 80-prompt suite, brainres made Claude's answers 29% shorter and raised a readability score by 4.6 points (95% CI +3.3 to +6.0).
 - The cost is real but small: a blinded key-fact check found 1.8 percentage points less detail.
 - Several of my own rules didn't work, and the scorer itself was wrong three times. Both are documented.
 
@@ -38,7 +38,7 @@ So I started with research rather than taste. I reviewed 805 findings from cogni
 | Words | **−29%** (−70 to −42 words) |
 | Visible output tokens | **−28%** |
 | Total output incl. hidden reasoning | −14% |
-| Brain Score | **+4.6** (+3.2 to +6.1) |
+| Brain Score | **+4.6** (+3.3 to +6.0) |
 | Key-fact coverage | −1.8 points (−4.1 to +0.4) |
 
 brainres led in 14 of 16 answer types. The length effect held on Haiku (−27%) and Opus (−28%). Their score gains pointed the same way, but they were not significant on 12–13 pairs.
@@ -57,7 +57,7 @@ The most useful lesson was that **my own checker created fake weaknesses**:
 2. It counted numbered step lists as walls of text.
 3. It held Korean to the English bold limit.
 
-Each looked like a brainres weakness until I read the actual answers. After fixing the checks, "stress" went from the weakest answer type (−3.2) to +2.8.
+Each looked like a brainres weakness until I read the actual answers. After fixing the checks, "stress" went from the weakest answer type (−3.2) to +4.4.
 
 ## Costs and limits
 

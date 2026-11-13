@@ -9,7 +9,7 @@ English · [한국어](README.ko.md)
 
 [![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-d97757)](#install) [![coverage](https://img.shields.io/badge/findings_applied-663%2F663-2ea44f)](research/coverage.md) [![reviewed](https://img.shields.io/badge/findings_reviewed-805-blue)](research/) [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Brain Score](https://img.shields.io/badge/Brain_Score-100%2F100_A-2ea44f)](https://github.com/wonjangcloud9/brainres)
 
-**Measured on 80 prompts** (16 answer types, 32 in Korean, Sonnet): answers came out 29% shorter, Brain Score rose 4.6 points (95% CI +3.2 to +6.1), and brainres led in 14 of 16 types. The cost: blinded key-fact checks found 1.8 pp less detail. [How we measured](evals/README.md).
+**Measured on 80 prompts** (16 answer types, 32 in Korean, Sonnet): answers came out 29% shorter, Brain Score rose 4.6 points (95% CI +3.3 to +6.0), and brainres led in 14 of 16 types. The cost: blinded key-fact checks found 1.8 pp less detail. [How we measured](evals/README.md).
 
 ![The same question answered by default Claude (288 words, Brain Score 84) and with brainres (138 words, Brain Score 100); real answers from the suite](assets/demo.gif)
 
@@ -198,7 +198,7 @@ We compared 78 pairs. Two prompts were dropped because an answer was raw tool-ca
 | Visible output tokens | 670 | **480** | **−28%** (−190; −230 to −150) |
 | Output tokens incl. hidden reasoning | 674 | **582** | −14% (−91; −136 to −47) |
 | Within length budget | 57/78 | **71/78** | |
-| Brain Score | 94.0 | **98.6** | **+4.6** (+3.2 to +6.1) |
+| Brain Score | 94.2 | **98.9** | **+4.6** (+3.3 to +6.0) |
 
 An earlier 12-prompt × 3-sample run pointed the same way: −27% words and +5.0 Brain Score.
 

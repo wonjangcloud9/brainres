@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "02-concept",
@@ -39,7 +40,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "03-decision",
@@ -57,7 +59,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "04-yesno",
@@ -75,7 +78,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "05-numbers",
@@ -93,7 +97,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "06-procedure",
@@ -111,7 +116,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "07-myth",
@@ -129,7 +135,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "08-explain",
@@ -149,7 +156,8 @@
       "answer_first": true,
       "checks": [
         "bold_overuse"
-      ]
+      ],
+      "score_before_s1": 92
     },
     {
       "id": "09-ko-concept",
@@ -167,7 +175,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "10-ko-debug",
@@ -175,19 +184,18 @@
       "lang": "ko",
       "condition": "plugin",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 117,
       "output_tokens": 769,
       "thinking_tokens": 87,
       "visible_output_tokens": 682,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "11-ko-stress",
@@ -195,19 +203,18 @@
       "lang": "ko",
       "condition": "plugin",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 170,
       "output_tokens": 1483,
       "thinking_tokens": 704,
       "visible_output_tokens": 779,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "wall_of_text"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     },
     {
       "id": "12-ko-decision",
@@ -215,21 +222,24 @@
       "lang": "ko",
       "condition": "plugin",
       "sample": 1,
-      "score": 88,
+      "score": 96,
       "words": 85,
       "output_tokens": 868,
       "thinking_tokens": 221,
       "visible_output_tokens": 647,
       "turns": 1,
       "within_budget": true,
-      "score_q": 88,
+      "score_q": 96,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_overuse",
         "long_sentences"
-      ]
+      ],
+      "score_before_s1": 88
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

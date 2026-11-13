@@ -15,7 +15,8 @@
       "output_tokens": 175,
       "within_budget": true,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "01-debug",
@@ -28,7 +29,8 @@
       "output_tokens": 247,
       "within_budget": true,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "03-decision",
@@ -41,7 +43,8 @@
       "output_tokens": 154,
       "within_budget": true,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "03-decision",
@@ -49,7 +52,7 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 86,
+      "score": 93,
       "words": 143,
       "output_tokens": 320,
       "within_budget": true,
@@ -57,7 +60,8 @@
       "checks": [
         "long_sentences",
         "sentence_length"
-      ]
+      ],
+      "score_before_s1": 86
     },
     {
       "id": "08-explain",
@@ -65,15 +69,15 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 86,
+      "score": 92,
       "words": 230,
       "output_tokens": 508,
       "within_budget": true,
       "answer_first": true,
       "checks": [
-        "bold_overuse",
-        "wall_of_text"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 86
     },
     {
       "id": "08-explain",
@@ -81,14 +85,13 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 274,
       "output_tokens": 638,
       "within_budget": true,
       "answer_first": true,
-      "checks": [
-        "wall_of_text"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     },
     {
       "id": "10-ko-debug",
@@ -96,14 +99,13 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 1,
-      "score": 94,
+      "score": 100,
       "words": 132,
       "output_tokens": 598,
       "within_budget": true,
       "answer_first": true,
-      "checks": [
-        "wall_of_text"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     },
     {
       "id": "10-ko-debug",
@@ -116,7 +118,11 @@
       "output_tokens": 823,
       "within_budget": true,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
+  ],
+  "rescored_by": [
+    "s1"
   ]
 }

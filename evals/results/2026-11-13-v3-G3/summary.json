@@ -22,7 +22,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s021-concept",
@@ -41,7 +42,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s031-decision",
@@ -60,7 +62,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s041-yesno",
@@ -81,7 +84,8 @@
       ],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s051-numbers",
@@ -100,7 +104,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s061-procedure",
@@ -121,7 +126,8 @@
       "checks": [
         "double_negation"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 96
     },
     {
       "id": "s071-myth",
@@ -142,7 +148,8 @@
       "checks": [
         "scope_ambiguity"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 97
     },
     {
       "id": "s081-stress",
@@ -164,7 +171,8 @@
         "double_negation",
         "hedging"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 90
     },
     {
       "id": "s091-refusal",
@@ -172,24 +180,24 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 64,
+      "score": 77,
       "words": 197,
       "output_tokens": 405,
       "thinking_tokens": 0,
       "visible_output_tokens": 405,
       "turns": 2,
       "within_budget": true,
-      "score_q": 64,
+      "score_q": 77,
       "question_checks": [],
       "answer_first": true,
       "checks": [
         "bold_lead_ins",
         "long_sentences",
         "outro",
-        "sentence_length",
-        "wall_of_text"
+        "sentence_length"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 64
     },
     {
       "id": "s101-doc",
@@ -208,7 +216,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s111-novice",
@@ -227,7 +236,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s121-compare",
@@ -246,7 +256,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s131-codex",
@@ -265,7 +276,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s141-write",
@@ -284,7 +296,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 100
     },
     {
       "id": "s151-multi",
@@ -292,24 +305,27 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 1,
-      "score": 77,
+      "score": 83,
       "words": 363,
       "output_tokens": 1388,
       "thinking_tokens": 402,
       "visible_output_tokens": 986,
       "turns": 1,
       "within_budget": false,
-      "score_q": 77,
+      "score_q": 83,
       "question_checks": [],
       "answer_first": true,
       "checks": [
         "bold_overuse",
         "list_overload",
-        "long_sentences",
-        "wall_of_text"
+        "long_sentences"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "score_before_s1": 77
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

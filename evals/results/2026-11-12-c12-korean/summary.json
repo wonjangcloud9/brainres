@@ -12,7 +12,8 @@
       "words": 111,
       "output_tokens": 721,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "09-ko-concept",
@@ -24,7 +25,8 @@
       "words": 104,
       "output_tokens": 655,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "10-ko-debug",
@@ -32,13 +34,12 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 183,
       "output_tokens": 861,
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "10-ko-debug",
@@ -52,7 +53,8 @@
       "answer_first": true,
       "checks": [
         "heading_short"
-      ]
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "11-ko-stress",
@@ -60,14 +62,12 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 88,
+      "score": 100,
       "words": 147,
       "output_tokens": 1341,
       "answer_first": true,
-      "checks": [
-        "bold_lead_ins",
-        "wall_of_text"
-      ]
+      "checks": [],
+      "score_before_s1": 88
     },
     {
       "id": "11-ko-stress",
@@ -75,16 +75,14 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 77,
+      "score": 92,
       "words": 161,
       "output_tokens": 1345,
       "answer_first": true,
       "checks": [
-        "bold_lead_ins",
-        "fragmented_reasoning",
-        "list_overload",
-        "wall_of_text"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 77
     },
     {
       "id": "12-ko-decision",
@@ -96,7 +94,8 @@
       "words": 114,
       "output_tokens": 475,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "12-ko-decision",
@@ -108,7 +107,11 @@
       "words": 74,
       "output_tokens": 537,
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     }
+  ],
+  "rescored_by": [
+    "s1"
   ]
 }

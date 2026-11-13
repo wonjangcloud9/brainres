@@ -129,6 +129,18 @@ class Checks(unittest.TestCase):
         para = " ".join([" ".join(["데이터를"] * 13) + " 저장합니다."] * 3)
         self.assertIn("sentence_length", checks(para))
 
+    def test_sentence_length_penalty_is_graded(self):
+        def pen(text):
+            return sum(f.penalty for f in brainlint.lint(text).findings if f.check == "sentence_length")
+        ko = lambda n: " ".join([" ".join(["데이터를"] * (n - 1)) + " 저장합니다."] * 3)
+        en = lambda n: " ".join([" ".join(["data"] * (n - 1)) + " stored."] * 3)
+        self.assertEqual(pen(ko(12)), 0)
+        self.assertEqual(pen(ko(13)), 1)
+        self.assertEqual(pen(ko(16)), 5)
+        self.assertEqual(pen(ko(20)), 10)
+        self.assertEqual(pen(en(26)), 1)
+        self.assertEqual(pen(en(35)), 10)
+
     def test_headings_are_not_sentences(self):
         r = brainlint.lint("## Cause: stale cache after deploy\n\nThe cache is stale. Clear it now.")
         self.assertEqual(r.sentences, 2)

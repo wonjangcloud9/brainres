@@ -11,7 +11,8 @@
       "words": 218,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -23,7 +24,8 @@
       "words": 129,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -35,7 +37,8 @@
       "words": 114,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -47,7 +50,8 @@
       "words": 131,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -59,7 +63,8 @@
       "words": 151,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -71,7 +76,8 @@
       "words": 48,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -85,7 +91,8 @@
         "double_negation"
       ],
       "score_before_k1": 96,
-      "score_before_k2": 96
+      "score_before_k2": 96,
+      "score_before_s1": 96
     },
     {
       "lang": "en",
@@ -97,7 +104,8 @@
       "words": 169,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -109,7 +117,8 @@
       "words": 147,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -121,7 +130,8 @@
       "words": 159,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -133,7 +143,8 @@
       "words": 152,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -145,7 +156,8 @@
       "words": 153,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -157,7 +169,8 @@
       "words": 71,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "en",
@@ -169,7 +182,8 @@
       "words": 165,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -177,14 +191,15 @@
       "turn": 1,
       "q": "Next.js 앱에서 빌드는 되는데 배포하면 흰 화면만 나와요. 어디부터 봐야 해요?",
       "text": "먼저 브라우저 개발자 도구(F12)의 **Console**과 **Network** 탭을 확인하세요. 흰 화면은 대개 JS 에러로 React가 렌더링을 멈춰서 생기고, 콘솔에 원인이 찍혀 있는 경우가 많습니다.\n\n확인할 항목은 보통 이 순서입니다.\n\n1. **Network 탭의 404 또는 실패 요청**: `/_next/static/...` 파일이 404이면 배포 시 정적 파일이 빠졌거나 `basePath`/`assetPrefix` 설정이 배포 주소와 맞지 않는 것입니다.\n2. **환경 변수 누락**: `NEXT_PUBLIC_*` 값은 빌드할 때 코드에 박히므로, 빌드 환경에는 있는데 배포 환경의 빌드 설정에는 없으면 `undefined`가 렌더링되면서 크래시가 날 수 있습니다.\n3. **하이드레이션 에러**: 클라이언트 컴포넌트에서 `window`, `localStorage`, `Date`처럼 서버와 브라우저에서 결과가 다른 값을 쓰면 \"Hydration failed\" 에러가 나고 화면이 비워질 수 있습니다.\n4. **배포 방식과 기능 불일치**: `output: 'export'`로 정적 배포했는데 API Route, 서버 액션, 동적 `getServerSideProps` 같은 서버 기능을 쓰고 있다면 페이지가 정상적으로 동작하지 않습니다.\n\n콘솔에 뜬 빨간 에러 메시지와 배포 환경(Vercel, Docker, 정적 호스팅 등)을 알려주시면 원인을 더 좁혀 드릴게요.",
-      "score": 78,
+      "score": 83,
       "words": 135,
       "checks": [
         "long_sentences",
         "sentence_length"
       ],
       "score_before_k1": 64,
-      "score_before_k2": 70
+      "score_before_k2": 70,
+      "score_before_s1": 78
     },
     {
       "lang": "ko",
@@ -192,13 +207,14 @@
       "turn": 2,
       "q": "SSR이랑 SSG 차이가 뭐예요?",
       "text": "SSR은 요청이 올 때마다 서버에서 HTML을 만들고, SSG는 빌드할 때 HTML을 미리 만들어 둡니다.\n\n| 구분 | SSG (정적 생성) | SSR (서버 렌더링) |\n|---|---|---|\n| HTML 생성 시점 | 빌드 시점 | 요청 시점마다 |\n| 응답 속도 | 빠름 (파일을 그대로 전달) | 상대적으로 느림 (서버 계산 필요) |\n| 데이터 최신성 | 빌드 이후 데이터 변경이 반영 안 됨 | 항상 최신 데이터 |\n| 서버 필요 여부 | 정적 호스팅만으로 가능 | Node 등 서버 런타임 필요 |\n\nNext.js에서는 App Router 기준으로 동적 함수(`cookies()`, `headers()`, `searchParams` 사용 등)가 없으면 기본적으로 SSG처럼 정적으로 렌더링되고, 동적 요소가 있으면 SSR로 바뀝니다. `revalidate` 옵션을 주면 정해진 주기로 다시 만드는 ISR도 가능합니다.\n\n흰 화면과 연결하면, SSG로 빌드된 페이지를 정적 호스팅에 올렸는데 실제로는 서버 기능이 필요했다면 그 불일치 때문에 문제가 생길 수 있습니다. 배포 환경에서 `next build` 로그에 어떤 페이지가 `○`(Static)인지 `λ`(Dynamic)인지 보면 확인할 수 있습니다.",
-      "score": 90,
+      "score": 96,
       "words": 75,
       "checks": [
         "sentence_length"
       ],
       "score_before_k1": 90,
-      "score_before_k2": 90
+      "score_before_k2": 90,
+      "score_before_s1": 90
     },
     {
       "lang": "ko",
@@ -212,7 +228,8 @@
         "bold_overuse"
       ],
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "lang": "ko",
@@ -226,7 +243,8 @@
         "yesno_not_first"
       ],
       "score_before_k1": 86,
-      "score_before_k2": 86
+      "score_before_k2": 86,
+      "score_before_s1": 94
     },
     {
       "lang": "ko",
@@ -240,7 +258,8 @@
         "long_sentences"
       ],
       "score_before_k1": 82,
-      "score_before_k2": 88
+      "score_before_k2": 88,
+      "score_before_s1": 96
     },
     {
       "lang": "ko",
@@ -248,14 +267,15 @@
       "turn": 6,
       "q": "월 방문자 12만 명이고 평균 3페이지를 보면 하루 페이지뷰가 몇이에요?",
       "text": "월 페이지뷰는 12만 × 3 = **36만**이고, 하루 평균은 36만 ÷ 30 = **약 1만 2천 뷰**입니다.\n\n한 달을 31일로 보면 약 1만 1,600뷰입니다. 월 방문자 수가 중복을 뺀 순방문자 기준이라면, 같은 사람이 여러 날 들어온 것까지 반영하지 않으므로 하루 방문자는 이보다 적을 수 있습니다.",
-      "score": 86,
+      "score": 92,
       "words": 45,
       "checks": [
         "long_sentences",
         "sentence_length"
       ],
       "score_before_k1": 78,
-      "score_before_k2": 78
+      "score_before_k2": 78,
+      "score_before_s1": 86
     },
     {
       "lang": "ko",
@@ -267,7 +287,8 @@
       "words": 105,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -281,7 +302,8 @@
         "bold_overuse"
       ],
       "score_before_k1": 92,
-      "score_before_k2": 92
+      "score_before_k2": 92,
+      "score_before_s1": 92
     },
     {
       "lang": "ko",
@@ -293,7 +315,8 @@
       "words": 81,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -305,7 +328,8 @@
       "words": 120,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -319,7 +343,8 @@
         "yesno_not_first"
       ],
       "score_before_k1": 94,
-      "score_before_k2": 94
+      "score_before_k2": 94,
+      "score_before_s1": 94
     },
     {
       "lang": "ko",
@@ -331,7 +356,8 @@
       "words": 92,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -343,7 +369,8 @@
       "words": 89,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     },
     {
       "lang": "ko",
@@ -355,11 +382,13 @@
       "words": 136,
       "checks": [],
       "score_before_k1": 100,
-      "score_before_k2": 100
+      "score_before_k2": 100,
+      "score_before_s1": 100
     }
   ],
   "rescored_by": [
     "k1",
-    "k2"
+    "k2",
+    "s1"
   ]
 }

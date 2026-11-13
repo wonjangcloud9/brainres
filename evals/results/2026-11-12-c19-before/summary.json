@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y01-explain-py",
@@ -39,7 +40,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y02-debug-en",
@@ -57,7 +59,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y02-debug-en",
@@ -75,7 +78,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -93,7 +97,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y03-sql-ko",
@@ -111,7 +116,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y04-regex-ko",
@@ -131,7 +137,8 @@
       "answer_first": true,
       "checks": [
         "minimizer"
-      ]
+      ],
+      "score_before_s1": 97
     },
     {
       "id": "y04-regex-ko",
@@ -151,7 +158,8 @@
       "answer_first": true,
       "checks": [
         "list_overload"
-      ]
+      ],
+      "score_before_s1": 95
     },
     {
       "id": "y05-error-ko",
@@ -169,7 +177,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "y05-error-ko",
@@ -177,19 +186,18 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 92,
+      "score": 100,
       "words": 86,
       "output_tokens": 698,
       "thinking_tokens": 271,
       "visible_output_tokens": 427,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "y06-refusal-ko",
@@ -197,19 +205,18 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 92,
+      "score": 100,
       "words": 91,
       "output_tokens": 550,
       "thinking_tokens": 148,
       "visible_output_tokens": 402,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     },
     {
       "id": "y06-refusal-ko",
@@ -217,20 +224,22 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 92,
+      "score": 100,
       "words": 96,
       "output_tokens": 611,
       "thinking_tokens": 193,
       "visible_output_tokens": 418,
       "turns": 1,
       "within_budget": true,
-      "score_q": 92,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "bold_overuse"
-      ]
+      "checks": [],
+      "score_before_s1": 92
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }

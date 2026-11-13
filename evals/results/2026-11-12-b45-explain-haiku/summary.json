@@ -21,7 +21,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "x01-explain-py",
@@ -41,7 +42,8 @@
       "answer_first": true,
       "checks": [
         "scope_ambiguity"
-      ]
+      ],
+      "score_before_s1": 97
     },
     {
       "id": "x01-explain-py",
@@ -59,7 +61,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "x01-explain-py",
@@ -79,7 +82,8 @@
       "answer_first": true,
       "checks": [
         "scope_ambiguity"
-      ]
+      ],
+      "score_before_s1": 97
     },
     {
       "id": "x02-explain-js",
@@ -87,21 +91,22 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 1,
-      "score": 94,
+      "score": 92,
       "words": 250,
       "output_tokens": 649,
       "thinking_tokens": 0,
       "visible_output_tokens": 649,
       "turns": 1,
       "within_budget": true,
-      "score_q": 88,
+      "score_q": 86,
       "question_checks": [
         "yesno_not_first"
       ],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "x02-explain-js",
@@ -109,21 +114,22 @@
       "lang": "en",
       "condition": "baseline",
       "sample": 2,
-      "score": 94,
+      "score": 92,
       "words": 205,
       "output_tokens": 587,
       "thinking_tokens": 0,
       "visible_output_tokens": 587,
       "turns": 1,
       "within_budget": true,
-      "score_q": 88,
+      "score_q": 86,
       "question_checks": [
         "yesno_not_first"
       ],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "x02-explain-js",
@@ -143,7 +149,8 @@
         "yesno_not_first"
       ],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "x02-explain-js",
@@ -151,21 +158,20 @@
       "lang": "en",
       "condition": "brainres",
       "sample": 2,
-      "score": 94,
+      "score": 100,
       "words": 141,
       "output_tokens": 419,
       "thinking_tokens": 0,
       "visible_output_tokens": 419,
       "turns": 1,
       "within_budget": true,
-      "score_q": 88,
+      "score_q": 94,
       "question_checks": [
         "yesno_not_first"
       ],
       "answer_first": true,
-      "checks": [
-        "bold_lead_ins"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     },
     {
       "id": "x03-explain-sql-ko",
@@ -183,7 +189,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "x03-explain-sql-ko",
@@ -191,21 +198,22 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 2,
-      "score": 85,
+      "score": 83,
       "words": 118,
       "output_tokens": 600,
       "thinking_tokens": 0,
       "visible_output_tokens": 600,
       "turns": 1,
       "within_budget": true,
-      "score_q": 85,
+      "score_q": 83,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins",
+        "bold_overuse",
         "list_overload",
         "long_sentences"
-      ]
+      ],
+      "score_before_s1": 85
     },
     {
       "id": "x03-explain-sql-ko",
@@ -223,7 +231,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "x03-explain-sql-ko",
@@ -231,19 +240,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 94,
+      "score": 92,
       "words": 145,
       "output_tokens": 388,
       "thinking_tokens": 0,
       "visible_output_tokens": 388,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 92,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "bold_lead_ins"
-      ]
+        "bold_overuse"
+      ],
+      "score_before_s1": 94
     },
     {
       "id": "x04-explain-sh-ko",
@@ -261,7 +271,8 @@
       "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": []
+      "checks": [],
+      "score_before_s1": 100
     },
     {
       "id": "x04-explain-sh-ko",
@@ -269,20 +280,20 @@
       "lang": "ko",
       "condition": "baseline",
       "sample": 2,
-      "score": 91,
+      "score": 97,
       "words": 245,
       "output_tokens": 1172,
       "thinking_tokens": 0,
       "visible_output_tokens": 1172,
       "turns": 1,
       "within_budget": true,
-      "score_q": 91,
+      "score_q": 97,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "generic_heading",
-        "wall_of_text"
-      ]
+        "generic_heading"
+      ],
+      "score_before_s1": 91
     },
     {
       "id": "x04-explain-sh-ko",
@@ -290,20 +301,20 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 1,
-      "score": 89,
+      "score": 95,
       "words": 149,
       "output_tokens": 714,
       "thinking_tokens": 0,
       "visible_output_tokens": 714,
       "turns": 1,
       "within_budget": true,
-      "score_q": 89,
+      "score_q": 95,
       "question_checks": [],
       "answer_first": true,
       "checks": [
-        "list_overload",
-        "wall_of_text"
-      ]
+        "list_overload"
+      ],
+      "score_before_s1": 89
     },
     {
       "id": "x04-explain-sh-ko",
@@ -311,20 +322,22 @@
       "lang": "ko",
       "condition": "brainres",
       "sample": 2,
-      "score": 94,
+      "score": 100,
       "words": 130,
       "output_tokens": 647,
       "thinking_tokens": 0,
       "visible_output_tokens": 647,
       "turns": 1,
       "within_budget": true,
-      "score_q": 94,
+      "score_q": 100,
       "question_checks": [],
       "answer_first": true,
-      "checks": [
-        "wall_of_text"
-      ]
+      "checks": [],
+      "score_before_s1": 94
     }
   ],
-  "failed": []
+  "failed": [],
+  "rescored_by": [
+    "s1"
+  ]
 }
