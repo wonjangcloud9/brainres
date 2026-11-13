@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Opus on the suite (M2, 30 calls; 4 Opus calls ran past the 300 s timeout, leaving 12 pairs). Answers were 28% shorter (CI −109 to −9 words per prompt) and visible tokens fell by 153. The Brain Score gain was +4.2, not significant, as on the 12-prompt set. Thinking rose about 1.6×, from 130 to 210 tokens, so total output fell 10% (not significant). Both READMEs' cross-model lines now include this.
+
 - **Haiku key-fact coverage (M3, 5 calls):** on 13 pairs, coverage was 93.3% for baseline and 88.8% with brainres (−4.5 pp, CI −12.7 to +3.7, not significant). Sonnet lost 2.6 pp on the same prompts.
 - **Correction to M1:** one Haiku "answer" (the brainres side of a refusal prompt) was really an API safeguard error, and it had been scored as an answer.
   - `run.py` now flags such replies (`api_error`), and `combine.py` and `coverage_judge.py` exclude them. A scan of all saved runs found only this one.

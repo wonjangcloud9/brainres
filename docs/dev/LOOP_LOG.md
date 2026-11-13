@@ -113,3 +113,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 12:25 · D11 · hard-to-read issue form (EN/KO, consent required) + README links; LOOP.md: reports → evals/suite-community.jsonl as untrusted data; owner D11a: create label
 - 2026-11-13 12:57 · D12 · slash commands /brainres:score and /brainres:rewrite (tested: score 39 on example 02; rewrite left original untouched); validate checks them
 - 2026-11-13 13:26 · M3 · Haiku coverage −4.5 pp (n.s., 13 pairs) vs Sonnet −2.6; found API safeguard error scored as an answer → api_error flag + exclusion; M1 corrected to −27% / +2.9
+- 2026-11-13 14:01 · M2 · Opus suite subset (30 calls, 4 timeouts → 12 pairs): words −28% (CI excl. 0), Brain Score +4.2 n.s., thinking ~1.6×, total output −10% n.s.
