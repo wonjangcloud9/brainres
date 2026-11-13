@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Clean install verified (D4):** in an isolated `CLAUDE_CONFIG_DIR`, `claude plugin install brainres --marketplace wonjangcloud9/brainres` succeeds from GitHub. The installed hooks emit the card and the learner line, and the card lands in a fresh session's transcript, since the hook fires before any API call and so needs no login. The real `~/.claude` was left untouched.
+  - Re-run it with `scripts/check_install.sh`, or opt in through `validate.sh` with `BRAINRES_NET_CHECKS=1`.
+  - Two findings became new items: the install reports version 0.1.0 (D8a, bump before the release), and it copies the whole 5.9 MB repo (D13).
+
 - **One-line install for other agents (D3):** `npx skills add wonjangcloud9/brainres` (Vercel skills.sh, covering Codex, Cursor, OpenCode and more) is now in both READMEs.
   - The repo layout already matches the CLI's documented discovery rules (`skills/<name>/SKILL.md` with `name` and `description`), and `validate.sh` now checks it. The loop read the CLI docs and source but didn't run `npx`.
   - The READMEs state the limit: this installs the skill only, which in our Claude Code tests loaded in 1 of 24 answers, so pair it with `dist/AGENTS.md` or the Cursor rule.

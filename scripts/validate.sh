@@ -140,6 +140,7 @@ fi
 # 8d. Playground parity with brainlint.py (needs network for Pyodide; opt-in)
 if [ "${BRAINRES_NET_CHECKS:-0}" = "1" ]; then
   bash scripts/check_playground.sh >/dev/null && ok "playground parity with brainlint.py" || err "playground score differs from brainlint.py"
+  command -v claude >/dev/null 2>&1 && { bash scripts/check_install.sh >/dev/null && ok "install from GitHub in a clean config: hooks + card (D4)" || err "clean install from GitHub failed"; }
 fi
 
 # 9. Official plugin validator, when the CLI is available
