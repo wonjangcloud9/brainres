@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Items from measurements (no calls).** The weakness report lists formal docs and refusals as the only types where brainres isn't ahead. Neither is a card problem:
+  - **Formal docs are at the ceiling.** Both conditions score 100 on 3 of 5 prompts, so the scorer can't separate them.
+  - **Refusals are noise.** They split 2 lower / 1 tied / 2 higher, and blinded key-fact coverage for refusals is +7 pp.
+  - **One of the two lower refusals is a scorer cliff.** It is a 41-word Korean answer, penalised −10 for an average of 13.0 eojeol against a limit of 12. All 4 `sentence_length` hits in the suite were just over the limit, so the flat penalty now becomes item S1 (score 4.5): a graded penalty and a re-score.
+  - **Reports:** none yet. The repo has 1 star.
+
 - **Long-form launch articles (G2):** `launch/article-en.md` (dev.to / Medium) and `launch/article-ko.md` (velog / GeekNews). Both are drafts for the owner to post.
   - **Content:** the research ledger, the 80-prompt method, results with confidence intervals, rules that didn't work, the three scorer bugs, and the costs.
   - **Checks:** every number was checked against evals/README. Links are absolute so they work off GitHub. The articles state plainly that the human reading study (`bench/`) has no participants yet.

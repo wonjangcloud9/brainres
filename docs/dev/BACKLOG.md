@@ -6,6 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| S1 | **`sentence_length` is a cliff.** A flat −10 fires as soon as the average passes the limit (KO 12 eojeol, EN 25 words). In the suite all 4 hits were just over: brainres s031 25.8 and s092 13.0, baseline s122 12.4 and s053 14.2. Each cost as much as a buried answer. The Korean limit is an engineering default (catalog-round4). Make the penalty graded, from 0 at the limit to 10 at the long-sentence mark (KO 20, EN 35). Add tests, run `rescore.py` on all runs, and report both conditions. Expected: Δ about unchanged, refusal no longer "weak" | Q | 5 | 0.5 | 0.9 | 0.5 | 4.5 | todo |
 | D11a | Create the `hard-to-read` label (Issues → Labels) so the new form's reports get labelled; the form works without it, using the title prefix | G | 2 | 0.5 | 1 | 0.1 | 10 | owner |
 | D2 | Post the launch drafts (HN, Reddit, GeekNews, X); they carry the current numbers | G | 10 | 3 | 0.5 | 0.5 | 30 | owner |
 | D5 | Submit the entries in `launch/submissions.md`: claudemarketplaces.com now, the Anthropic community marketplace after D8/D8a, awesome-claude-code **from 2026-11-26** (14-day rule; human web form only), Composio optional | G | 8 | 2 | 0.5 | 0.5 | 16 | owner (ready) |

@@ -121,3 +121,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 16:26 · U1b · plans/specs (8 calls): undefined terms ≈ 0.5/plan plugin vs 0.6 baseline, mostly glossed → no card change; plugin plans 17–61% shorter
 - 2026-11-13 16:55 · items · no reports/stars/Pages/release; measurements done → G2 long-form launch article EN/KO (8)
 - 2026-11-13 17:27 · G2 · long-form launch articles EN/KO (Brain Score 100/100), numbers checked against evals/README; owner posts
+- 2026-11-13 17:57 · items · weak types formal-doc (ceiling) and refusal (noise, +7 pp coverage) → no card item; sentence_length flat −10 cliff (4/4 hits just over the limit) → S1 (4.5)
