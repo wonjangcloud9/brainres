@@ -11,6 +11,8 @@ English · [한국어](README.ko.md)
 
 **Measured on 80 prompts** (16 answer types, 32 in Korean, Sonnet): answers came out 29% shorter, Brain Score rose 4.6 points (95% CI +3.2 to +6.1), and brainres led in 14 of 16 types. The cost: blinded key-fact checks found 1.8 pp less detail. [How we measured](evals/README.md).
 
+![The same question answered by default Claude (288 words, Brain Score 84) and with brainres (138 words, Brain Score 100); real answers from the suite](assets/demo.gif)
+
 ---
 
 ## Same question, two answers
