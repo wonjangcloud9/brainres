@@ -180,7 +180,10 @@ def phase_pair(prompts: str, keys_name: str, a_spec: str, b_spec: str, marks_nam
     keys = json.loads((OUT / keys_name).read_text())
     (da, ca), (db, cb) = a_spec.split(":"), b_spec.split(":")
     read = lambda d, c, i: (ROOT / "evals/results" / d / f"{i}.{c}.md").read_text().split("-->", 1)[1].strip()
-    ids = [i for i in sorted(S) if i in keys]
+    def exists(d, c, i):  # M3: the answer file must exist and be a real answer, not an API error
+        f = ROOT / "evals/results" / d / f"{i}.{c}.md"
+        return f.exists() and not f.read_text().split("-->", 1)[-1].lstrip().startswith("API Error")
+    ids = [i for i in sorted(S) if i in keys and exists(da, ca, i) and exists(db, cb, i)]  # M3: subset runs
     rng = random.Random(6)
     order = {i: rng.random() < 0.5 for i in ids}  # True → A shown first is condition A
     def run(batch):

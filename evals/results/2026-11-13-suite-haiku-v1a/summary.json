@@ -24,7 +24,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s021-concept",
@@ -43,7 +44,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s031-decision",
@@ -67,7 +69,8 @@
         "nominalization",
         "term_swap"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s031-decision",
@@ -89,7 +92,8 @@
         "minimizer",
         "term_swap"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s041-yesno",
@@ -108,7 +112,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s041-yesno",
@@ -127,7 +132,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s051-numbers",
@@ -148,7 +154,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s051-numbers",
@@ -167,7 +174,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s061-procedure",
@@ -188,7 +196,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s061-procedure",
@@ -209,7 +218,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s071-myth",
@@ -230,7 +240,8 @@
       "checks": [
         "scope_ambiguity"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s071-myth",
@@ -251,7 +262,8 @@
       "checks": [
         "double_negation"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s081-stress",
@@ -270,7 +282,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s081-stress",
@@ -291,7 +304,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s091-refusal",
@@ -312,7 +326,8 @@
       "checks": [
         "bold_lead_ins"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s091-refusal",
@@ -331,7 +346,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": true
     },
     {
       "id": "s101-doc",
@@ -350,7 +366,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s101-doc",
@@ -369,7 +386,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s111-novice",
@@ -390,7 +408,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s111-novice",
@@ -409,7 +428,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s121-compare",
@@ -430,7 +450,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s121-compare",
@@ -451,7 +472,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s131-codex",
@@ -470,7 +492,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s131-codex",
@@ -489,7 +512,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s141-write",
@@ -508,7 +532,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s141-write",
@@ -527,7 +552,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s151-multi",
@@ -548,7 +574,8 @@
       "checks": [
         "bold_overuse"
       ],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     },
     {
       "id": "s151-multi",
@@ -567,7 +594,8 @@
       "question_checks": [],
       "answer_first": true,
       "checks": [],
-      "tool_markup": false
+      "tool_markup": false,
+      "api_error": false
     }
   ],
   "failed": [

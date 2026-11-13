@@ -122,7 +122,9 @@ def main() -> int:
                          "score_q": rep_q.score, "question_checks": sorted({x.check for x in rep_q.findings} - {x.check for x in rep.findings}),
                          "answer_first": not (FRONT & set(checks)), "checks": checks,
                          # tool-less runs sometimes emit raw tool-call markup instead of an answer (B37, V1a): not a valid answer
-                         "tool_markup": "<invoke name=" in r["text"]})
+                         "tool_markup": "<invoke name=" in r["text"],
+                         # M3: an "API Error: … safeguards flagged" reply is not an answer either
+                         "api_error": r["text"].lstrip().startswith("API Error")})
             print(f"{p['id']:<16} {c:<9} score={rep.score:>3} words={rep.words:>4} {','.join(checks)}", flush=True)
     rows.sort(key=lambda r: (r["id"], r["condition"], r["sample"]))
     (out_dir / "summary.json").write_text(json.dumps({"model": a.model, "samples": a.samples, "card_sha": card_sha(), "style": a.style,

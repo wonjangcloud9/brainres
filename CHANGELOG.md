@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Haiku key-fact coverage (M3, 5 calls):** on 13 pairs, coverage was 93.3% for baseline and 88.8% with brainres (−4.5 pp, CI −12.7 to +3.7, not significant). Sonnet lost 2.6 pp on the same prompts.
+- **Correction to M1:** one Haiku "answer" (the brainres side of a refusal prompt) was really an API safeguard error, and it had been scored as an answer.
+  - `run.py` now flags such replies (`api_error`), and `combine.py` and `coverage_judge.py` exclude them. A scan of all saved runs found only this one.
+  - **Corrected Haiku result, 13 pairs:** answers 27% shorter (not 31%), and Brain Score +2.9 (not +3.0).
+  - Both READMEs and the release notes are updated.
+
 - **Slash commands (D12):** `/brainres:score [file]` runs brainlint on a file, or on your last answer when no file is given. `/brainres:rewrite [file | text]` rewrites with the brainres rules, keeps every fact, number and warning, and reports Brain Score before → after.
   - Both were tested with the plugin, 2 calls in total. `/brainres:score` on example 02 returned 39, matching brainlint. `/brainres:rewrite` ran on a copy, flagged what it was unsure how to keep, and left the original file unchanged.
   - Both READMEs list the commands, and `validate.sh` checks that the command files exist and reference real files.

@@ -221,7 +221,7 @@ Korean (12 prompts): answers came out 20% shorter, and answers that mixed speech
 
 Across models ([per-model table](evals/README.md)):
 
-- Answers came out 35% shorter on both Haiku and Opus on the 12-prompt set, with 95% CIs excluding zero. On 14 prompts from the 80-prompt suite, Haiku was 31% shorter (CI excludes zero) and its Brain Score gain was +3.0 (not significant at n = 14).
+- Answers came out 35% shorter on both Haiku and Opus on the 12-prompt set, with 95% CIs excluding zero. On 13 prompts from the 80-prompt suite, Haiku was 27% shorter (CI excludes zero). Its Brain Score gain (+2.9) and key-fact coverage loss (−4.5 pp) are not significant at n = 13.
 - On Opus the Brain Score gain (+3.3) isn't significant. Opus also *thinks* more with brainres: visible output fell 36%, but hidden reasoning rose about 2.6×, so its total token bill stays flat.
 
 What went wrong along the way ([details](evals/README.md)):
