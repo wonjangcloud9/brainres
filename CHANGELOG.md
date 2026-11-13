@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- The backlog was empty, and the measurements and reports gave nothing new: 0 issues, 0 stars, no Pages, no release. New growth item G2 (score 8): long-form launch articles in English and Korean for the owner to post, carrying the method and honest numbers that short posts can't.
+
 - **Undefined terms in plans and specs (U1b, 8 calls):** 4 plan or spec prompts (offline sync, rate limiting, RBAC in Django, Stripe retries; `evals/prompts-plans.jsonl`), comparing baseline with the plugin.
   - **Result:** judged by hand at first use, likely-unknown undefined terms averaged about 0.5 per plan with the plugin and 0.6 for baseline. Most specialist terms were glossed at first use, for example "자동 재시도(dunning)" and "grace period".
   - **Length:** plugin plans were 17–61% shorter.

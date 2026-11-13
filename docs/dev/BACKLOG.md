@@ -6,6 +6,7 @@ The loop always takes the highest-scoring `todo` item.
 
 | ID | Item | Type | R | I | C | E | Score | Status |
 |---|---|---|---|---|---|---|---|---|
+| G2 | **Long-form launch article** for the owner to post: `launch/article-en.md` (dev.to / Medium) and `launch/article-ko.md` (velog / GeekNews link). The project's draw is its method and its honest numbers, which the short drafts can't carry. Cover the 805-finding ledger, the 80-prompt suite, what changed and what didn't (three brainlint check bugs found, rules reverted when they didn't work), and the costs (−1.8 pp detail, +0.5 s first token). Every number must come from evals/README; the article is drafted only, never posted | G | 8 | 2 | 0.5 | 1 | **8** | todo |
 | D11a | Create the `hard-to-read` label (Issues → Labels) so the new form's reports get labelled; the form works without it, using the title prefix | G | 2 | 0.5 | 1 | 0.1 | 10 | owner |
 | D2 | Post the launch drafts (HN, Reddit, GeekNews, X); they carry the current numbers | G | 10 | 3 | 0.5 | 0.5 | 30 | owner |
 | D5 | Submit the entries in `launch/submissions.md`: claudemarketplaces.com now, the Anthropic community marketplace after D8/D8a, awesome-claude-code **from 2026-11-26** (14-day rule; human web form only), Composio optional | G | 8 | 2 | 0.5 | 0.5 | 16 | owner (ready) |
