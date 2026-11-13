@@ -109,3 +109,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 10:26 · D8a · plugin.json 0.2.0; tag dry-run ok (brainres--v0.2.0); validator warnings fixed (marketplace description, original icon); CHANGELOG 0.2.0 section; release notes drafted
 - 2026-11-13 10:56 · D7 · demo GIF from real suite answers (s153: 288 → 138 words, 84 → 100), 80 KB, both READMEs
 - 2026-11-13 11:26 · D9 · docs/use-elsewhere.md (claude.ai Project vs Skill, ChatGPT, Gemini, what's lost); README size fixed to 1,188 characters; validate checks 1,500 limit
+- 2026-11-13 11:55 · D10 · loop files moved to docs/dev/ (git mv), links fixed, docs/dev/README.md

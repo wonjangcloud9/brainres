@@ -1,6 +1,6 @@
 # Research queue
 
-Topics for research rounds (see LOOP.md). Move a topic to a `research/*.md` file when done.
+Topics for research rounds (see [docs/dev/LOOP.md](../docs/dev/LOOP.md)). Move a topic to a `research/*.md` file when done.
 
 - [ ] ISO 24495-1:2023 plain-language standard + plainlanguage.gov guidelines → rule gaps? (first pass: HC-87; round 6 found personalization/plain-for-experts already covered and added PN-01/02; the ISO text itself is paywalled and still unread)
 - [x] W3C COGA + dyslexia style guides: deeper check 2026-11-12. Already covered by AN-73–75, AN-90, HC-10/11, HC-96 and PL-16 (Rello studies, italics/caps, word frequency, digits); nothing new to add

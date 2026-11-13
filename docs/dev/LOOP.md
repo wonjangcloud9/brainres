@@ -28,8 +28,8 @@ Research coverage is saturated: 801 findings reviewed, and recent rounds added a
 ## Iteration steps
 
 0. **Lock check.** If `.loop-lock` exists, another session is mid-build: end this iteration without changes.
-1. **Sync.** `cd` to the repo root, then `git pull --rebase --quiet`.
-2. **Pick.** Open `BACKLOG.md`. Take the `todo` item with the highest RICE score.
+1. **Sync.** `cd` to the repo root, then `git pull --rebase --quiet`. Run every command from the repo root. The loop's own files live in `docs/dev/`: this file, `BACKLOG.md` and `LOOP_LOG.md`.
+2. **Pick.** Open `docs/dev/BACKLOG.md`. Take the `todo` item with the highest RICE score.
    Ties: lower Effort first, then lower ID.
    If the item is too big for one iteration, split it into sub-items (re-score them), do the first one.
 3. **Implement.** Make the change. Ground every new rule in `research/` (cite the concept name + source).
@@ -37,8 +37,8 @@ Research coverage is saturated: 801 findings reviewed, and recent rounds added a
 4. **Verify.** Run `bash scripts/validate.sh` and judge it by its **exit status**: run it on its own, or use `set -o pipefail`. Never pipe it into `grep`, because that once let a failing validation through to a push. It must pass. If it fails, fix the cause, not the check. The owner can optionally enforce this with `scripts/install-hooks.sh`, but the loop does not install hooks. A passing validation does not prove the edits ran: a failed edit script must stop the chain before `git commit`, so chain with `&&` or `set -e`. On 2026-11-12, an edit script failed on its first line, validation still passed, and the commit message described docs that weren't in it.
 5. **Record.**
    - Mark the backlog item `done` with the date.
-   - Add a line to `CHANGELOG.md` under `## Unreleased`.
-   - Append one line to `LOOP_LOG.md`: `- YYYY-MM-DD HH:MM · <item id> · <what changed>` (same commit as the change; one commit per iteration).
+   - Add a line to `CHANGELOG.md` (repo root) under `## Unreleased`.
+   - Append one line to `docs/dev/LOOP_LOG.md`: `- YYYY-MM-DD HH:MM · <item id> · <what changed>` (same commit as the change; one commit per iteration).
 6. **Ship.** `git add -A && git commit` (conventional message, e.g. `feat(skill): add given-new ordering rule`,
    ending with the `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>` line) then `git push origin main`.
    If push is rejected: `git pull --rebase` and push once more. Never force-push.
@@ -85,4 +85,4 @@ Keep roughly 1 growth item in every 3–4 iterations.
 - **No personal data** in any file or commit message.
 - **Do not delete** research or examples to make validation pass.
 - **Eval budget.** Any `claude -p` evaluation run: at most 30 calls per iteration, prefer `--model sonnet`.
-- If something is blocked (auth failure, repeated push failure), write it in `LOOP_LOG.md` and stop that iteration.
+- If something is blocked (auth failure, repeated push failure), write it in `docs/dev/LOOP_LOG.md` and stop that iteration.

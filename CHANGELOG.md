@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Tidied the repo root (D10): the loop's files (`LOOP.md`, `LOOP_LOG.md`, `BACKLOG.md`) moved to `docs/dev/` with `git mv`, so their history is kept. A short `docs/dev/README.md` was added, and links were fixed in both READMEs, `research/queue.md` and the protocol itself. The root now holds only what users need.
+
 - **Guide for claude.ai, ChatGPT and Gemini (D9):** new `docs/use-elsewhere.md`, linked from both READMEs. It recommends a claude.ai **Project** for always-on use, because a Skill upload loads only when Claude judges it relevant (1 in 24 answers in our tests). It also covers ChatGPT custom instructions or a GPT, a Gemini Gem, and a table of what's lost outside the plugin: the learner and emergency lines and the Haiku reminder.
 - **Stale README number fixed:** `dist/system-prompt.md` is now 1,188 characters, not 1,011 bytes. `validate.sh` checks that it stays under 1,500 and that the guide states its current size.
 

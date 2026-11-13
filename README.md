@@ -209,7 +209,7 @@ Caveats:
 - **Shorter answers carry slightly less detail:** 94.1% of key facts covered vs 96.0% (−1.8 pp, CI −4.1 to +0.4). Details were cut, but facts were rarely dropped. An Opus judge agreed ([V2](evals/README.md)).
 - **Hidden reasoning rose by about 100 tokens per answer,** so total output tokens fell 14% while visible tokens fell 28%.
 - **Some rules describe default behaviour.** Opening a code explanation with a purpose summary, and opening a decision with a recommendation plus when the other option wins, were already 100% in baseline Sonnet and Haiku. brainres doesn't cause them ([B37, B42, B45](evals/README.md)).
-- Comprehension itself isn't measured yet. That needs human readers ([B10](BACKLOG.md)).
+- Comprehension itself isn't measured yet. That needs human readers ([B10](docs/dev/BACKLOG.md)).
 
 Accuracy: across 48 trap and multi-step math problems on Haiku, brainres and baseline both scored 48/48. On 6 agentic coding tasks in Claude Code, both passed 6/6 with identical diff sizes. There is no detectable accuracy cost, but this is a ceiling result ([details](research/llm-side-effects.md)).
 
@@ -265,7 +265,7 @@ The **[coverage ledger](research/coverage.md)** shows 659 applicable findings, a
 The always-on card stays small (500 tokens). Situation-specific findings live in 13 reference files that Claude reads only when the answer needs them, so applying everything doesn't mean stuffing everything into the prompt.
 
 - **Neuromyths we refuse:** learning styles; left/right brain; the "8-second attention span"; Dale's cone; Bionic Reading; "dopamine-hit" formatting; "23 minutes to refocus"; "willpower is glucose"; "we read words by their shape". Thirty in total are listed in the catalogs.
-- **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](BACKLOG.md).
+- **Honest limits:** nobody, us included yet, has run controlled studies on formatting rules for LLM chat answers. The thresholds are engineering defaults to be tuned by evaluation. A human comprehension benchmark is on the [roadmap](docs/dev/BACKLOG.md).
 
 ## Contributing
 
