@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Long-form launch articles (G2):** `launch/article-en.md` (dev.to / Medium) and `launch/article-ko.md` (velog / GeekNews). Both are drafts for the owner to post.
+  - **Content:** the research ledger, the 80-prompt method, results with confidence intervals, rules that didn't work, the three scorer bugs, and the costs.
+  - **Checks:** every number was checked against evals/README. Links are absolute so they work off GitHub. The articles state plainly that the human reading study (`bench/`) has no participants yet.
+  - **Scores:** Brain Score 100 for both.
+
 - The backlog was empty, and the measurements and reports gave nothing new: 0 issues, 0 stars, no Pages, no release. New growth item G2 (score 8): long-form launch articles in English and Korean for the owner to post, carrying the method and honest numbers that short posts can't.
 
 - **Undefined terms in plans and specs (U1b, 8 calls):** 4 plan or spec prompts (offline sync, rate limiting, RBAC in Django, Stripe retries; `evals/prompts-plans.jsonl`), comparing baseline with the plugin.

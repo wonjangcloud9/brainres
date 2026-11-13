@@ -120,3 +120,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 15:57 · U2 · endings by hand: generic offers 10/19 → 6/20, next steps 0 → 6; 'not an offer menu' wording no effect (6/19) → reverted (20 calls)
 - 2026-11-13 16:26 · U1b · plans/specs (8 calls): undefined terms ≈ 0.5/plan plugin vs 0.6 baseline, mostly glossed → no card change; plugin plans 17–61% shorter
 - 2026-11-13 16:55 · items · no reports/stars/Pages/release; measurements done → G2 long-form launch article EN/KO (8)
+- 2026-11-13 17:27 · G2 · long-form launch articles EN/KO (Brain Score 100/100), numbers checked against evals/README; owner posts
