@@ -34,8 +34,9 @@ sys.modules["brainlint"] = brainlint
 spec.loader.exec_module(brainlint)
 
 FRONT = {"preamble", "meta_talk", "buried_answer"}
-# Rule 3 length budgets: facts ≤100 words, explanations ≤300 (SKILL.md).
-BUDGET = {"yes/no": 100, "misconception": 100}
+# Rule 3 length budgets: facts ≤100 words, explanations ≤300 (SKILL.md). A myth correction is an explanation
+# (#47 refutation structure, JD-14 causal alternative), so it gets 300 (Y1); yes/no stays a fact.
+BUDGET = {"yes/no": 100}
 DEFAULT_BUDGET = 300
 
 

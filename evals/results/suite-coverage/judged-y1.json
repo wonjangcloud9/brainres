@@ -1,0 +1,41 @@
+{
+  "rule": "myth: if >= 2/3 of overages are needed, move myths to the explanation budget (<=300); yes/no: if >= half are padding, test a card wording",
+  "classes": {
+    "N": "overage is needed (refutation parts, evidence, mechanism, next steps)",
+    "M": "needed core plus an off-topic or extra section",
+    "P": "mostly padding"
+  },
+  "myth": {
+    "brainres": {
+      "s071": "N",
+      "s072": "N",
+      "s073": "N",
+      "s074": "N (one tangential container line)",
+      "s075": "N"
+    },
+    "baseline": {
+      "s071": "N",
+      "s072": "M (RAM speed / channel section)",
+      "s073": "N",
+      "s074": "M (container, uneven heating, eggs: safety, not nutrients)",
+      "s075": "N"
+    },
+    "needed": "8/10 -> myths move to <=300"
+  },
+  "yes/no": {
+    "brainres": {
+      "s042": "N (what to do instead; rotate keys first)",
+      "s045": "N (3 options when pull aborts)"
+    },
+    "baseline": {
+      "s041": "N (await alternatives)",
+      "s042": "M (5 reasons, provider lists)",
+      "s044": "M (5 exposure paths)",
+      "s045": "M (extra lose-work and config detail)"
+    },
+    "padding": "P 0/6 (M 3/6, all baseline) -> no card test; yes/no stays at 100"
+  },
+  "result": {
+    "within_budget_suite": "57/78 -> 71/78 becomes 62/78 -> 76/78"
+  }
+}

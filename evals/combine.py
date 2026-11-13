@@ -17,7 +17,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-BUDGET = {"yes/no": 100, "misconception": 100}  # same as run.py; older runs lack within_budget
+BUDGET = {"yes/no": 100}  # same as run.py (Y1: myths moved to 300); recomputed for every row, so stored values don't go stale
 DEFAULT_BUDGET = 300
 # two-sided 95% t critical values by degrees of freedom (enough for ≤30 prompts)
 T95 = {1: 12.71, 2: 4.30, 3: 3.18, 4: 2.78, 5: 2.57, 6: 2.45, 7: 2.36, 8: 2.31, 9: 2.26, 10: 2.23,
@@ -41,15 +41,21 @@ def main() -> int:
         d = json.loads(f.read_text())
         if d.get("model") != a.model or d.get("style") or d.get("prompt_set", "prompts.jsonl") != a.prompts:
             continue  # style experiments and other prompt sets are reported separately
+        if not d.get("rows") or "words" not in d["rows"][0]:
+            continue  # latency and agentic runs have their own reports
         keep = [r for r in d["rows"] if r["condition"] == "baseline" or (d.get("card_sha") == sha and r["condition"] == a.treatment)]
         for r in keep:
             if r["condition"] == a.treatment:
                 r["condition"] = "brainres"  # the comparison column; the label below names the treatment
         for r in keep:
-            r.setdefault("within_budget", r["words"] <= BUDGET.get(r["type"], DEFAULT_BUDGET))
+            r["within_budget"] = r["words"] <= BUDGET.get(r["type"], DEFAULT_BUDGET)
         if keep:
             rows += keep
             used.append(f"{f.parent.name} ({len(keep)} answers)")
+    if not any(r["condition"] == "brainres" for r in rows):
+        print(f"No {a.treatment} answers made with the current card (sha {sha}) for {a.prompts}; "
+              "older runs used other cards. Try --prompts suite.jsonl.")
+        return 1
     by = defaultdict(list)
     for r in rows:
         by[(r["id"], r["condition"])].append(r)

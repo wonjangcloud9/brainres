@@ -20,7 +20,7 @@ From 2026-11-13 the main measurement is [`suite.jsonl`](suite.jsonl): 80 prompts
 | Words | **−56** (−70 to −42), −29% |
 | Visible output tokens | **−190** (−230 to −150), −28% |
 | Output tokens incl. hidden reasoning | −91 (−136 to −47), −14% |
-| Within length budget | 57/78 → 71/78 |
+| Within length budget | 62/78 → 76/78 (myths at the explanation budget, Y1; was 57 → 71 with myths at 100) |
 
 **Information coverage (V2):** do shorter answers drop facts a good answer needs? See [`results/suite-coverage/REPORT.md`](results/suite-coverage/REPORT.md) and [`coverage_judge.py`](coverage_judge.py).
 
@@ -119,7 +119,7 @@ The length effect holds on Opus, too. As in the 12-prompt set, Opus's Brain Scor
 | Within length budget | 29/36 | 32/36 | |
 | No preamble / buried answer | 36/36 | 36/36 | |
 
-The length budget is ≤100 words for yes/no and myth questions and ≤300 for everything else. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
+The length budget here was ≤100 words for yes/no and myth questions and ≤300 for everything else. Since Y1, myths use the explanation budget (≤300), because a correction needs the why (#47, JD-14); these older 12-prompt figures keep the old budget. The single-sample first run below overstated the length effect (−33%). This repeated measure supersedes it.
 
 ## Korean prompt set (B34)
 

@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Myth answers now use the explanation budget (Y1, no calls).** We hand-classified all 16 yes/no and myth answers over the 100-word budget.
+  - **Myths:** the overage was needed content in 8 of 10 answers: evidence, the myth's origin, the real mechanism. That matches our refutation rules (#47, JD-14) and the rule stated in advance, so myths now use the ≤300 budget.
+  - **Yes/no:** the overage was padding in 0 of 6 answers. 3 baseline answers mixed in extra sections. Both brainres answers carried needed next steps, such as rotating keys first or the options when `git pull` aborts. Yes/no stays at ≤100, with no card test.
+  - **Suite:** within budget is now 62/78 → 76/78 (was 57 → 71). READMEs and evals/README are updated.
+  - **combine.py fixes:** it now recomputes the budget for every row instead of trusting stored flags. It skips latency and agentic runs, which made its default mode crash. It also explains an empty comparison instead of raising an error.
+
 - **Item from measurements (no calls).** The only answers over the length budget are yes/no and myth answers (≤100 words): brainres 7 of 10 and baseline 9 of 10. Two brainres answers read by hand carried needed content, and our own refutation rules (#47, JD-14) treat a myth correction as an explanation. New item Y1 (score 3.2) classifies all 16 overages by hand under a rule stated in advance. No reports yet; 1 star.
 
 - **The Haiku auto-reminder is removed (H1, 28 calls).** After the S1 re-score, the B48 turns 5–7 gap fell from 3.7 to 2.7 points. We re-ran the same Haiku 7-turn sessions, reminder on vs off, and pooled both runs under a rule stated before the run: keep it only if the pooled gap is 3 or more.

@@ -197,7 +197,7 @@ We compared 78 pairs. Two prompts were dropped because an answer was raw tool-ca
 | Words per answer | 196 | **140** | **−29%** (−56 words; −70 to −42) |
 | Visible output tokens | 670 | **480** | **−28%** (−190; −230 to −150) |
 | Output tokens incl. hidden reasoning | 674 | **582** | −14% (−91; −136 to −47) |
-| Within length budget | 57/78 | **71/78** | |
+| Within length budget | 62/78 | **76/78** | |
 | Brain Score | 94.2 | **98.9** | **+4.6** (+3.3 to +6.0) |
 
 An earlier 12-prompt × 3-sample run pointed the same way: −27% words and +5.0 Brain Score.
