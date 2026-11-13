@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Closing offers classified by hand (U2, 20 calls).** We sorted the endings of the same 20 prompts into four groups: a concrete next step, the one question needed to proceed, a generic offer or menu, or ending on content.
+  - **Rule 11 already helps.** Generic offers fall from 10/19 for baseline to 6/20 with brainres, and concrete next steps rise from 0 to 6.
+  - **Tighter wording tried and reverted.** The pre-stated threshold (5 or more offers) was met, so we tested "End on the next action, not an offer menu". It left offers at 6/19 and lowered the Brain Score from 99.5 to 97.6, so the card was reverted.
+  - **Most remaining offers are a single tailoring question**, such as "tell me your port and domain and I'll fill the config". They aren't the repeated menus users complain about.
+
 - **Undefined terms checked by hand (U1, no calls).**
   - **Method:** we read every 4th brainres suite answer (20 in total) for terms the asker likely wouldn't know.
   - **Result:** only 2 turned up: BOM in a CSV KeyError answer and GIL in a beginner's closing line. That is below the pre-stated threshold of 4, so the card is unchanged.

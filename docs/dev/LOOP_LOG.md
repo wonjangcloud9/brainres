@@ -117,3 +117,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 14:25 · D13 · install size measured (≈1.5 MB download, 13 MB disk; runtime reads only hooks/skills/commands/output-styles) → no restructure; validate.sh caps tracked files at 15 MB
 - 2026-11-13 14:57 · research round 9 · user complaints 2026: UC-01 undefined terms (700+ upvotes), UC-02 closing offers, UC-03 contrasts, UC-04 section dumps; rough counts show brainres doesn't reduce acronyms/offers → U1 (4), U2 (2)
 - 2026-11-13 15:26 · U1 · hand check (20 brainres answers): 2 likely-unknown undefined terms < 4 → no card change; coined phrases 0/79 vs 2/78; plans/specs → U1b (1.8)
+- 2026-11-13 15:57 · U2 · endings by hand: generic offers 10/19 → 6/20, next steps 0 → 6; 'not an offer menu' wording no effect (6/19) → reverted (20 calls)

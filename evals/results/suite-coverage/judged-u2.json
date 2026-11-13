@@ -1,0 +1,41 @@
+{
+  "sample": "same 20 prompts as U1 (every 4th suite id)",
+  "classes": {
+    "a": "concrete next step",
+    "b": "the one question needed to proceed",
+    "c": "generic offer or menu",
+    "d": "ends on content"
+  },
+  "baseline": {
+    "a": 0,
+    "b": 3,
+    "c": 10,
+    "d": 6,
+    "n": 19
+  },
+  "brainres_current_card": {
+    "a": 6,
+    "b": 5,
+    "c": 6,
+    "d": 3,
+    "n": 20,
+    "c_ids": [
+      "s024",
+      "s033",
+      "s042",
+      "s091",
+      "s095",
+      "s122"
+    ]
+  },
+  "brainres_rule11_not_an_offer_menu": {
+    "a": 5,
+    "b": 4,
+    "c": 6,
+    "d": 4,
+    "n": 19,
+    "note": "s122 improved (ends on a decision rule); s064 lost its certbot next step; Brain Score 99.5 -> 97.6, words 141 -> 131 on the same 19"
+  },
+  "rule": "if c >= 5/20 tighten rule 11 and re-measure; keep only if it moves behaviour",
+  "result": "c 6/20 -> 6/19 with the tighter wording -> reverted; rule 11 already cuts generic offers vs baseline (10/19 -> 6/20) and adds concrete next steps (0 -> 6)"
+}
