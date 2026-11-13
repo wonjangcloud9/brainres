@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Undefined terms in plans and specs (U1b, 8 calls):** 4 plan or spec prompts (offline sync, rate limiting, RBAC in Django, Stripe retries; `evals/prompts-plans.jsonl`), comparing baseline with the plugin.
+  - **Result:** judged by hand at first use, likely-unknown undefined terms averaged about 0.5 per plan with the plugin and 0.6 for baseline. Most specialist terms were glossed at first use, for example "자동 재시도(dunning)" and "grace period".
+  - **Length:** plugin plans were 17–61% shorter.
+  - **Decision:** this is below the pre-stated rule (3 per plan, or 2 more than baseline), so the card is unchanged.
+  - **What this closes:** the round-9 user complaints now have measured answers.
+
 - **Closing offers classified by hand (U2, 20 calls).** We sorted the endings of the same 20 prompts into four groups: a concrete next step, the one question needed to proceed, a generic offer or menu, or ending on content.
   - **Rule 11 already helps.** Generic offers fall from 10/19 for baseline to 6/20 with brainres, and concrete next steps rise from 0 to 6.
   - **Tighter wording tried and reverted.** The pre-stated threshold (5 or more offers) was met, so we tested "End on the next action, not an offer menu". It left offers at 6/19 and lowered the Brain Score from 99.5 to 97.6, so the card was reverted.

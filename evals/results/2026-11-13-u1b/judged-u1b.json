@@ -1,0 +1,48 @@
+{
+  "prompts": "evals/prompts-plans.jsonl (4 plans/specs, EN+KO)",
+  "method": "unexpanded acronyms and specialist terms extracted at first use, judged by hand against who asked (1 = likely unknown and undefined, 0.5 = borderline)",
+  "baseline": {
+    "p1": {
+      "tombstones": 1,
+      "jitter": 0.5
+    },
+    "p2": {},
+    "p3": {
+      "IdP": 0.5
+    },
+    "p4": {
+      "지터": 0.5
+    },
+    "per_plan": 0.6
+  },
+  "plugin": {
+    "p1": {
+      "conflict copy": 0.5,
+      "tombstones (purpose given)": 0.5
+    },
+    "p2": {},
+    "p3": {},
+    "p4": {
+      "Dunning (first line, undefined)": 1
+    },
+    "per_plan": 0.5
+  },
+  "well_defined_examples": [
+    "자동 재시도(dunning)",
+    "재시도 중 서비스 접근을 유지할 기간(grace period)",
+    "Outbox table of pending operations",
+    "rate-limit algorithms compared in a table"
+  ],
+  "words": {
+    "p1-offline-en.baseline": 788,
+    "p1-offline-en.plugin": 555,
+    "p2-ratelimit-en.baseline": 776,
+    "p2-ratelimit-en.plugin": 631,
+    "p3-rbac-ko.baseline": 621,
+    "p3-rbac-ko.plugin": 312,
+    "p4-retry-ko.baseline": 862,
+    "p4-retry-ko.plugin": 391
+  },
+  "rule": "change the card only if brainres >= 2/plan more than baseline, or >= 3/plan",
+  "result": "0.5 vs 0.6 per plan -> no change"
+}

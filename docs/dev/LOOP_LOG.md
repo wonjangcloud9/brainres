@@ -118,3 +118,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 14:57 · research round 9 · user complaints 2026: UC-01 undefined terms (700+ upvotes), UC-02 closing offers, UC-03 contrasts, UC-04 section dumps; rough counts show brainres doesn't reduce acronyms/offers → U1 (4), U2 (2)
 - 2026-11-13 15:26 · U1 · hand check (20 brainres answers): 2 likely-unknown undefined terms < 4 → no card change; coined phrases 0/79 vs 2/78; plans/specs → U1b (1.8)
 - 2026-11-13 15:57 · U2 · endings by hand: generic offers 10/19 → 6/20, next steps 0 → 6; 'not an offer menu' wording no effect (6/19) → reverted (20 calls)
+- 2026-11-13 16:26 · U1b · plans/specs (8 calls): undefined terms ≈ 0.5/plan plugin vs 0.6 baseline, mostly glossed → no card change; plugin plans 17–61% shorter

@@ -1,0 +1,4 @@
+{"id": "p1-offline-en", "type": "plan", "lang": "en", "q": "Write an implementation plan for adding offline support to our React Native notes app. Notes sync to a REST API."}
+{"id": "p2-ratelimit-en", "type": "plan", "lang": "en", "q": "Draft a technical spec for rate limiting our public API. We use Node/Express and have Redis available."}
+{"id": "p3-rbac-ko", "type": "plan", "lang": "ko", "q": "사내 관리자 페이지에 역할 기반 권한(관리자/편집자/뷰어)을 추가하는 구현 계획을 써줘. 백엔드는 Django야."}
+{"id": "p4-retry-ko", "type": "plan", "lang": "ko", "q": "결제 실패 시 자동 재시도 기능 설계 문서를 써줘. 결제는 Stripe를 쓰고 있어."}
