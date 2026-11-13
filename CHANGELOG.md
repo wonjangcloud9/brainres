@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Curated-list submissions drafted (D5a) in `launch/submissions.md`, based on each list's own rules:
+  - **claudemarketplaces.com:** crawls GitHub daily and also has a `/submit` page.
+  - **Anthropic community marketplace:** submissions go through clau.de/plugin-directory-submission with a security scan, so the draft describes the hooks plainly.
+  - **awesome-claude-code (57.9k ★):** submissions only through the human web form, and only **from 2026-11-26** under its 14-day rule. The description fits its no-promotion style.
+  - **Composio:** a fork plus a vendored copy, so it is optional until the plugin folder is slimmed (D13).
+
+  The owner submits all four, and the launch checklist links to the file.
+
 - **Clean install verified (D4):** in an isolated `CLAUDE_CONFIG_DIR`, `claude plugin install brainres --marketplace wonjangcloud9/brainres` succeeds from GitHub. The installed hooks emit the card and the learner line, and the card lands in a fresh session's transcript, since the hook fires before any API call and so needs no login. The real `~/.claude` was left untouched.
   - Re-run it with `scripts/check_install.sh`, or opt in through `validate.sh` with `BRAINRES_NET_CHECKS=1`.
   - Two findings became new items: the install reports version 0.1.0 (D8a, bump before the release), and it copies the whole 5.9 MB repo (D13).

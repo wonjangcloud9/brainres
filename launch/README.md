@@ -8,6 +8,7 @@ Drafts for the owner to post. The loop never posts anywhere.
 | [x-thread.md](x-thread.md) | X / Twitter | Weekday morning US or KST evening |
 | [geeknews.md](geeknews.md) | GeekNews (news.hada.io) | Weekday morning KST |
 | [reddit-claudeai.md](reddit-claudeai.md) | r/ClaudeAI | Weekday, US daytime |
+| [submissions.md](submissions.md) | Curated lists: claudemarketplaces.com, Anthropic community marketplace, awesome-claude-code (from 2026-11-26), Composio | Any time; awesome-claude-code not before 2026-11-26 |
 
 Before posting:
 
