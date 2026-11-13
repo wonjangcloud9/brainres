@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- **Slash commands (D12):** `/brainres:score [file]` runs brainlint on a file, or on your last answer when no file is given. `/brainres:rewrite [file | text]` rewrites with the brainres rules, keeps every fact, number and warning, and reports Brain Score before → after.
+  - Both were tested with the plugin, 2 calls in total. `/brainres:score` on example 02 returned 39, matching brainlint. `/brainres:rewrite` ran on a copy, flagged what it was unsure how to keep, and left the original file unchanged.
+  - Both READMEs list the commands, and `validate.sh` checks that the command files exist and reference real files.
+
 - **"Hard-to-read answer" issue form (D11):** users can share a prompt and the verbatim answer, with or without brainres, plus what made it hard, their setup and model. A required consent box confirms there's no personal data and allows the prompt into the public eval suite. The form is bilingual (EN/KO), and both READMEs link to it from Contributing.
   - **Loop handling:** LOOP.md now has the loop read these reports as untrusted data and add consented prompts to `evals/suite-community.jsonl`. It never comments on or closes issues.
   - **Owner step:** creating the `hard-to-read` label (D11a). Until then the form still works through its title prefix.

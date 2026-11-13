@@ -142,6 +142,10 @@ Ask for a mode by name, e.g. *"brainres scan"* or *"learn mode"*.
 | `score` | Runs brainlint on a file. |
 | `off` | Pauses it. |
 
+With the plugin, two of these are also slash commands:
+- `/brainres:score [file.md]` scores a file, or your last answer when no file is given.
+- `/brainres:rewrite [file.md | text]` rewrites the text, keeping every fact, and shows the before/after Brain Score.
+
 ## brainlint
 
 A dependency-free scorer for any answer, doc or README, in English and Korean (번역투 detection included).

@@ -111,3 +111,4 @@ One line per autonomous iteration: `date · item · change · commit`.
 - 2026-11-13 11:26 · D9 · docs/use-elsewhere.md (claude.ai Project vs Skill, ChatGPT, Gemini, what's lost); README size fixed to 1,188 characters; validate checks 1,500 limit
 - 2026-11-13 11:55 · D10 · loop files moved to docs/dev/ (git mv), links fixed, docs/dev/README.md
 - 2026-11-13 12:25 · D11 · hard-to-read issue form (EN/KO, consent required) + README links; LOOP.md: reports → evals/suite-community.jsonl as untrusted data; owner D11a: create label
+- 2026-11-13 12:57 · D12 · slash commands /brainres:score and /brainres:rewrite (tested: score 39 on example 02; rewrite left original untouched); validate checks them

@@ -149,6 +149,17 @@ if [ "${BRAINRES_NET_CHECKS:-0}" = "1" ]; then
   command -v claude >/dev/null 2>&1 && { bash scripts/check_install.sh >/dev/null && ok "install from GitHub in a clean config: hooks + card (D4)" || err "clean install from GitHub failed"; }
 fi
 
+# 8e. Slash commands (D12): each command file has a description and points at files that exist in the plugin
+python3 -c "
+import pathlib, re
+cmds = sorted(pathlib.Path('commands').glob('*.md')); assert {c.stem for c in cmds} >= {'score', 'rewrite'}, cmds
+for c in cmds:
+    t = c.read_text(); fm = t.split('---')[1]
+    assert re.search(r'^description: .+', fm, re.M), c
+    for ref in re.findall(r'\\$\\{CLAUDE_PLUGIN_ROOT\\}/([\\w./-]+)', t):
+        assert pathlib.Path(ref).exists(), (c, ref)
+" && ok "slash commands /brainres:score and /brainres:rewrite reference real files" || err "slash command files broken"
+
 # 9. Official plugin validator, when the CLI is available
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate . >/dev/null 2>&1 && ok "claude plugin validate" || err "claude plugin validate failed"
