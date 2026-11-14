@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>brainres — Claude answers your brain can actually read</title>
+<meta name="description" content="A Claude Code plugin built from 805 reviewed cognitive-science findings. Measured on 80 prompts: answers 29% shorter, Brain Score +4.6.">
+<meta property="og:image" content="https://wonjangcloud9.github.io/brainres/assets/social-preview.png">
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--mut:#555;--line:#ddd;--acc:#b5532f}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--mut:#aaa;--line:#333;--acc:#e08a63}}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif}
+main{max-width:640px;margin:0 auto;padding:56px 16px}
+h1{font-size:2rem;line-height:1.25;margin:0 0 12px}
+p{margin:0 0 20px;color:var(--mut)}
+img{max-width:100%;border:1px solid var(--line);border-radius:8px;margin:8px 0 24px}
+ul{list-style:none;padding:0;margin:0}
+li{border-top:1px solid var(--line);padding:14px 0}
+a{color:var(--acc);font-weight:600;text-decoration:none}
+a:hover{text-decoration:underline}
+li span{display:block;color:var(--mut);font-size:.92rem}
+code{font:.9rem ui-monospace,Menlo,monospace;background:rgba(127,127,127,.15);padding:2px 6px;border-radius:4px;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<main>
+<h1>🧠 brainres</h1>
+<p>Claude answers your brain can actually read. Measured on 80 prompts: answers came out 29% shorter and Brain Score rose 4.6 points, at a cost of 1.8 pp less detail.</p>
+<img src="assets/demo.gif" alt="The same question answered by default Claude (288 words) and with brainres (138 words)">
+<ul>
+<li><a href="playground/">Brain Score playground</a><span>Paste any answer and get its score. Nothing is uploaded.</span></li>
+<li><a href="bench/">Reading benchmark · 읽기 벤치마크</a><span>5 minutes, anonymous. Do people really understand these answers faster?</span></li>
+<li><a href="https://github.com/wonjangcloud9/brainres">GitHub</a><span>Source, research ledger and evals · <a href="https://github.com/wonjangcloud9/brainres/blob/main/README.ko.md">한국어</a></span></li>
+</ul>
+<p style="margin-top:24px"><code>claude plugin install brainres --marketplace wonjangcloud9/brainres</code></p>
+</main>
+</body>
+</html>
