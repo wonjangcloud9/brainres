@@ -7,7 +7,7 @@ Do people understand brainres answers faster and as well as Claude's default ans
 Open [`index.html`](index.html) in a browser. Any of these works:
 
 - **Locally:** download the repo and double-click `bench/index.html`.
-- **Hosted:** use GitHub Pages if the repo owner has enabled it (Settings → Pages → branch `main`, root), at `https://wonjangcloud9.github.io/brainres/bench/`.
+- **Hosted:** <https://wonjangcloud9.github.io/brainres/bench/> (GitHub Pages, branch `main`, root).
 - **Without Pages:** use a static preview such as `https://htmlpreview.github.io/?https://github.com/wonjangcloud9/brainres/blob/main/bench/index.html`.
 
 You'll read 8 English or 4 Korean answers. You won't be told which version each answer is. For each one you answer a "find" question with the answer visible and an "understand" question with the answer hidden.

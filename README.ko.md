@@ -171,7 +171,7 @@ Brain Score: 39/100 (F)  ·  lang=ko
 
 **질문도 함께 넘길 수 있습니다.** `--question "…"`을 붙이면 검사가 두 개 늘어납니다. 예/아니오 질문이면 첫 단어가 예/아니오여야 하고, 선택 질문이면 첫 문장에서 하나를 추천해야 합니다.
 
-**브라우저에서 바로 채점해 볼 수 있습니다.** [Brain Score 플레이그라운드](playground/)에 아무 답변이나 문서를 붙여 넣으면 점수가 나옵니다. 이 레포의 `brainlint.py`를 Pyodide로 그대로 실행하고, 붙여 넣은 내용은 어디에도 업로드되지 않습니다. GitHub Pages가 켜지면 `https://wonjangcloud9.github.io/brainres/playground/`에서 열립니다.
+**브라우저에서 바로 채점해 볼 수 있습니다.** [Brain Score 플레이그라운드](https://wonjangcloud9.github.io/brainres/playground/)에 아무 답변이나 문서를 붙여 넣으면 점수가 나옵니다. 이 레포의 `brainlint.py`를 Pyodide로 그대로 실행하고, 붙여 넣은 내용은 어디에도 업로드되지 않습니다. 주소는 <https://wonjangcloud9.github.io/brainres/playground/>입니다.
 
 **내 README도 채점해서 배지로 달 수 있습니다.**
 
@@ -237,7 +237,7 @@ python3 skills/brainres/scripts/brainlint.py --badge README.md
 
 ### 이해도 측정에 참여하기 (10분)
 
-남은 질문은 사람이 brainres 답을 정말 더 잘 이해하느냐입니다. [읽기 벤치마크](bench/)는 사전등록된 실험으로, 한국어 세트는 짧은 답 4개입니다. 어느 쪽이 brainres 답인지는 표시하지 않고, 시간을 재며 질문에 답합니다. 결과는 익명 JSON으로 이슈 양식에 제출합니다. 결과가 좋든 나쁘든 모두 공개합니다.
+남은 질문은 사람이 brainres 답을 정말 더 잘 이해하느냐입니다. [읽기 벤치마크](https://wonjangcloud9.github.io/brainres/bench/)는 사전등록된 실험으로, 한국어 세트는 짧은 답 4개입니다. 어느 쪽이 brainres 답인지는 표시하지 않고, 시간을 재며 질문에 답합니다. 결과는 익명 JSON으로 이슈 양식에 제출합니다. 결과가 좋든 나쁘든 모두 공개합니다.
 
 ## 감이 아니라 근거
 

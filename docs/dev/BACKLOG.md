@@ -9,10 +9,10 @@ The loop always takes the highest-scoring `todo` item.
 | D11a | Create the `hard-to-read` label (Issues → Labels) so the new form's reports get labelled; the form works without it, using the title prefix | G | 2 | 0.5 | 1 | 0.1 | 10 | owner |
 | D2 | Post the launch drafts (HN, Reddit, GeekNews, X); they carry the current numbers | G | 10 | 3 | 0.5 | 0.5 | 30 | owner |
 | D5 | Submit the entries in `launch/submissions.md`: claudemarketplaces.com now, the Anthropic community marketplace after D8/D8a, awesome-claude-code **from 2026-11-26** (14-day rule; human web form only), Composio optional | G | 8 | 2 | 0.5 | 0.5 | 16 | owner (ready) |
-| D6 | Enable GitHub Pages (Settings → Pages → main, root), which makes the playground and benchmark pages live | G | 5 | 1 | 0.8 | 0.25 | 16 | owner |
-| D8 | Release 0.2.0: `claude plugin tag --push .` (creates `brainres--v0.2.0`), then a GitHub release with `launch/release-v0.2.0.md`; optionally tick "Publish this Action to the GitHub Marketplace" | G | 3 | 1 | 0.5 | 0.25 | 6 | owner (ready) |
+| D6 | Enable GitHub Pages (Settings → Pages → main, root), which makes the playground and benchmark pages live | G | 5 | 1 | 0.8 | 0.25 | 16 | done 2026-11-15 (Pages live) |
+| D8 | Release 0.2.0: `claude plugin tag --push .` (creates `brainres--v0.2.0`), then a GitHub release with `launch/release-v0.2.0.md`; optionally tick "Publish this Action to the GitHub Marketplace" | G | 3 | 1 | 0.5 | 0.25 | 6 | done 2026-11-15 (tag + GitHub release) |
 | B35 | Monthly re-scan of trending output-style / humanizer skills (due 2026-12) | Q | 5 | 1 | 0.8 | 1 | 4 | scheduled 2026-12 |
-| B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | needs owner |
+| B30 | **Owner:** tag v0.2.0 + GitHub release with `dist/brainres-skill.zip` (outside the loop's push-only guardrail) | G | 8 | 1 | 0.8 | 0.5 | 12.8 | done 2026-11-15 (see D8) |
 | C01 | **Full-coverage program.** Ingest the 6 domain catalogs (psycholinguistics, learning science, attention & neuro, judgment & trust, HCI & info design, emotion & pragmatics) into `research/catalog-*.md` with Applies/Situation columns | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C02 | Situation router in SKILL.md + one `references/<situation>.md` per situation, so every applicable finding has a home without bloating the always-on card | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 |
 | C03 | Close **core** coverage gaps (see `research/coverage.md` → "Not yet applied", situation=core) | Q | 10 | 3 | 0.8 | 1 | **24** | done 2026-11-12 (596/596) |
@@ -21,7 +21,7 @@ The loop always takes the highest-scoring `todo` item.
 | C06 | Coverage badge in README ("N findings reviewed · X% applied") + explain the ledger | G | 8 | 2 | 1.0 | 0.5 | **32** | done 2026-11-12 |
 | B17 | `references/learn.md`: prequestion → worked example with fading → retrieval checks | Q | 2 | 2 | 1.0 | 0.5 | 8 | superseded by C04 (learn.md covers it) |
 | B18 | `references/uncertainty.md` | Q | 5 | 1 | 0.8 | 0.5 | 8 | superseded by C05 (numbers.md + rule 9) |
-| B10-5 | **Owner:** enable GitHub Pages (Settings → Pages → main, root) — unlocks /bench and /playground links — and recruit ~60 participants (README/launch posts link the benchmark) | G | 10 | 3 | 0.5 | 1 | **15** | needs owner |
+| B10-5 | **Owner:** enable GitHub Pages (Settings → Pages → main, root) — unlocks /bench and /playground links — and recruit ~60 participants (README/launch posts link the benchmark) | G | 10 | 3 | 0.5 | 1 | **15** | Pages done 2026-11-15; recruiting still needs owner |
 | B07 | `README.ko.md` for Korean devs (GeekNews, Korean X) | G | 5 | 2 | 0.8 | 0.5 | 16 | done 2026-11-12 |
 | B14 | Launch drafts in `launch/`: Show HN, X thread, GeekNews, r/ClaudeAI. Owner posts them | G | 8 | 2 | 0.5 | 0.5 | 16 | done 2026-11-12 |
 | B25 | Measure and publish the token cost of the core card and reminder in the README (honest numbers) | G | 8 | 1 | 1.0 | 0.5 | 16 | done 2026-11-12 (card 631, reminder 79, skill 3,893 tokens) |

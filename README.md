@@ -166,7 +166,7 @@ Each check maps to a named finding. It's a heuristic, not a comprehension test. 
 
 **Give it the question** with `--question "Is X safe?"` to add two checks. A yes/no question must start with Yes or No, and a choice question must recommend an option in sentence 1.
 
-**Try it in your browser** with the [Brain Score playground](playground/). Paste any answer or doc and get its score. It runs this exact `brainlint.py` through Pyodide, and nothing is uploaded. Once the owner enables Pages it lives at `https://wonjangcloud9.github.io/brainres/playground/`; until then, use a static preview such as htmlpreview.
+**Try it in your browser** with the [Brain Score playground](https://wonjangcloud9.github.io/brainres/playground/). Paste any answer or doc and get its score. It runs this exact `brainlint.py` through Pyodide, and nothing is uploaded. It is live at <https://wonjangcloud9.github.io/brainres/playground/>.
 
 **Score your own README** and show it off:
 
@@ -232,7 +232,7 @@ What went wrong along the way ([details](evals/README.md)):
 
 ### Help measure comprehension (10 minutes)
 
-The open question is whether people actually understand brainres answers better. The [reading benchmark](bench/) is pre-registered: 8 short answers, unlabeled, with timed questions. You submit an anonymous JSON result through an issue form, and every result will be published, good or bad.
+The open question is whether people actually understand brainres answers better. The [reading benchmark](https://wonjangcloud9.github.io/brainres/bench/) is pre-registered: 8 short answers, unlabeled, with timed questions. You submit an anonymous JSON result through an issue form, and every result will be published, good or bad.
 
 ## How it differs
 

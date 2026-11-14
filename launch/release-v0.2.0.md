@@ -30,4 +30,4 @@ Claude answers your brain can actually read, now measured on 80 prompts.
 
 **Known limits:** comprehension with human readers is not measured yet. The card makes Sonnet think in about 40% of answers, so the first visible text arrives about 0.5 s later, and total time is unchanged.
 
-Full list: [CHANGELOG](../CHANGELOG.md#020--2026-11-13).
+Full list: [CHANGELOG](../CHANGELOG.md#020--2026-11-15).

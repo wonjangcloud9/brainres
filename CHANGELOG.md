@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-11-15
+
+- **GitHub Pages is on.** The playground is at <https://wonjangcloud9.github.io/brainres/playground/> and the reading benchmark at <https://wonjangcloud9.github.io/brainres/bench/>.
 
 - **Research round 10: the ISO 24495-1 clause check** (`research/catalog-round10.md`).
   - **Measurements first:** they gave nothing new. Only 6 of 387 key facts were missed by both conditions, and those were judgment items such as reassurance and analogies.
@@ -98,7 +100,6 @@
 
 - **First-screen demo (D7):** `assets/demo.gif` (80 KB) is built from real saved suite answers, with no new calls, by `assets/demo/build_demo.py` (headless Chrome + ffmpeg). It shows the question "What is a CDN, and does my small personal blog need one?" answered by default Claude (288 words, Brain Score 84) and then by brainres (138 words, 100). The cut-off default answer is marked "… continues", and the caption gives the suite totals (78 pairs). It sits under the measured strip in both READMEs.
 
-## 0.2.0 — 2026-11-13
 
 - **Release prep (D8a):** plugin.json version 0.1.0 → 0.2.0. `claude plugin tag --dry-run` agrees (the tag will be `brainres--v0.2.0`).
   - Both `claude plugin validate` warnings are fixed: the marketplace now has a description, and the plugin has an icon, `.claude-plugin/icon.png`. The icon is an original 1024 px monogram rendered from `assets/icon.html`. The directory takes the icon only on first submission, so it had to exist before D5.
