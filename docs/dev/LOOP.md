@@ -1,6 +1,6 @@
 # LOOP.md — autonomous iteration protocol
 
-This file drives the 30-minute improvement loop. One run = one iteration.
+This file drives the hourly improvement loop (owner, 2026-11-15: 1 hour, was 30 minutes). One run = one iteration.
 Keep each iteration small enough to finish, verify, commit and push in ~15 minutes.
 
 ## Direction (owner, 2026-11-13, second update): distribution and usability first
@@ -65,7 +65,7 @@ Only if the measurements give nothing new, run a **research round**:
 2. Write findings into `research/` (new file or append), with sources and evidence strength.
 3. Turn findings into new backlog items, each scored with RICE (see below). Commit + push.
 
-**Idle.** If the last research round found nothing new, and nothing has changed since, don't start another round. "Changed" means a new `[hard-to-read]` issue, a new eval result, or a due date in `research/queue.md` passing. In that case, say "idle" in the chat and stop without committing. Rounds 6–10 added 0–2 findings each, so repeating them every 30 minutes only adds noise.
+**Idle.** If the last research round found nothing new, and nothing has changed since, don't start another round. "Changed" means a new `[hard-to-read]` issue, a new eval result, or a due date in `research/queue.md` passing. In that case, say "idle" in the chat and stop without committing. Rounds 6–10 added 0–2 findings each, so repeating them every hour only adds noise.
 
 ## RICE scoring (used in BACKLOG.md)
 
