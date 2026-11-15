@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- **README: "Privacy and what runs"** (EN/KO). It lists each hook and command, what each reads, and that nothing is sent or stored. The Anthropic directory asks for this disclosure before review.
+
 ## 0.2.0 — 2026-11-15
 
 - **GitHub Pages is on.** The playground is at <https://wonjangcloud9.github.io/brainres/playground/> and the reading benchmark at <https://wonjangcloud9.github.io/brainres/bench/>.

@@ -110,6 +110,15 @@ With Concise, brainres puts back the "why / when to switch / next step" content 
 
 A 20-message session costs about 500 extra input tokens before prompt caching, plus about 25 for each learner or emergency message. The card's 11 lines were picked by RICE across all findings ([ranking](research/core-card-ranking.md)). To turn it off, run `export BRAINRES=off` or `touch ~/.claude/brainres.off`.
 
+## Privacy and what runs
+
+brainres collects nothing. It has no server, makes no network calls, sends no data anywhere and writes no files.
+
+- **SessionStart hook** (`hooks/brainres-context.sh`): prints the rule card from `hooks/core-card.md` into the session.
+- **UserPromptSubmit hook** (`hooks/brainres-reminder.sh`): reads the text of your message on your machine and checks it for learner or emergency words. On a match it adds one line of guidance; otherwise it adds nothing. The text is not stored, logged or sent.
+- **`/brainres:score` and `/brainres:rewrite`**: run `brainlint.py` locally with `python3` on the file you name. Pasted text or a previous answer is first saved to a temporary file.
+- **Environment it reads:** only `BRAINRES`, `BRAINRES_SITUATIONS`, `BRAINRES_REMINDER` and whether `~/.claude/brainres.off` exists. It reads no credentials.
+
 ## The 10 rules
 
 | # | Rule | The science |

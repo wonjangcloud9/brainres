@@ -117,6 +117,15 @@ Concise와 함께 쓰면 brainres가 "이유, 언제 바꿀지, 다음 할 일"�
 
 hook은 플러그인으로 설치했을 때만 붙습니다. 다른 방법으로 설치하면 규칙 카드나 스킬은 들어가지만, 상황별 한 줄은 붙지 않습니다. 스킬만 설치하면 에이전트가 필요하다고 판단할 때만 불러옵니다. 우리 Claude Code 측정에서는 24번 중 1번이었습니다. 그래서 `npx skills add`는 항상 적용되는 `dist/AGENTS.md`나 Cursor 규칙과 함께 쓰는 것이 좋습니다.
 
+## 개인정보와 실행되는 것
+
+brainres는 아무것도 수집하지 않아요. 서버가 없고, 네트워크 호출도, 외부 전송도, 파일 쓰기도 하지 않아요.
+
+- **SessionStart 훅** (`hooks/brainres-context.sh`): `hooks/core-card.md`의 규칙 카드를 세션에 넣어요.
+- **UserPromptSubmit 훅** (`hooks/brainres-reminder.sh`): 입력한 메시지를 내 컴퓨터 안에서 읽고 학습자·긴급 상황 단어가 있는지만 확인해요. 있으면 안내 한 줄을 더하고, 없으면 아무것도 더하지 않아요. 메시지는 저장·기록·전송하지 않아요.
+- **`/brainres:score`, `/brainres:rewrite`**: 지정한 파일에 `brainlint.py`를 `python3`로 로컬 실행해요. 붙여 넣은 글이나 이전 답변은 먼저 임시 파일로 저장해요.
+- **읽는 환경 값:** `BRAINRES`, `BRAINRES_SITUATIONS`, `BRAINRES_REMINDER`, 그리고 `~/.claude/brainres.off` 파일이 있는지만 봐요. 자격 증명은 읽지 않아요.
+
 ## 10가지 규칙
 
 | # | 규칙 | 근거 |
